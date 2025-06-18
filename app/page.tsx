@@ -1,5 +1,7 @@
 "use client"
 
+// redeploy trigger
+
 import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
@@ -1494,7 +1496,7 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                 @gearworks
               </a>
             </p>
-            <p className="text-sm mt-2">Pelzgasse 3/17, 1150 Wien</p>
+            <p className="text-sm mt-2"></p>
 
             {/* Legal Links */}
             <div className="flex justify-center gap-4 text-xs text-[#aaa] mt-2">
