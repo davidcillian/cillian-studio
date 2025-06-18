@@ -567,7 +567,7 @@ export default function CillianStudio() {
               <ScrollAnimation
                 direction="left"
                 className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 transition-all duration-300 ${
-                  isFullyTogether ? "border-4 border-white shadow-[0_0_24px_8px_rgba(255,255,255,0.5)]" : ""
+                  isFullyTogether ? "border-4 border-white" : ""
                 }`}
                 onPositionChange={setLeftBlockPosition}
               >
@@ -604,7 +604,7 @@ export default function CillianStudio() {
               <ScrollAnimation
                 direction="center"
                 className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 transition-all duration-300 ${
-                  isFullyTogether ? "border-4 border-white shadow-[0_0_24px_8px_rgba(255,255,255,0.5)]" : ""
+                  isFullyTogether ? "border-4 border-white" : ""
                 }`}
                 onPositionChange={(pos) => {
                   // David bleibt in der Mitte, aber wir können trotzdem den Status tracken
@@ -643,7 +643,7 @@ export default function CillianStudio() {
               <ScrollAnimation
                 direction="right"
                 className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 transition-all duration-300 ${
-                  isFullyTogether ? "border-4 border-white shadow-[0_0_24px_8px_rgba(255,255,255,0.5)]" : ""
+                  isFullyTogether ? "border-4 border-white" : ""
                 }`}
                 onPositionChange={setRightBlockPosition}
               >
