@@ -1,0 +1,984 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px; /* Globaler Offset für alle Anker-Links */
+}
+
+/* Offset für fixed header falls nötig */
+section {
+  scroll-margin-top: 100px;
+}
+
+/* Animation classes */
+.animate-in {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.animate-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reveal animation for overlapping elements */
+.reveal-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1d1d1d;
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+.reveal-content {
+  opacity: 0;
+}
+
+.reveal-active .reveal-overlay {
+  transform: translateX(0);
+  animation: reveal-swipe 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.reveal-active .reveal-content {
+  animation: reveal-content 0.5s ease-out 0.5s forwards;
+}
+
+@keyframes reveal-swipe {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes reveal-content {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Parallax effect */
+.parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.1s ease-out;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.float-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Service Box Hover Effect - schnellere Reaktion */
+.service-box {
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+}
+
+.service-box:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.12);
+}
+
+/* Unfold Animation Styles - Dynamische Höhe */
+.unfold-inactive .unfold-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.unfold-active .unfold-content {
+  max-height: 1000px; /* Erhöht für längere Inhalte */
+  opacity: 1;
+}
+
+.unfold-content {
+  transition: max-height 0.8s ease-out, opacity 0.4s ease-out;
+}
+
+/* Einfache Box-Skalierung */
+.unfold-inactive {
+  transform: scale(0.98);
+}
+
+.unfold-active {
+  transform: scale(1);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Einfache Transitions für die Box */
+.unfold-inactive,
+.unfold-active {
+  transition: transform 0.5s ease-out, box-shadow 0.5s ease-out, border 0.5s ease-out;
+}
+
+/* Einfacher Hover-Effekt für aufgeklappte Boxen - schnellere Reaktion */
+.unfold-active:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.12);
+  transition: all 0.15s ease-out;
+}
+
+/* Stelle sicher, dass der Hover-Effekt auch für unfold-inactive Boxen funktioniert - schnellere Reaktion */
+.unfold-inactive:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.12);
+  transition: all 0.15s ease-out !important;
+}
+
+/* Einfache Bild-Animation */
+.service-image {
+  transition: transform 0.4s ease-out, filter 0.4s ease-out;
+}
+
+.unfold-inactive .service-image {
+  transform: scale(1.05);
+  filter: brightness(0.9);
+}
+
+.unfold-active .service-image {
+  transform: scale(1);
+  filter: brightness(1);
+}
+
+/* Section Heading Styles */
+.section-heading {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.section-heading::before,
+.section-heading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #bbb, transparent);
+}
+
+.section-heading::before {
+  right: 100%;
+  margin-right: 20px;
+}
+
+.section-heading::after {
+  left: 100%;
+  margin-left: 20px;
+}
+
+.section-heading-underline {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 60px; /* Füge expliziten margin-bottom hinzu */
+}
+
+.section-heading-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -20px; /* Reduziere von -40px auf -20px */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #bbb, transparent);
+  border-radius: 1.5px;
+}
+
+.section-heading-dots {
+  position: relative;
+  display: inline-block;
+}
+
+.section-heading-dots::before {
+  content: "• • •";
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #bbb;
+  font-size: 12px;
+  letter-spacing: 8px;
+}
+
+.section-heading-elegant {
+  position: relative;
+  display: inline-block;
+  padding: 0 30px;
+}
+
+.section-heading-elegant::before,
+.section-heading-elegant::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 1px;
+  background: #bbb;
+}
+
+.section-heading-elegant::before {
+  left: 0;
+}
+
+.section-heading-elegant::after {
+  right: 0;
+}
+
+/* Decorative diamond */
+.section-heading-diamond {
+  position: relative;
+  display: inline-block;
+}
+
+.section-heading-diamond::before {
+  content: "◆";
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #bbb;
+  font-size: 14px;
+}
+
+.section-heading-diamond::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #bbb, transparent);
+}
+
+/* Service Box Buttons - Dynamische Höhe */
+.service-button {
+  min-height: 44px;
+  height: auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  transition: all 0.5s ease-out;
+  position: relative;
+  overflow: hidden;
+  color: #f2f2f2;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+.service-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.service-button.active {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* ===== FORMULAR STYLES ===== */
+
+/* Basis Input/Select/Textarea Styling */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: #f2f2f2;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+/* Placeholder Styling */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #aaa;
+}
+
+/* Focus State */
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 1px #60a5fa;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Filled State (wenn Inhalt vorhanden) */
+.form-input:not(:placeholder-shown),
+.form-select:not([value=""]):not(:invalid),
+.form-textarea:not(:placeholder-shown) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Select spezifische Styles */
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23aaa' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Select Hover */
+.form-select:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Select Option Styling */
+.form-select option {
+  background-color: #1d1d1d;
+  color: #f2f2f2;
+  padding: 0.5rem;
+}
+
+.form-select option:hover {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Checkbox Styling */
+.form-checkbox {
+  width: 1rem;
+  height: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.form-checkbox:checked {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m13.854 3.646-7.5 7.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6 10.293l7.146-7.147a.5.5 0 0 1 .708.708z'/%3e%3c/svg%3e");
+}
+
+.form-checkbox:focus {
+  box-shadow: 0 0 0 2px #60a5fa;
+}
+
+.form-checkbox:hover:not(:checked) {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Number Input spezifische Styles */
+.form-input[type="number"] {
+  max-width: 5rem;
+}
+
+/* Textarea spezifische Styles */
+.form-textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+/* ===== MOBILE OPTIMIERUNGEN ===== */
+/* Nur für Bildschirme unter 768px (Mobile) */
+
+@media (max-width: 767px) {
+  /* Globale Mobile Anpassungen */
+  .min-h-screen {
+    font-size: 14px;
+  }
+
+  /* Header Mobile - Komplett überarbeitet */
+  header {
+    padding: 0.5rem 0 !important;
+  }
+
+  header .max-w-6xl {
+    padding: 0 0.75rem !important;
+  }
+
+  header .border-b {
+    padding-bottom: 0.5rem !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Navigation komplett verstecken auf Mobile */
+  header nav {
+    display: none !important;
+  }
+
+  /* Flex-Linien verstecken */
+  header .flex-1 {
+    display: none !important;
+  }
+
+  /* Logo zentriert und kleiner */
+  header .w-\[140px\] {
+    width: 60px !important;
+    height: 60px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Header Flex Container anpassen */
+  header .flex.justify-between {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Text unter Logo zentriert und kleiner */
+  header .text-center {
+    margin-top: 0.5rem !important;
+  }
+
+  header h1 {
+    font-size: 1rem !important;
+    letter-spacing: 0.1rem !important;
+    margin-bottom: 0.25rem !important;
+    font-weight: 300 !important;
+  }
+
+  header p {
+    font-size: 0.6rem !important;
+    letter-spacing: 0.05rem !important;
+    opacity: 0.8 !important;
+  }
+
+  /* Mobile Navigation Menu - einfaches Menü */
+  .mobile-nav {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+    margin-top: 0.5rem !important;
+    padding-top: 0.5rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .mobile-nav a {
+    font-size: 0.7rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05rem !important;
+    color: #aaa !important;
+    text-decoration: none !important;
+    padding: 0.25rem 0.5rem !important;
+    transition: color 0.3s ease !important;
+  }
+
+  .mobile-nav a:hover {
+    color: #f2f2f2 !important;
+  }
+
+  /* Hero Animation kleiner und weniger intensiv */
+  .py-16 {
+    padding: 1rem 0 !important;
+  }
+
+  .h-64 {
+    height: 4rem !important;
+  }
+
+  /* Sections kompakter */
+  .py-24 {
+    padding: 1.5rem 0 !important;
+  }
+
+  .px-5 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  /* Section Headings kleiner */
+  .text-4xl {
+    font-size: 1.25rem !important;
+  }
+
+  .mb-16 {
+    margin-bottom: 1rem !important;
+  }
+
+  .section-heading-underline::after {
+    width: 80px !important;
+    bottom: -8px !important;
+    height: 1px !important;
+  }
+
+  /* About Us Mobile - Performance optimiert */
+  #about .relative {
+    min-height: auto !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  #about .flex-1 {
+    min-width: auto !important;
+    padding: 1rem !important;
+  }
+
+  #about .flex.items-center {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 0.75rem !important;
+  }
+
+  #about .w-\[220px\] {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  #about .text-lg {
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+  }
+
+  #about .text-2xl {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Services Mobile */
+  .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  .service-box {
+    padding: 1rem !important;
+  }
+
+  .service-box .p-8 {
+    padding: 0.75rem 1rem 0.5rem !important;
+  }
+
+  .service-box .max-w-\[180px\] {
+    max-width: 80px !important;
+  }
+
+  .service-box .text-xl {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .service-box .h-12 {
+    height: 2rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.4rem !important;
+  }
+
+  .service-box .px-8 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .service-box .pb-8 {
+    padding-bottom: 1rem !important;
+  }
+
+  .service-box .space-y-3 > * + * {
+    margin-top: 0.4rem !important;
+  }
+
+  /* Detail Container Mobile */
+  .flex.flex-wrap.gap-5.items-start {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .flex-\[2\] {
+    min-width: auto !important;
+    padding: 1rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .flex-\[3\] {
+    min-width: auto !important;
+  }
+
+  .h-\[300px\] {
+    height: 150px !important;
+  }
+
+  /* Projects Mobile */
+  .space-y-12 > * + * {
+    margin-top: 1.5rem !important;
+  }
+
+  .p-8.border-b {
+    padding: 1rem !important;
+  }
+
+  .flex.flex-col.lg\:flex-row {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+  }
+
+  .min-w-\[200px\] {
+    min-width: auto !important;
+    width: 100% !important;
+    height: 2.5rem !important;
+  }
+
+  .text-2xl.font-light {
+    font-size: 1rem !important;
+  }
+
+  .text-\[#aaa\].mb-3 {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .flex.flex-wrap.gap-4 {
+    gap: 0.4rem !important;
+    font-size: 0.65rem !important;
+  }
+
+  .w-40 {
+    width: 100% !important;
+    height: 2rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .p-8:not(.border-b) {
+    padding: 1rem !important;
+  }
+
+  .grid.grid-cols-1.lg\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Gallery Mobile */
+  .grid.grid-cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .h-64:not(.h-\[300px\]) {
+    height: 8rem !important;
+  }
+
+  /* Contact Mobile */
+  .py-16:last-of-type {
+    padding: 1.25rem 0 !important;
+  }
+
+  .text-3xl {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .p-12 {
+    padding: 1rem !important;
+  }
+
+  .text-lg:not(.text-2xl):not(.text-xl) {
+    font-size: 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .flex.flex-col.sm\:flex-row {
+    flex-direction: column !important;
+    gap: 0.6rem !important;
+  }
+
+  .px-8.py-4 {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Footer Mobile */
+  footer {
+    padding: 1.25rem 0 !important;
+    font-size: 0.65rem !important;
+  }
+
+  footer .flex.flex-col {
+    gap: 0.4rem !important;
+  }
+
+  footer .flex.items-center {
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+  }
+
+  footer .text-xs {
+    font-size: 0.6rem !important;
+  }
+
+  /* Touch-optimierte Buttons */
+  button {
+    min-height: 32px !important;
+    min-width: 32px !important;
+  }
+
+  /* Kleinere Pfeile */
+  .absolute.left-2,
+  .absolute.right-2 {
+    padding: 0.3rem !important;
+  }
+
+  .absolute.left-2 svg,
+  .absolute.right-2 svg {
+    width: 0.9rem !important;
+    height: 0.9rem !important;
+  }
+
+  /* Kleinere Indikatoren */
+  .w-2.h-2 {
+    width: 0.25rem !important;
+    height: 0.25rem !important;
+  }
+
+  .w-4 {
+    width: 0.5rem !important;
+  }
+
+  .w-3.h-3 {
+    width: 0.35rem !important;
+    height: 0.35rem !important;
+  }
+
+  .w-6:not(.gap-6) {
+    width: 0.7rem !important;
+  }
+
+  /* Mobile Anpassungen für Service Buttons */
+  .service-button {
+    min-height: 32px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  /* Mobile Formular Anpassungen */
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  /* Performance: Reduziere Transitions auf Mobile */
+  * {
+    transition-duration: 0.15s !important;
+  }
+
+  /* Performance: Deaktiviere komplexe Animationen */
+  .animate-pulse {
+    animation: none !important;
+  }
+
+  .float,
+  .float-slow,
+  .float-fast {
+    animation: none !important;
+  }
+
+  /* Performance: Vereinfache Hover-Effekte */
+  .service-box:hover,
+  .unfold-active:hover,
+  .unfold-inactive:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Performance: Deaktiviere Scroll-Animationen */
+  .unfold-inactive,
+  .unfold-active {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .unfold-content {
+    max-height: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  /* Performance: Deaktiviere Service Image Animationen */
+  .service-image {
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  /* Performance: Vereinfache Transitions */
+  .transition-all {
+    transition: none !important;
+  }
+
+  .transition-opacity {
+    transition: none !important;
+  }
+
+  .transition-transform {
+    transition: none !important;
+  }
+}
+
+/* Tablet Anpassungen (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+
+  .grid.grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  #about .relative {
+    gap: 1.5rem !important;
+  }
+
+  #about .flex-1 {
+    min-width: 280px !important;
+  }
+}

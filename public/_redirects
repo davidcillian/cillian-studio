@@ -1,0 +1,5 @@
+# Redirect rules (falls nötig)
+# /old-path /new-path 301
+
+# SPA fallback für client-side routing
+/* /index.html 200
