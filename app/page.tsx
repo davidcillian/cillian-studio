@@ -550,7 +550,7 @@ export default function CillianStudio() {
 
             {/* Daniel Abada - Links - Mobile: keine Animation */}
             {isMobile ? (
-              <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10">
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 ${isFullyTogether ? "border-4 border-white" : "border border-white/10"}`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -587,7 +587,7 @@ export default function CillianStudio() {
 
             {/* David Cillian - Mitte (statisch) */}
             {isMobile ? (
-              <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10">
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 ${isFullyTogether ? "border-4 border-white" : "border border-white/10"}`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -626,7 +626,7 @@ export default function CillianStudio() {
 
             {/* Gearworks - Rechts */}
             {isMobile ? (
-              <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10">
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 ${isFullyTogether ? "border-4 border-white" : "border border-white/10"}`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -1543,8 +1543,6 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Angaben gemäß § 5 TMG</h3>
                   <div className="text-[#aaa] leading-relaxed">
                     <p className="text-[#f2f2f2] mb-2">David Cillian</p>
-                    <p>Pelzgasse 3</p>
-                    <p>1150 Wien, Österreich</p>
                   </div>
                 </section>
 
@@ -1552,12 +1550,6 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                 <section>
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Kontakt</h3>
                   <div className="text-[#aaa] leading-relaxed space-y-2">
-                    <div className="flex items-center gap-3">
-                      <span className="font-medium text-[#f2f2f2] min-w-[80px]">Telefon:</span>
-                      <a href="tel:+4369910084817" className="text-blue-400 hover:text-blue-300 transition-colors">
-                        +43 69910084817
-                      </a>
-                    </div>
                     <div className="flex items-center gap-3">
                       <span className="font-medium text-[#f2f2f2] min-w-[80px]">E-Mail:</span>
                       <a
@@ -1625,12 +1617,7 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                   <div className="text-[#aaa] leading-relaxed">
                     <p className="mb-3">Verantwortlicher im Sinne der Datenschutzgesetze ist:</p>
                     <p className="text-[#f2f2f2] mb-2">David Cillian</p>
-                    <p>Pelzgasse 3</p>
-                    <p className="mb-3">1150 Wien, Österreich</p>
                     <div className="space-y-1">
-                      <p>
-                        <strong>Telefon:</strong> +43 69910084817
-                      </p>
                       <p>
                         <strong>E-Mail:</strong> 3d@davidcillian.com
                       </p>
@@ -1674,9 +1661,6 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                   <div className="text-[#aaa] leading-relaxed">
                     <p className="mb-3">Bei Fragen zum Datenschutz können Sie sich an uns wenden:</p>
                     <div className="space-y-1">
-                      <p>
-                        <strong>Telefon:</strong> +43 69910084817
-                      </p>
                       <p>
                         <strong>E-Mail:</strong> 3d@davidcillian.com
                       </p>
