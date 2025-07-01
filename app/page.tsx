@@ -192,7 +192,10 @@ const recentProjects = [
       "Ein Demoprojekt in Unreal Engine 5.6 von David Cillian. Verwendete Tools: UE5.6, Blender, Maya, Substance Painter, Underwater Blueprint von Karim Aboushousha.",
     technologies: ["Unreal Engine 5.6", "Blender", "Maya", "Substance Painter", "Underwater Blueprint", "Quixel"],
     images: [
-      "/images/the-old-deep/main.jpg" // Platzhalter, kann später durch echte Bilder ersetzt werden
+      "/images/the-old-deep/1.png",
+      "/images/the-old-deep/2.png",
+      "/images/the-old-deep/3.png",
+      "/images/the-old-deep/4.png"
     ],
     results: [
       "Unterwasserumgebung durch Underwater Blueprint umgesetzt",
@@ -883,22 +886,24 @@ export default function CillianStudio() {
                         <h4 className="text-xl text-[#f2f2f2] mb-4">Project Showcase</h4>
                         <div className="relative h-[300px] mobile-project-showcase bg-white/[0.03] rounded-lg overflow-hidden">
                           {/* Project Images */}
-                          {project.images.map((image, imgIndex) => (
-                            <div
-                              key={imgIndex}
-                              className={`absolute inset-0 transition-opacity duration-500 ${
-                                imgIndex === projectSlide ? "opacity-100" : "opacity-0 pointer-events-none"
-                              }`}
-                            >
-                              <Image
-                                src={image || "/placeholder.svg"}
-                                alt={`${project.projectTitle} - Image ${imgIndex + 1}`}
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                          ))}
-
+                          {project.images && project.images.length > 0 ? (
+                            project.images.map((image, imgIndex) => (
+                              <div
+                                key={imgIndex}
+                                className={`absolute inset-0 transition-opacity duration-500 ${imgIndex === projectSlide ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+                              >
+                                <Image
+                                  src={image}
+                                  alt={`${project.projectTitle} - Bild ${imgIndex + 1}`}
+                                  fill
+                                  className="object-cover"
+                                  onError={(e) => { e.currentTarget.src = "/placeholder.svg"; }}
+                                />
+                              </div>
+                            ))
+                          ) : (
+                            <div className="flex items-center justify-center h-full text-[#aaa]">Keine Bilder vorhanden</div>
+                          )}
                           {/* Navigation arrows */}
                           <button
                             onClick={handleProjectPrevSlide}
@@ -914,16 +919,13 @@ export default function CillianStudio() {
                           >
                             <ChevronRight size={24} className="text-white" />
                           </button>
-
                           {/* Slide indicators */}
                           <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-                            {project.images.map((_, imgIndex) => (
+                            {project.images && project.images.map((_, imgIndex) => (
                               <button
                                 key={imgIndex}
                                 onClick={() => setProjectSlide(imgIndex)}
-                                className={`w-2 h-2 mobile-indicator rounded-full transition-all ${
-                                  imgIndex === projectSlide ? "bg-white w-4" : "bg-white/50"
-                                }`}
+                                className={`w-2 h-2 mobile-indicator rounded-full transition-all ${imgIndex === projectSlide ? "bg-white w-4" : "bg-white/50"}`}
                                 aria-label={`Go to project image ${imgIndex + 1}`}
                               />
                             ))}
