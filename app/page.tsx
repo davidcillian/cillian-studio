@@ -965,7 +965,7 @@ export default function CillianStudio() {
                         </div>
 
                         {/* Client Testimonial Placeholder */}
-                        {project.id !== "project-2" && (
+                        {project.id !== "project-2" && project.id !== "project-4" && (
                           <div className="bg-white/[0.03] rounded-lg p-6 border border-white/10">
                             <h4 className="text-lg text-[#f2f2f2] mb-3">Client Feedback</h4>
                             <p className="text-[#aaa] italic">
