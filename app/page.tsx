@@ -193,7 +193,8 @@ const recentProjects = [
     technologies: ["Unreal Engine 5.6", "Blender", "Maya", "Substance Painter", "Underwater Blueprint", "Quixel"],
     images: [
       "/images/the-old-deep/1.png",
-      "/images/the-old-deep/2.png"
+      "/images/the-old-deep/2.png",
+      "/images/the-old-deep/3.png"
     ],
     results: [
       "Unterwasserumgebung durch Underwater Blueprint umgesetzt",
