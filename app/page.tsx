@@ -183,19 +183,20 @@ const recentProjects = [
   {
     id: "project-2",
     clientName: "David Cillian",
-    clientLogo: "/placeholder.svg?height=80&width=200", // Platzhalter, kann später ersetzt werden
+    clientLogo: "Demo", // Demo-Projekt, daher nur Text
     projectTitle: "The Old Deep",
     projectType: "Unreal Engine Demoprojekt",
     completionDate: "2024",
     teamSize: "1 Artist",
     description:
       "Ein Demoprojekt in Unreal Engine 5.6 von David Cillian. Verwendete Tools: UE5.6, Blender, Maya, Substance Painter, Underwater Blueprint von Karim Aboushousha.",
-    technologies: ["Unreal Engine 5.6", "Blender", "Maya", "Substance Painter", "Underwater Blueprint"],
+    technologies: ["Unreal Engine 5.6", "Blender", "Maya", "Substance Painter", "Underwater Blueprint", "Quixel"],
     images: [
       "/images/the-old-deep/main.jpg" // Platzhalter, kann später durch echte Bilder ersetzt werden
     ],
     results: [
-      "Komplette Unterwasser-Umgebung mit Blueprint-Logik",
+      "Unterwasserumgebung durch Underwater Blueprint umgesetzt",
+      "Vegetation und Natur durch Quixel Assets realisiert",
       "Integration von Assets aus Blender und Maya",
       "Einsatz von Substance Painter für Texturen",
     ],
@@ -955,14 +956,15 @@ export default function CillianStudio() {
                         </div>
 
                         {/* Client Testimonial Placeholder */}
-                        <div className="bg-white/[0.03] rounded-lg p-6 border border-white/10">
-                          <h4 className="text-lg text-[#f2f2f2] mb-3">Client Feedback</h4>
-                          <p className="text-[#aaa] italic">
-                            "Exceptional work quality and professional delivery. The team exceeded our expectations in
-                            every aspect of the project."
-                          </p>
-                          <p className="text-sm text-[#bbb] mt-2">- {project.clientName}</p>
-                        </div>
+                        {project.id !== "project-2" && (
+                          <div className="bg-white/[0.03] rounded-lg p-6 border border-white/10">
+                            <h4 className="text-lg text-[#f2f2f2] mb-3">Client Feedback</h4>
+                            <p className="text-[#aaa] italic">
+                              "Exceptional work quality and professional delivery. The team exceeded our expectations in every aspect of the project."
+                            </p>
+                            <p className="text-sm text-[#bbb] mt-2">- {project.clientName}</p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
