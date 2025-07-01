@@ -966,6 +966,16 @@ export default function CillianStudio() {
                               </li>
                             ))}
                           </ul>
+                          {project.productLink && (
+                            <a
+                              href={project.productLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-block mt-4 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors"
+                            >
+                              Zum Produkt
+                            </a>
+                          )}
                         </div>
 
                         {/* Client Testimonial Placeholder */}
