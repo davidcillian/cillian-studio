@@ -7,11 +7,22 @@ export default function Preloader() {
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // Preload kritische Assets
+    // Preload ALLE wichtigen Assets (Projektbilder, Galerie, etc.)
     const preloadAssets = async () => {
       const assets = [
-        "/images/3d-artwork-1.png",
-        // Weitere kritische Assets hier
+        // Projektbilder The Old Deep
+        "/images/the-old-deep/1.png",
+        "/images/the-old-deep/2.png",
+        "/images/the-old-deep/3.png",
+        // Projektbilder Omninode Crane
+        "/images/omninode-crane/1.jpg",
+        "/images/omninode-crane/2.jpg",
+        // Galerie-Bilder (externe URLs)
+        "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
+        "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
+        "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
+        "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
+        // ... ggf. weitere wichtige Bilder ergänzen ...
       ]
 
       let loaded = 0
@@ -20,7 +31,7 @@ export default function Preloader() {
       for (const asset of assets) {
         try {
           await new Promise((resolve, reject) => {
-            const img = new Image()
+            const img = new window.Image()
             img.crossOrigin = "anonymous"
             img.onload = resolve
             img.onerror = reject
