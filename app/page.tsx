@@ -212,7 +212,7 @@ const recentProjects = [
     completionDate: "2024",
     teamSize: "1 Developer",
     description:
-      "Omninode Crane ist ein prozedurales Kran-Asset, das mit Blender Geometry Nodes entwickelt wurde. Es entstand beim Austesten der Geometry Nodes und ist als Produkt auf SuperHiveMarket erhältlich.",
+      "Gemacht von GearWorks Production. Omninode Crane ist ein prozedurales Kran-Asset, das mit Blender Geometry Nodes entwickelt wurde. Es entstand beim Austesten der Geometry Nodes und ist als Produkt auf SuperHiveMarket erhältlich.",
     technologies: ["Blender", "Geometry Nodes"],
     images: [
       "/images/omninode-crane/1.jpg",
