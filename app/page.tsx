@@ -822,6 +822,10 @@ export default function CillianStudio() {
                       <div className="bg-white/5 rounded-lg p-4 min-w-[200px] mobile-project-logo h-20 flex items-center justify-center border border-white/10">
                         <div className="text-center text-[#aaa] text-lg font-bold">Demo</div>
                       </div>
+                    ) : project.id === "project-4" ? (
+                      <div className="bg-white/5 rounded-lg p-4 min-w-[200px] mobile-project-logo h-20 flex items-center justify-center border border-white/10">
+                        <div className="text-center text-[#aaa] text-lg font-bold">Tool</div>
+                      </div>
                     ) : (
                       <div className="bg-white/5 rounded-lg p-4 min-w-[200px] mobile-project-logo h-20 flex items-center justify-center border border-white/10">
                         <div className="text-center text-[#aaa]">
