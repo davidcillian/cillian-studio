@@ -814,12 +814,18 @@ export default function CillianStudio() {
                 <div className="p-8 mobile-project border-b border-white/10">
                   <div className="flex flex-col lg:flex-row mobile-project-header items-start lg:items-center gap-6">
                     {/* Client Logo */}
-                    <div className="bg-white/5 rounded-lg p-4 min-w-[200px] mobile-project-logo h-20 flex items-center justify-center border border-white/10">
-                      <div className="text-center text-[#aaa]">
-                        <div className="text-sm mb-1">Client Logo</div>
-                        <div className="text-xs">{project.clientName}</div>
+                    {project.id === "project-2" ? (
+                      <div className="bg-white/5 rounded-lg p-4 min-w-[200px] mobile-project-logo h-20 flex items-center justify-center border border-white/10">
+                        <div className="text-center text-[#aaa] text-lg font-bold">Demo</div>
                       </div>
-                    </div>
+                    ) : (
+                      <div className="bg-white/5 rounded-lg p-4 min-w-[200px] mobile-project-logo h-20 flex items-center justify-center border border-white/10">
+                        <div className="text-center text-[#aaa]">
+                          <div className="text-sm mb-1">Client Logo</div>
+                          <div className="text-xs">{project.clientName}</div>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Project Info */}
                     <div className="flex-1">
