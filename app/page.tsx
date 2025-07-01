@@ -194,8 +194,7 @@ const recentProjects = [
     images: [
       "/images/the-old-deep/1.png",
       "/images/the-old-deep/2.png",
-      "/images/the-old-deep/3.png",
-      "/images/the-old-deep/4.png"
+      "/images/the-old-deep/3.png"
     ],
     results: [
       "Unterwasserumgebung durch Underwater Blueprint umgesetzt",
