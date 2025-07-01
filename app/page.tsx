@@ -182,24 +182,22 @@ const recentProjects = [
   },
   {
     id: "project-2",
-    clientName: "VirtualReality Studios",
-    clientLogo: "/placeholder.svg?height=80&width=200",
-    projectTitle: "Interactive Museum Experience",
-    projectType: "VR Application",
+    clientName: "David Cillian",
+    clientLogo: "/placeholder.svg?height=80&width=200", // Platzhalter, kann später ersetzt werden
+    projectTitle: "The Old Deep",
+    projectType: "Unreal Engine Demoprojekt",
     completionDate: "2024",
-    teamSize: "5 Specialists",
+    teamSize: "1 Artist",
     description:
-      "Immersive VR-Erfahrung für ein historisches Museum. Photorealistische Rekonstruktion antiker Artefakte und interaktive Lernumgebungen.",
-    technologies: ["Unity", "Blender", "Photogrammetry", "Oculus SDK"],
+      "Ein Demoprojekt in Unreal Engine 5.6 von David Cillian. Verwendete Tools: UE5.6, Blender, Maya, Substance Painter, Underwater Blueprint von Karim Aboushousha.",
+    technologies: ["Unreal Engine 5.6", "Blender", "Maya", "Substance Painter", "Underwater Blueprint"],
     images: [
-      "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
+      "/images/the-old-deep/main.jpg" // Platzhalter, kann später durch echte Bilder ersetzt werden
     ],
     results: [
-      "Über 10.000 Besucher in den ersten 3 Monaten",
-      "95% Kundenzufriedenheit",
-      "Auszeichnung für beste VR-Experience 2024",
+      "Komplette Unterwasser-Umgebung mit Blueprint-Logik",
+      "Integration von Assets aus Blender und Maya",
+      "Einsatz von Substance Painter für Texturen",
     ],
   },
   {
