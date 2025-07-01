@@ -193,36 +193,13 @@ const recentProjects = [
     technologies: ["Unreal Engine 5.6", "Blender", "Maya", "Substance Painter", "Underwater Blueprint", "Quixel"],
     images: [
       "/images/the-old-deep/1.png",
-      "/images/the-old-deep/2.png",
-      "/images/the-old-deep/3.png"
+      "/images/the-old-deep/2.png"
     ],
     results: [
       "Unterwasserumgebung durch Underwater Blueprint umgesetzt",
       "Vegetation und Natur durch Quixel Assets realisiert",
       "Integration von Assets aus Blender und Maya",
       "Einsatz von Substance Painter für Texturen",
-    ],
-  },
-  {
-    id: "project-3",
-    clientName: "ArchViz Solutions",
-    clientLogo: "/placeholder.svg?height=80&width=200",
-    projectTitle: "Luxury Resort Visualization",
-    projectType: "Architectural Visualization",
-    completionDate: "2023",
-    teamSize: "4 Artists",
-    description:
-      "Photorealistische Visualisierung eines Luxus-Resorts auf den Malediven. Inklusive Unterwasser-Szenen und dynamischer Wettersimulation.",
-    technologies: ["3ds Max", "V-Ray", "Corona Renderer", "After Effects"],
-    images: [
-      "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-    ],
-    results: [
-      "Erfolgreiche Investoren-Präsentation",
-      "€50M Projektfinanzierung gesichert",
-      "Internationale Architektur-Auszeichnung",
     ],
   },
   {
@@ -249,7 +226,7 @@ const recentProjects = [
       "Vollständig anpassbare Struktur und Bewegung"
     ],
     productLink: "https://superhivemarket.com/products/omninode-crane?search_id=41130834"
-  },
+  }
 ]
 
 // Gallery images for slideshow (9 images for 3 slides with 3 images each)
