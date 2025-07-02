@@ -231,9 +231,9 @@ const recentProjects = [
     id: "project-5",
     clientName: "CreArtive Vienna",
     clientLogo: "/images/creartive-vienna/logo.png",
-    projectTitle: "Kaiserkrone – Video für die Kaiserliche Schatzkammer",
+    projectTitle: "Kaiserkrone",
     projectType: "3D-Animation & Videoproduktion",
-    completionDate: "2023",
+    completionDate: "2022",
     teamSize: "2 Artists, 1 Technical Artist",
     description:
       "Für CreArtive Vienna wurde ein Video der Kaiserkrone der Kaiserlichen Schatzkammer erstellt. Zum Einsatz kamen Blender für die 3D-Visualisierung und Premiere für den Videoschnitt.",
