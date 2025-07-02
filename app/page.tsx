@@ -239,7 +239,7 @@ const recentProjects = [
       "Für CreArtive Vienna wurde ein Video der Kaiserkrone der Kaiserlichen Schatzkammer erstellt. Zum Einsatz kamen Blender für die 3D-Visualisierung und Premiere für den Videoschnitt.",
     technologies: ["Blender", "Premiere Pro"],
     images: [
-      "/images/creartive-vienna/1.jpg"
+      "/images/creartive-vienna/1.png"
     ],
     results: [
       "3D-Modellierung und Animation der Kaiserkrone",
