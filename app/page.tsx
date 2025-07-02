@@ -855,7 +855,7 @@ export default function CillianStudio() {
                         <Image src={project.clientLogo} alt={project.clientName + ' Logo'} width={96} height={96} className="object-contain w-[96px] h-[96px]" />
                       </div>
                     ) : (
-                      <div className="bg-white/5 rounded-lg p-4 min-w-[200px] mobile-project-logo h-20 flex items-center justify-center border border-white/10">
+                      <div className={`flex-1 w-[320px] h-[320px] min-w-[320px] min-h-[320px] max-w-[320px] max-h-[320px] mobile-project-logo flex flex-col items-center justify-center border border-white/10 text-center`}>
                         <div className="text-center text-[#aaa]">
                           <div className="text-sm mb-1">Client Logo</div>
                           <div className="text-xs">{project.clientName}</div>
