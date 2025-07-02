@@ -186,7 +186,7 @@ const recentProjects = [
     clientLogo: "Demo", // Demo-Projekt, daher nur Text
     projectTitle: "The Old Deep",
     projectType: "Unreal Engine Demoprojekt",
-    completionDate: "2024",
+    completionDate: "2025",
     teamSize: "1 Artist",
     description:
       "Ein Demoprojekt in Unreal Engine 5.6 von David Cillian. Verwendete Tools: UE5.6, Blender, Maya, Substance Painter, Underwater Blueprint von Karim Aboushousha.",
@@ -198,18 +198,17 @@ const recentProjects = [
     ],
     results: [
       "Unterwasserumgebung durch Underwater Blueprint umgesetzt",
-      "Vegetation und Natur durch Quixel Assets realisiert",
-      "Integration von Assets aus Blender und Maya",
-      "Einsatz von Substance Painter für Texturen",
+      "Vegetation mit Quixel Assets realisiert",
+      "Prozedurale Shader und Lighting für Tiefsee-Atmosphäre"
     ],
   },
   {
     id: "project-4",
     clientName: "GearWorks Production",
-    clientLogo: "Creator & Publisher", // Kein Client, sondern Eigenentwicklung
+    clientLogo: "Tool", // Kein Client, sondern Eigenentwicklung
     projectTitle: "Omninode Crane",
     projectType: "Blender Geometry Nodes Tool",
-    completionDate: "2024",
+    completionDate: "2022",
     teamSize: "1 Developer",
     description:
       "Erstellt von GearWorks Production. Omninode Crane ist ein prozedurales Kran-Asset, das mit Blender Geometry Nodes entwickelt wurde. Es entstand beim Austesten der Geometry Nodes und ist als Produkt auf SuperHiveMarket erhältlich.",
