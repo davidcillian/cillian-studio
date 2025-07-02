@@ -847,8 +847,8 @@ export default function CillianStudio() {
                         <div className="text-center text-[#aaa] text-lg font-bold">Tool</div>
                       </div>
                     ) : project.id === "project-5" ? (
-                      <div className="bg-white/5 rounded-lg p-4 min-w-[200px] mobile-project-logo h-20 flex items-center justify-center border border-white/10">
-                        <div className="text-center text-[#aaa] text-lg font-bold">Video</div>
+                      <div className="bg-white rounded-lg p-4 w-[120px] h-[120px] mobile-project-logo flex items-center justify-center border border-white/10">
+                        <Image src={project.clientLogo} alt={project.clientName + ' Logo'} width={96} height={96} className="object-contain w-[96px] h-[96px]" />
                       </div>
                     ) : project.clientLogo && project.clientLogo.startsWith("/images/") ? (
                       <div className="bg-white rounded-lg p-4 w-[120px] h-[120px] mobile-project-logo flex items-center justify-center border border-white/10">
