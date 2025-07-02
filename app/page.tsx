@@ -226,7 +226,27 @@ const recentProjects = [
       "Vollständig anpassbare Struktur und Bewegung"
     ],
     productLink: "https://superhivemarket.com/products/omninode-crane?search_id=41130834"
-  }
+  },
+  {
+    id: "project-5",
+    clientName: "CreArtive Vienna",
+    clientLogo: "/images/creartive-vienna/logo.png",
+    projectTitle: "Kaiserkrone – Video für die Kaiserliche Schatzkammer",
+    projectType: "3D-Animation & Videoproduktion",
+    completionDate: "2023",
+    teamSize: "2 Artists, 1 Technical Artist",
+    description:
+      "Für CreArtive Vienna wurde ein Video der Kaiserkrone der Kaiserlichen Schatzkammer erstellt. Zum Einsatz kamen Blender für die 3D-Visualisierung und Premiere für den Videoschnitt.",
+    technologies: ["Blender", "Premiere Pro"],
+    images: [
+      "/images/creartive-vienna/1.jpg"
+    ],
+    results: [
+      "3D-Modellierung und Animation der Kaiserkrone",
+      "Videoproduktion für die Kaiserliche Schatzkammer",
+      "Team: 2 Artists, 1 Technical Artist"
+    ],
+  },
 ]
 
 // Gallery images for slideshow (9 images for 3 slides with 3 images each)
