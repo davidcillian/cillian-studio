@@ -254,13 +254,13 @@ const galleryImages = [
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
+  "/images/the-old-deep/1.png", // Erstes Bild von The Old Deep
+  "/images/creartive-vienna/1.png", // Kaiserkrone Bild
   "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
-  "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
-  "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-]
+];
 
 export default function CillianStudio() {
   const [activeFeature, setActiveFeature] = useState<string | null>(null)
@@ -1541,7 +1541,7 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                 @gearworks
               </a>
             </p>
-            <p className="text-sm mt-2"></p>
+            <p className="text-sm mt-2 text-[#aaa]">Pelzgasse 3, 1150 Wien</p>
 
             {/* Legal Links */}
             <div className="flex justify-center gap-4 text-xs text-[#aaa] mt-2">
@@ -1590,6 +1590,7 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Angaben gemäß § 5 TMG</h3>
                   <div className="text-[#aaa] leading-relaxed">
                     <p className="text-[#f2f2f2] mb-2">David Cillian</p>
+                    <p className="mb-2">Pelzgasse 3, 1150 Wien</p>
                   </div>
                 </section>
 
