@@ -159,28 +159,6 @@ const serviceData = [
 // Recent Projects Data
 const recentProjects = [
   {
-    id: "project-1",
-    clientName: "TechCorp Gaming",
-    clientLogo: "/placeholder.svg?height=80&width=200", // Placeholder für Kundenlogo
-    projectTitle: "Futuristic City Environment",
-    projectType: "3D Environment Design",
-    completionDate: "2024",
-    teamSize: "3 Artists",
-    description:
-      "Entwicklung einer kompletten futuristischen Stadtumgebung für ein AAA-Spiel. Inklusive modularer Gebäude, Beleuchtungssystem und optimierter Performance für Unreal Engine 5.",
-    technologies: ["Unreal Engine 5", "Blender", "Substance Painter", "Houdini"],
-    images: [
-      "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
-    ],
-    results: [
-      "50% Verbesserung der Rendering-Performance",
-      "Modulares System für 200+ Gebäude-Varianten",
-      "Dynamisches Tag/Nacht-Beleuchtungssystem",
-    ],
-  },
-  {
     id: "project-2",
     clientName: "David Cillian",
     clientLogo: "Demo", // Demo-Projekt, daher nur Text
