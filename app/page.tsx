@@ -1,6 +1,6 @@
 "use client"
 
-// redeploy trigger
+// redeploy trigger v2 - About cards static
 
 import type React from "react"
 
