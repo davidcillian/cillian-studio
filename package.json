@@ -2,11 +2,14 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
+  "main": "electron.cjs",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "dist": "npm run build && electron-builder",
+    "postdist": "copy dist\\index.html dist\\win-unpacked\\index.html && xcopy /E /I /Y dist\\assets dist\\win-unpacked\\assets"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
@@ -58,7 +61,8 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^0.9.6",
-    "zod": "^3.24.1"
+    "zod": "^3.24.1",
+    "electron-builder": "^24.6.0"
   },
   "devDependencies": {
     "@types/node": "^22",

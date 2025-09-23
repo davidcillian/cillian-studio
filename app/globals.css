@@ -206,12 +206,14 @@ section {
 
 /* Service Box Hover Effect - schnellere Reaktion */
 .service-box {
-  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  transition: transform 0.1s ease-out, box-shadow 0.12s ease-out;
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 .service-box:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.12);
+  transform: scale(1.01);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.10);
 }
 
 /* Unfold Animation Styles - Dynamische Höhe */
@@ -249,16 +251,16 @@ section {
 
 /* Einfacher Hover-Effekt für aufgeklappte Boxen - schnellere Reaktion */
 .unfold-active:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.12);
-  transition: all 0.15s ease-out;
+  transform: scale(1.01);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.10);
+  transition: all 0.1s ease-out;
 }
 
 /* Stelle sicher, dass der Hover-Effekt auch für unfold-inactive Boxen funktioniert - schnellere Reaktion */
 .unfold-inactive:hover {
-  transform: scale(1.02) !important;
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.12);
-  transition: all 0.15s ease-out !important;
+  transform: scale(1.01) !important;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.10);
+  transition: all 0.1s ease-out !important;
 }
 
 /* Einfache Bild-Animation */
