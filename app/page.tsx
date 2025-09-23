@@ -8,8 +8,7 @@ import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import "./globals.css"
 import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send } from 'lucide-react'
-import ScrollAnimation from "@/components/scroll-animation"
-import VenomEffect from "@/components/venom-effect"
+// Removed moving/venom effects
 import UnfoldAnimation from "@/components/unfold-animation"
 import HeroAnimation from "@/components/hero-animation"
 
@@ -246,8 +245,9 @@ export default function CillianStudio() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [headerOpacity, setHeaderOpacity] = useState(1)
   const [footerOpacity, setFooterOpacity] = useState(1)
-  const [leftBlockPosition, setLeftBlockPosition] = useState(-200)
-  const [rightBlockPosition, setRightBlockPosition] = useState(200)
+  // Static positions so About cards don't move
+  const [leftBlockPosition, setLeftBlockPosition] = useState(0)
+  const [rightBlockPosition, setRightBlockPosition] = useState(0)
   const [gallerySlide, setGallerySlide] = useState(0)
   const [activeProject, setActiveProject] = useState<string | null>(null)
   const [projectSlide, setProjectSlide] = useState(0)
@@ -275,9 +275,9 @@ export default function CillianStudio() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  // Venom effect - completely disabled on mobile
-  const isVenomActive = !isMobile // Only active on desktop
-  const isVenomIntense = !isMobile && (Math.abs(leftBlockPosition) < 150 || Math.abs(rightBlockPosition) < 150)
+  // Venom effect disabled entirely
+  const isVenomActive = false
+  const isVenomIntense = false
 
   useEffect(() => {
     // Check if all blocks are close together (within 50px of center)
@@ -542,14 +542,6 @@ export default function CillianStudio() {
             className="relative flex flex-wrap gap-15 mobile-about-boxes tablet-about-boxes justify-center pt-5"
             style={{ minHeight: "500px" }}
           >
-            {/* Venom Effect - only render on desktop */}
-            {!isMobile && (
-              <VenomEffect
-                isActive={isVenomIntense}
-                leftBlockPosition={leftBlockPosition}
-                rightBlockPosition={rightBlockPosition}
-              />
-            )}
 
             {/* Daniel Abada - Links - Mobile: keine Animation */}
             {isMobile ? (
@@ -567,13 +559,9 @@ export default function CillianStudio() {
                 </div>
               </div>
             ) : (
-              <ScrollAnimation
-                direction="left"
-                className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 transition-all duration-300 ${
-                  isFullyTogether ? "border-4 border-white" : ""
-                }`}
-                onPositionChange={setLeftBlockPosition}
-              >
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 ${
+                isFullyTogether ? "border-4 border-white" : ""
+              }`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -585,7 +573,7 @@ export default function CillianStudio() {
                     </p>
                   </div>
                 </div>
-              </ScrollAnimation>
+              </div>
             )}
 
             {/* David Cillian - Mitte (statisch) */}
@@ -604,15 +592,9 @@ export default function CillianStudio() {
                 </div>
               </div>
             ) : (
-              <ScrollAnimation
-                direction="center"
-                className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 transition-all duration-300 ${
-                  isFullyTogether ? "border-4 border-white" : ""
-                }`}
-                onPositionChange={(pos) => {
-                  // David bleibt in der Mitte, aber wir können trotzdem den Status tracken
-                }}
-              >
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 ${
+                isFullyTogether ? "border-4 border-white" : ""
+              }`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -624,7 +606,7 @@ export default function CillianStudio() {
                     </p>
                   </div>
                 </div>
-              </ScrollAnimation>
+              </div>
             )}
 
             {/* Gearworks - Rechts */}
@@ -643,13 +625,9 @@ export default function CillianStudio() {
                 </div>
               </div>
             ) : (
-              <ScrollAnimation
-                direction="right"
-                className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 transition-all duration-300 ${
-                  isFullyTogether ? "border-4 border-white" : ""
-                }`}
-                onPositionChange={setRightBlockPosition}
-              >
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 ${
+                isFullyTogether ? "border-4 border-white" : ""
+              }`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -661,7 +639,7 @@ export default function CillianStudio() {
                     </p>
                   </div>
                 </div>
-              </ScrollAnimation>
+              </div>
             )}
           </div>
         </section>
