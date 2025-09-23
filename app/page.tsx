@@ -245,9 +245,7 @@ export default function CillianStudio() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [headerOpacity, setHeaderOpacity] = useState(1)
   const [footerOpacity, setFooterOpacity] = useState(1)
-  // Static positions so About cards don't move
-  const [leftBlockPosition, setLeftBlockPosition] = useState(0)
-  const [rightBlockPosition, setRightBlockPosition] = useState(0)
+  // Remove movement state entirely for About section
   const [gallerySlide, setGallerySlide] = useState(0)
   const [activeProject, setActiveProject] = useState<string | null>(null)
   const [projectSlide, setProjectSlide] = useState(0)
@@ -256,7 +254,7 @@ export default function CillianStudio() {
   const galleryImagesRef = useRef<HTMLDivElement>(null)
   const projectsRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
-  const [isFullyTogether, setIsFullyTogether] = useState(false)
+  // About cards are always static
   const [isImpressumOpen, setIsImpressumOpen] = useState(false)
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false)
   const [isContactFormOpen, setIsContactFormOpen] = useState(false)
@@ -279,11 +277,7 @@ export default function CillianStudio() {
   const isVenomActive = false
   const isVenomIntense = false
 
-  useEffect(() => {
-    // Check if all blocks are close together (within 50px of center)
-    const allTogether = Math.abs(leftBlockPosition) < 50 && Math.abs(rightBlockPosition) < 50
-    setIsFullyTogether(allTogether)
-  }, [leftBlockPosition, rightBlockPosition])
+  // No movement calculations required
 
   useEffect(() => {
     const handleScroll = () => {
@@ -545,7 +539,7 @@ export default function CillianStudio() {
 
             {/* Daniel Abada - Links - Mobile: keine Animation */}
             {isMobile ? (
-              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 ${isFullyTogether ? "border-4 border-white" : "border border-white/10"}`}>
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 border border-white/10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -559,9 +553,7 @@ export default function CillianStudio() {
                 </div>
               </div>
             ) : (
-              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 ${
-                isFullyTogether ? "border-4 border-white" : ""
-              }`}>
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -578,7 +570,7 @@ export default function CillianStudio() {
 
             {/* David Cillian - Mitte (statisch) */}
             {isMobile ? (
-              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 ${isFullyTogether ? "border-4 border-white" : "border border-white/10"}`}>
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 border border-white/10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -592,9 +584,7 @@ export default function CillianStudio() {
                 </div>
               </div>
             ) : (
-              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 ${
-                isFullyTogether ? "border-4 border-white" : ""
-              }`}>
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -611,7 +601,7 @@ export default function CillianStudio() {
 
             {/* Gearworks - Rechts */}
             {isMobile ? (
-              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 ${isFullyTogether ? "border-4 border-white" : "border border-white/10"}`}>
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 border border-white/10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
@@ -625,9 +615,7 @@ export default function CillianStudio() {
                 </div>
               </div>
             ) : (
-              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10 ${
-                isFullyTogether ? "border-4 border-white" : ""
-              }`}>
+              <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
