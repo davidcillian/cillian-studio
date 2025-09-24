@@ -114,7 +114,7 @@ const featureData = {
 const serviceData = [
   {
     id: "asset-creation",
-    title: "Asset Creation",
+    title: "3D Creation",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
     features: [
       { key: "asset-ai", label: "AI-Enhanced Workflow" },
@@ -124,7 +124,7 @@ const serviceData = [
   },
   {
     id: "scene-creation",
-    title: "Scene Creation",
+    title: "AI Creation",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
     features: [
       { key: "scene-environments", label: "3D Environments" },
@@ -134,7 +134,7 @@ const serviceData = [
   },
   {
     id: "consulting",
-    title: "3D Consulting",
+    title: "Gamification",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
     features: [
       { key: "consulting-implementation", label: "Implementation" },
@@ -144,7 +144,7 @@ const serviceData = [
   },
   {
     id: "training",
-    title: "3D Training",
+    title: "Teaching",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
     features: [
       { key: "training-basics", label: "Basics & Fundamentals" },
