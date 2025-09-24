@@ -231,7 +231,7 @@ const recentProjects = [
     artists: [
       { name: "David Scherngell", image: "/images/david-scherngell.jpeg" },
       { name: "Daniel Abada", image: "/images/Daniel-Abada.jpeg" },
-      { name: "GearWorks Production", image: "/images/gearworks-icon.png" }
+      { name: "GearWorks Production", image: "/images/gearworks-icon.png?v=2" }
     ],
   },
 ]
