@@ -514,7 +514,7 @@ export default function CillianStudio() {
       </div>
 
       {/* Hero Section - Simple Visual */}
-      <section className="py-16 mobile-hero w-full">
+      <section className="py-8 mobile-hero w-full">
         <div className="w-full h-64 relative overflow-hidden bg-gradient-to-b from-transparent via-[#1d1d1d] to-[#1d1d1d]">
           {/* Simple geometric pattern */}
           <div className="absolute inset-0 opacity-20">
