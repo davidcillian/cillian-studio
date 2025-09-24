@@ -11,11 +11,11 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Cillian Studio - 3D Creation, AI & Training | David Cillian",
+  title: "Cillian Studio - 3D Creation, AI & Training | David Scherngell",
   description: "Professional 3D creation services, AI-enhanced workflows, and specialized training. Expert in Unreal Engine, Blender, and cutting-edge 3D technologies.",
-  keywords: "3D creation, AI creation, gamification, training, Unreal Engine, Blender, 3D artist, Austria, Vienna, David Cillian, Cillian Studio",
-  authors: [{ name: "David Cillian" }],
-  creator: "David Cillian",
+  keywords: "3D creation, AI creation, gamification, training, Unreal Engine, Blender, 3D artist, Austria, Vienna, David Scherngell, Cillian Studio",
+  authors: [{ name: "David Scherngell" }],
+  creator: "David Scherngell",
   publisher: "Cillian Studio",
   robots: "index, follow",
   openGraph: {

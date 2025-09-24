@@ -158,14 +158,14 @@ const serviceData = [
 const recentProjects = [
   {
     id: "project-2",
-    clientName: "David Cillian",
+    clientName: "David Scherngell",
     clientLogo: "Demo", // Demo-Projekt, daher nur Text
     projectTitle: "The Old Deep",
     projectType: "Unreal Engine Demoprojekt",
     completionDate: "2025",
     teamSize: "1 Artist",
     description:
-      "Ein Demoprojekt in Unreal Engine 5.6 von David Cillian. Verwendete Tools: UE5.6, Blender, Maya, Substance Painter, Underwater Blueprint von Karim Aboushousha.",
+      "Ein Demoprojekt in Unreal Engine 5.6 von David Scherngell. Verwendete Tools: UE5.6, Blender, Maya, Substance Painter, Underwater Blueprint von Karim Aboushousha.",
     technologies: ["Unreal Engine 5.6", "Blender", "Maya", "Substance Painter", "Underwater Blueprint", "Quixel"],
     images: [
       "/images/the-old-deep/1.png",
@@ -561,13 +561,13 @@ export default function CillianStudio() {
               </div>
             )}
 
-            {/* David Cillian - Mitte (statisch) */}
+            {/* David Scherngell - Mitte (statisch) */}
             {isMobile ? (
               <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 border border-white/10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
-                    <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">David Cillian</h3>
+                    <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">David Scherngell</h3>
                     <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Artist</div>
                     <p className="leading-6">
                       3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine und Blender. Leidenschaftlicher
@@ -592,7 +592,7 @@ export default function CillianStudio() {
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
                   <div className="text-[#aaa] text-base mobile-about-text">
-                    <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">David Cillian</h3>
+                    <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">David Scherngell</h3>
                     <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Artist</div>
                     <p className="leading-6">
                       3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine und Blender. Leidenschaftlicher
@@ -1180,7 +1180,7 @@ export default function CillianStudio() {
                 <section>
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">1. Angaben gemäß § 5 TMG</h3>
                   <div className="text-[#aaa] leading-relaxed">
-                    <p className="text-[#f2f2f2] mb-2">David Cillian</p>
+                    <p className="text-[#f2f2f2] mb-2">David Scherngell</p>
                     <p>Pelzgasse 3</p>
                     <p>1150 Wien</p>
                     <p>Österreich</p>
@@ -1255,7 +1255,7 @@ export default function CillianStudio() {
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">1. Verantwortlicher</h3>
                   <div className="text-[#aaa] leading-relaxed">
                     <p>Verantwortlicher für die Datenverarbeitung auf dieser Website ist:</p>
-                    <p className="text-[#f2f2f2] mb-2">David Cillian</p>
+                    <p className="text-[#f2f2f2] mb-2">David Scherngell</p>
                     <p>Pelzgasse 3, 1150 Wien, Österreich</p>
                     <p>E-Mail: 3d@davidcillian.com</p>
                   </div>
