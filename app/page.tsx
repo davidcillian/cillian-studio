@@ -757,7 +757,7 @@ export default function CillianStudio() {
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                     <Image
-                      src="/images/gearworks-icon.png"
+                      src="/images/gearworks-icon.png?v=2"
                       alt="GearWorks Production - Technical Specialist"
                       width={180}
                       height={180}
@@ -779,7 +779,7 @@ export default function CillianStudio() {
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                     <Image
-                      src="/images/gearworks-icon.png"
+                      src="/images/gearworks-icon.png?v=2"
                       alt="GearWorks Production - Technical Specialist"
                       width={180}
                       height={180}
