@@ -1,6 +1,6 @@
 "use client"
 
-// redeploy trigger v2 - About cards static
+// redeploy trigger v3 - HeroAnimation restored
 
 import type React from "react"
 
