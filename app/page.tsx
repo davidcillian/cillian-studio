@@ -9,7 +9,6 @@ import Image from "next/image"
 import "./globals.css"
 import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send } from 'lucide-react'
 // Removed moving/venom effects and heavy animations
-import UnfoldAnimation from "@/components/unfold-animation"
 
 const featureData = {
   "asset-ai": {
@@ -633,10 +632,8 @@ export default function CillianStudio() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mobile-services-grid tablet-services-grid gap-10">
             {serviceData.map((service, index) => (
-              <UnfoldAnimation
+              <div
                 key={service.id}
-                index={index}
-                sectionId="services"
                 className={`service-box mobile-service-box bg-[#1d1d1d] border border-white/10 rounded-lg transition-all duration-700 overflow-hidden`}
               >
                 {/* Gesamte Box als ein Kastl - Bild oben */}
@@ -653,7 +650,7 @@ export default function CillianStudio() {
                 {/* Unfoldable content - alles in einem Kastl */}
                 <div className="unfold-content">
                   <div className="px-8 pb-4 unfold-title">
-                    <h3 className="mb-4 text-xl mobile-service-title text-center">{service.title}</h3>
+                    <h3 className="mb-4 text-xl mobile-service-title text-center hover:text-blue-400 transition-colors duration-300">{service.title}</h3>
                   </div>
                   <div className="px-8 pb-8 space-y-3 unfold-buttons">
                     {/* Service Button Komponente - Ersetze die bestehenden Buttons */}
@@ -668,12 +665,12 @@ export default function CillianStudio() {
                             <div className="w-full h-full bg-blue-400/30 animate-pulse rounded-full blur-xl"></div>
                           </div>
                         )}
-                        <span className="relative z-10">{feature.label}</span>
+                        <span className="relative z-10 hover:text-blue-300 transition-colors duration-300">{feature.label}</span>
                       </button>
                     ))}
                   </div>
                 </div>
-              </UnfoldAnimation>
+              </div>
             ))}
           </div>
 
