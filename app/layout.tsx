@@ -11,29 +11,41 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "David Cillian - Creative Studio",
-  description: "Innovative digital experiences and creative solutions",
-  keywords: "creative, studio, digital, design, development",
+  title: "Cillian Studio - 3D Creation, AI & Training | David Cillian",
+  description: "Professional 3D creation services, AI-enhanced workflows, and specialized training. Expert in Unreal Engine, Blender, and cutting-edge 3D technologies.",
+  keywords: "3D creation, AI creation, gamification, training, Unreal Engine, Blender, 3D artist, Austria, Vienna, David Cillian, Cillian Studio",
   authors: [{ name: "David Cillian" }],
   creator: "David Cillian",
-  publisher: "David Cillian Studio",
+  publisher: "Cillian Studio",
   robots: "index, follow",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "de_AT",
     url: "https://davidcillian.com",
-    title: "David Cillian - Creative Studio",
-    description: "Innovative digital experiences and creative solutions",
-    siteName: "David Cillian Studio",
+    title: "Cillian Studio - 3D Creation, AI & Training",
+    description: "Professional 3D creation services, AI-enhanced workflows, and specialized training. Expert in Unreal Engine, Blender, and cutting-edge 3D technologies.",
+    siteName: "Cillian Studio",
+    images: [
+      {
+        url: "https://davidcillian.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Cillian Studio - 3D Creation Services",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "David Cillian - Creative Studio",
-    description: "Innovative digital experiences and creative solutions",
+    title: "Cillian Studio - 3D Creation, AI & Training",
+    description: "Professional 3D creation services, AI-enhanced workflows, and specialized training.",
+    creator: "@david_cillian",
   },
   viewport: "width=device-width, initial-scale=1, maximum-scale=5",
-  themeColor: "#000000",
-    generator: 'v0.dev'
+  themeColor: "#1d1d1d",
+  generator: 'Next.js',
+  alternates: {
+    canonical: "https://davidcillian.com",
+  },
 }
 
 export default function RootLayout({

@@ -663,7 +663,7 @@ export default function CillianStudio() {
                 <div className="p-8 pb-4">
                   <Image
                     src={service.image || "/placeholder.svg"}
-                    alt={service.title}
+                    alt={`${service.title} service illustration - Professional 3D creation and training services`}
                     width={180}
                     height={180}
                     className="w-full max-w-[180px] mobile-service-image mx-auto rounded service-image"
@@ -1175,8 +1175,11 @@ export default function CillianStudio() {
                 <section>
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">1. Angaben gemäß § 5 TMG</h3>
                   <div className="text-[#aaa] leading-relaxed">
-                    <p>David Cillian</p>
-                    <p>E-Mail: 3d@davidcillian.com</p>
+                    <p className="text-[#f2f2f2] mb-2">David Cillian</p>
+                    <p>Pelzgasse 3</p>
+                    <p>1150 Wien</p>
+                    <p>Österreich</p>
+                    <p className="mt-3">E-Mail: 3d@davidcillian.com</p>
                     <p>Website: davidcillian.com</p>
                   </div>
                 </section>
@@ -1245,7 +1248,9 @@ export default function CillianStudio() {
                 <section>
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">1. Verantwortlicher</h3>
                   <div className="text-[#aaa] leading-relaxed">
-                    <p>Verantwortlicher für die Datenverarbeitung auf dieser Website ist David Cillian.</p>
+                    <p>Verantwortlicher für die Datenverarbeitung auf dieser Website ist:</p>
+                    <p className="text-[#f2f2f2] mb-2">David Cillian</p>
+                    <p>Pelzgasse 3, 1150 Wien, Österreich</p>
                     <p>E-Mail: 3d@davidcillian.com</p>
                   </div>
                 </section>
@@ -1271,18 +1276,50 @@ export default function CillianStudio() {
                     <p>
                       Beim Besuch unserer Website werden automatisch Informationen allgemeiner Natur erfasst. Diese
                       Informationen (Server-Logfiles) beinhalten etwa die Art des Webbrowsers, das verwendete
-                      Betriebssystem, den Domainnamen Ihres Internet-Service-Providers und ähnliches.
+                      Betriebssystem, den Domainnamen Ihres Internet-Service-Providers, Ihre IP-Adresse und ähnliches.
                     </p>
                     <p>
                       Diese Informationen sind technisch notwendig, um von Ihnen angeforderte Inhalte von Webseiten
                       korrekt auszuliefern und fallen bei der Nutzung des Internets zwingend an.
+                    </p>
+                    <p>
+                      <strong>Speicherdauer:</strong> Server-Logfiles werden für maximal 7 Tage gespeichert und anschließend automatisch gelöscht.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Kontaktformular */}
+                <section>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">4. Kontaktformular</h3>
+                  <div className="text-[#aaa] leading-relaxed space-y-3">
+                    <p>
+                      Bei der Nutzung unseres Kontaktformulars werden die von Ihnen eingegebenen Daten (Name, E-Mail, 
+                      Nachricht) verarbeitet. Diese Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.
+                    </p>
+                    <p>
+                      <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung oder vorvertragliche Maßnahmen)
+                    </p>
+                    <p>
+                      <strong>Speicherdauer:</strong> Ihre Daten werden gelöscht, sobald die Bearbeitung Ihrer Anfrage abgeschlossen ist, 
+                      spätestens jedoch nach 12 Monaten.
+                    </p>
+                  </div>
+                </section>
+
+                {/* Cookies */}
+                <section>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">5. Cookies</h3>
+                  <div className="text-[#aaa] leading-relaxed space-y-3">
+                    <p>
+                      Diese Website verwendet derzeit keine Cookies. Sollten in Zukunft Cookies eingesetzt werden, 
+                      werden Sie hierüber informiert und können der Verwendung widersprechen.
                     </p>
                   </div>
                 </section>
 
                 {/* Kontakt für Datenschutzfragen */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">4. Kontakt für Datenschutzfragen</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">6. Kontakt für Datenschutzfragen</h3>
                   <div className="text-[#aaa] leading-relaxed">
                     <p>
                       Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden: 3d@davidcillian.com
