@@ -10,7 +10,6 @@ import "./globals.css"
 import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send } from 'lucide-react'
 // Removed moving/venom effects and heavy animations
 import UnfoldAnimation from "@/components/unfold-animation"
-import HeroAnimation from "@/components/hero-animation"
 
 const featureData = {
   "asset-ai": {
@@ -514,10 +513,10 @@ export default function CillianStudio() {
         </a>
       </div>
 
-      {/* Hero Animation Section - Full Width */}
+      {/* Hero Section - Static Background */}
       <section className="py-16 mobile-hero w-full">
-        <div className="w-full h-64 relative overflow-hidden">
-          <HeroAnimation />
+        <div className="w-full h-64 relative overflow-hidden bg-gradient-to-b from-transparent via-[#1d1d1d] to-[#1d1d1d]">
+          {/* Static gradient background instead of heavy animation */}
         </div>
       </section>
 
