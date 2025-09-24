@@ -83,7 +83,7 @@ const featureData = {
     ],
   },
   "training-basics": {
-    text: "Grundlagen der 3D-Modellierung und -Animation für Einsteiger. Unsere Kurse vermitteln das nötige Wissen, um erfolgreich in die Welt der 3D-Gestaltung einzusteigen.",
+    text: "Unsere Kurse bieten einen umfassenden Einstieg in Blender. Neben der 3D-Modellierung werden auch weitere zentrale Funktionen wie Material- und Texturarbeit, Beleuchtung, Rendering sowie die Integration in gängige Game Engines behandelt. So erhalten Teilnehmer eine solide Basis, um eigene 3D-Projekte erfolgreich umzusetzen.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
