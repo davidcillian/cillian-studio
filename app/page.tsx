@@ -550,6 +550,23 @@ export default function CillianStudio() {
                       Marketing-Spezialist (Bachelor in Gaming Business) mit Expertise in Gamification und strategischer
                       Markenführung.
                     </p>
+                    <div className="mt-4 flex gap-4 justify-center">
+                      <a
+                        href="https://www.linkedin.com/in/daniel-abada-1bb70b324/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Connect with Daniel Abada on LinkedIn"
+                      >
+                        <Image
+                          src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
+                          alt="LinkedIn"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -572,6 +589,23 @@ export default function CillianStudio() {
                       Marketing-Spezialist (Bachelor in Gaming Business) mit Expertise in Gamification und strategischer
                       Markenführung.
                     </p>
+                    <div className="mt-4 flex gap-4 justify-center">
+                      <a
+                        href="https://www.linkedin.com/in/daniel-abada-1bb70b324/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Connect with Daniel Abada on LinkedIn"
+                      >
+                        <Image
+                          src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
+                          alt="LinkedIn"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
