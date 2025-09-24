@@ -640,7 +640,7 @@ export default function CillianStudio() {
         <section id="services" className="py-24 mobile-services text-center">
           <div className="flex justify-center">
             <h2 className="text-center text-[#f2f2f2] font-light tracking-[0.1rem] mb-16 text-4xl mobile-section-heading section-heading-underline">
-              Our Services
+              Our Ingredients
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mobile-services-grid tablet-services-grid gap-10">
