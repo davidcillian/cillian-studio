@@ -177,6 +177,9 @@ const recentProjects = [
       "Vegetation mit Quixel Assets realisiert",
       "Prozedurale Shader und Lighting für Tiefsee-Atmosphäre"
     ],
+    artists: [
+      { name: "David Scherngell", image: "/images/david-scherngell.jpeg" }
+    ],
   },
   {
     id: "project-4",
@@ -201,7 +204,10 @@ const recentProjects = [
       "100% prozedural – keine externen Modelle nötig",
       "Vollständig anpassbare Struktur und Bewegung"
     ],
-    productLink: "https://superhivemarket.com/products/omninode-crane?search_id=41130834"
+    productLink: "https://superhivemarket.com/products/omninode-crane?search_id=41130834",
+    artists: [
+      { name: "GearWorks Production", image: "/images/gearworks-icon.png" }
+    ],
   },
   {
     id: "project-5",
@@ -221,6 +227,11 @@ const recentProjects = [
       "3D-Modellierung und Animation der Kaiserkrone",
       "Videoproduktion für die Kaiserliche Schatzkammer",
       "Team: 2 Artists, 1 Technical Artist"
+    ],
+    artists: [
+      { name: "David Scherngell", image: "/images/david-scherngell.jpeg" },
+      { name: "Daniel Abada", image: "/images/Daniel-Abada.jpeg" },
+      { name: "GearWorks Production", image: "/images/gearworks-icon.png" }
     ],
   },
 ]
@@ -1078,6 +1089,29 @@ export default function CillianStudio() {
                             </a>
                           )}
                         </div>
+
+                        {/* Team Members */}
+                        {project.artists && project.artists.length > 0 && (
+                          <div>
+                            <h4 className="text-xl text-[#f2f2f2] mb-3">Team Members</h4>
+                            <div className="flex flex-wrap gap-3">
+                              {project.artists.map((artist, artistIndex) => (
+                                <div key={artistIndex} className="flex items-center gap-2 bg-white/[0.05] border border-white/10 rounded-full px-3 py-2">
+                                  <div className="w-8 h-8 rounded-full overflow-hidden">
+                                    <Image
+                                      src={artist.image}
+                                      alt={artist.name}
+                                      width={32}
+                                      height={32}
+                                      className="w-full h-full object-cover"
+                                    />
+                                  </div>
+                                  <span className="text-sm text-[#f2f2f2]">{artist.name}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
 
                         {/* Client Testimonial Placeholder */}
                         {project.id !== "project-2" && project.id !== "project-4" && project.id !== "project-5" && (
