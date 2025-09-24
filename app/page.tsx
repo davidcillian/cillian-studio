@@ -577,10 +577,10 @@ export default function CillianStudio() {
                         href="https://www.instagram.com/david_cillian?igsh=MW1iYjczY2d0Z2gzeA=="
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                        className="inline-flex items-center text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                        aria-label="Follow @david_cillian on Instagram"
                       >
-                        <Instagram size={20} />
-                        <span className="text-sm">@david_cillian</span>
+                        <Instagram size={24} />
                       </a>
                     </div>
                   </div>
@@ -602,10 +602,10 @@ export default function CillianStudio() {
                         href="https://www.instagram.com/david_cillian?igsh=MW1iYjczY2d0Z2gzeA=="
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                        className="inline-flex items-center text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                        aria-label="Follow @david_cillian on Instagram"
                       >
-                        <Instagram size={20} />
-                        <span className="text-sm">@david_cillian</span>
+                        <Instagram size={24} />
                       </a>
                     </div>
                   </div>
