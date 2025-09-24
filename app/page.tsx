@@ -513,18 +513,6 @@ export default function CillianStudio() {
         </a>
       </div>
 
-      {/* Hero Section - Simple Visual */}
-      <section className="py-8 mobile-hero w-full">
-        <div className="w-full h-64 relative overflow-hidden bg-gradient-to-b from-transparent via-[#1d1d1d] to-[#1d1d1d]">
-          {/* Simple geometric pattern */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="w-full h-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10"></div>
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/20 rounded-full blur-xl"></div>
-            <div className="absolute top-1/2 right-1/4 w-24 h-24 bg-purple-500/20 rounded-full blur-xl"></div>
-            <div className="absolute bottom-1/4 left-1/2 w-20 h-20 bg-cyan-500/20 rounded-full blur-xl"></div>
-          </div>
-        </div>
-      </section>
 
       <main className="max-w-6xl mx-auto px-5">
         {/* About Us Section - Mobile optimiert */}
