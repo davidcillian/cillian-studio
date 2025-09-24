@@ -143,7 +143,7 @@ const serviceData = [
   },
   {
     id: "training",
-    title: "Teaching",
+    title: "Training",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
     features: [
       { key: "training-basics", label: "Basics & Fundamentals" },
