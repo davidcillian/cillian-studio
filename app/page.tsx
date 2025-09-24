@@ -755,7 +755,15 @@ export default function CillianStudio() {
             {isMobile ? (
               <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 border border-white/10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
-                  <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
+                  <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
+                    <Image
+                      src="/images/gearworks-icon.png"
+                      alt="GearWorks Production - Technical Specialist"
+                      width={180}
+                      height={180}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <div className="text-[#aaa] text-base mobile-about-text">
                     <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">GearWorks Production</h3>
                     <div className="text-sm text-green-400 mb-2 uppercase tracking-wider">Technical Specialist</div>
@@ -769,7 +777,15 @@ export default function CillianStudio() {
             ) : (
               <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
-                  <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4"></div>
+                  <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
+                    <Image
+                      src="/images/gearworks-icon.png"
+                      alt="GearWorks Production - Technical Specialist"
+                      width={180}
+                      height={180}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <div className="text-[#aaa] text-base mobile-about-text">
                     <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">GearWorks Production</h3>
                     <div className="text-sm text-green-400 mb-2 uppercase tracking-wider">Technical Specialist</div>
