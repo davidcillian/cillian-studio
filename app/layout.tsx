@@ -61,27 +61,43 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-        {/* Google Analytics */}
+        {/* Google Analytics - nur mit Zustimmung */}
         {process.env.NODE_ENV === "production" && (
-          <>
-            <script
-              async
-              src="https://www.googletagmanager.com/gtag/js?id=G-0DJDTPWF1B"
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', 'G-0DJDTPWF1B', {
-                    page_title: document.title,
-                    page_location: window.location.href,
-                  });
-                `,
-              }}
-            />
-          </>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                // Google Analytics nur laden wenn Cookie-Zustimmung gegeben
+                function loadGoogleAnalytics() {
+                  if (localStorage.getItem('cookieConsent') === 'accepted') {
+                    // Google Analytics Script laden
+                    const script = document.createElement('script');
+                    script.async = true;
+                    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-0DJDTPWF1B';
+                    document.head.appendChild(script);
+                    
+                    // Google Analytics konfigurieren
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-0DJDTPWF1B', {
+                      page_title: document.title,
+                      page_location: window.location.href,
+                    });
+                  }
+                }
+                
+                // Sofort prüfen und laden
+                loadGoogleAnalytics();
+                
+                // Auch bei Storage-Änderungen prüfen (für Cookie-Banner)
+                window.addEventListener('storage', function(e) {
+                  if (e.key === 'cookieConsent') {
+                    loadGoogleAnalytics();
+                  }
+                });
+              `,
+            }}
+          />
         )}
       </head>
       <body className="antialiased">

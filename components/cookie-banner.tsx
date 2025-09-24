@@ -31,7 +31,8 @@ export default function CookieBanner() {
   const acceptCookies = () => {
     localStorage.setItem('cookieConsent', 'accepted')
     setShowBanner(false)
-    // Enable Google Analytics here if needed
+    // Google Analytics wird automatisch durch das Layout-Script aktiviert
+    // Das Script prüft localStorage und lädt GA nur bei Zustimmung
   }
 
   const declineCookies = () => {
