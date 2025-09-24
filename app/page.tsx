@@ -206,7 +206,7 @@ const recentProjects = [
     ],
     productLink: "https://superhivemarket.com/products/omninode-crane?search_id=41130834",
     artists: [
-      { name: "GearWorks Production", image: "/images/gearworks-icon.png" }
+      { name: "GearWorks Production", image: "/images/gearworks-icon.png?v=2" }
     ],
   },
   {
