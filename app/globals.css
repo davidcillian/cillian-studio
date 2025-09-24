@@ -984,3 +984,23 @@ section {
     min-width: 280px !important;
   }
 }
+
+/* About Us Cards - Gleiche Höhe für alle Karten */
+.mobile-about-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mobile-about-text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.mobile-about-text p {
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-start;
+}
