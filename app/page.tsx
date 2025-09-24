@@ -311,6 +311,7 @@ export default function CillianStudio() {
   }, [])
 
   const handleFeatureClick = (feature: string) => {
+    console.log('Feature clicked:', feature) // Debug log
     setCurrentSlide(0) // Reset slide index when changing features
     setActiveFeature(feature)
     setIsDetailOpen(true)
@@ -678,7 +679,7 @@ export default function CillianStudio() {
           <div
             ref={detailRef}
             className={`overflow-hidden transition-all duration-500 ease-in-out mt-10 ${
-              isDetailOpen ? "max-h-[800px]" : "max-h-0"
+              isDetailOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             {activeFeature && featureData[activeFeature as keyof typeof featureData] && (
