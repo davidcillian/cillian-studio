@@ -14,6 +14,20 @@ export default function CookieBanner() {
     }
   }, [])
 
+  const openPrivacyPolicy = () => {
+    // Open privacy policy and scroll to it
+    const privacyButton = document.querySelector('[data-privacy-button]')
+    if (privacyButton) {
+      (privacyButton as HTMLElement).click()
+      setTimeout(() => {
+        const privacySection = document.querySelector('[data-privacy-section]')
+        if (privacySection) {
+          privacySection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 300)
+    }
+  }
+
   const acceptCookies = () => {
     localStorage.setItem('cookieConsent', 'accepted')
     setShowBanner(false)
@@ -34,7 +48,7 @@ export default function CookieBanner() {
           <p className="text-sm text-[#aaa]">
             Diese Website verwendet Google Analytics zur Verbesserung der Nutzererfahrung. 
             <button 
-              onClick={() => {/* Open privacy policy */}}
+              onClick={openPrivacyPolicy}
               className="text-blue-400 hover:text-blue-300 underline ml-1"
             >
               Mehr erfahren

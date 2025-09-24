@@ -1122,7 +1122,11 @@ export default function CillianStudio() {
                 Impressum
               </button>{" "}
               |{" "}
-              <button onClick={() => setIsDatenschutzOpen(!isDatenschutzOpen)} className="hover:text-white transition-colors">
+              <button 
+                data-privacy-button
+                onClick={() => setIsDatenschutzOpen(!isDatenschutzOpen)} 
+                className="hover:text-white transition-colors"
+              >
                 Datenschutz
               </button>{" "}
               |{" "}
@@ -1229,6 +1233,7 @@ export default function CillianStudio() {
 
           {/* Datenschutz Aufklappbereich */}
           <div
+            data-privacy-section
             className={`overflow-hidden transition-all duration-500 ${
               isDatenschutzOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
             }`}
