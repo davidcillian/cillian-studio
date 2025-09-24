@@ -13,7 +13,7 @@ import CookieBanner from "@/components/cookie-banner"
 
 const featureData = {
   "asset-ai": {
-    text: "Einsatz von KI-gestützten Tools zur Optimierung von Modellierung und Texturierung. Wir nutzen modernste KI-Technologien, um den Workflow zu beschleunigen und die Qualität zu verbessern.",
+    text: "Wir gestalten nicht nur atmosphärische 3D-Umgebungen für Games und Visualisierungen, sondern bieten ein umfassendes Leistungsspektrum: von der Entwicklung einzelner Assets über realistische Archviz-Projekte bis hin zu cinematischen Videos. Unser Fokus liegt darauf, eindrucksvolle visuelle Erlebnisse zu schaffen, die Emotionen wecken und nachhaltig begeistern.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
