@@ -771,6 +771,23 @@ export default function CillianStudio() {
                       GearWorks Production - Spezialist für Generatoren, Development und Coding mit umfangreicher
                       Engine-Erfahrung. Technisches Rückgrat für komplexe 3D-Projekte.
                     </p>
+                    <div className="mt-4 flex gap-4 justify-center">
+                      <a
+                        href="https://www.youtube.com/@gearworks-softwareproducti3548"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Visit GearWorks YouTube channel"
+                      >
+                        <Image
+                          src="/images/Logos/Youtube_Logo.png"
+                          alt="YouTube"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -793,6 +810,23 @@ export default function CillianStudio() {
                       GearWorks Production - Spezialist für Generatoren, Development und Coding mit umfangreicher
                       Engine-Erfahrung. Technisches Rückgrat für komplexe 3D-Projekte.
                     </p>
+                    <div className="mt-4 flex gap-4 justify-center">
+                      <a
+                        href="https://www.youtube.com/@gearworks-softwareproducti3548"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Visit GearWorks YouTube channel"
+                      >
+                        <Image
+                          src="/images/Logos/Youtube_Logo.png"
+                          alt="YouTube"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
