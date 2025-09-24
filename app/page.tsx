@@ -7,7 +7,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import "./globals.css"
-import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send, Instagram } from 'lucide-react'
 // Removed moving/venom effects and heavy animations
 
 const featureData = {
@@ -572,6 +572,17 @@ export default function CillianStudio() {
                       3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine und Blender. Leidenschaftlicher
                       Mentor für angehende CG-Talente.
                     </p>
+                    <div className="mt-4">
+                      <a
+                        href="https://www.instagram.com/david_cillian?igsh=MW1iYjczY2d0Z2gzeA=="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                      >
+                        <Instagram size={20} />
+                        <span className="text-sm">@david_cillian</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -586,6 +597,17 @@ export default function CillianStudio() {
                       3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine und Blender. Leidenschaftlicher
                       Mentor für angehende CG-Talente.
                     </p>
+                    <div className="mt-4">
+                      <a
+                        href="https://www.instagram.com/david_cillian?igsh=MW1iYjczY2d0Z2gzeA=="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                      >
+                        <Instagram size={20} />
+                        <span className="text-sm">@david_cillian</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
