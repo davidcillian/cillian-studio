@@ -1097,408 +1097,59 @@ export default function CillianStudio() {
 
               <p className="text-sm text-[#aaa] mt-6">Wir antworten in der Regel innerhalb von 24 Stunden</p>
             </div>
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-2xl font-light tracking-[0.1rem] text-[#f2f2f2]">PROJEKT ANFRAGE</h3>
-                  <button
-                    onClick={() => setIsContactFormOpen(false)}
-                    className="text-[#aaa] hover:text-white transition-colors"
-                  >
-                    ✕
-                  </button>
-                </div>
-
-                <form
-                  className="space-y-6"
-                  onSubmit={(e) => {
-                    e.preventDefault()
-                    const formData = new FormData(e.target as HTMLFormElement)
-                    const captchaAnswer = formData.get("captcha")
-
-                    // Prüfe Sicherheitsfrage
-                    if (captchaAnswer !== "10") {
-                      alert("Sicherheitsfrage falsch beantwortet. Bitte versuchen Sie es erneut.")
-                      return
-                    }
-
-                    // Sammle Formulardaten
-                    const name = formData.get("name")
-                    const email = formData.get("email")
-                    const company = formData.get("company") || "Nicht angegeben"
-                    const budget = formData.get("budget") || "Nicht angegeben"
-                    const description = formData.get("description")
-                    const timeline = formData.get("timeline") || "Nicht angegeben"
-
-                    // Sammle Projekttypen
-                    const projectTypes = Array.from(formData.getAll("projectType")).join(", ") || "Nicht angegeben"
-
-                    // Erstelle E-Mail-Text
-                    const emailBody = `Neue Projektanfrage von der Website:
-
-Name: ${name}
-E-Mail: ${email}
-Firma: ${company}
-Budget: ${budget}
-Projekttyp(en): ${projectTypes}
-Timeline: ${timeline}
-
-Projektbeschreibung:
-${description}
-
----
-Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
-
-                    // Öffne E-Mail-Client mit vorgefüllten Daten
-                    const mailtoLink = `mailto:3d@davidcillian.com?subject=Neue Projektanfrage von ${name}&body=${encodeURIComponent(emailBody)}`
-
-                    // Erstelle versteckten Link
-                    const mailLink = document.createElement("a")
-                    mailLink.href = mailtoLink
-                    mailLink.style.display = "none"
-                    document.body.appendChild(mailLink)
-                    mailLink.click()
-                    document.body.removeChild(mailLink)
-
-                    // Erfolgs-Nachricht
-                    alert(
-                      "Ihr E-Mail-Programm sollte sich mit der vorgefüllten Anfrage öffnen. Falls nicht, senden Sie bitte eine E-Mail an: 3d@davidcillian.com",
-                    )
-
-                    // Formular zurücksetzen
-                    ;(e.target as HTMLFormElement).reset()
-                    setIsContactFormOpen(false)
-                  }}
-                >
-                  <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 mb-6">
-                    <p className="text-sm text-blue-300">
-                      <strong>Hinweis:</strong> Dieses Formular öffnet Ihr E-Mail-Programm mit einer vorgefüllten
-                      Nachricht. Für eine direkte Übermittlung kontaktieren Sie uns bitte direkt per E-Mail.
-                    </p>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Name */}
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-[#f2f2f2] mb-2">
-                        Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        className="form-input"
-                        placeholder="Ihr vollständiger Name"
-                      />
-                    </div>
-
-                    {/* E-Mail */}
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-[#f2f2f2] mb-2">
-                        E-Mail *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        className="form-input"
-                        placeholder="ihre@email.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Firma */}
-                    <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-[#f2f2f2] mb-2">
-                        Firma
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        className="form-input"
-                        placeholder="Ihr Unternehmen (optional)"
-                      />
-                    </div>
-
-                    {/* Budget */}
-                    <div>
-                      <label htmlFor="budget" className="block text-sm font-medium text-[#f2f2f2] mb-2">
-                        Budget
-                      </label>
-                      <select id="budget" name="budget" className="form-select" defaultValue="">
-                        <option value="">Budget wählen</option>
-                        <option value="under-5k">Unter €5.000</option>
-                        <option value="5k-15k">€5.000 - €15.000</option>
-                        <option value="15k-50k">€15.000 - €50.000</option>
-                        <option value="over-50k">Über €50.000</option>
-                        <option value="discuss">Individuell besprechen</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Projekttyp */}
-                  <div>
-                    <label className="block text-sm font-medium text-[#f2f2f2] mb-3">Projekttyp *</label>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                      {["Asset Creation", "Scene Creation", "3D Consulting", "3D Training"].map((type) => (
-                        <label key={type} className="flex items-center space-x-2 cursor-pointer">
-                          <input type="checkbox" name="projectType" value={type} className="form-checkbox" />
-                          <span className="text-sm text-[#aaa]">{type}</span>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Projektbeschreibung */}
-                  <div>
-                    <label htmlFor="description" className="block text-sm font-medium text-[#f2f2f2] mb-2">
-                      Projektbeschreibung *
-                    </label>
-                    <textarea
-                      id="description"
-                      name="description"
-                      required
-                      rows={5}
-                      className="form-textarea"
-                      placeholder="Beschreiben Sie Ihr Projekt detailliert. Je mehr Informationen Sie uns geben, desto besser können wir Ihnen helfen..."
-                    />
-                  </div>
-
-                  {/* Timeline */}
-                  <div>
-                    <label htmlFor="timeline" className="block text-sm font-medium text-[#f2f2f2] mb-2">
-                      Gewünschte Timeline
-                    </label>
-                    <select id="timeline" name="timeline" className="form-select" defaultValue="">
-                      <option value="">Timeline wählen</option>
-                      <option value="asap">So schnell wie möglich</option>
-                      <option value="1-month">Innerhalb 1 Monat</option>
-                      <option value="2-3-months">2-3 Monate</option>
-                      <option value="3-6-months">3-6 Monate</option>
-                      <option value="flexible">Flexibel</option>
-                    </select>
-                  </div>
-
-                  {/* Bot-Schutz: Honeypot */}
-                  <div style={{ display: "none" }}>
-                    <input type="text" name="website" tabIndex={-1} autoComplete="off" />
-                  </div>
-
-                  {/* Bot-Schutz: Einfache Mathe-Aufgabe */}
-                  <div>
-                    <label htmlFor="captcha" className="block text-sm font-medium text-[#f2f2f2] mb-2">
-                      Sicherheitsfrage: Was ist 7 + 3? *
-                    </label>
-                    <input
-                      type="number"
-                      id="captcha"
-                      name="captcha"
-                      required
-                      className="form-input"
-                      placeholder="Ihre Antwort"
-                      style={{ maxWidth: "5rem" }}
-                    />
-                  </div>
-
-                  {/* Datenschutz */}
-                  <div className="flex items-start space-x-3">
-                    <input type="checkbox" id="privacy" name="privacy" required className="form-checkbox mt-1" />
-                    <label htmlFor="privacy" className="text-sm text-[#aaa] leading-relaxed">
-                      Ich stimme der Verarbeitung meiner Daten gemäß der{" "}
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setIsDatenschutzOpen(true)
-                          setIsContactFormOpen(false)
-                        }}
-                        className="text-blue-400 hover:text-blue-300 underline"
-                      >
-                        Datenschutzerklärung
-                      </button>{" "}
-                      zu. *
-                    </label>
-                  </div>
-
-                  {/* Submit Button */}
-                  <div className="flex justify-center pt-4">
-                    <button
-                      type="submit"
-                      className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden"
-                    >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-full h-full bg-blue-400/30 animate-pulse rounded-full blur-xl"></div>
-                      </div>
-                      <Send size={20} className="relative z-10" />
-                      <span className="relative z-10">Anfrage senden</span>
-                    </button>
-                  </div>
-
-                  <p className="text-xs text-[#aaa] text-center mt-4">
-                    Wir antworten in der Regel innerhalb von 24 Stunden auf Ihre Anfrage.
-                  </p>
-                </form>
-              </div>
-            </div>
-            {/* Mail Popup */}
-            {isMailPopupOpen && (
-              <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-                <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8 max-w-md w-full">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-xl font-light tracking-[0.1rem] text-[#f2f2f2]">E-MAIL SENDEN</h3>
-                    <button
-                      onClick={() => setIsMailPopupOpen(false)}
-                      className="text-[#aaa] hover:text-white transition-colors"
-                    >
-                      ✕
-                    </button>
-                  </div>
-
-                  <form
-                    className="space-y-4"
-                    onSubmit={(e) => {
-                      e.preventDefault()
-                      const formData = new FormData(e.target as HTMLFormElement)
-                      const answer = formData.get("mailCaptcha")
-
-                      if (answer === "10") {
-                        // Erstelle einen versteckten Link und klicke ihn
-                        const mailLink = document.createElement("a")
-                        mailLink.href =
-                          "mailto:3d@davidcillian.com?subject=Anfrage%20von%20Website&body=Hallo%20Cillian%20Studio%20Team,%0D%0A%0D%0AIch%20interessiere%20mich%20für%20Ihre%20Dienstleistungen.%0D%0A%0D%0AMit%20freundlichen%20Grüßen"
-                        mailLink.style.display = "none"
-                        document.body.appendChild(mailLink)
-                        mailLink.click()
-                        document.body.removeChild(mailLink)
-
-                        // Popup schließen
-                        setIsMailPopupOpen(false)
-
-                        // Erfolgs-Nachricht anzeigen
-                        setTimeout(() => {
-                          alert(
-                            "E-Mail-Programm sollte sich geöffnet haben. Falls nicht, kopieren Sie bitte diese E-Mail-Adresse: 3d@davidcillian.com",
-                          )
-                        }, 500)
-                      } else {
-                        alert("Falsche Antwort. Bitte versuchen Sie es erneut.")
-                      }
-                    }}
-                  >
-                    <div className="text-center mb-4">
-                      <p className="text-[#aaa] text-sm mb-2">
-                        Um Spam zu vermeiden, beantworten Sie bitte diese einfache Frage:
-                      </p>
-                      <div className="bg-white/5 rounded-lg p-4 border border-white/10">
-                        <Mail size={32} className="mx-auto mb-2 text-blue-400" />
-                        <p className="text-[#f2f2f2] font-medium">3d@davidcillian.com</p>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="mailCaptcha" className="block text-sm font-medium text-[#f2f2f2] mb-2">
-                        Sicherheitsfrage: Was ist 5 + 5? *
-                      </label>
-                      <input
-                        type="number"
-                        id="mailCaptcha"
-                        name="mailCaptcha"
-                        required
-                        className="form-input"
-                        placeholder="Antwort eingeben"
-                        style={{ maxWidth: "100%" }}
-                      />
-                    </div>
-
-                    <div className="flex gap-3 pt-4">
-                      <button
-                        type="button"
-                        onClick={() => setIsMailPopupOpen(false)}
-                        className="flex-1 px-4 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-[#f2f2f2] transition-all duration-300"
-                      >
-                        Abbrechen
-                      </button>
-                      <button
-                        type="submit"
-                        className="flex-1 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-300 hover:scale-105"
-                      >
-                        E-Mail öffnen
-                      </button>
-                    </div>
-
-                    <div className="bg-white/5 rounded-lg p-3 mt-4">
-                      <p className="text-xs text-[#aaa] text-center">
-                        <strong>Hinweis:</strong> Falls sich Ihr E-Mail-Programm nicht automatisch öffnet, kopieren Sie
-                        bitte diese Adresse: <br />
-                        <span className="text-blue-400 font-mono">3d@davidcillian.com</span>
-                      </p>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            )}
           </div>
         </section>
-      </main>
 
-      {/* Footer */}
-      <footer className="py-5 mobile-footer bg-[#1d1d1d] text-[#f2f2f2] text-center">
-        <div className="max-w-6xl mx-auto px-5">
-          <div className="flex flex-col gap-3">
-            <p className="text-sm">
+        {/* Footer */}
+        <footer className="bg-[#0a0a0a] border-t border-white/10 py-12 mobile-footer">
+          <div className="max-w-6xl mx-auto px-5 text-center">
+            <div className="text-[#aaa] text-sm mobile-footer-text">
               &copy; {currentYear} Cillian Studio |{" "}
-              <a href="mailto:3d@davidcillian.com" className="text-blue-500">
-                3d@davidcillian.com
-              </a>
+              <button onClick={() => setIsImpressumOpen(!isImpressumOpen)} className="hover:text-white transition-colors">
+                Impressum
+              </button>{" "}
               |{" "}
-              <a href="https://instagram.com/david_cillian" className="text-blue-500">
-                @david_cillian
-              </a>
+              <button onClick={() => setIsDatenschutzOpen(!isDatenschutzOpen)} className="hover:text-white transition-colors">
+                Datenschutz
+              </button>{" "}
               |{" "}
-              <a
-                href="https://youtube.com/@gearworks-softwareproducti3548?si=21Z95zixZOk97qqt"
-                className="text-green-500"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                @gearworks
+              <a href="mailto:3d@davidcillian.com" className="hover:text-white transition-colors">
+                Kontakt
               </a>
-            </p>
-            <p className="text-sm mt-2 text-[#aaa]">Pelzgasse 3, 1150 Wien</p>
+            </div>
 
             {/* Legal Links */}
-            <div className="flex justify-center gap-4 text-xs text-[#aaa] mt-2">
+            <div className="mt-6 space-y-2">
               <button
                 onClick={() => {
-                  setIsImpressumOpen(!isImpressumOpen)
+                  setIsImpressumOpen(true)
                   setIsDatenschutzOpen(false)
                 }}
-                className="hover:text-white transition-colors"
+                className="text-xs text-[#666] hover:text-[#aaa] transition-colors block mx-auto"
               >
-                Impressum
+                Impressum anzeigen
               </button>
-              <span>|</span>
               <button
                 onClick={() => {
-                  setIsDatenschutzOpen(!isDatenschutzOpen)
+                  setIsDatenschutzOpen(true)
                   setIsImpressumOpen(false)
                 }}
-                className="hover:text-white transition-colors"
+                className="text-xs text-[#666] hover:text-[#aaa] transition-colors block mx-auto"
               >
-                Datenschutz
+                Datenschutz anzeigen
               </button>
             </div>
           </div>
 
           {/* Impressum Aufklappbereich */}
           <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out mt-8 ${
+            className={`overflow-hidden transition-all duration-500 ${
               isImpressumOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8 text-left">
+            <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8 mx-5 mt-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-light tracking-[0.1rem] text-[#f2f2f2]">IMPRESSUM</h2>
+                <h3 className="text-xl font-light tracking-[0.1rem] text-[#f2f2f2]">IMPRESSUM</h3>
                 <button
                   onClick={() => setIsImpressumOpen(false)}
                   className="text-[#aaa] hover:text-white transition-colors"
@@ -1507,35 +1158,31 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                 </button>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-6 text-sm text-[#aaa] leading-relaxed">
                 {/* Angaben gemäß TMG */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Angaben gemäß § 5 TMG</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">1. Angaben gemäß § 5 TMG</h3>
                   <div className="text-[#aaa] leading-relaxed">
-                    <p className="text-[#f2f2f2] mb-2">David Cillian</p>
-                    <p className="mb-2">Pelzgasse 3, 1150 Wien</p>
+                    <p>David Cillian</p>
+                    <p>E-Mail: 3d@davidcillian.com</p>
+                    <p>Website: davidcillian.com</p>
                   </div>
                 </section>
 
                 {/* Kontakt */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Kontakt</h3>
-                  <div className="text-[#aaa] leading-relaxed space-y-2">
-                    <div className="flex items-center gap-3">
-                      <span className="font-medium text-[#f2f2f2] min-w-[80px]">E-Mail:</span>
-                      <a
-                        href="mailto:3d@davidcillian.com"
-                        className="text-blue-400 hover:text-blue-300 transition-colors"
-                      >
-                        3d@davidcillian.com
-                      </a>
-                    </div>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">2. Kontakt</h3>
+                  <div className="text-[#aaa] leading-relaxed">
+                    <p>
+                      Bei Fragen zu dieser Website oder unseren Dienstleistungen können Sie uns jederzeit unter
+                      3d@davidcillian.com kontaktieren.
+                    </p>
                   </div>
                 </section>
 
                 {/* Haftungsausschluss */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Haftungsausschluss</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">3. Haftungsausschluss</h3>
                   <div className="text-[#aaa] leading-relaxed space-y-3">
                     <p>
                       Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
@@ -1550,11 +1197,11 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
 
                 {/* Urheberrecht */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Urheberrecht</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">4. Urheberrecht</h3>
                   <div className="text-[#aaa] leading-relaxed">
                     <p>
                       Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
-                      österreichischen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
+                      deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
                       Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
                       jeweiligen Autors bzw. Erstellers.
                     </p>
@@ -1566,13 +1213,13 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
 
           {/* Datenschutz Aufklappbereich */}
           <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out mt-8 ${
+            className={`overflow-hidden transition-all duration-500 ${
               isDatenschutzOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8 text-left">
+            <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8 mx-5 mt-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-light tracking-[0.1rem] text-[#f2f2f2]">DATENSCHUTZERKLÄRUNG</h2>
+                <h3 className="text-xl font-light tracking-[0.1rem] text-[#f2f2f2]">DATENSCHUTZERKLÄRUNG</h3>
                 <button
                   onClick={() => setIsDatenschutzOpen(false)}
                   className="text-[#aaa] hover:text-white transition-colors"
@@ -1581,18 +1228,13 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                 </button>
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-6 text-sm text-[#aaa] leading-relaxed">
                 {/* Verantwortlicher */}
                 <section>
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">1. Verantwortlicher</h3>
                   <div className="text-[#aaa] leading-relaxed">
-                    <p className="mb-3">Verantwortlicher im Sinne der Datenschutzgesetze ist:</p>
-                    <p className="text-[#f2f2f2] mb-2">David Cillian</p>
-                    <div className="space-y-1">
-                      <p>
-                        <strong>E-Mail:</strong> 3d@davidcillian.com
-                      </p>
-                    </div>
+                    <p>Verantwortlicher für die Datenverarbeitung auf dieser Website ist David Cillian.</p>
+                    <p>E-Mail: 3d@davidcillian.com</p>
                   </div>
                 </section>
 
@@ -1621,7 +1263,7 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                     </p>
                     <p>
                       Diese Informationen sind technisch notwendig, um von Ihnen angeforderte Inhalte von Webseiten
-                      korrekt auszuliefern und fallen bei Nutzung des Internets zwingend an.
+                      korrekt auszuliefern und fallen bei der Nutzung des Internets zwingend an.
                     </p>
                   </div>
                 </section>
@@ -1630,19 +1272,16 @@ Diese Anfrage wurde über das Kontaktformular auf davidcillian.com gesendet.`
                 <section>
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">4. Kontakt für Datenschutzfragen</h3>
                   <div className="text-[#aaa] leading-relaxed">
-                    <p className="mb-3">Bei Fragen zum Datenschutz können Sie sich an uns wenden:</p>
-                    <div className="space-y-1">
-                      <p>
-                        <strong>E-Mail:</strong> 3d@davidcillian.com
-                      </p>
-                    </div>
+                    <p>
+                      Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden: 3d@davidcillian.com
+                    </p>
                   </div>
                 </section>
               </div>
             </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </main>
     </div>
   )
 }
