@@ -61,13 +61,27 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-        {/* Cloudflare Web Analytics (optional) */}
+        {/* Google Analytics */}
         {process.env.NODE_ENV === "production" && (
-          <script
-            defer
-            src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "DEIN-TOKEN-HIER"}'
-          />
+          <>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-XXXXXXXXXX', {
+                    page_title: document.title,
+                    page_location: window.location.href,
+                  });
+                `,
+              }}
+            />
+          </>
         )}
       </head>
       <body className="antialiased">

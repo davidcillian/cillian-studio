@@ -9,6 +9,7 @@ import Image from "next/image"
 import "./globals.css"
 import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send, Instagram } from 'lucide-react'
 // Removed moving/venom effects and heavy animations
+import CookieBanner from "@/components/cookie-banner"
 
 const featureData = {
   "asset-ai": {
@@ -1306,13 +1307,26 @@ export default function CillianStudio() {
                   </div>
                 </section>
 
-                {/* Cookies */}
+                {/* Cookies und Analytics */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">5. Cookies</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">5. Cookies und Web-Analyse</h3>
                   <div className="text-[#aaa] leading-relaxed space-y-3">
                     <p>
-                      Diese Website verwendet derzeit keine Cookies. Sollten in Zukunft Cookies eingesetzt werden, 
-                      werden Sie hierüber informiert und können der Verwendung widersprechen.
+                      Diese Website verwendet Google Analytics, einen Webanalysedienst der Google LLC. Google Analytics verwendet Cookies, 
+                      um die Nutzung der Website zu analysieren.
+                    </p>
+                    <p>
+                      <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)
+                    </p>
+                    <p>
+                      <strong>Zweck:</strong> Analyse der Website-Nutzung zur Verbesserung unserer Dienstleistungen
+                    </p>
+                    <p>
+                      <strong>Speicherdauer:</strong> Cookies werden für maximal 24 Monate gespeichert
+                    </p>
+                    <p>
+                      Sie können der Verwendung von Google Analytics widersprechen, indem Sie das Browser-Add-on zur Deaktivierung 
+                      von Google Analytics installieren oder die Cookie-Einstellungen in Ihrem Browser anpassen.
                     </p>
                   </div>
                 </section>
@@ -1331,6 +1345,9 @@ export default function CillianStudio() {
           </div>
         </footer>
       </main>
+      
+      {/* Cookie Banner */}
+      <CookieBanner />
     </div>
   )
 }
