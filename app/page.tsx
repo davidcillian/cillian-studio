@@ -657,7 +657,11 @@ export default function CillianStudio() {
                     {/* Single Learn More Button */}
                     <button
                       onClick={() => handleFeatureClick(service.features[0].key)}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                      className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+                        activeFeature === service.features[0].key 
+                          ? "bg-blue-600 hover:bg-blue-700 text-white" 
+                          : "bg-white/10 hover:bg-white/20 text-[#aaa] hover:text-white border border-white/20"
+                      }`}
                     >
                       Learn More
                     </button>
