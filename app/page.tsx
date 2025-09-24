@@ -10,6 +10,7 @@ import "./globals.css"
 import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send } from 'lucide-react'
 // Removed moving/venom effects and heavy animations
 import UnfoldAnimation from "@/components/unfold-animation"
+import HeroAnimation from "@/components/hero-animation"
 
 const featureData = {
   "asset-ai": {
@@ -256,8 +257,7 @@ export default function CillianStudio() {
   // About cards are always static
   const [isImpressumOpen, setIsImpressumOpen] = useState(false)
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false)
-  const [isContactFormOpen, setIsContactFormOpen] = useState(false)
-  const [isMailPopupOpen, setIsMailPopupOpen] = useState(false)
+  // Removed contact form and popup states
   const [isMobile, setIsMobile] = useState(false)
 
   // Check if mobile on mount
@@ -514,10 +514,10 @@ export default function CillianStudio() {
         </a>
       </div>
 
-      {/* Hero Section - Static Background */}
+      {/* Hero Animation Section - Full Width */}
       <section className="py-16 mobile-hero w-full">
-        <div className="w-full h-64 relative overflow-hidden bg-gradient-to-b from-transparent via-[#1d1d1d] to-[#1d1d1d]">
-          {/* Simple static background instead of heavy animation */}
+        <div className="w-full h-64 relative overflow-hidden">
+          <HeroAnimation />
         </div>
       </section>
 
@@ -1085,38 +1085,18 @@ export default function CillianStudio() {
                 Beratung.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mobile-contact-buttons justify-center items-center">
-                <button
-                  onClick={() => setIsMailPopupOpen(true)}
-                  className="inline-flex items-center gap-3 mobile-contact-button bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 px-8 py-4 rounded-lg text-[#f2f2f2] transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              <div className="flex justify-center items-center">
+                <a
+                  href="mailto:3d@davidcillian.com"
+                  className="inline-flex items-center gap-3 mobile-contact-button bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <Mail size={20} />
                   <span className="font-medium">3d@davidcillian.com</span>
-                </button>
-
-                <div className="text-[#aaa] text-sm">oder</div>
-
-                <button
-                  onClick={() => setIsContactFormOpen(!isContactFormOpen)}
-                  className="inline-flex items-center gap-3 mobile-contact-button bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-full h-full bg-blue-400/30 animate-pulse rounded-full blur-xl"></div>
-                  </div>
-                  <Send size={20} className="relative z-10" />
-                  <span className="relative z-10">{isContactFormOpen ? "Formular schließen" : "Projekt anfragen"}</span>
-                </button>
+                </a>
               </div>
 
               <p className="text-sm text-[#aaa] mt-6">Wir antworten in der Regel innerhalb von 24 Stunden</p>
             </div>
-            {/* Kontaktformular Aufklappbereich */}
-            <div
-              className={`overflow-hidden transition-all duration-500 ease-in-out mt-8 ${
-                isContactFormOpen ? "max-h-[1200px] opacity-100" : "max-h-0 opacity-0"
-              }`}
-            >
-              <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8">
                 <div className="flex justify-between items-center mb-6">
                   <h3 className="text-2xl font-light tracking-[0.1rem] text-[#f2f2f2]">PROJEKT ANFRAGE</h3>
                   <button

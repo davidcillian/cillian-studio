@@ -37,21 +37,17 @@ export default function HeroAnimation() {
       }
     }
 
-    // Track mouse position
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect()
-      mousePositionRef.current = {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      }
+    // Mouse interaction disabled for better performance
+    const handleMouseMove = () => {
+      // No mouse tracking
     }
 
     const handleMouseEnter = () => {
-      isMouseInCanvasRef.current = true
+      // No mouse interaction
     }
 
     const handleMouseLeave = () => {
-      isMouseInCanvasRef.current = false
+      // No mouse interaction
     }
 
     // Initialize
@@ -61,31 +57,9 @@ export default function HeroAnimation() {
     canvas.addEventListener("mouseenter", handleMouseEnter)
     canvas.addEventListener("mouseleave", handleMouseLeave)
 
-    // Helper function to calculate force field effect
-    const calculateForceField = (
-      x: number,
-      baseY: number,
-      mousePosition: { x: number; y: number },
-      isMouseInCanvas: boolean,
-    ) => {
-      const forceStrength = isMouseInCanvas ? 18 : 0
-      const forceRadius = 400
-
-      const dx = x - mousePosition.x
-      const dy = baseY - mousePosition.y
-      const distance = Math.sqrt(dx * dx + dy * dy)
-
-      let forceY = 0
-      if (distance < forceRadius && isMouseInCanvas) {
-        // Ultra-smooth falloff using quintic function for bezier-like smoothness
-        const normalizedDistance = distance / forceRadius
-        const t = Math.max(0, Math.min(1, normalizedDistance))
-        const falloff = 1 - t * t * t * (t * (t * 6 - 15) + 10) // Quintic smoothstep
-        const force = forceStrength * falloff
-        forceY = (dy / (distance + 5)) * force
-      }
-
-      return forceY
+    // Force field disabled for better performance - just return 0
+    const calculateForceField = () => {
+      return 0
     }
 
     // Helper function to draw smooth bezier wave
@@ -134,7 +108,7 @@ export default function HeroAnimation() {
           Math.sin((x / canvas.width) * Math.PI * 4 + time * 0.5) * 30 +
           Math.sin((x / canvas.width) * Math.PI * 2 + time * 0.3) * 20
 
-        const forceY = calculateForceField(x, baseY, mousePosition, isMouseInCanvas)
+        const forceY = calculateForceField()
         const finalY = Math.max(padding, Math.min(canvas.height - padding, baseY + forceY))
 
         wave1Points.push({ x, y: finalY })
@@ -149,7 +123,7 @@ export default function HeroAnimation() {
           Math.sin((x / canvas.width) * Math.PI * 3 + time * 0.4) * 25 +
           Math.sin((x / canvas.width) * Math.PI * 1.5 + time * 0.2) * 15
 
-        const forceY = calculateForceField(x, baseY, mousePosition, isMouseInCanvas)
+        const forceY = calculateForceField()
         const finalY = Math.max(padding, Math.min(canvas.height - padding, baseY + forceY))
 
         wave2Points.push({ x, y: finalY })
@@ -164,7 +138,7 @@ export default function HeroAnimation() {
           Math.sin((x / canvas.width) * Math.PI * 2.5 + time * 0.6) * 20 +
           Math.sin((x / canvas.width) * Math.PI * 1.2 + time * 0.4) * 12
 
-        const forceY = calculateForceField(x, baseY, mousePosition, isMouseInCanvas)
+        const forceY = calculateForceField()
         const finalY = Math.max(padding, Math.min(canvas.height - padding, baseY + forceY))
 
         wave3Points.push({ x, y: finalY })

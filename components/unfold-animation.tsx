@@ -106,9 +106,6 @@ export default function UnfoldAnimation({ children, className = "", index, secti
     <div
       ref={elementRef}
       className={`${className} transition-all duration-1000 ease-out ${isUnfolded ? "unfold-active" : "unfold-inactive"}`}
-      style={{
-        transitionDelay: `${index * 300}ms`,
-      }}
     >
       {children}
     </div>
