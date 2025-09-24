@@ -1004,3 +1004,17 @@ section {
   display: flex;
   align-items: flex-start;
 }
+
+/* Social Media Icons - Mobile Version */
+@media (max-width: 768px) {
+  .mobile-about-text img {
+    width: 20px !important;
+    height: 20px !important;
+    object-fit: contain !important;
+  }
+  
+  .mobile-about-text .w-6 {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
