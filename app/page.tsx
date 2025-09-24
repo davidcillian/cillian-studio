@@ -493,7 +493,7 @@ export default function CillianStudio() {
           </div>
           <div className="text-center mt-5">
             <h1 className="text-5xl mobile-title font-normal tracking-[0.5rem] mb-2">CILLIAN STUDIO</h1>
-            <p className="text-lg mobile-subtitle tracking-[0.2rem] text-[#aaa]">- CG is our Passion -</p>
+            <p className="text-lg mobile-subtitle tracking-[0.2rem] text-[#aaa]">- Creation is our Passion -</p>
           </div>
         </div>
       </header>
