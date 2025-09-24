@@ -1018,3 +1018,17 @@ section {
     height: 20px !important;
   }
 }
+
+/* YouTube Logo - Verzerrung verhindern */
+.mobile-about-text img[alt="YouTube"] {
+  object-fit: contain !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-about-text img[alt="YouTube"] {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
