@@ -1091,13 +1091,16 @@ export default function CillianStudio() {
               </p>
 
               <div className="flex justify-center items-center">
-                <a
-                  href="mailto:3d@davidcillian.com"
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText('3d@davidcillian.com')
+                    alert('E-Mail-Adresse wurde in die Zwischenablage kopiert!')
+                  }}
                   className="inline-flex items-center gap-3 mobile-contact-button bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <Mail size={20} />
                   <span className="font-medium">3d@davidcillian.com</span>
-                </a>
+                </button>
               </div>
 
               <p className="text-sm text-[#aaa] mt-6">Wir antworten in der Regel innerhalb von 24 Stunden</p>
