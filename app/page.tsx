@@ -653,22 +653,14 @@ export default function CillianStudio() {
                   <div className="px-8 pb-4 unfold-title">
                     <h3 className="mb-4 text-xl mobile-service-title text-center hover:text-blue-400 transition-colors duration-300">{service.title}</h3>
                   </div>
-                  <div className="px-8 pb-8 space-y-3 unfold-buttons">
-                    {/* Service Button Komponente - Ersetze die bestehenden Buttons */}
-                    {service.features.map((feature) => (
-                      <button
-                        key={feature.key}
-                        onClick={() => handleFeatureClick(feature.key)}
-                        className={`service-button ${activeFeature === feature.key ? "active" : ""}`}
-                      >
-                        {activeFeature === feature.key && (
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-full h-full bg-blue-400/30 animate-pulse rounded-full blur-xl"></div>
-                          </div>
-                        )}
-                        <span className="relative z-10 hover:text-blue-300 transition-colors duration-300">{feature.label}</span>
-                      </button>
-                    ))}
+                  <div className="px-8 pb-8">
+                    {/* Single Learn More Button */}
+                    <button
+                      onClick={() => handleFeatureClick(service.features[0].key)}
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                    >
+                      Learn More
+                    </button>
                   </div>
                 </div>
               </div>
