@@ -597,15 +597,45 @@ export default function CillianStudio() {
                       3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine und Blender. Leidenschaftlicher
                       Mentor für angehende CG-Talente.
                     </p>
-                    <div className="mt-4">
+                    <div className="mt-4 flex gap-4 justify-center">
                       <a
                         href="https://www.instagram.com/david_cillian?igsh=MW1iYjczY2d0Z2gzeA=="
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                        className="text-pink-400 hover:text-pink-300 transition-colors duration-300"
                         aria-label="Follow @david_cillian on Instagram"
                       >
                         <Instagram size={24} />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/david-scherngell-38a328346/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Connect with David Scherngell on LinkedIn"
+                      >
+                        <Image
+                          src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
+                          alt="LinkedIn"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                      <a
+                        href="https://www.artstation.com/davidcillian"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="View David Cillian's ArtStation portfolio"
+                      >
+                        <Image
+                          src="https://w7.pngwing.com/pngs/406/360/png-transparent-artstation-logo-logos-logos-and-brands-icon-thumbnail.png"
+                          alt="ArtStation"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
                       </a>
                     </div>
                   </div>
@@ -630,15 +660,45 @@ export default function CillianStudio() {
                       3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine und Blender. Leidenschaftlicher
                       Mentor für angehende CG-Talente.
                     </p>
-                    <div className="mt-4">
+                    <div className="mt-4 flex gap-4 justify-center">
                       <a
                         href="https://www.instagram.com/david_cillian?igsh=MW1iYjczY2d0Z2gzeA=="
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                        className="text-pink-400 hover:text-pink-300 transition-colors duration-300"
                         aria-label="Follow @david_cillian on Instagram"
                       >
                         <Instagram size={24} />
+                      </a>
+                      <a
+                        href="https://www.linkedin.com/in/david-scherngell-38a328346/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Connect with David Scherngell on LinkedIn"
+                      >
+                        <Image
+                          src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
+                          alt="LinkedIn"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                      <a
+                        href="https://www.artstation.com/davidcillian"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="View David Cillian's ArtStation portfolio"
+                      >
+                        <Image
+                          src="https://w7.pngwing.com/pngs/406/360/png-transparent-artstation-logo-logos-logos-and-brands-icon-thumbnail.png"
+                          alt="ArtStation"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
                       </a>
                     </div>
                   </div>
