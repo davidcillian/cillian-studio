@@ -630,7 +630,7 @@ export default function CillianStudio() {
                         aria-label="View David Cillian's ArtStation portfolio"
                       >
                         <Image
-                          src="https://w7.pngwing.com/pngs/406/360/png-transparent-artstation-logo-logos-logos-and-brands-icon-thumbnail.png"
+                          src="/images/Logos/artstation-logo.png"
                           alt="ArtStation"
                           width={24}
                           height={24}
@@ -693,7 +693,7 @@ export default function CillianStudio() {
                         aria-label="View David Cillian's ArtStation portfolio"
                       >
                         <Image
-                          src="https://w7.pngwing.com/pngs/406/360/png-transparent-artstation-logo-logos-logos-and-brands-icon-thumbnail.png"
+                          src="/images/Logos/artstation-logo.png"
                           alt="ArtStation"
                           width={24}
                           height={24}
