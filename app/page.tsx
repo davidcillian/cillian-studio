@@ -558,8 +558,8 @@ export default function CillianStudio() {
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                     <Image
-                      src="/images/david-scherngell.jpeg"
-                      alt="David Scherngell - 3D Artist"
+                      src="/images/Daniel-Abada.jpeg"
+                      alt="Daniel Abada - Marketing Specialist"
                       width={180}
                       height={180}
                       className="w-full h-full object-cover"
