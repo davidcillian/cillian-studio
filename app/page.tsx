@@ -773,15 +773,60 @@ export default function CillianStudio() {
                     </p>
                     <div className="mt-4 flex gap-4 justify-center">
                       <a
+                        href="https://www.youtube.com/@gearworks-gameproduction3745"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Visit GearWorks Game Production YouTube channel"
+                      >
+                        <Image
+                          src="/images/Logos/Youtube_Logo.png"
+                          alt="YouTube Game Production"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                      <a
+                        href="https://www.youtube.com/@gearworks-entertainmentpro8605"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Visit GearWorks Entertainment YouTube channel"
+                      >
+                        <Image
+                          src="/images/Logos/youtube_lila.png"
+                          alt="YouTube Entertainment"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                      <a
+                        href="https://www.youtube.com/@gearworks-musicproduction2737"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Visit GearWorks Music Production YouTube channel"
+                      >
+                        <Image
+                          src="/images/Logos/youtube_blau.png"
+                          alt="YouTube Music Production"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                      <a
                         href="https://www.youtube.com/@gearworks-softwareproducti3548"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="transition-opacity duration-300 hover:opacity-80"
-                        aria-label="Visit GearWorks YouTube channel"
+                        aria-label="Visit GearWorks Software Production YouTube channel"
                       >
                         <Image
-                          src="/images/Logos/Youtube_Logo.png"
-                          alt="YouTube"
+                          src="/images/Logos/youtube_gruen.png"
+                          alt="YouTube Software Production"
                           width={24}
                           height={24}
                           className="w-6 h-6"
@@ -812,15 +857,60 @@ export default function CillianStudio() {
                     </p>
                     <div className="mt-4 flex gap-4 justify-center">
                       <a
+                        href="https://www.youtube.com/@gearworks-gameproduction3745"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Visit GearWorks Game Production YouTube channel"
+                      >
+                        <Image
+                          src="/images/Logos/Youtube_Logo.png"
+                          alt="YouTube Game Production"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                      <a
+                        href="https://www.youtube.com/@gearworks-entertainmentpro8605"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Visit GearWorks Entertainment YouTube channel"
+                      >
+                        <Image
+                          src="/images/Logos/youtube_lila.png"
+                          alt="YouTube Entertainment"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                      <a
+                        href="https://www.youtube.com/@gearworks-musicproduction2737"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-opacity duration-300 hover:opacity-80"
+                        aria-label="Visit GearWorks Music Production YouTube channel"
+                      >
+                        <Image
+                          src="/images/Logos/youtube_blau.png"
+                          alt="YouTube Music Production"
+                          width={24}
+                          height={24}
+                          className="w-6 h-6"
+                        />
+                      </a>
+                      <a
                         href="https://www.youtube.com/@gearworks-softwareproducti3548"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="transition-opacity duration-300 hover:opacity-80"
-                        aria-label="Visit GearWorks YouTube channel"
+                        aria-label="Visit GearWorks Software Production YouTube channel"
                       >
                         <Image
-                          src="/images/Logos/Youtube_Logo.png"
-                          alt="YouTube"
+                          src="/images/Logos/youtube_gruen.png"
+                          alt="YouTube Software Production"
                           width={24}
                           height={24}
                           className="w-6 h-6"
