@@ -804,7 +804,7 @@ export default function CillianStudio() {
                   </div>
                   <div className="text-[#aaa] text-base mobile-about-text">
                     <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Adrian Spielberger</h3>
-                    <div className="text-sm text-purple-400 mb-2 uppercase tracking-wider">3D Artist</div>
+                    <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Artist</div>
                     <p className="leading-6">
                       3D-Artist aus Deutschland mit Fokus auf Organic Modeling, Texturing & LookDev.
                     </p>
@@ -848,7 +848,7 @@ export default function CillianStudio() {
                   </div>
                   <div className="text-[#aaa] text-base mobile-about-text">
                     <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Adrian Spielberger</h3>
-                    <div className="text-sm text-purple-400 mb-2 uppercase tracking-wider">3D Artist</div>
+                    <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Artist</div>
                     <p className="leading-6">
                       3D-Artist aus Deutschland mit Fokus auf Organic Modeling, Texturing & LookDev.
                     </p>
