@@ -1005,6 +1005,36 @@ section {
   align-items: flex-start;
 }
 
+/* 4 Karten nebeneinander - Responsive Grid */
+.mobile-about-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .mobile-about-boxes {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .mobile-about-boxes {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-about-boxes {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 /* Social Media Icons - Mobile Version */
 @media (max-width: 768px) {
   .mobile-about-text img {
