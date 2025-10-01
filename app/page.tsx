@@ -7,7 +7,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import "./globals.css"
-import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send, Instagram } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send, Instagram, Phone } from 'lucide-react'
 // Removed moving/venom effects and heavy animations
 import CookieBanner from "@/components/cookie-banner"
 
@@ -230,7 +230,7 @@ const recentProjects = [
     ],
     artists: [
       { name: "David Scherngell", image: "/images/david-scherngell.jpeg" },
-      { name: "Daniel Abada", image: "/images/Daniel-Abada.jpeg" },
+      { name: "Daniel Abada", image: "/images/placeholder-user.jpg" },
       { name: "GearWorks Production", image: "/images/gearworks-icon.png?v=2" }
     ],
   },
@@ -587,13 +587,9 @@ export default function CillianStudio() {
               <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 border border-white/10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                    <Image
-                      src="/images/Daniel-Abada.jpeg"
-                      alt="Daniel Abada - Marketing Specialist"
-                      width={180}
-                      height={180}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
+                      <span className="text-2xl text-white/60">DA</span>
+                    </div>
                   </div>
                   <div className="text-[#aaa] text-base mobile-about-text">
                     <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Daniel Abada</h3>
@@ -626,13 +622,9 @@ export default function CillianStudio() {
               <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                    <Image
-                      src="/images/Daniel-Abada.jpeg"
-                      alt="Daniel Abada - Marketing Specialist"
-                      width={180}
-                      height={180}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
+                      <span className="text-2xl text-white/60">DA</span>
+                    </div>
                   </div>
                   <div className="text-[#aaa] text-base mobile-about-text">
                     <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Daniel Abada</h3>
@@ -1527,7 +1519,7 @@ export default function CillianStudio() {
                 Beratung.
               </p>
 
-              <div className="flex justify-center items-center">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <button
                   onClick={() => {
                     navigator.clipboard.writeText('3d@davidcillian.com')
@@ -1538,6 +1530,25 @@ export default function CillianStudio() {
                   <Mail size={20} />
                   <span className="font-medium">3d@davidcillian.com</span>
                 </button>
+                
+                <a
+                  href="https://wa.me/436801609124"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 mobile-contact-button bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                  </svg>
+                  <span className="font-medium">WhatsApp</span>
+                </a>
+              </div>
+              
+              <div className="mt-4 text-center">
+                <div className="flex items-center justify-center gap-2 text-[#aaa]">
+                  <Phone size={16} />
+                  <span className="text-sm">+43 680 1609124</span>
+                </div>
               </div>
 
               <p className="text-sm text-[#aaa] mt-6">Wir antworten in der Regel innerhalb von 24 Stunden</p>
