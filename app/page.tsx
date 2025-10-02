@@ -15,8 +15,8 @@ const featureData = {
   "asset-ai": {
     text: "Wir gestalten nicht nur atmosphärische 3D-Umgebungen für Games und Visualisierungen, sondern bieten ein umfassendes Leistungsspektrum: von der Entwicklung einzelner Assets über realistische Archviz-Projekte bis hin zu cinematischen Videos. Unser Fokus liegt darauf, eindrucksvolle visuelle Erlebnisse zu schaffen, die Emotionen wecken und nachhaltig begeistern.",
     slides: [
-      "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
+      "/images/the-old-deep/1.png",
+      "/images/creartive-vienna/1.png",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
     ],
   },
@@ -1515,7 +1515,7 @@ export default function CillianStudio() {
           <div ref={contactRef} className="max-w-4xl mx-auto text-center">
             <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-12 mobile-contact-container">
               <p className="text-lg mobile-contact-text text-[#aaa] mb-8 leading-relaxed">
-                Lassen Sie uns gemeinsam Ihre 3D-Vision zum Leben erwecken. Kontaktieren Sie uns für eine unverbindliche
+                Lassen Sie uns gemeinsam Ihre Vision zum Leben erwecken. Kontaktieren Sie uns für eine unverbindliche
                 Beratung.
               </p>
 
