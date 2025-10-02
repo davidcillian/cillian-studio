@@ -159,7 +159,7 @@ const serviceData = [
 const recentProjects = [
   {
     id: "project-1",
-    clientName: "David Scherngell",
+    clientName: "Demo",
     clientLogo: "Demo", // Demo-Projekt, daher nur Text
     projectTitle: "Low-Poly Train",
     projectType: "Blender Demoprojekt",
