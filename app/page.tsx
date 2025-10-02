@@ -87,9 +87,9 @@ const featureData = {
     text: "Unsere Kurse bieten einen umfassenden Einstieg in Blender. Neben der 3D-Modellierung werden auch weitere zentrale Funktionen wie Material- und Texturarbeit, Beleuchtung, Rendering sowie die Integration in gängige Game Engines behandelt. So erhalten Teilnehmer eine solide Basis, um eigene 3D-Projekte erfolgreich umzusetzen.",
     slides: [
       "/images/Training_001.png",
+      "/images/Training_002.png",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
     ],
   },
   "training-advanced": {
