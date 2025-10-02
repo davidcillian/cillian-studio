@@ -60,9 +60,9 @@ const featureData = {
   "consulting-implementation": {
     text: "Wir entwickeln maßgeschneiderte Lösungen zur Gamifizierung von Verkaufsprozessen. Durch spielerische Elemente wie Belohnungssysteme, Wettbewerbe und Fortschrittsanzeigen steigern wir Motivation, Kundenbindung und Verkaufszahlen. Unsere Ansätze machen Vertriebsprozesse nicht nur effizienter, sondern auch erlebbarer.",
     slides: [
+      "/Videos/Gamification_Vid_1.mp4",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
     ],
   },
   "consulting-optimization": {
