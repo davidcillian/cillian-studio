@@ -1133,7 +1133,7 @@ export default function CillianStudio() {
                           src={slide || "/placeholder.svg"}
                           alt={`Slide ${index + 1}`}
                           fill
-                          className="object-contain p-4"
+                          className="object-cover"
                         />
                       </div>
                     ))}
