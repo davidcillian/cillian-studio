@@ -1222,16 +1222,21 @@ export default function CillianStudio() {
           </div>
 
           <div ref={projectsRef} className="space-y-12">
-            {(showAllProjects ? recentProjects : recentProjects.slice(0, 3)).map((project, index) => (
+            {recentProjects.map((project, index) => (
               <div
                 key={project.id}
                 className={`bg-[#1d1d1d] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-white/20 relative ${
-                  !showAllProjects && index === 2 ? 'opacity-60' : ''
+                  !showAllProjects && index >= 3 ? 'opacity-30' : ''
                 }`}
+                style={{
+                  display: !showAllProjects && index >= 3 ? 'block' : 'block',
+                  height: !showAllProjects && index === 3 ? '120px' : 'auto',
+                  overflow: !showAllProjects && index === 3 ? 'hidden' : 'visible'
+                }}
               >
-                {/* Fade overlay for 3rd project when not showing all */}
-                {!showAllProjects && index === 2 && (
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1d1d1d] via-transparent to-transparent pointer-events-none z-10"></div>
+                {/* Fade overlay for 4th project when not showing all */}
+                {!showAllProjects && index === 3 && (
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1d1d1d] pointer-events-none z-10"></div>
                 )}
                 {/* Project Header */}
                 <div className="p-8 mobile-project border-b border-white/10">
