@@ -1127,11 +1127,11 @@ export default function CillianStudio() {
           <div
             ref={detailRef}
             className={`overflow-hidden transition-all duration-500 ease-in-out mt-10 ${
-              isDetailOpen ? "max-h-[800px] opacity-100" : "max-h-0 opacity-0"
+              isDetailOpen ? "max-h-[1200px] lg:max-h-[800px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             {activeFeature && featureData[activeFeature as keyof typeof featureData] && (
-              <div className="flex flex-wrap gap-5 mobile-detail items-start relative">
+              <div className="flex flex-col lg:flex-row gap-5 mobile-detail items-start relative">
                 {/* Close button */}
                 <button
                   onClick={handleCloseDetail}
@@ -1142,12 +1142,12 @@ export default function CillianStudio() {
                 </button>
 
                 {/* Text description */}
-                <div className="flex-[2] min-w-[300px] mobile-detail-text text-[#aaa] p-8 bg-white/[0.03] rounded-lg text-base">
+                <div className="flex-1 lg:flex-[2] lg:min-w-[300px] mobile-detail-text text-[#aaa] p-4 lg:p-8 bg-white/[0.03] rounded-lg text-base">
                   {featureData[activeFeature as keyof typeof featureData].text}
                 </div>
 
                 {/* Slideshow */}
-                <div className="flex-[3] min-w-[400px] mobile-detail-slideshow relative">
+                <div className="flex-1 lg:flex-[3] lg:min-w-[400px] mobile-detail-slideshow relative">
                   <div className="relative h-[300px] bg-white/[0.03] rounded-lg overflow-hidden">
                     {/* Current slide */}
                     {featureData[activeFeature as keyof typeof featureData].slides.map((slide, index) => (
