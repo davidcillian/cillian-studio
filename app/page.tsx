@@ -264,20 +264,17 @@ const recentProjects = [
   },
 ]
 
-// Gallery images for slideshow (12 images for 4 slides with 3 images each)
+// Gallery images for slideshow (9 images for 3 slides with 3 images each)
 const galleryImages = [
-  "/images/Low-Poly_Train/1.png", // Low-Poly Train Bilder
-  "/images/Low-Poly_Train/2.png",
-  "/images/Low-Poly_Train/3.png",
-  "/images/the-old-deep/1.png", // The Old Deep Bilder
-  "/images/the-old-deep/2.png",
-  "/images/the-old-deep/3.png",
-  "/images/creartive-vienna/1.png", // Kaiserkrone Bild
-  "/images/Low-Poly_Train/4.png", // Viertes Low-Poly Train Bild
-  "/images/omninode-crane/1.jpg", // Omninode Crane Bilder
-  "/images/omninode-crane/2.jpg",
+  "/images/Low-Poly_Train/1.png", // Low-Poly Train (erstes Bild)
+  "/images/the-old-deep/1.png", // The Old Deep (erstes Bild)
+  "/images/creartive-vienna/1.png", // Kaiserkrone (erstes Bild)
+  "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
+  "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
+  "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
+  "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
 ];
 
 export default function CillianStudio() {
