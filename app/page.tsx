@@ -15,9 +15,10 @@ const featureData = {
   "asset-ai": {
     text: "Wir gestalten nicht nur atmosphärische 3D-Umgebungen für Games und Visualisierungen, sondern bieten ein umfassendes Leistungsspektrum: von der Entwicklung einzelner Assets über realistische Archviz-Projekte bis hin zu cinematischen Videos. Unser Fokus liegt darauf, eindrucksvolle visuelle Erlebnisse zu schaffen, die Emotionen wecken und nachhaltig begeistern.",
     slides: [
+      "/images/Low-Poly_Train/1.png",
       "/images/the-old-deep/1.png",
       "/images/creartive-vienna/1.png",
-      "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
+      "/images/Low-Poly_Train/2.png",
     ],
   },
   "asset-ue": {
@@ -157,6 +158,33 @@ const serviceData = [
 // Recent Projects Data
 const recentProjects = [
   {
+    id: "project-1",
+    clientName: "David Scherngell",
+    clientLogo: "Demo", // Demo-Projekt, daher nur Text
+    projectTitle: "Low-Poly Train",
+    projectType: "Blender Demoprojekt",
+    completionDate: "2025",
+    teamSize: "1 Artist",
+    description:
+      "Ein Demoprojekt in Blender von David Scherngell. Minimalistischer Ansatz mit nur einer Textur und Coloramp für die gesamte Szene. Fokus auf Low-Poly-Ästhetik und effiziente Texturierung.",
+    technologies: ["Blender", "Coloramp", "Low-Poly Modeling"],
+    images: [
+      "/images/Low-Poly_Train/1.png",
+      "/images/Low-Poly_Train/2.png",
+      "/images/Low-Poly_Train/3.png",
+      "/images/Low-Poly_Train/4.png"
+    ],
+    results: [
+      "Komplette Szene mit nur einer Textur und Coloramp texturiert",
+      "Effizienter Low-Poly Workflow demonstriert",
+      "Atmosphärische Beleuchtung und Komposition",
+      "Minimalistischer aber wirkungsvoller visueller Stil"
+    ],
+    artists: [
+      { name: "David Scherngell", image: "/images/david-scherngell.jpeg" }
+    ],
+  },
+  {
     id: "project-2",
     clientName: "David Scherngell",
     clientLogo: "Demo", // Demo-Projekt, daher nur Text
@@ -236,15 +264,18 @@ const recentProjects = [
   },
 ]
 
-// Gallery images for slideshow (9 images for 3 slides with 3 images each)
+// Gallery images for slideshow (12 images for 4 slides with 3 images each)
 const galleryImages = [
-  "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-  "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
-  "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
-  "/images/the-old-deep/1.png", // Erstes Bild von The Old Deep
+  "/images/Low-Poly_Train/1.png", // Low-Poly Train Bilder
+  "/images/Low-Poly_Train/2.png",
+  "/images/Low-Poly_Train/3.png",
+  "/images/the-old-deep/1.png", // The Old Deep Bilder
+  "/images/the-old-deep/2.png",
+  "/images/the-old-deep/3.png",
   "/images/creartive-vienna/1.png", // Kaiserkrone Bild
-  "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
-  "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
+  "/images/Low-Poly_Train/4.png", // Viertes Low-Poly Train Bild
+  "/images/omninode-crane/1.jpg", // Omninode Crane Bilder
+  "/images/omninode-crane/2.jpg",
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
 ];
