@@ -86,10 +86,10 @@ const featureData = {
   "training-basics": {
     text: "Unsere Kurse bieten einen umfassenden Einstieg in Blender. Neben der 3D-Modellierung werden auch weitere zentrale Funktionen wie Material- und Texturarbeit, Beleuchtung, Rendering sowie die Integration in gängige Game Engines behandelt. So erhalten Teilnehmer eine solide Basis, um eigene 3D-Projekte erfolgreich umzusetzen.",
     slides: [
+      "/images/Training_001.png",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
     ],
   },
   "training-advanced": {
@@ -269,12 +269,12 @@ const galleryImages = [
   "/images/Low-Poly_Train/1.png", // Low-Poly Train (erstes Bild)
   "/images/the-old-deep/1.png", // The Old Deep (erstes Bild)
   "/images/creartive-vienna/1.png", // Kaiserkrone (erstes Bild)
+  "/images/Training_001.png", // Training Bild
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-  "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
 ];
 
 export default function CillianStudio() {
