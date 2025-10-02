@@ -284,6 +284,7 @@ export default function CillianStudio() {
   const [gallerySlide, setGallerySlide] = useState(0)
   const [activeProject, setActiveProject] = useState<string | null>(null)
   const [projectSlide, setProjectSlide] = useState(0)
+  const [showAllProjects, setShowAllProjects] = useState(false)
   const detailRef = useRef<HTMLDivElement>(null)
   const aboutBoxesRef = useRef<HTMLDivElement>(null)
   const galleryImagesRef = useRef<HTMLDivElement>(null)
@@ -1221,7 +1222,7 @@ export default function CillianStudio() {
           </div>
 
           <div ref={projectsRef} className="space-y-12">
-            {recentProjects.map((project, index) => (
+            {(showAllProjects ? recentProjects : recentProjects.slice(0, 3)).map((project, index) => (
               <div
                 key={project.id}
                 className="bg-[#1d1d1d] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-white/20"
@@ -1490,6 +1491,32 @@ export default function CillianStudio() {
                 </div>
               </div>
             ))}
+            
+            {/* More Projects Button */}
+            {!showAllProjects && recentProjects.length > 3 && (
+              <div className="flex justify-center mt-8">
+                <button
+                  onClick={() => setShowAllProjects(true)}
+                  className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <span>Show More Projects</span>
+                  <ChevronRight size={20} className="rotate-90" />
+                </button>
+              </div>
+            )}
+            
+            {/* Less Projects Button */}
+            {showAllProjects && recentProjects.length > 3 && (
+              <div className="flex justify-center mt-8">
+                <button
+                  onClick={() => setShowAllProjects(false)}
+                  className="inline-flex items-center gap-3 bg-gray-600 hover:bg-gray-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <span>Show Less</span>
+                  <ChevronRight size={20} className="-rotate-90" />
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
