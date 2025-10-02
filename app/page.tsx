@@ -255,7 +255,7 @@ const recentProjects = [
     ],
     artists: [
       { name: "David Scherngell", image: "/images/david-scherngell.jpeg" },
-      { name: "Daniel Abada", image: "/images/placeholder-user.jpg" },
+      { name: "Daniel Abada", image: "/images/Daniel_Abada.jpeg" },
       { name: "GearWorks Production", image: "/images/gearworks-icon.png?v=2" }
     ],
   },
@@ -613,9 +613,13 @@ export default function CillianStudio() {
               <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] rounded-lg p-8 relative z-10 border border-white/10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-                      <span className="text-2xl text-white/60">DA</span>
-                    </div>
+                    <Image
+                      src="/images/Daniel_Abada.jpeg"
+                      alt="Daniel Abada - Marketing Specialist"
+                      width={180}
+                      height={180}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="text-[#aaa] text-base mobile-about-text">
                     <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Daniel Abada</h3>
@@ -648,9 +652,13 @@ export default function CillianStudio() {
               <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] border border-white/10 rounded-lg p-8 relative z-10`}>
                 <div className="flex flex-col items-center text-center mobile-about-content">
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-                      <span className="text-2xl text-white/60">DA</span>
-                    </div>
+                    <Image
+                      src="/images/Daniel_Abada.jpeg"
+                      alt="Daniel Abada - Marketing Specialist"
+                      width={180}
+                      height={180}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div className="text-[#aaa] text-base mobile-about-text">
                     <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Daniel Abada</h3>
