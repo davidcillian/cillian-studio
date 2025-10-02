@@ -1225,8 +1225,14 @@ export default function CillianStudio() {
             {(showAllProjects ? recentProjects : recentProjects.slice(0, 3)).map((project, index) => (
               <div
                 key={project.id}
-                className="bg-[#1d1d1d] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-white/20"
+                className={`bg-[#1d1d1d] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-white/20 relative ${
+                  !showAllProjects && index === 2 ? 'opacity-60' : ''
+                }`}
               >
+                {/* Fade overlay for 3rd project when not showing all */}
+                {!showAllProjects && index === 2 && (
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1d1d1d] via-transparent to-transparent pointer-events-none z-10"></div>
+                )}
                 {/* Project Header */}
                 <div className="p-8 mobile-project border-b border-white/10">
                   <div className="flex flex-col lg:flex-row mobile-project-header items-start lg:items-center gap-6">
