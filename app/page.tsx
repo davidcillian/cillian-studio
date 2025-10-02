@@ -308,6 +308,11 @@ export default function CillianStudio() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  // Reset slideshow when active feature changes
+  useEffect(() => {
+    setCurrentSlide(0)
+  }, [activeFeature])
+
   // Venom effect disabled entirely
   const isVenomActive = false
   const isVenomIntense = false
@@ -354,7 +359,7 @@ export default function CillianStudio() {
     setActiveFeature(feature)
     setIsDetailOpen(true)
 
-    // Scroll to detail container after a short delay to ensure it's visible
+    // Force re-render of slideshow by adding a key change
     setTimeout(() => {
       detailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" })
     }, 100)
@@ -1154,7 +1159,7 @@ export default function CillianStudio() {
 
                 {/* Slideshow */}
                 <div className="flex-1 lg:flex-[3] lg:min-w-[400px] mobile-detail-slideshow relative">
-                  <div className="relative h-[300px] bg-white/[0.03] rounded-lg overflow-hidden">
+                  <div className="relative h-[300px] bg-white/[0.03] rounded-lg overflow-hidden" key={activeFeature}>
                     {/* Current slide */}
                     {featureData[activeFeature as keyof typeof featureData].slides.map((slide, index) => (
                       <div
