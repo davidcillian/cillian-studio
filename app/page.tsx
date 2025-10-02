@@ -167,7 +167,7 @@ const recentProjects = [
     teamSize: "1 Artist",
     description:
       "Ein Demoprojekt in Blender von David Scherngell. Minimalistischer Ansatz mit nur einer Textur und Coloramp für die gesamte Szene. Fokus auf Low-Poly-Ästhetik und effiziente Texturierung.",
-    technologies: ["Blender", "Coloramp", "Low-Poly Modeling"],
+    technologies: ["Blender"],
     images: [
       "/images/Low-Poly_Train/1.png",
       "/images/Low-Poly_Train/2.png",
@@ -1350,15 +1350,72 @@ export default function CillianStudio() {
                         {/* Technologies Used */}
                         <div>
                           <h4 className="text-xl text-[#f2f2f2] mb-3">Technologies Used</h4>
-                          <div className="flex flex-wrap gap-2">
-                            {project.technologies.map((tech, techIndex) => (
-                              <span
-                                key={techIndex}
-                                className="bg-white/10 border border-white/20 px-3 py-1 rounded-full text-sm text-[#f2f2f2]"
-                              >
-                                {tech}
-                              </span>
-                            ))}
+                          <div className="flex flex-wrap gap-3">
+                            {project.technologies.map((tech, techIndex) => {
+                              // Software Icon Mapping
+                              const getIcon = (techName: string) => {
+                                switch(techName.toLowerCase()) {
+                                  case 'blender':
+                                    return (
+                                      <div className="flex items-center gap-2 bg-orange-600/20 border border-orange-500/30 px-3 py-2 rounded-lg">
+                                        <div className="w-6 h-6 bg-orange-500 rounded flex items-center justify-center text-white text-xs font-bold">B</div>
+                                        <span className="text-sm text-[#f2f2f2]">Blender</span>
+                                      </div>
+                                    )
+                                  case 'unreal engine 5.6':
+                                  case 'unreal engine':
+                                    return (
+                                      <div className="flex items-center gap-2 bg-blue-600/20 border border-blue-500/30 px-3 py-2 rounded-lg">
+                                        <div className="w-6 h-6 bg-blue-500 rounded flex items-center justify-center text-white text-xs font-bold">UE</div>
+                                        <span className="text-sm text-[#f2f2f2]">Unreal Engine</span>
+                                      </div>
+                                    )
+                                  case 'maya':
+                                    return (
+                                      <div className="flex items-center gap-2 bg-cyan-600/20 border border-cyan-500/30 px-3 py-2 rounded-lg">
+                                        <div className="w-6 h-6 bg-cyan-500 rounded flex items-center justify-center text-white text-xs font-bold">M</div>
+                                        <span className="text-sm text-[#f2f2f2]">Maya</span>
+                                      </div>
+                                    )
+                                  case 'substance painter':
+                                    return (
+                                      <div className="flex items-center gap-2 bg-red-600/20 border border-red-500/30 px-3 py-2 rounded-lg">
+                                        <div className="w-6 h-6 bg-red-500 rounded flex items-center justify-center text-white text-xs font-bold">SP</div>
+                                        <span className="text-sm text-[#f2f2f2]">Substance Painter</span>
+                                      </div>
+                                    )
+                                  case 'premiere pro':
+                                    return (
+                                      <div className="flex items-center gap-2 bg-purple-600/20 border border-purple-500/30 px-3 py-2 rounded-lg">
+                                        <div className="w-6 h-6 bg-purple-500 rounded flex items-center justify-center text-white text-xs font-bold">PR</div>
+                                        <span className="text-sm text-[#f2f2f2]">Premiere Pro</span>
+                                      </div>
+                                    )
+                                  case 'geometry nodes':
+                                    return (
+                                      <div className="flex items-center gap-2 bg-green-600/20 border border-green-500/30 px-3 py-2 rounded-lg">
+                                        <div className="w-6 h-6 bg-green-500 rounded flex items-center justify-center text-white text-xs font-bold">GN</div>
+                                        <span className="text-sm text-[#f2f2f2]">Geometry Nodes</span>
+                                      </div>
+                                    )
+                                  default:
+                                    return (
+                                      <div className="flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-2 rounded-lg">
+                                        <div className="w-6 h-6 bg-gray-500 rounded flex items-center justify-center text-white text-xs font-bold">
+                                          {techName.charAt(0).toUpperCase()}
+                                        </div>
+                                        <span className="text-sm text-[#f2f2f2]">{techName}</span>
+                                      </div>
+                                    )
+                                }
+                              }
+                              
+                              return (
+                                <div key={techIndex}>
+                                  {getIcon(tech)}
+                                </div>
+                              )
+                            })}
                           </div>
                         </div>
 
@@ -1409,7 +1466,7 @@ export default function CillianStudio() {
                         )}
 
                         {/* Client Testimonial Placeholder */}
-                        {project.id !== "project-2" && project.id !== "project-4" && project.id !== "project-5" && (
+                        {project.id !== "project-1" && project.id !== "project-2" && project.id !== "project-4" && project.id !== "project-5" && (
                           <div className="bg-white/[0.03] rounded-lg p-6 border border-white/10">
                             <h4 className="text-lg text-[#f2f2f2] mb-3">Client Feedback</h4>
                             <p className="text-[#aaa] italic">
