@@ -39,10 +39,10 @@ const featureData = {
   "scene-environments": {
     text: "Wir nutzen moderne KI-Technologien, um kreative Prozesse im 3D-Bereich zu erweitern und zu beschleunigen. Durch den Einsatz von KI in Kombination mit 3D entstehen innovative Lösungen für Trailer, Werbespots und immersive Visualisierungen, die Effizienz und Qualität auf ein neues Level heben.",
     slides: [
+      "/Videos/AI_Vid_1.mp4",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
-      "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
     ],
   },
   "scene-lighting": {
@@ -1157,12 +1157,25 @@ export default function CillianStudio() {
                           index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
                         }`}
                       >
-                        <Image
-                          src={slide || "/placeholder.svg"}
-                          alt={`Slide ${index + 1}`}
-                          fill
-                          className="object-cover"
-                        />
+                        {slide.endsWith('.mp4') ? (
+                          <video
+                            className="w-full h-full object-cover"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          >
+                            <source src={slide} type="video/mp4" />
+                            Ihr Browser unterstützt das Video-Element nicht.
+                          </video>
+                        ) : (
+                          <Image
+                            src={slide || "/placeholder.svg"}
+                            alt={`Slide ${index + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                        )}
                       </div>
                     ))}
 
