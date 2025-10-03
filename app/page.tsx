@@ -1673,13 +1673,13 @@ export default function CillianStudio() {
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
                 <button
                   onClick={() => {
-                    navigator.clipboard.writeText('3d@davidcillian.com')
+                    navigator.clipboard.writeText('office@cillianstudio.com')
                     alert('E-Mail-Adresse wurde in die Zwischenablage kopiert!')
                   }}
                   className="inline-flex items-center gap-3 mobile-contact-button bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <Mail size={20} />
-                  <span className="font-medium">3d@davidcillian.com</span>
+                  <span className="font-medium">office@cillianstudio.com</span>
                 </button>
                 
                 <a
@@ -1724,7 +1724,7 @@ export default function CillianStudio() {
                 Datenschutz
               </button>{" "}
               |{" "}
-              <a href="mailto:3d@davidcillian.com" className="hover:text-white transition-colors">
+              <a href="mailto:office@cillianstudio.com" className="hover:text-white transition-colors">
                 Kontakt
               </a>
             </div>
@@ -1778,7 +1778,7 @@ export default function CillianStudio() {
                     <p>Pelzgasse 3</p>
                     <p>1150 Wien</p>
                     <p>Österreich</p>
-                    <p className="mt-3">E-Mail: 3d@davidcillian.com</p>
+                    <p className="mt-3">E-Mail: office@cillianstudio.com</p>
                     <p>Website: davidcillian.com</p>
                   </div>
                 </section>
@@ -1789,7 +1789,7 @@ export default function CillianStudio() {
                   <div className="text-[#aaa] leading-relaxed">
                     <p>
                       Bei Fragen zu dieser Website oder unseren Dienstleistungen können Sie uns jederzeit unter
-                      3d@davidcillian.com kontaktieren.
+                      office@cillianstudio.com kontaktieren.
                     </p>
                   </div>
                 </section>
@@ -1851,7 +1851,7 @@ export default function CillianStudio() {
                     <p>Verantwortlicher für die Datenverarbeitung auf dieser Website ist:</p>
                     <p className="text-[#f2f2f2] mb-2">David Scherngell</p>
                     <p>Pelzgasse 3, 1150 Wien, Österreich</p>
-                    <p>E-Mail: 3d@davidcillian.com</p>
+                    <p>E-Mail: office@cillianstudio.com</p>
                   </div>
                 </section>
 
@@ -1935,7 +1935,7 @@ export default function CillianStudio() {
                   <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">6. Kontakt für Datenschutzfragen</h3>
                   <div className="text-[#aaa] leading-relaxed">
                     <p>
-                      Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden: 3d@davidcillian.com
+                      Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden: office@cillianstudio.com
                     </p>
                   </div>
                 </section>
