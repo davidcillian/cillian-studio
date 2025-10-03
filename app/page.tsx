@@ -16,6 +16,8 @@ const featureData = {
     text: "Wir gestalten nicht nur atmosphärische 3D-Umgebungen für Games und Visualisierungen, sondern bieten ein umfassendes Leistungsspektrum: von der Entwicklung einzelner Assets über realistische Archviz-Projekte bis hin zu cinematischen Videos. Unser Fokus liegt darauf, eindrucksvolle visuelle Erlebnisse zu schaffen, die Emotionen wecken und nachhaltig begeistern.",
     slides: [
       "/images/Low-Poly_Train/1.png",
+      "/images/the-old-deep/1.png",
+      "/images/creartive-vienna/1.png",
     ],
   },
   "asset-ue": {
