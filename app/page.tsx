@@ -163,7 +163,7 @@ const recentProjects = [
     projectTitle: "Low-Poly Train",
     projectType: "Blender Demoprojekt",
     completionDate: "2025",
-    teamSize: "1 Artist",
+    teamSize: "2 Artists",
     description:
       "Ein Demoprojekt in Blender von David Scherngell. Minimalistischer Ansatz mit nur einer Textur und Coloramp für die gesamte Szene. Fokus auf Low-Poly-Ästhetik und effiziente Texturierung.",
     technologies: ["Blender"],
@@ -180,7 +180,8 @@ const recentProjects = [
       "Minimalistischer aber wirkungsvoller visueller Stil"
     ],
     artists: [
-      { name: "David Scherngell", image: "/images/david-scherngell.jpeg" }
+      { name: "David Scherngell", image: "/images/david-scherngell.jpeg" },
+      { name: "Daniel Abada", image: "/images/Daniel_Abada.jpeg" }
     ],
   },
   {
