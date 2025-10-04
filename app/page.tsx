@@ -264,17 +264,19 @@ const recentProjects = [
   },
 ]
 
-// Gallery images for slideshow (9 images for 3 slides with 3 images each)
+// Gallery images for slideshow (11 images for 4 slides with 3 images each)
 const galleryImages = [
   "/images/Low-Poly_Train/1.png", // Low-Poly Train (erstes Bild)
   "/images/the-old-deep/1.png", // The Old Deep (erstes Bild)
   "/images/creartive-vienna/1.png", // Kaiserkrone (erstes Bild)
+  "/images/Training_001.png", // Training Bild 1
+  "/images/Training_002.png", // Training Bild 2
+  "/images/Training/Training_003.jpeg", // Training Bild 3
+  "/images/Training/Training_004.jpeg", // Training Bild 4
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
   "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
-  "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
-  "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
 ];
 
 export default function CillianStudio() {
