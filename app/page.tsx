@@ -1703,7 +1703,7 @@ export default function CillianStudio() {
                 </div>
               </div>
 
-              <p className="text-sm text-[#aaa] mt-6">Wir antworten in der Regel innerhalb von 24 Stunden</p>
+              <p className="text-sm text-[#aaa] mt-6">Wir antworten innerhalb von 24 Stunden</p>
             </div>
           </div>
         </section>
