@@ -1141,11 +1141,11 @@ export default function CillianStudio() {
           <div
             ref={detailRef}
             className={`overflow-hidden transition-all duration-500 ease-in-out mt-10 ${
-              isDetailOpen ? "max-h-[1200px] lg:max-h-[800px] opacity-100" : "max-h-0 opacity-0"
+              isDetailOpen ? "max-h-[1400px] sm:max-h-[1200px] lg:max-h-[800px] opacity-100" : "max-h-0 opacity-0"
             }`}
           >
             {activeFeature && featureData[activeFeature as keyof typeof featureData] && (
-              <div className="flex flex-col lg:flex-row gap-5 mobile-detail items-start relative">
+              <div className="flex flex-col lg:flex-row gap-3 sm:gap-5 items-start relative w-full">
                 {/* Close button */}
                 <button
                   onClick={handleCloseDetail}
@@ -1156,13 +1156,13 @@ export default function CillianStudio() {
                 </button>
 
                 {/* Text description */}
-                <div className="flex-1 lg:flex-[2] lg:min-w-[300px] mobile-detail-text text-[#aaa] p-4 lg:p-8 bg-white/[0.03] rounded-lg text-base">
+                <div className="flex-1 lg:flex-[2] lg:min-w-[300px] text-[#aaa] p-3 sm:p-4 lg:p-8 bg-white/[0.03] rounded-lg text-sm sm:text-base w-full">
                   {featureData[activeFeature as keyof typeof featureData].text}
                 </div>
 
                 {/* Slideshow */}
-                <div className="flex-1 lg:flex-[3] lg:min-w-[400px] mobile-detail-slideshow relative">
-                  <div className="relative h-[300px] bg-white/[0.03] rounded-lg overflow-hidden" key={activeFeature}>
+                <div className="flex-1 lg:flex-[3] lg:min-w-[400px] relative w-full">
+                  <div className="relative h-[250px] sm:h-[300px] lg:h-[400px] bg-white/[0.03] rounded-lg overflow-hidden w-full" key={activeFeature}>
                     {/* Current slide */}
                     {featureData[activeFeature as keyof typeof featureData].slides.map((slide, index) => (
                       <div
@@ -1173,7 +1173,7 @@ export default function CillianStudio() {
                       >
                         {slide.endsWith('.mp4') ? (
                           <video
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover min-h-full"
                             autoPlay
                             muted
                             loop
@@ -1187,7 +1187,8 @@ export default function CillianStudio() {
                             src={slide || "/placeholder.svg"}
                             alt={`Slide ${index + 1}`}
                             fill
-                            className="object-cover"
+                            className="object-cover min-h-full"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                         )}
                       </div>
