@@ -39,6 +39,7 @@ const featureData = {
     text: "Wir nutzen moderne KI-Technologien, um kreative Prozesse im 3D-Bereich zu erweitern und zu beschleunigen. Durch den Einsatz von KI in Kombination mit 3D entstehen innovative Lösungen für Trailer, Werbespots und immersive Visualisierungen, die Effizienz und Qualität auf ein neues Level heben.",
     slides: [
       "/Videos/AI_Vid_1.mp4",
+      "/Videos/AI_Vid_2.mp4",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
