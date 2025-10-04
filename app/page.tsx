@@ -299,9 +299,6 @@ export default function CillianStudio() {
   const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false)
   // Removed contact form and popup states
   const [isMobile, setIsMobile] = useState(false)
-  // Gamification progress bar state
-  const [gamificationProgress, setGamificationProgress] = useState(0)
-  const [gamificationClicks, setGamificationClicks] = useState(0)
 
   // Check if mobile on mount
   useEffect(() => {
@@ -362,58 +359,18 @@ export default function CillianStudio() {
 
   const handleFeatureClick = (feature: string) => {
     console.log('Feature clicked:', feature) // Debug log
-    
-    // Check if it's a gamification feature
-    const isGamificationFeature = feature.startsWith('consulting-')
-    
-    if (isGamificationFeature) {
-      // Gamification progress bar logic
-      const newClicks = gamificationClicks + 1
-      setGamificationClicks(newClicks)
-      
-      // Calculate progress (need 3 clicks to complete)
-      const progress = Math.min((newClicks / 3) * 100, 100)
-      setGamificationProgress(progress)
-      
-      // Only open detail if progress is complete
-      if (progress >= 100) {
-        setCurrentSlide(0) // Reset slide index when changing features
-        setActiveFeature(feature)
-        setIsDetailOpen(true)
-        
-        // Reset progress after opening
-        setTimeout(() => {
-          setGamificationProgress(0)
-          setGamificationClicks(0)
-        }, 100)
-        
-        // Force re-render of slideshow by adding a key change
-        setTimeout(() => {
-          detailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" })
-        }, 200)
-      }
-    } else {
-      // Normal behavior for other services
-      // Reset gamification progress when switching to other services
-      setGamificationProgress(0)
-      setGamificationClicks(0)
-      
-      setCurrentSlide(0) // Reset slide index when changing features
-      setActiveFeature(feature)
-      setIsDetailOpen(true)
+    setCurrentSlide(0) // Reset slide index when changing features
+    setActiveFeature(feature)
+    setIsDetailOpen(true)
 
-      // Force re-render of slideshow by adding a key change
-      setTimeout(() => {
-        detailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" })
-      }, 100)
-    }
+    // Force re-render of slideshow by adding a key change
+    setTimeout(() => {
+      detailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+    }, 100)
   }
 
   const handleCloseDetail = () => {
     setIsDetailOpen(false)
-    // Reset gamification progress when closing
-    setGamificationProgress(0)
-    setGamificationClicks(0)
   }
 
   const handlePrevSlide = () => {
@@ -1167,27 +1124,13 @@ export default function CillianStudio() {
                     {/* Single Learn More Button */}
                     <button
                       onClick={() => handleFeatureClick(service.features[0].key)}
-                      className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden ${
+                      className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg ${
                         activeFeature === service.features[0].key 
                           ? "bg-blue-600 hover:bg-blue-700 text-white" 
                           : "bg-white/10 hover:bg-white/20 text-[#aaa] hover:text-white border border-white/20"
                       }`}
                     >
-                      {/* Progress bar for Gamification */}
-                      {service.id === "consulting" && gamificationProgress > 0 && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20">
-                          <div 
-                            className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500 ease-out"
-                            style={{ width: `${gamificationProgress}%` }}
-                          />
-                        </div>
-                      )}
-                      <span className="relative z-10">
-                        {service.id === "consulting" && gamificationProgress > 0 
-                          ? `Learn More (${Math.round(gamificationProgress)}%)` 
-                          : "Learn More"
-                        }
-                      </span>
+                      Learn More
                     </button>
                   </div>
                 </div>
