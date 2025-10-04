@@ -165,7 +165,7 @@ const recentProjects = [
     completionDate: "2025",
     teamSize: "2 Artists",
     description:
-      "Ein Demoprojekt in Blender von David Scherngell. Minimalistischer Ansatz mit nur einer Textur und Coloramp für die gesamte Szene. Fokus auf Low-Poly-Ästhetik und effiziente Texturierung.",
+      "Ein Demoprojekt in Blender von David Scherngell und Daniel Abada. Minimalistischer Ansatz mit nur einer Textur und Coloramp für die gesamte Szene. Fokus auf Low-Poly-Ästhetik und effiziente Texturierung.",
     technologies: ["Blender"],
     images: [
       "/images/Low-Poly_Train/1.png",
