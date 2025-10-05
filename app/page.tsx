@@ -612,9 +612,9 @@ export default function CillianStudio() {
           </div>
           
           {/* About Us Description */}
-          <div className="max-w-4xl mx-auto mb-16">
+          <div className="w-full mb-16">
             <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8">
-              <p className="text-[#aaa] text-lg leading-relaxed">
+              <p className="text-[#aaa] text-lg leading-relaxed text-center">
                 Wir sind Ihr Partner für professionelle 3D Creation und innovative AI-Lösungen. Von detaillierten Visualisierungen und prozeduralen Assets bis hin zu maßgeschneiderten Trainings – wir erwecken Ihre Visionen zum Leben. Unsere Leidenschaft ist es, durch die Kombination von Unreal Engine, Blender und modernster Technologie einzigartige digitale Erlebnisse zu schaffen.
               </p>
             </div>
