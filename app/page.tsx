@@ -7,7 +7,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import Image from "next/image"
 import "./globals.css"
-import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send, Instagram, Phone } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send, Instagram, Phone, Youtube, Linkedin } from 'lucide-react'
 // Removed moving/venom effects and heavy animations
 import CookieBanner from "@/components/cookie-banner"
 
@@ -1721,6 +1721,43 @@ export default function CillianStudio() {
         {/* Footer */}
         <footer className="bg-[#0a0a0a] border-t border-white/10 py-12 mobile-footer">
           <div className="max-w-6xl mx-auto px-5 text-center">
+            {/* Social Media Links */}
+            <div className="mb-8">
+              <h3 className="text-[#f2f2f2] text-lg mb-4">Folgen Sie uns</h3>
+              <div className="flex justify-center gap-6">
+                <a
+                  href="https://www.youtube.com/channel/UCUnpVqUZeM4HgbusAsfYz-w/posts?pvf=CAI%253D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-[#aaa] hover:text-white transition-colors"
+                  aria-label="YouTube Kanal"
+                >
+                  <Youtube size={20} />
+                  <span className="text-sm">YouTube</span>
+                </a>
+                <a
+                  href="https://www.instagram.com/cillian_studio?igsh=aG1obXhzaHlsMnho&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-[#aaa] hover:text-white transition-colors"
+                  aria-label="Instagram Profil"
+                >
+                  <Instagram size={20} />
+                  <span className="text-sm">Instagram</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/cillian-studio/about/?viewAsMember=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-[#aaa] hover:text-white transition-colors"
+                  aria-label="LinkedIn Profil"
+                >
+                  <Linkedin size={20} />
+                  <span className="text-sm">LinkedIn</span>
+                </a>
+              </div>
+            </div>
+
             <div className="text-[#aaa] text-sm mobile-footer-text">
               &copy; {currentYear} Cillian Studio |{" "}
               <button onClick={() => setIsImpressumOpen(!isImpressumOpen)} className="hover:text-white transition-colors">
