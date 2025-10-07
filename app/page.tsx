@@ -515,7 +515,7 @@ export default function CillianStudio() {
             >
               <Image
                 src="https://davidcillian.com/wp-content/uploads/2023/08/254-1.png"
-                alt="Cillian Studio Logo"
+                alt="Cillian Studio Logo - Professional 3D Creation, AI Solutions, Training Services Austria Vienna"
                 width={140}
                 height={140}
                 className="w-full block"
@@ -634,7 +634,7 @@ export default function CillianStudio() {
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                     <Image
                       src="/images/Daniel_Abada.jpeg"
-                      alt="Daniel Abada - Marketing Specialist"
+                      alt="Daniel Abada - Marketing Specialist, 3D Artist, Digital Marketing Expert Austria Vienna"
                       width={180}
                       height={180}
                       className="w-full h-full object-cover"
@@ -673,7 +673,7 @@ export default function CillianStudio() {
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                     <Image
                       src="/images/Daniel_Abada.jpeg"
-                      alt="Daniel Abada - Marketing Specialist"
+                      alt="Daniel Abada - Marketing Specialist, 3D Artist, Digital Marketing Expert Austria Vienna"
                       width={180}
                       height={180}
                       className="w-full h-full object-cover"
@@ -715,7 +715,7 @@ export default function CillianStudio() {
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                     <Image
                       src="/images/david-scherngell.jpeg"
-                      alt="David Scherngell - 3D Artist"
+                      alt="David Scherngell - 3D Artist, Unreal Engine Expert, Blender Specialist, 3D Creation Austria Vienna"
                       width={180}
                       height={180}
                       className="w-full h-full object-cover"
@@ -778,7 +778,7 @@ export default function CillianStudio() {
                   <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                     <Image
                       src="/images/david-scherngell.jpeg"
-                      alt="David Scherngell - 3D Artist"
+                      alt="David Scherngell - 3D Artist, Unreal Engine Expert, Blender Specialist, 3D Creation Austria Vienna"
                       width={180}
                       height={180}
                       className="w-full h-full object-cover"
@@ -1118,7 +1118,7 @@ export default function CillianStudio() {
                 <div className="p-8 pb-4">
                   <Image
                     src={service.image || "/placeholder.svg"}
-                    alt={`${service.title} service illustration - Professional 3D creation and training services`}
+                    alt={`${service.title} service illustration - Professional 3D creation, AI solutions, training services Austria Vienna`}
                     width={180}
                     height={180}
                     className="w-full max-w-[180px] mobile-service-image mx-auto rounded service-image"
@@ -1198,7 +1198,7 @@ export default function CillianStudio() {
                         ) : (
                           <Image
                             src={slide || "/placeholder.svg"}
-                            alt={`Slide ${index + 1}`}
+                            alt={`${activeFeature} slide ${index + 1} - 3D creation, AI solutions, training services`}
                             fill
                             className="object-cover min-h-full"
                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -1357,7 +1357,7 @@ export default function CillianStudio() {
                               >
                                 <Image
                                   src={image}
-                                  alt={`${project.projectTitle} - Bild ${imgIndex + 1}`}
+                                  alt={`${project.projectTitle} - 3D creation project image ${imgIndex + 1} - ${project.technologies.join(', ')} Austria Vienna`}
                                   fill
                                   className="object-cover"
                                   onError={(e) => { e.currentTarget.src = "/placeholder.svg"; }}
@@ -1580,7 +1580,7 @@ export default function CillianStudio() {
                 <div className="relative w-full h-48 mobile-gallery-image">
                   <Image
                     src={galleryImages[gallerySlide] || "/placeholder.svg"}
-                    alt={`Gallery image ${gallerySlide + 1}`}
+                    alt={`3D creation gallery image ${gallerySlide + 1} - Professional 3D art, AI solutions, training portfolio Austria Vienna`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
@@ -1592,7 +1592,7 @@ export default function CillianStudio() {
                 <div className="relative w-full h-64">
                   <Image
                     src={galleryImages[gallerySlide * 3] || "/placeholder.svg"}
-                    alt={`Gallery image ${gallerySlide * 3 + 1}`}
+                    alt={`3D creation portfolio image ${gallerySlide * 3 + 1} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
@@ -1603,7 +1603,7 @@ export default function CillianStudio() {
                 <div className="relative w-full h-64">
                   <Image
                     src={galleryImages[gallerySlide * 3 + 1] || "/placeholder.svg"}
-                    alt={`Gallery image ${gallerySlide * 3 + 2}`}
+                    alt={`3D creation portfolio image ${gallerySlide * 3 + 2} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
@@ -1614,7 +1614,7 @@ export default function CillianStudio() {
                 <div className="relative w-full h-64">
                   <Image
                     src={galleryImages[gallerySlide * 3 + 2] || "/placeholder.svg"}
-                    alt={`Gallery image ${gallerySlide * 3 + 3}`}
+                    alt={`3D creation portfolio image ${gallerySlide * 3 + 3} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
                     fill
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
@@ -2146,6 +2146,69 @@ export default function CillianStudio() {
       
       {/* Cookie Banner */}
       <CookieBanner />
+      
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Cillian Studio",
+            "description": "Professional 3D Creation, AI Solutions, and Training Services in Austria Vienna",
+            "url": "https://cillianstudio.com",
+            "logo": "https://davidcillian.com/wp-content/uploads/2023/08/254-1.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Pelzgasse 3",
+              "addressLocality": "Vienna",
+              "addressCountry": "Austria",
+              "postalCode": "1150"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+43-680-1609124",
+              "contactType": "customer service",
+              "email": "office@cillianstudio.com"
+            },
+            "sameAs": [
+              "https://www.youtube.com/channel/UCUnpVqUZeM4HgbusAsfYz-w",
+              "https://www.instagram.com/cillian_studio",
+              "https://www.linkedin.com/company/cillian-studio",
+              "https://www.tiktok.com/@cillian_studio"
+            ],
+            "founder": [
+              {
+                "@type": "Person",
+                "name": "David Scherngell",
+                "jobTitle": "3D Artist, Unreal Engine Expert"
+              },
+              {
+                "@type": "Person", 
+                "name": "Daniel Abada",
+                "jobTitle": "Marketing Specialist, 3D Artist"
+              }
+            ],
+            "service": [
+              {
+                "@type": "Service",
+                "name": "3D Creation",
+                "description": "Professional 3D modeling, animation, and asset creation"
+              },
+              {
+                "@type": "Service", 
+                "name": "AI Solutions",
+                "description": "AI-enhanced 3D workflows and creative processes"
+              },
+              {
+                "@type": "Service",
+                "name": "Training",
+                "description": "Blender, Unreal Engine, and 3D software training"
+              }
+            ]
+          })
+        }}
+      />
     </div>
   )
 }
