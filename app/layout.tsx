@@ -56,34 +56,35 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <head>
-        {/* Preload kritische Ressourcen */}
-        <link rel="preload" href="/images/3d-artwork-1.png" as="image" />
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-
-        {/* Cookiebot Cookie Consent */}
+        {/* Cookiebot Cookie Consent - MUSS ZUERST GELADEN WERDEN */}
         <script 
           id="Cookiebot" 
           src="https://consent.cookiebot.com/uc.js" 
           data-cbid="b3824abb-2872-49a4-bd95-b45d1cd25028" 
           data-blockingmode="auto" 
           type="text/javascript"
-          async
-        ></script>
+        />
+        
+        {/* Preload kritische Ressourcen */}
+        <link rel="preload" href="/images/3d-artwork-1.png" as="image" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
         {/* Cookiebot Fallback und Debug */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               // Debug: Prüfen ob Cookiebot lädt
+              console.log('Starte Cookiebot Debug...');
               window.addEventListener('load', function() {
                 setTimeout(function() {
-                  if (typeof Cookiebot === 'undefined') {
-                    console.warn('Cookiebot nicht geladen - Banner wird nicht angezeigt');
+                  if (typeof window.Cookiebot === 'undefined') {
+                    console.error('Cookiebot wurde NICHT geladen!');
+                    console.error('CBID:', 'b3824abb-2872-49a4-bd95-b45d1cd25028');
                   } else {
-                    console.log('Cookiebot erfolgreich geladen');
+                    console.log('Cookiebot erfolgreich geladen!');
                   }
-                }, 1000);
+                }, 2000);
               });
             `,
           }}
