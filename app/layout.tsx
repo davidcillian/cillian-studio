@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 import Preloader from "@/components/preloader"
 
@@ -69,12 +70,13 @@ export default function RootLayout({
         <link rel="preload" href="/images/3d-artwork-1.png" as="image" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-
-        {/* Cookiebot Fallback und Debug */}
-        <script
+      </head>
+      <body className="antialiased">
+        <Script
+          id="cookiebot-debug"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              // Debug: Prüfen ob Cookiebot lädt
               console.log('Starte Cookiebot Debug...');
               window.addEventListener('load', function() {
                 setTimeout(function() {
@@ -92,7 +94,9 @@ export default function RootLayout({
 
         {/* Google Analytics - nur mit Cookiebot-Zustimmung */}
         {process.env.NODE_ENV === "production" && (
-          <script
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
                 // Google Analytics nur laden wenn Cookiebot-Zustimmung gegeben
@@ -126,8 +130,7 @@ export default function RootLayout({
             }}
           />
         )}
-      </head>
-      <body className="antialiased">
+
         <Preloader />
         {children}
       </body>
