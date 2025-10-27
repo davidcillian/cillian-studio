@@ -68,7 +68,26 @@ export default function RootLayout({
           data-cbid="b3824abb-2872-49a4-bd95-b45d1cd25028" 
           data-blockingmode="auto" 
           type="text/javascript"
+          async
         ></script>
+
+        {/* Cookiebot Fallback und Debug */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Debug: Prüfen ob Cookiebot lädt
+              window.addEventListener('load', function() {
+                setTimeout(function() {
+                  if (typeof Cookiebot === 'undefined') {
+                    console.warn('Cookiebot nicht geladen - Banner wird nicht angezeigt');
+                  } else {
+                    console.log('Cookiebot erfolgreich geladen');
+                  }
+                }, 1000);
+              });
+            `,
+          }}
+        />
 
         {/* Google Analytics - nur mit Cookiebot-Zustimmung */}
         {process.env.NODE_ENV === "production" && (
