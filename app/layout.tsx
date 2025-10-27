@@ -61,14 +61,23 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
 
-        {/* Google Analytics - nur mit Zustimmung */}
+        {/* Cookiebot Cookie Consent */}
+        <script 
+          id="Cookiebot" 
+          src="https://consent.cookiebot.com/uc.js" 
+          data-cbid="b3824abb-2872-49a4-bd95-b45d1cd25028" 
+          data-blockingmode="auto" 
+          type="text/javascript"
+        ></script>
+
+        {/* Google Analytics - nur mit Cookiebot-Zustimmung */}
         {process.env.NODE_ENV === "production" && (
           <script
             dangerouslySetInnerHTML={{
               __html: `
-                // Google Analytics nur laden wenn Cookie-Zustimmung gegeben
+                // Google Analytics nur laden wenn Cookiebot-Zustimmung gegeben
                 function loadGoogleAnalytics() {
-                  if (localStorage.getItem('cookieConsent') === 'accepted') {
+                  if (typeof Cookiebot !== 'undefined' && Cookiebot.consent.preferences) {
                     // Google Analytics Script laden
                     const script = document.createElement('script');
                     script.async = true;
@@ -86,15 +95,13 @@ export default function RootLayout({
                   }
                 }
                 
-                // Sofort prüfen und laden
-                loadGoogleAnalytics();
-                
-                // Auch bei Storage-Änderungen prüfen (für Cookie-Banner)
-                window.addEventListener('storage', function(e) {
-                  if (e.key === 'cookieConsent') {
-                    loadGoogleAnalytics();
-                  }
+                // Warten bis Cookiebot geladen ist
+                window.addEventListener('CookiebotOnConsentReady', function() {
+                  loadGoogleAnalytics();
                 });
+                
+                // Fallback: Nach 2 Sekunden prüfen
+                setTimeout(loadGoogleAnalytics, 2000);
               `,
             }}
           />

@@ -9,7 +9,6 @@ import Image from "next/image"
 import "./globals.css"
 import { ChevronLeft, ChevronRight, X, ExternalLink, Calendar, Users, Mail, Send, Instagram, Phone, Youtube, Linkedin } from 'lucide-react'
 // Removed moving/venom effects and heavy animations
-import CookieBanner from "@/components/cookie-banner"
 
 const featureData = {
   "asset-ai": {
@@ -2144,8 +2143,6 @@ export default function CillianStudio() {
         </footer>
       </main>
       
-      {/* Cookie Banner */}
-      <CookieBanner />
       
       {/* Structured Data for SEO */}
       <script
