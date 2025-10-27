@@ -1862,55 +1862,45 @@ export default function CillianStudio() {
               </div>
 
               <div className="space-y-6 text-sm text-[#aaa] leading-relaxed">
-                {/* Angaben gemäß TMG */}
+                {/* Websitebetreiber */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">1. Angaben gemäß § 5 TMG</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Websitebetreiber</h3>
                   <div className="text-[#aaa] leading-relaxed">
                     <p className="text-[#f2f2f2] mb-2">David Scherngell</p>
-                    <p>Pelzgasse 3</p>
-                    <p>1150 Wien</p>
-                    <p>Österreich</p>
-                    <p className="mt-3">E-Mail: office@cillianstudio.com</p>
-                    <p>Website: davidcillian.com</p>
+                    <p>Wien, Österreich</p>
                   </div>
                 </section>
 
                 {/* Kontakt */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">2. Kontakt</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Kontakt</h3>
                   <div className="text-[#aaa] leading-relaxed">
-                    <p>
-                      Bei Fragen zu dieser Website oder unseren Dienstleistungen können Sie uns jederzeit unter
-                      office@cillianstudio.com kontaktieren.
-                    </p>
+                    <p>E-Mail: office@cillianstudio.com</p>
+                    <p>Telefon: +43 680 1609124</p>
                   </div>
                 </section>
 
-                {/* Haftungsausschluss */}
+                {/* Hinweis gemäß ECG und MedienG */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">3. Haftungsausschluss</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Hinweis gemäß § 5 ECG und § 24 MedienG</h3>
                   <div className="text-[#aaa] leading-relaxed space-y-3">
                     <p>
-                      Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
-                      Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+                      Diese Website dient der Präsentation kreativer Arbeiten und Projekte von David Scherngell.
                     </p>
                     <p>
-                      Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
-                      allgemeinen Gesetzen verantwortlich.
+                      Die gewerbliche Tätigkeit im Bereich Web- und Grafikdesign befindet sich derzeit in Gründung.
+                    </p>
+                    <p>
+                      Bis zur formellen Gewerbeanmeldung handelt es sich nicht um ein gewerbliches Angebot im Sinne des E-Commerce-Gesetzes.
                     </p>
                   </div>
                 </section>
 
-                {/* Urheberrecht */}
+                {/* Verantwortlich für den Inhalt */}
                 <section>
-                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">4. Urheberrecht</h3>
+                  <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">Verantwortlich für den Inhalt</h3>
                   <div className="text-[#aaa] leading-relaxed">
-                    <p>
-                      Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
-                      deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der
-                      Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
-                      jeweiligen Autors bzw. Erstellers.
-                    </p>
+                    <p>David Scherngell</p>
                   </div>
                 </section>
               </div>
