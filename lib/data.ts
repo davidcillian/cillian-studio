@@ -154,7 +154,7 @@ export const recentProjects = [
     teamSize: "1 Artist",
     description:
       "Ein Demoprojekt erstellt in Blender, Marvelous Designer und ZBrush. Gerendert in Cycles.",
-    technologies: ["Blender", "Marvelous Designer", "ZBrush", "Cycles"],
+    technologies: ["Blender", "Marvelous Designer", "ZBrush", "Substance Painter", "Cycles"],
     images: [
       "/images/monk/monk-3d-character-blender-marvelous-designer-zbrush-render-1.jpg",
       "/images/monk/monk-3d-character-blender-marvelous-designer-zbrush-render-2.jpg",
