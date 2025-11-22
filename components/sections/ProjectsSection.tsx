@@ -42,11 +42,10 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                     {recentProjects.map((project, index) => (
                         <div
                             key={project.id}
-                            className={`bg-[#1d1d1d] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-white/20 relative ${!showAllProjects && index >= 3 ? 'opacity-30' : ''
-                                }`}
+                            className={`bg-[#1d1d1d] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-white/20 relative`}
                             style={{
-                                display: !showAllProjects && index >= 3 ? 'block' : 'block',
-                                height: !showAllProjects && index === 3 ? '120px' : 'auto',
+                                display: !showAllProjects && index > 3 ? 'none' : 'block',
+                                height: !showAllProjects && index === 3 ? '150px' : 'auto',
                                 overflow: !showAllProjects && index === 3 ? 'hidden' : 'visible'
                             }}
                         >
@@ -104,8 +103,8 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                                     <button
                                         onClick={() => handleProjectClick(project.id)}
                                         className={`w-40 mobile-project-button mobile-touch-target h-12 px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 relative overflow-hidden ${activeProject === project.id
-                                                ? "bg-blue-700 hover:bg-blue-800 border border-blue-600 text-white"
-                                                : "bg-blue-600 hover:bg-blue-700 border border-blue-500 text-white"
+                                            ? "bg-blue-700 hover:bg-blue-800 border border-blue-600 text-white"
+                                            : "bg-blue-600 hover:bg-blue-700 border border-blue-500 text-white"
                                             }`}
                                     >
                                         {activeProject === project.id && (
