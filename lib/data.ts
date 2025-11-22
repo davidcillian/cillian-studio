@@ -145,6 +145,32 @@ export const serviceData = [
 
 export const recentProjects = [
   {
+    id: "project-monk",
+    clientName: "Demo",
+    clientLogo: "Demo",
+    projectTitle: "Monk",
+    projectType: "Demo Project",
+    completionDate: "2025",
+    teamSize: "1 Artist",
+    description:
+      "Ein Demoprojekt erstellt in Blender, Marvelous Designer und ZBrush. Gerendert in Cycles.",
+    technologies: ["Blender", "Marvelous Designer", "ZBrush", "Cycles"],
+    images: [
+      "/images/monk/monk-3d-character-blender-marvelous-designer-zbrush-render-1.jpg",
+      "/images/monk/monk-3d-character-blender-marvelous-designer-zbrush-render-2.jpg",
+      "/images/monk/monk-3d-character-blender-marvelous-designer-zbrush-render-3.jpg"
+    ],
+    results: [
+      "High-End Character Design",
+      "Realistische Stoffsimulation mit Marvelous Designer",
+      "Detailliertes Sculpting in ZBrush",
+      "Photorealistisches Rendering in Cycles"
+    ],
+    artists: [
+      { name: "David Scherngell", image: "/images/david-scherngell.jpeg" }
+    ],
+  },
+  {
     id: "project-1",
     clientName: "Demo",
     clientLogo: "Demo", // Demo-Projekt, daher nur Text
