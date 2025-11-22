@@ -149,7 +149,7 @@ export const recentProjects = [
     clientName: "Demo",
     clientLogo: "Demo",
     projectTitle: "Monk",
-    projectType: "Demo Project",
+    projectType: "Demo",
     completionDate: "2025",
     teamSize: "1 Artist",
     description:
@@ -161,7 +161,7 @@ export const recentProjects = [
       "/images/monk/monk-3d-character-blender-marvelous-designer-zbrush-render-3.jpg"
     ],
     results: [
-      "High-End Character Design",
+      "Stylized Character Design",
       "Realistische Stoffsimulation mit Marvelous Designer",
       "Detailliertes Sculpting in ZBrush",
       "Photorealistisches Rendering in Cycles"
