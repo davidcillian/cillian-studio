@@ -44,13 +44,13 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                             key={project.id}
                             className={`bg-[#1d1d1d] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-white/20 relative`}
                             style={{
-                                display: !showAllProjects && index > 3 ? 'none' : 'block',
-                                height: !showAllProjects && index === 3 ? '150px' : 'auto',
-                                overflow: !showAllProjects && index === 3 ? 'hidden' : 'visible'
+                                display: !showAllProjects && index > 2 ? 'none' : 'block',
+                                height: !showAllProjects && index === 2 ? '150px' : 'auto',
+                                overflow: !showAllProjects && index === 2 ? 'hidden' : 'visible'
                             }}
                         >
-                            {/* Fade overlay for 4th project when not showing all */}
-                            {!showAllProjects && index === 3 && (
+                            {/* Fade overlay for 3rd project when not showing all */}
+                            {!showAllProjects && index === 2 && (
                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1d1d1d] pointer-events-none z-10"></div>
                             )}
                             {/* Project Header */}
@@ -317,7 +317,7 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                     ))}
 
                     {/* More Projects Button */}
-                    {!showAllProjects && recentProjects.length > 3 && (
+                    {!showAllProjects && recentProjects.length > 2 && (
                         <div className="flex justify-center mt-8">
                             <button
                                 onClick={() => setShowAllProjects(true)}
@@ -330,7 +330,7 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                     )}
 
                     {/* Less Projects Button */}
-                    {showAllProjects && recentProjects.length > 3 && (
+                    {showAllProjects && recentProjects.length > 2 && (
                         <div className="flex justify-center mt-8">
                             <button
                                 onClick={() => setShowAllProjects(false)}
