@@ -78,6 +78,7 @@ export const featureData = {
       "/images/Training_002.png",
       "/images/Training/Training_003.jpeg",
       "/images/Training/Training_004.jpeg",
+      "/images/Training/Training_005.png",
     ],
   },
   "training-advanced": {
