@@ -153,7 +153,7 @@ export const recentProjects = [
     completionDate: "2025",
     teamSize: "1 Artist",
     description:
-      "Ein Demoprojekt erstellt in Blender, Marvelous Designer und ZBrush. Gerendert in Cycles.",
+      "Ein Demoprojekt von David Scherngell, das einen stilisierten Charakter im Pixar-Look zeigt. Der Fokus lag auf High-End Character Design und lebendiger Ausstrahlung.",
     technologies: ["Blender", "Marvelous Designer", "ZBrush", "Substance Painter", "Cycles"],
     images: [
       "/images/monk/monk-3d-character-blender-marvelous-designer-zbrush-render-1.jpg",
