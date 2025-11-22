@@ -279,6 +279,7 @@ export const recentProjects = [
 ]
 
 export const galleryImages = [
+  "/images/monk/monk-3d-character-blender-marvelous-designer-zbrush-render-1.jpg", // Monk (erstes Bild)
   "/images/Low-Poly_Train/1.png", // Low-Poly Train (erstes Bild)
   "/images/the-old-deep/1.png", // The Old Deep (erstes Bild)
   "/images/creartive-vienna/1.png", // Kaiserkrone (erstes Bild)
