@@ -102,7 +102,7 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                                     {/* Expand Button */}
                                     <button
                                         onClick={() => handleProjectClick(project.id)}
-                                        className={`w-40 mobile-project-button mobile-touch-target h-12 px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 relative overflow-hidden ${activeProject === project.id
+                                        className={`w-40 mobile-project-button mobile-touch-target h-12 px-6 py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden ${activeProject === project.id
                                             ? "bg-blue-700 hover:bg-blue-800 border border-blue-600 text-white"
                                             : "bg-blue-600 hover:bg-blue-700 border border-blue-500 text-white"
                                             }`}
@@ -321,7 +321,7 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                         <div className="flex justify-center mt-8">
                             <button
                                 onClick={() => setShowAllProjects(true)}
-                                className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300"
                             >
                                 <span>Show More Projects</span>
                                 <ChevronRight size={20} className="rotate-90" />
@@ -334,7 +334,7 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                         <div className="flex justify-center mt-8">
                             <button
                                 onClick={() => setShowAllProjects(false)}
-                                className="inline-flex items-center gap-3 bg-gray-600 hover:bg-gray-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                className="inline-flex items-center gap-3 bg-gray-600 hover:bg-gray-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-300"
                             >
                                 <span>Show Less</span>
                                 <ChevronRight size={20} className="-rotate-90" />

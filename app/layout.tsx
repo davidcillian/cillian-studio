@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
 import Preloader from "@/components/preloader"
+import { LiquidGlassCursor } from "@/components/liquid-glass-cursor"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -79,6 +80,10 @@ export default function RootLayout({
               <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="1" result="noise" />
               <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" />
             </filter>
+            <filter id="liquid-glass-cursor-filter">
+              <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
           </defs>
         </svg>
 
@@ -141,6 +146,7 @@ export default function RootLayout({
           />
         )}
 
+        <LiquidGlassCursor />
         <Preloader />
         {children}
       </body>

@@ -129,7 +129,7 @@ export function ServicesSection() {
                                                         setGamificationProgress(next)
                                                     }
                                                 }}
-                                                className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden ${activeFeature === service.features[0].key
+                                                className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 relative overflow-hidden ${activeFeature === service.features[0].key
                                                         ? "bg-blue-600 hover:bg-blue-700 text-white"
                                                         : "liquid-glass-btn text-[#aaa] hover:text-white"
                                                     }`}
@@ -150,7 +150,7 @@ export function ServicesSection() {
                                     ) : (
                                         <button
                                             onClick={() => handleFeatureClick(service.features[0].key)}
-                                            className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg ${activeFeature === service.features[0].key
+                                            className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 ${activeFeature === service.features[0].key
                                                     ? "bg-blue-600 hover:bg-blue-700 text-white"
                                                     : "liquid-glass-btn text-[#aaa] hover:text-white"
                                                 }`}
