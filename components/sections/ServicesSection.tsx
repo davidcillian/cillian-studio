@@ -94,7 +94,7 @@ export function ServicesSection() {
                     {serviceData.map((service, index) => (
                         <div
                             key={service.id}
-                            className={`service-box mobile-service-box bg-[#1d1d1d] border border-white/10 rounded-lg transition-all duration-700 overflow-hidden`}
+                            className={`service-box mobile-service-box liquid-glass rounded-lg transition-all duration-700 overflow-hidden`}
                         >
                             {/* Gesamte Box als ein Kastl - Bild oben */}
                             <div className="p-8 pb-4">
@@ -131,7 +131,7 @@ export function ServicesSection() {
                                                 }}
                                                 className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden ${activeFeature === service.features[0].key
                                                         ? "bg-blue-600 hover:bg-blue-700 text-white"
-                                                        : "bg-white/10 hover:bg-white/20 text-[#aaa] hover:text-white border border-white/20"
+                                                        : "liquid-glass-btn text-[#aaa] hover:text-white"
                                                     }`}
                                             >
                                                 {gamificationProgress > 0
@@ -152,7 +152,7 @@ export function ServicesSection() {
                                             onClick={() => handleFeatureClick(service.features[0].key)}
                                             className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg ${activeFeature === service.features[0].key
                                                     ? "bg-blue-600 hover:bg-blue-700 text-white"
-                                                    : "bg-white/10 hover:bg-white/20 text-[#aaa] hover:text-white border border-white/20"
+                                                    : "liquid-glass-btn text-[#aaa] hover:text-white"
                                                 }`}
                                         >
                                             Learn More

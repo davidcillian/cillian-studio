@@ -42,7 +42,7 @@ export const ProjectsSection = forwardRef<HTMLDivElement>((props, ref) => {
                     {recentProjects.map((project, index) => (
                         <div
                             key={project.id}
-                            className={`bg-[#1d1d1d] border border-white/10 rounded-lg overflow-hidden transition-all duration-300 hover:border-white/20 relative`}
+                            className={`liquid-glass rounded-lg overflow-hidden transition-all duration-300 relative`}
                             style={{
                                 display: !showAllProjects && index > 2 ? 'none' : 'block',
                                 height: !showAllProjects && index === 2 ? '150px' : 'auto',

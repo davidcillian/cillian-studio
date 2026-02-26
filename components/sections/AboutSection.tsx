@@ -18,7 +18,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
 
                 {/* About Us Description */}
                 <div className="w-full mb-16">
-                    <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8">
+                    <div className="liquid-glass rounded-lg p-8">
                         <p className="text-[#aaa] text-lg leading-relaxed text-center">
                             Wir sind Ihr Partner für professionelle 3D Creation, innovative AI-Lösungen und die Anwendung neuester Technologien. Von detaillierten Visualisierungen und prozeduralen Assets über KI-gestützte Workflows bis hin zu maßgeschneiderten Trainings – wir erwecken Ihre Visionen zum Leben. Unsere Leidenschaft ist es, durch die Kombination von Unreal Engine, Blender, künstlicher Intelligenz und modernster Technologie einzigartige digitale Erlebnisse zu schaffen.
                         </p>
@@ -32,7 +32,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                 >
 
                     {/* Adrian Spielberger - Links */}
-                    <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] ${isMobile ? 'rounded-lg border border-white/10' : 'border border-white/10 rounded-lg'} p-8 relative z-10`}>
+                    <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box liquid-glass rounded-lg p-8 relative z-10">
                         <div className="flex flex-col items-center text-center mobile-about-content">
                             <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4 overflow-hidden">
                                 {/* Platzhalter bis Foto kommt */}
@@ -77,7 +77,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                     </div>
 
                     {/* Daniel Abada */}
-                    <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] ${isMobile ? 'rounded-lg border border-white/10' : 'border border-white/10 rounded-lg'} p-8 relative z-10`}>
+                    <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box liquid-glass rounded-lg p-8 relative z-10">
                         <div className="flex flex-col items-center text-center mobile-about-content">
                             <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                                 <Image
@@ -126,7 +126,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                     </div>
 
                     {/* David Scherngell */}
-                    <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] ${isMobile ? 'rounded-lg border border-white/10' : 'border border-white/10 rounded-lg'} p-8 relative z-10`}>
+                    <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box liquid-glass rounded-lg p-8 relative z-10">
                         <div className="flex flex-col items-center text-center mobile-about-content">
                             <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                                 <Image
@@ -190,7 +190,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                     </div>
 
                     {/* Gearworks - Rechts */}
-                    <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] ${isMobile ? 'rounded-lg border border-white/10' : 'border border-white/10 rounded-lg'} p-8 relative z-10`}>
+                    <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box liquid-glass rounded-lg p-8 relative z-10">
                         <div className="flex flex-col items-center text-center mobile-about-content">
                             <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
                                 <Image

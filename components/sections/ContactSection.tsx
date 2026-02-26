@@ -11,7 +11,7 @@ export const ContactSection = forwardRef<HTMLDivElement>((props, ref) => {
                     </h2>
                 </div>
                 <div ref={ref} className="max-w-4xl mx-auto text-center">
-                    <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-12 mobile-contact-container">
+                    <div className="liquid-glass rounded-lg p-12 mobile-contact-container">
                         <p className="text-lg mobile-contact-text text-[#aaa] mb-8 leading-relaxed">
                             Lassen Sie uns gemeinsam Ihre Vision zum Leben erwecken. Kontaktieren Sie uns für eine unverbindliche
                             Beratung.

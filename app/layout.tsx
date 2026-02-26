@@ -72,6 +72,16 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
       <body className="antialiased">
+        {/* Liquid Glass SVG Filter */}
+        <svg aria-hidden="true" className="absolute w-0 h-0 overflow-hidden">
+          <defs>
+            <filter id="liquid-glass-filter">
+              <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="1" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+          </defs>
+        </svg>
+
         <Script
           id="cookiebot-debug"
           strategy="beforeInteractive"
