@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
 import { featureData, serviceData } from "@/lib/data"
@@ -9,9 +9,45 @@ export function ServicesSection() {
     const [activeFeature, setActiveFeature] = useState<string | null>(null)
     const [isDetailOpen, setIsDetailOpen] = useState(false)
     const [currentSlide, setCurrentSlide] = useState(0)
-    const [gamificationClicks, setGamificationClicks] = useState(0)
-    const GAMIFICATION_CLICKS_NEEDED = 5
+    const [gamificationProgress, setGamificationProgress] = useState(0)
+    const gamificationTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+    const GAMIFICATION_THRESHOLD = 100
+    const CLICK_INCREMENT = 22 // ~5 Klicks bei normalem Tempo
+    const DECAY_RATE = 1.5 // pro 50ms - sanft genug dass man es schafft
+    const DECAY_INTERVAL = 50
     const detailRef = useRef<HTMLDivElement>(null)
+
+    // Fortschrittsbalken langsam abbauen
+    const startDecay = useCallback(() => {
+        if (gamificationTimerRef.current) return
+        gamificationTimerRef.current = setInterval(() => {
+            setGamificationProgress(prev => {
+                const next = prev - DECAY_RATE
+                if (next <= 0) {
+                    if (gamificationTimerRef.current) {
+                        clearInterval(gamificationTimerRef.current)
+                        gamificationTimerRef.current = null
+                    }
+                    return 0
+                }
+                return next
+            })
+        }, DECAY_INTERVAL)
+    }, [])
+
+    // Cleanup
+    useEffect(() => {
+        return () => {
+            if (gamificationTimerRef.current) clearInterval(gamificationTimerRef.current)
+        }
+    }, [])
+
+    // Decay starten sobald Progress > 0
+    useEffect(() => {
+        if (gamificationProgress > 0 && gamificationProgress < GAMIFICATION_THRESHOLD) {
+            startDecay()
+        }
+    }, [gamificationProgress, startDecay])
 
     // Reset slideshow when active feature changes
     useEffect(() => {
@@ -81,12 +117,16 @@ export function ServicesSection() {
                                         <div>
                                             <button
                                                 onClick={() => {
-                                                    const next = gamificationClicks + 1
-                                                    if (next >= GAMIFICATION_CLICKS_NEEDED) {
-                                                        setGamificationClicks(0)
+                                                    const next = Math.min(gamificationProgress + CLICK_INCREMENT, GAMIFICATION_THRESHOLD)
+                                                    if (next >= GAMIFICATION_THRESHOLD) {
+                                                        setGamificationProgress(0)
+                                                        if (gamificationTimerRef.current) {
+                                                            clearInterval(gamificationTimerRef.current)
+                                                            gamificationTimerRef.current = null
+                                                        }
                                                         handleFeatureClick(service.features[0].key)
                                                     } else {
-                                                        setGamificationClicks(next)
+                                                        setGamificationProgress(next)
                                                     }
                                                 }}
                                                 className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden ${activeFeature === service.features[0].key
@@ -94,15 +134,15 @@ export function ServicesSection() {
                                                         : "bg-white/10 hover:bg-white/20 text-[#aaa] hover:text-white border border-white/20"
                                                     }`}
                                             >
-                                                {gamificationClicks > 0 && gamificationClicks < GAMIFICATION_CLICKS_NEEDED
-                                                    ? `${GAMIFICATION_CLICKS_NEEDED - gamificationClicks} Clicks left...`
+                                                {gamificationProgress > 0
+                                                    ? "Keep clicking!"
                                                     : "Learn More"}
                                             </button>
-                                            {gamificationClicks > 0 && gamificationClicks < GAMIFICATION_CLICKS_NEEDED && (
+                                            {gamificationProgress > 0 && (
                                                 <div className="mt-3 w-full bg-white/10 rounded-full h-2 overflow-hidden">
                                                     <div
-                                                        className="h-full bg-blue-500 rounded-full transition-all duration-300"
-                                                        style={{ width: `${(gamificationClicks / GAMIFICATION_CLICKS_NEEDED) * 100}%` }}
+                                                        className="h-full bg-blue-500 rounded-full transition-[width] duration-100 ease-linear"
+                                                        style={{ width: `${gamificationProgress}%` }}
                                                     />
                                                 </div>
                                             )}
