@@ -9,6 +9,8 @@ export function ServicesSection() {
     const [activeFeature, setActiveFeature] = useState<string | null>(null)
     const [isDetailOpen, setIsDetailOpen] = useState(false)
     const [currentSlide, setCurrentSlide] = useState(0)
+    const [gamificationClicks, setGamificationClicks] = useState(0)
+    const GAMIFICATION_CLICKS_NEEDED = 5
     const detailRef = useRef<HTMLDivElement>(null)
 
     // Reset slideshow when active feature changes
@@ -75,16 +77,47 @@ export function ServicesSection() {
                                     <h3 className="mb-4 text-xl mobile-service-title text-center hover:text-blue-400 transition-colors duration-300">{service.title}</h3>
                                 </div>
                                 <div className="px-8 pb-8">
-                                    {/* Single Learn More Button */}
-                                    <button
-                                        onClick={() => handleFeatureClick(service.features[0].key)}
-                                        className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg ${activeFeature === service.features[0].key
-                                                ? "bg-blue-600 hover:bg-blue-700 text-white"
-                                                : "bg-white/10 hover:bg-white/20 text-[#aaa] hover:text-white border border-white/20"
-                                            }`}
-                                    >
-                                        Learn More
-                                    </button>
+                                    {service.id === "consulting" ? (
+                                        <div>
+                                            <button
+                                                onClick={() => {
+                                                    const next = gamificationClicks + 1
+                                                    if (next >= GAMIFICATION_CLICKS_NEEDED) {
+                                                        setGamificationClicks(0)
+                                                        handleFeatureClick(service.features[0].key)
+                                                    } else {
+                                                        setGamificationClicks(next)
+                                                    }
+                                                }}
+                                                className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden ${activeFeature === service.features[0].key
+                                                        ? "bg-blue-600 hover:bg-blue-700 text-white"
+                                                        : "bg-white/10 hover:bg-white/20 text-[#aaa] hover:text-white border border-white/20"
+                                                    }`}
+                                            >
+                                                {gamificationClicks > 0 && gamificationClicks < GAMIFICATION_CLICKS_NEEDED
+                                                    ? `${GAMIFICATION_CLICKS_NEEDED - gamificationClicks} Clicks left...`
+                                                    : "Learn More"}
+                                            </button>
+                                            {gamificationClicks > 0 && gamificationClicks < GAMIFICATION_CLICKS_NEEDED && (
+                                                <div className="mt-3 w-full bg-white/10 rounded-full h-2 overflow-hidden">
+                                                    <div
+                                                        className="h-full bg-blue-500 rounded-full transition-all duration-300"
+                                                        style={{ width: `${(gamificationClicks / GAMIFICATION_CLICKS_NEEDED) * 100}%` }}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <button
+                                            onClick={() => handleFeatureClick(service.features[0].key)}
+                                            className={`w-full px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg ${activeFeature === service.features[0].key
+                                                    ? "bg-blue-600 hover:bg-blue-700 text-white"
+                                                    : "bg-white/10 hover:bg-white/20 text-[#aaa] hover:text-white border border-white/20"
+                                                }`}
+                                        >
+                                            Learn More
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
