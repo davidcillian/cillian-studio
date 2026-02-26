@@ -31,7 +31,52 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                     style={{ minHeight: "500px" }}
                 >
 
-                    {/* Daniel Abada - Links - Mobile: keine Animation */}
+                    {/* Adrian Spielberger - Links */}
+                    <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] ${isMobile ? 'rounded-lg border border-white/10' : 'border border-white/10 rounded-lg'} p-8 relative z-10`}>
+                        <div className="flex flex-col items-center text-center mobile-about-content">
+                            <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4 overflow-hidden">
+                                {/* Platzhalter bis Foto kommt */}
+                                <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
+                                    <span className="text-2xl text-white/60">AS</span>
+                                </div>
+                            </div>
+                            <div className="text-[#aaa] text-base mobile-about-text">
+                                <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Adrian Spielberger</h3>
+                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Artist & UI/UX Design</div>
+                                <p className="leading-6">
+                                    3D-Artist aus Deutschland mit Fokus auf Organic Modeling, Texturing & LookDev.
+                                </p>
+                                <div className="mt-4 flex gap-4 justify-center">
+                                    <a
+                                        href="https://www.instagram.com/3d.aspect?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-pink-400 hover:text-pink-300 transition-colors duration-300"
+                                        aria-label="Follow @3d.aspect on Instagram"
+                                    >
+                                        <Instagram size={24} />
+                                    </a>
+                                    <a
+                                        href="https://www.linkedin.com/in/adrian-spielberger/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="transition-opacity duration-300 hover:opacity-80"
+                                        aria-label="Connect with Adrian Spielberger on LinkedIn"
+                                    >
+                                        <Image
+                                            src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
+                                            alt="LinkedIn"
+                                            width={24}
+                                            height={24}
+                                            className="w-6 h-6"
+                                        />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Daniel Abada */}
                     <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] ${isMobile ? 'rounded-lg border border-white/10' : 'border border-white/10 rounded-lg'} p-8 relative z-10`}>
                         <div className="flex flex-col items-center text-center mobile-about-content">
                             <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
@@ -80,7 +125,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                         </div>
                     </div>
 
-                    {/* David Scherngell - Mitte (statisch) */}
+                    {/* David Scherngell */}
                     <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] ${isMobile ? 'rounded-lg border border-white/10' : 'border border-white/10 rounded-lg'} p-8 relative z-10`}>
                         <div className="flex flex-col items-center text-center mobile-about-content">
                             <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
@@ -134,51 +179,6 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                                         <Image
                                             src="/images/Logos/artstation-logo.png"
                                             alt="ArtStation"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Adrian Spielberger - Zwischen David und GearWorks */}
-                    <div className={`flex-1 min-w-[280px] mobile-about-box tablet-about-box bg-[#1d1d1d] ${isMobile ? 'rounded-lg border border-white/10' : 'border border-white/10 rounded-lg'} p-8 relative z-10`}>
-                        <div className="flex flex-col items-center text-center mobile-about-content">
-                            <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                                {/* Platzhalter bis Foto kommt */}
-                                <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-                                    <span className="text-2xl text-white/60">AS</span>
-                                </div>
-                            </div>
-                            <div className="text-[#aaa] text-base mobile-about-text">
-                                <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Adrian Spielberger</h3>
-                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Artist & UI/UX Design</div>
-                                <p className="leading-6">
-                                    3D-Artist aus Deutschland mit Fokus auf Organic Modeling, Texturing & LookDev.
-                                </p>
-                                <div className="mt-4 flex gap-4 justify-center">
-                                    <a
-                                        href="https://www.instagram.com/3d.aspect?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-pink-400 hover:text-pink-300 transition-colors duration-300"
-                                        aria-label="Follow @3d.aspect on Instagram"
-                                    >
-                                        <Instagram size={24} />
-                                    </a>
-                                    <a
-                                        href="https://www.linkedin.com/in/adrian-spielberger/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="Connect with Adrian Spielberger on LinkedIn"
-                                    >
-                                        <Image
-                                            src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
-                                            alt="LinkedIn"
                                             width={24}
                                             height={24}
                                             className="w-6 h-6"
