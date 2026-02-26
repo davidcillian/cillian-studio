@@ -45,7 +45,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                             </div>
                             <div className="text-[#aaa] text-base mobile-about-text">
                                 <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Daniel Abada</h3>
-                                <div className="text-sm text-purple-400 mb-2 uppercase tracking-wider">Marketing & AI Specialist</div>
+                                <div className="text-sm text-purple-400 mb-2 uppercase tracking-wider">Marketing & Gamification</div>
                                 <p className="leading-6">
                                     Marketing-Spezialist (Bachelor in Gaming Business) mit Expertise in Gamification, strategischer
                                     Markenführung und Anwendung neuester AI-Technologien.
@@ -155,7 +155,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                             </div>
                             <div className="text-[#aaa] text-base mobile-about-text">
                                 <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Adrian Spielberger</h3>
-                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Artist</div>
+                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Artist & UI/UX Design</div>
                                 <p className="leading-6">
                                     3D-Artist aus Deutschland mit Fokus auf Organic Modeling, Texturing & LookDev.
                                 </p>
@@ -206,7 +206,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                                 <div className="text-sm text-green-400 mb-2 uppercase tracking-wider">Technical Specialist</div>
                                 <p className="leading-6">
                                     GearWorks Production - Spezialist für Generatoren, Development und Coding mit umfangreicher
-                                    Engine-Erfahrung. Technisches Rückgrat für komplexe 3D-Projekte.
+                                    Engine-Erfahrung. Technisches Rückgrat für komplexe Projekte.
                                 </p>
                                 <div className="mt-4 flex gap-4 justify-center">
                                     <a
