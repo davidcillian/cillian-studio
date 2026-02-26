@@ -4,10 +4,41 @@ import { useEffect, useRef, useState } from "react"
 
 type CursorState = "default" | "interactive" | "text" | "image"
 
+function detectState(t: HTMLElement): CursorState {
+    // Interactive elements - highest priority
+    if (t.closest('a, button, [role="button"], input, select, textarea')) {
+        return "interactive"
+    }
+
+    // Images - check tag, classes, and parent containers with images
+    if (
+        t.tagName === 'IMG' ||
+        t.tagName === 'VIDEO' ||
+        t.classList.contains('object-cover') ||
+        t.classList.contains('service-image')
+    ) {
+        return "image"
+    }
+
+    // Check if element is a direct wrapper around an image (e.g. Next.js Image containers)
+    const firstChild = t.firstElementChild
+    if (firstChild && (firstChild.tagName === 'IMG' || firstChild.tagName === 'VIDEO')) {
+        return "image"
+    }
+
+    // Text elements
+    if (t.closest('p, h1, h2, h3, h4, h5, h6, span, li, blockquote, label')) {
+        return "text"
+    }
+
+    return "default"
+}
+
 export function LiquidGlassCursor() {
     const cursorRef = useRef<HTMLDivElement>(null)
     const [visible, setVisible] = useState(false)
     const [cursorState, setCursorState] = useState<CursorState>("default")
+    const stateRef = useRef<CursorState>("default")
     const hasMovedRef = useRef(false)
 
     useEffect(() => {
@@ -22,22 +53,12 @@ export function LiquidGlassCursor() {
                 hasMovedRef.current = true
                 setVisible(true)
             }
-        }
 
-        const handleMouseOver = (e: MouseEvent) => {
-            const t = e.target as HTMLElement
-            const isInteractive = !!t.closest('a, button, [role="button"], input, select, textarea')
-            if (isInteractive) {
-                setCursorState("interactive")
-                return
+            const newState = detectState(e.target as HTMLElement)
+            if (newState !== stateRef.current) {
+                stateRef.current = newState
+                setCursorState(newState)
             }
-            const isImage = t.tagName === 'IMG' || t.tagName === 'VIDEO' || !!t.closest('.relative > img, .relative > video, [class*="h-64"], [class*="h-48"], .service-image')
-            if (isImage) {
-                setCursorState("image")
-                return
-            }
-            const isText = !!t.closest('p, h1, h2, h3, h4, h5, h6, span, li, blockquote, label')
-            setCursorState(isText ? "text" : "default")
         }
 
         const handleMouseLeave = () => setVisible(false)
@@ -46,13 +67,11 @@ export function LiquidGlassCursor() {
         }
 
         document.addEventListener("mousemove", handleMouseMove)
-        document.addEventListener("mouseover", handleMouseOver)
         document.documentElement.addEventListener("mouseleave", handleMouseLeave)
         document.documentElement.addEventListener("mouseenter", handleMouseEnter)
 
         return () => {
             document.removeEventListener("mousemove", handleMouseMove)
-            document.removeEventListener("mouseover", handleMouseOver)
             document.documentElement.removeEventListener("mouseleave", handleMouseLeave)
             document.documentElement.removeEventListener("mouseenter", handleMouseEnter)
         }
