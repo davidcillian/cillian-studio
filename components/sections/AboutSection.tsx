@@ -20,7 +20,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                 <div className="w-full mb-16">
                     <div className="bg-[#1d1d1d] border border-white/10 rounded-lg p-8">
                         <p className="text-[#aaa] text-lg leading-relaxed text-center">
-                            Wir sind Ihr Partner für professionelle 3D Creation und innovative AI-Lösungen. Von detaillierten Visualisierungen und prozeduralen Assets bis hin zu maßgeschneiderten Trainings – wir erwecken Ihre Visionen zum Leben. Unsere Leidenschaft ist es, durch die Kombination von Unreal Engine, Blender und modernster Technologie einzigartige digitale Erlebnisse zu schaffen.
+                            Wir sind Ihr Partner für professionelle 3D Creation, innovative AI-Lösungen und die Anwendung neuester Technologien. Von detaillierten Visualisierungen und prozeduralen Assets über KI-gestützte Workflows bis hin zu maßgeschneiderten Trainings – wir erwecken Ihre Visionen zum Leben. Unsere Leidenschaft ist es, durch die Kombination von Unreal Engine, Blender, künstlicher Intelligenz und modernster Technologie einzigartige digitale Erlebnisse zu schaffen.
                         </p>
                     </div>
                 </div>
@@ -45,10 +45,10 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                             </div>
                             <div className="text-[#aaa] text-base mobile-about-text">
                                 <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Daniel Abada</h3>
-                                <div className="text-sm text-purple-400 mb-2 uppercase tracking-wider">Marketing Specialist</div>
+                                <div className="text-sm text-purple-400 mb-2 uppercase tracking-wider">Marketing & AI Specialist</div>
                                 <p className="leading-6">
-                                    Marketing-Spezialist (Bachelor in Gaming Business) mit Expertise in Gamification und strategischer
-                                    Markenführung.
+                                    Marketing-Spezialist (Bachelor in Gaming Business) mit Expertise in Gamification, strategischer
+                                    Markenführung und Anwendung neuester AI-Technologien.
                                 </p>
                                 <div className="mt-4 flex gap-4 justify-center">
                                     <a
@@ -94,9 +94,9 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                             </div>
                             <div className="text-[#aaa] text-base mobile-about-text">
                                 <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">David Scherngell</h3>
-                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Generalist</div>
+                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Generalist & AI Specialist</div>
                                 <p className="leading-6">
-                                    3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine und Blender. Leidenschaftlicher
+                                    3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine, Blender und Anwendung neuester AI-Technologien. Leidenschaftlicher
                                     Mentor für angehende CG-Talente.
                                 </p>
                                 <div className="mt-4 flex gap-4 justify-center">
