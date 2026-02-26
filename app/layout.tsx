@@ -76,9 +76,31 @@ export default function RootLayout({
         {/* Liquid Glass SVG Filter */}
         <svg aria-hidden="true" className="absolute w-0 h-0 overflow-hidden">
           <defs>
-            <filter id="liquid-glass-filter">
-              <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="1" result="noise" />
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" />
+            {/* Refraction fuer Cards - Edge-only Displacement + Specular */}
+            <filter id="liquid-glass-filter" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="1" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" result="distorted" />
+              <feMorphology in="SourceAlpha" operator="erode" radius="4" result="inner" />
+              <feGaussianBlur in="inner" stdDeviation="3" result="mask" />
+              <feComposite in="SourceGraphic" in2="mask" operator="in" result="center" />
+              <feComposite in="distorted" in2="mask" operator="out" result="edges" />
+              <feComposite in="center" in2="edges" operator="over" result="refracted" />
+              <feSpecularLighting in="noise" surfaceScale="2" specularConstant="0.6" specularExponent="20" result="specular">
+                <fePointLight x="200" y="-100" z="300" />
+              </feSpecularLighting>
+              <feComposite in="specular" in2="SourceAlpha" operator="in" result="specular-clipped" />
+              <feBlend in="refracted" in2="specular-clipped" mode="screen" />
+            </filter>
+
+            {/* Lupen-Distortion: klare Mitte, verzerrte Raender */}
+            <filter id="loupe-distortion" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="5" result="noise" />
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G" result="distorted" />
+              <feMorphology in="SourceAlpha" operator="erode" radius="8" result="inner" />
+              <feGaussianBlur in="inner" stdDeviation="5" result="mask" />
+              <feComposite in="SourceGraphic" in2="mask" operator="in" result="center" />
+              <feComposite in="distorted" in2="mask" operator="out" result="edges" />
+              <feComposite in="center" in2="edges" operator="over" />
             </filter>
           </defs>
         </svg>
