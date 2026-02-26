@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 
-type CursorState = "default" | "interactive" | "text"
+type CursorState = "default" | "interactive" | "text" | "image"
 
 export function LiquidGlassCursor() {
     const cursorRef = useRef<HTMLDivElement>(null)
@@ -31,6 +31,11 @@ export function LiquidGlassCursor() {
                 setCursorState("interactive")
                 return
             }
+            const isImage = t.tagName === 'IMG' || t.tagName === 'VIDEO' || !!t.closest('.relative > img, .relative > video, [class*="h-64"], [class*="h-48"], .service-image')
+            if (isImage) {
+                setCursorState("image")
+                return
+            }
             const isText = !!t.closest('p, h1, h2, h3, h4, h5, h6, span, li, blockquote, label')
             setCursorState(isText ? "text" : "default")
         }
@@ -57,7 +62,9 @@ export function LiquidGlassCursor() {
         ? " liquid-glass-cursor-hover"
         : cursorState === "text"
             ? " liquid-glass-cursor-text"
-            : ""
+            : cursorState === "image"
+                ? " liquid-glass-cursor-image"
+                : ""
 
     return (
         <div
