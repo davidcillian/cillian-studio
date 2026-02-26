@@ -8,19 +8,18 @@ export function LiquidGlassCursor() {
     const cursorRef = useRef<HTMLDivElement>(null)
     const [visible, setVisible] = useState(false)
     const [cursorState, setCursorState] = useState<CursorState>("default")
-    const pos = useRef({ x: 0, y: 0 })
-    const target = useRef({ x: 0, y: 0 })
-    const rafId = useRef<number>(0)
     const hasMovedRef = useRef(false)
 
     useEffect(() => {
         if (window.matchMedia("(hover: none)").matches) return
 
         const handleMouseMove = (e: MouseEvent) => {
-            target.current = { x: e.clientX, y: e.clientY }
+            if (cursorRef.current) {
+                cursorRef.current.style.left = `${e.clientX}px`
+                cursorRef.current.style.top = `${e.clientY}px`
+            }
             if (!hasMovedRef.current) {
                 hasMovedRef.current = true
-                pos.current = { x: e.clientX, y: e.clientY }
                 setVisible(true)
             }
         }
@@ -41,29 +40,16 @@ export function LiquidGlassCursor() {
             if (hasMovedRef.current) setVisible(true)
         }
 
-        const animate = () => {
-            pos.current.x += (target.current.x - pos.current.x) * 0.15
-            pos.current.y += (target.current.y - pos.current.y) * 0.15
-
-            if (cursorRef.current) {
-                cursorRef.current.style.transform = `translate(${pos.current.x}px, ${pos.current.y}px)`
-            }
-
-            rafId.current = requestAnimationFrame(animate)
-        }
-
         document.addEventListener("mousemove", handleMouseMove)
         document.addEventListener("mouseover", handleMouseOver)
         document.documentElement.addEventListener("mouseleave", handleMouseLeave)
         document.documentElement.addEventListener("mouseenter", handleMouseEnter)
-        rafId.current = requestAnimationFrame(animate)
 
         return () => {
             document.removeEventListener("mousemove", handleMouseMove)
             document.removeEventListener("mouseover", handleMouseOver)
             document.documentElement.removeEventListener("mouseleave", handleMouseLeave)
             document.documentElement.removeEventListener("mouseenter", handleMouseEnter)
-            cancelAnimationFrame(rafId.current)
         }
     }, [])
 
