@@ -1,7 +1,7 @@
 
 export const featureData = {
   "asset-ai": {
-    text: "Wir gestalten nicht nur atmosphärische 3D-Umgebungen für Games und Visualisierungen, sondern bieten ein umfassendes Leistungsspektrum: von der Entwicklung einzelner Assets über realistische Archviz-Projekte bis hin zu cinematischen Videos. Unser Fokus liegt darauf, eindrucksvolle visuelle Erlebnisse zu schaffen, die Emotionen wecken und nachhaltig begeistern.",
+    text: "Wir kombinieren hochwertige 3D-Visualisierung mit KI-gestützten Workflows: Fotorealistische Renderings, Echtzeit-Produktkonfiguratoren, interaktive ArchViz in Unreal Engine 5 und game-ready Assets mit optimierter Topologie. KI beschleunigt dabei UV-Mapping, Retopology und Material-Erstellung — für schnellere Delivery bei höchster Qualität.",
     slides: [
       "/images/Low-Poly_Train/1.png",
       "/images/the-old-deep/1.png",
@@ -9,7 +9,7 @@ export const featureData = {
     ],
   },
   "asset-ue": {
-    text: "Nahtlose Integration und Optimierung von Assets in UE5-Projekte. Wir sorgen dafür, dass Ihre 3D-Modelle perfekt in Unreal Engine funktionieren und dabei maximale Performance bieten.",
+    text: "Nahtlose Integration und Optimierung von Assets in UE5-Projekte. Interaktive ArchViz-Anwendungen, Realtime-Visualisierungen und Game-Assets — alles aus einer Hand. Referenz: Ludwig Kren Realtime-ArchViz-Tool in Unreal Engine 5.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
@@ -17,14 +17,14 @@ export const featureData = {
     ],
   },
   "asset-optimization": {
-    text: "Optimierung von 3D-Assets für maximale Performance bei minimaler Qualitätseinbuße. Wir finden die perfekte Balance zwischen visueller Qualität und technischer Effizienz.",
+    text: "Optimierung von 3D-Assets für maximale Performance bei minimaler Qualitätseinbuße. Saubere Topologie, effiziente UVs und vollständige PBR-Material-Sets — aus 8 Jahren Erfahrung in der 3D-Pipeline.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
     ],
   },
   "scene-environments": {
-    text: "Wir nutzen moderne KI-Technologien, um kreative Prozesse im 3D-Bereich zu erweitern und zu beschleunigen. Durch den Einsatz von KI in Kombination mit 3D entstehen innovative Lösungen für Trailer, Werbespots und immersive Visualisierungen, die Effizienz und Qualität auf ein neues Level heben.",
+    text: "Wir setzen selbst-gehostete KI-Agenten-Systeme für Unternehmen auf — DSGVO-konform, ohne Cloud-Abhängigkeit. Lokale LLMs (Llama, DeepSeek, Mistral) laufen auf Ihrem Server oder bei Hetzner. Multi-Agent-Systeme für Content-Erstellung, Research, Kundenkommunikation und automatisierte Workflows mit n8n.",
     slides: [
       "/Videos/AI_Vid_1.mp4",
       "/Videos/AI_Vid_2.mp4",
@@ -34,7 +34,7 @@ export const featureData = {
     ],
   },
   "scene-lighting": {
-    text: "Atmosphärische Beleuchtung zur Steigerung der Immersion und visuellen Qualität. Mit professioneller Lichtgestaltung heben wir Ihre 3D-Szenen auf ein neues Level.",
+    text: "Intelligentes Model-Routing und RAG-Integration für präzise Antworten aus Ihren eigenen Daten. Unsere KI-Agenten arbeiten mit Ihren Dokumenten, E-Mails und Datenbanken — alles lokal, nichts verlässt Ihren Server.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
@@ -42,14 +42,14 @@ export const featureData = {
     ],
   },
   "scene-procedural": {
-    text: "Einsatz prozeduraler Techniken zur effizienten Erstellung großer Umgebungen. Wir nutzen fortschrittliche Methoden, um weitläufige und detailreiche Welten zu generieren.",
+    text: "n8n-Workflow-Automatisierung für Ihre Geschäftsprozesse: Content-Pipelines, automatisierte E-Mail-Beantwortung, Social-Media-Posting und mehr. Einmal eingerichtet, läuft es ohne Ihr Zutun — monatlicher Support inklusive.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
     ],
   },
   "consulting-implementation": {
-    text: "Wir entwickeln maßgeschneiderte Lösungen zur Gamifizierung von Verkaufsprozessen. Durch spielerische Elemente wie Belohnungssysteme, Wettbewerbe und Fortschrittsanzeigen steigern wir Motivation, Kundenbindung und Verkaufszahlen. Unsere Ansätze machen Vertriebsprozesse nicht nur effizienter, sondern auch erlebbarer.",
+    text: "Wir entwickeln maßgeschneiderte Gamification-Lösungen: Belohnungsmechaniken, Progressions-Design und spielerische Elemente, die Motivation und Engagement steigern. Von Vertriebsprozessen über Kundenbindung bis zu Mitarbeitermotivation — Gamification macht Prozesse erlebbar und messbar.",
     slides: [
       "/Videos/Gamification_Vid_1.mp4",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
@@ -57,14 +57,14 @@ export const featureData = {
     ],
   },
   "consulting-optimization": {
-    text: "Optimierung bestehender 3D-Pipelines für bessere Performance und Qualität. Wir analysieren Ihre aktuellen Prozesse und identifizieren Verbesserungspotenziale.",
+    text: "Integration von Gamification-Elementen in bestehende 3D-Anwendungen und KI-Workflows. Wir verbinden spielerische Mechaniken mit Ihren digitalen Prozessen für höheres User-Engagement.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
     ],
   },
   "consulting-strategy": {
-    text: "Strategische Planung für 3D-Projekte von der Konzeption bis zur Umsetzung. Wir begleiten Sie durch den gesamten Entwicklungsprozess und stellen sicher, dass Ihre Ziele erreicht werden.",
+    text: "Strategische Beratung an der Schnittstelle von Kreativität und Technologie: Welche KI-Lösungen passen zu Ihrem Unternehmen? Wie wird Ihre 3D-Pipeline effizienter? Wo steigert Gamification Ihren ROI? Wir beraten und setzen um — keine Schnittstellenprobleme.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
@@ -72,7 +72,7 @@ export const featureData = {
     ],
   },
   "training-basics": {
-    text: "Unsere Kurse bieten einen umfassenden Einstieg in Blender. Neben der 3D-Modellierung werden auch weitere zentrale Funktionen wie Material- und Texturarbeit, Beleuchtung, Rendering sowie die Integration in gängige Game Engines behandelt. So erhalten Teilnehmer eine solide Basis, um eigene 3D-Projekte erfolgreich umzusetzen.",
+    text: "Unsere Kurse bieten einen umfassenden Einstieg in Blender und Unreal Engine 5. Neben 3D-Modellierung werden auch Material-/Texturarbeit, Beleuchtung, Rendering und die Integration in Game Engines behandelt. Praxisnah und fundiert — aus echten Projekten, nicht nur aus Lehrbüchern.",
     slides: [
       "/images/Training_001.png",
       "/images/Training_002.png",
@@ -82,7 +82,7 @@ export const featureData = {
     ],
   },
   "training-advanced": {
-    text: "Fortgeschrittene Techniken in Blender und Unreal Engine für Profis. Vertiefen Sie Ihre Kenntnisse und lernen Sie fortgeschrittene Methoden von erfahrenen Experten.",
+    text: "KI-Workshops für Unternehmen und Einzelpersonen: Lokale KI-Agenten aufsetzen, n8n-Automatisierung, Prompt Engineering und die einzigartige Kombination von 3D + KI. Verfügbar als VHS-Kurs, WKO-Workshop oder maßgeschneiderter Firmenworkshop.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
@@ -92,7 +92,7 @@ export const featureData = {
     ],
   },
   "training-specialized": {
-    text: "Spezialisierte Workshops zu spezifischen 3D-Technologien und -Workflows. Maßgeschneiderte Schulungen für Ihre individuellen Bedürfnisse und Projekte.",
+    text: "Maßgeschneiderte Firmenworkshops zu 3D, KI oder der Kombination aus beidem. Von Blender-Basics für Ihr Kreativteam bis zu KI-Agenten-Workshops für Ihre IT-Abteilung. Hands-on, praxisnah und auf Ihre Bedürfnisse zugeschnitten.",
     slides: [
       "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
       "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
@@ -104,22 +104,22 @@ export const featureData = {
 export const serviceData = [
   {
     id: "asset-creation",
-    title: "3D Creation",
+    title: "3D-Visualisierung",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/untitled-1.png?w=1024",
     features: [
-      { key: "asset-ai", label: "AI-Enhanced Workflow" },
+      { key: "asset-ai", label: "KI-gestützte 3D-Produktion" },
       { key: "asset-ue", label: "Unreal Engine Integration" },
-      { key: "asset-optimization", label: "Performance Optimization" },
+      { key: "asset-optimization", label: "Asset-Optimierung" },
     ],
   },
   {
     id: "scene-creation",
-    title: "AI Creation",
+    title: "KI-Agenten",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/untitled.png?w=1024",
     features: [
-      { key: "scene-environments", label: "3D Environments" },
-      { key: "scene-lighting", label: "Atmospheric Lighting" },
-      { key: "scene-procedural", label: "Procedural Generation" },
+      { key: "scene-environments", label: "Lokale KI-Setups" },
+      { key: "scene-lighting", label: "RAG & Model-Routing" },
+      { key: "scene-procedural", label: "Workflow-Automatisierung" },
     ],
   },
   {
@@ -127,9 +127,9 @@ export const serviceData = [
     title: "Gamification",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/icon2.png?w=1024",
     features: [
-      { key: "consulting-implementation", label: "Implementation" },
-      { key: "consulting-optimization", label: "Pipeline Optimization" },
-      { key: "consulting-strategy", label: "Strategic Planning" },
+      { key: "consulting-implementation", label: "Gamification-Design" },
+      { key: "consulting-optimization", label: "Integration" },
+      { key: "consulting-strategy", label: "Consulting & Strategie" },
     ],
   },
   {
@@ -137,9 +137,9 @@ export const serviceData = [
     title: "Training",
     image: "https://davidcillian.com/wp-content/uploads/2023/08/icon1.png?w=1024",
     features: [
-      { key: "training-basics", label: "Basics & Fundamentals" },
-      { key: "training-advanced", label: "Advanced Techniques" },
-      { key: "training-specialized", label: "Specialized Workshops" },
+      { key: "training-basics", label: "3D-Workshops" },
+      { key: "training-advanced", label: "KI-Workshops" },
+      { key: "training-specialized", label: "Firmenworkshops" },
     ],
   },
 ]

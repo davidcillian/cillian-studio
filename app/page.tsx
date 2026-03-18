@@ -108,7 +108,7 @@ export default function CillianStudio() {
               "@type": "ProfessionalService",
               name: "Cillian Studio",
               image: "https://cillianstudio.com/images/3d-artwork-1.png",
-              description: "Professionelles Studio für 3D-Visualisierung, KI-gestützte Produktion und Training in Wien. Spezialisiert auf Unreal Engine, Blender und modernste 3D-Technologien.",
+              description: "Kreativ- und Technologie-Studio in Wien. Verbindet 3D-Visualisierung, lokale KI-Agenten-Entwicklung und Gamification. Als Creative Technology Consultant liefert David Scherngell Lösungen, die kein reiner 3D-Artist und kein reiner KI-Berater bieten kann.",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Wien",
@@ -133,15 +133,18 @@ export default function CillianStudio() {
               founder: {
                 "@type": "Person",
                 name: "David Scherngell",
-                jobTitle: "3D Artist & Technical Artist",
+                jobTitle: "Creative Technology Consultant",
                 knowsAbout: [
+                  "3D-Visualisierung",
                   "Unreal Engine 5",
                   "Blender",
                   "ZBrush",
                   "Substance Painter",
-                  "3D Visualisierung",
-                  "KI-gestützte 3D-Produktion",
+                  "KI-Agenten",
+                  "Lokale LLMs",
+                  "n8n Workflow-Automatisierung",
                   "Gamification",
+                  "DSGVO-konforme KI-Lösungen",
                 ],
               },
               openingHoursSpecification: [
@@ -160,16 +163,16 @@ export default function CillianStudio() {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "3D Creation",
-                      description: "Professionelle 3D-Umgebungen, Assets, Archviz-Projekte und cinematische Videos mit Unreal Engine 5, Blender, ZBrush und Substance Painter.",
+                      name: "3D-Visualisierung",
+                      description: "Fotorealistische Renderings, interaktive ArchViz in Unreal Engine 5, Echtzeit-Produktkonfiguratoren und game-ready Assets. KI-gestützte Beschleunigung der 3D-Pipeline.",
                     },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "AI Creation",
-                      description: "KI-gestützte kreative Workflows für Trailer, Werbespots und immersive Visualisierungen.",
+                      name: "KI-Agenten",
+                      description: "Selbst-gehostete KI-Agenten-Systeme — DSGVO-konform, ohne Cloud-Abhängigkeit. Lokale LLMs, Multi-Agent-Systeme, RAG-Integration und n8n-Workflow-Automatisierung.",
                     },
                   },
                   {
@@ -177,15 +180,15 @@ export default function CillianStudio() {
                     itemOffered: {
                       "@type": "Service",
                       name: "Gamification",
-                      description: "Maßgeschneiderte Gamifizierung von Verkaufs- und Vertriebsprozessen mit Belohnungssystemen und Fortschrittsanzeigen.",
+                      description: "Maßgeschneiderte Gamification-Lösungen mit Belohnungsmechaniken und Progressions-Design für Vertrieb, Kundenbindung und Mitarbeitermotivation.",
                     },
                   },
                   {
                     "@type": "Offer",
                     itemOffered: {
                       "@type": "Service",
-                      name: "Training",
-                      description: "Blender-Kurse von Grundlagen bis Fortgeschrittene, inklusive Material-/Texturarbeit, Beleuchtung und Game Engine Integration.",
+                      name: "Training & Consulting",
+                      description: "3D- und KI-Workshops an VHS Wien, WKO und als Firmenworkshops. Blender, Unreal Engine 5, lokale KI-Agenten, n8n-Automatisierung und Prompt Engineering.",
                     },
                   },
                 ],
@@ -200,7 +203,15 @@ export default function CillianStudio() {
                   name: "Was bietet Cillian Studio an?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Cillian Studio bietet professionelle 3D-Visualisierung, KI-gestützte Produktion, Gamification-Lösungen und 3D-Training an. Wir arbeiten mit Unreal Engine 5, Blender, ZBrush und weiteren führenden Tools.",
+                    text: "Cillian Studio verbindet 3D-Visualisierung, KI-Agenten-Entwicklung und Gamification. Als Creative Technology Consultant liefert David Scherngell Lösungen aus einer Hand — von fotorealistischen Renderings über lokale KI-Setups bis zu Gamification-Systemen.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Was sind lokale KI-Agenten?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Lokale KI-Agenten sind selbst-gehostete KI-Systeme, die auf Ihrem eigenen Server laufen — ohne Cloud-Abhängigkeit. Cillian Studio setzt lokale LLMs (Llama, DeepSeek, Mistral) auf, die DSGVO-konform arbeiten. Keine Daten verlassen Ihren Server.",
                   },
                 },
                 {
@@ -216,15 +227,15 @@ export default function CillianStudio() {
                   name: "Welche 3D-Software verwendet Cillian Studio?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Wir arbeiten mit Unreal Engine 5, Blender, ZBrush, Substance Painter, Marvelous Designer, Maya und Premiere Pro. Zusätzlich setzen wir KI-gestützte Workflows ein.",
+                    text: "Wir arbeiten mit Blender, Unreal Engine 5, ZBrush, Substance Painter, Marvelous Designer, Maya und ComfyUI. Zusätzlich setzen wir KI-gestützte Workflows und lokale LLMs ein.",
                   },
                 },
                 {
                   "@type": "Question",
-                  name: "Bietet Cillian Studio Blender-Kurse an?",
+                  name: "Bietet Cillian Studio Workshops an?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Ja, wir bieten umfassende Blender-Kurse an – von Grundlagen bis Fortgeschrittene. Die Kurse umfassen 3D-Modellierung, Material-/Texturarbeit, Beleuchtung, Rendering und die Integration in Game Engines.",
+                    text: "Ja — 3D-Workshops (Blender, UE5), KI-Workshops (lokale KI-Agenten, n8n, Prompt Engineering) und die einzigartige Kombination 3D + KI. Verfügbar über VHS Wien, WKO und als maßgeschneiderte Firmenworkshops.",
                   },
                 },
               ],

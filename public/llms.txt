@@ -1,32 +1,43 @@
 # Cillian Studio
 
-> Cillian Studio ist ein kreatives Studio für professionelle 3D-Visualisierung, KI-gestützte Produktion und Training mit Sitz in Wien, Österreich. Geleitet von David Scherngell.
+> Cillian Studio e.U. ist ein Kreativ- und Technologie-Studio mit Sitz in Wien, Österreich. Gegründet von David Scherngell, verbindet das Studio 3D-Visualisierung, KI-Agenten-Entwicklung und Gamification zu einem einzigartigen Dienstleistungsangebot. Als Creative Technology Consultant liefert David Scherngell Lösungen, die kein reiner 3D-Artist und kein reiner KI-Berater bieten kann.
+
+## Alleinstellungsmerkmale
+
+- Einziger Anbieter in Wien, der 3D-Visualisierung, KI-Agenten und Gamification auf Produktionsniveau vereint
+- Lokale KI-Setups statt Cloud-Abhängigkeit — DSGVO-konform by Design
+- Gleichzeitig Berater und Umsetzer — keine Schnittstellenprobleme
+- 8 Jahre Erfahrung in der 3D-Produktion + KI-Agenten-Expertise
 
 ## Leistungen
 
-- **3D Creation**: Atmosphärische 3D-Umgebungen, Assets, Archviz-Projekte und cinematische Videos. Tools: Unreal Engine 5, Blender, ZBrush, Substance Painter, Marvelous Designer, Maya
-- **AI Creation**: KI-gestützte kreative Workflows für Trailer, Werbespots und immersive Visualisierungen. Kombination von KI mit 3D für innovative Lösungen
-- **Gamification**: Maßgeschneiderte Gamifizierung von Verkaufs- und Vertriebsprozessen mit Belohnungssystemen, Wettbewerben und Fortschrittsanzeigen
-- **Training**: Blender-Kurse von Grundlagen bis Fortgeschrittene, inklusive Material-/Texturarbeit, Beleuchtung, Rendering und Game Engine Integration
+- **3D-Visualisierung**: Fotorealistische Renderings, interaktive ArchViz in Unreal Engine 5, Echtzeit-Produktkonfiguratoren, game-ready Assets. KI-gestützte Beschleunigung von UV-Mapping, Retopology und Material-Erstellung. Tools: Blender, Unreal Engine 5, ZBrush, Substance Painter, Marvelous Designer, Maya
+- **KI-Agenten**: Selbst-gehostete KI-Agenten-Systeme für Unternehmen — DSGVO-konform, ohne Cloud-Abhängigkeit. Lokale LLMs (Llama, DeepSeek, Mistral), Multi-Agent-Systeme, RAG-Integration, n8n-Workflow-Automatisierung. Monatlicher Support und Wartung
+- **Gamification**: Maßgeschneiderte Gamification-Lösungen mit Belohnungsmechaniken, Progressions-Design und spielerischen Elementen für Vertrieb, Kundenbindung und Mitarbeitermotivation
+- **Training & Consulting**: Blender- und UE5-Kurse, KI-Workshops (lokale KI-Agenten, n8n, Prompt Engineering), Firmenworkshops. Verfügbar über VHS Wien, WKO und direkt
 
-## Projekte
+## Referenzprojekte
 
-- **Monk**: Stilisierter 3D-Character im Pixar-Look – High-End Character Design (Blender, ZBrush, Marvelous Designer, Substance Painter, Cycles Rendering)
-- **The Old Deep**: Atmosphärische Unterwasserumgebung mit prozeduralen Shadern und Tiefsee-Beleuchtung (Unreal Engine 5.6, Blender, Maya, Substance Painter)
-- **Low-Poly Train**: Minimalistische Szene, komplette Texturierung mit nur einer Textur und Coloramp (Blender)
-- **Kaiserkrone**: 3D-Animation der Kaiserkrone der Kaiserlichen Schatzkammer für CreArtive Vienna (Blender, Premiere Pro)
-- **Omninode Crane**: Prozedurales Kran-Asset mit Blender Geometry Nodes, verfügbar auf SuperHiveMarket
+- **Ludwig Kren**: Interaktives Realtime-ArchViz-Tool in Unreal Engine 5
+- **Homunculi Production**: 3D-Assets für Werbetrailer und Marketing (laufend seit 2023)
+- **Kaiserliche Schatzkammer Wien**: 3D-Animation der Kaiserkrone (mit CreArtive Vienna)
+- **FREYWILLE**: Produkt-Animation für internationalen Schmuckhersteller
+- **bestarium-daily**: Vollautomatisiertes Reel-Studio mit KI-Pipeline
+- **Monk**: Stilisierter 3D-Character im Pixar-Look (Blender, ZBrush, Marvelous Designer)
+- **The Old Deep**: Atmosphärische Unterwasserumgebung (Unreal Engine 5.6)
+- **Omninode Crane**: Prozedurales Kran-Asset mit Blender Geometry Nodes
 
 ## Team
 
-- **David Scherngell** – Gründer, 3D Generalist & AI Specialist. Experte für Unreal Engine, Blender, ZBrush und KI-gestützte 3D-Produktion
-- **Daniel Abada** – Externer Berater, Marketing
+- **David Scherngell** – Gründer, Creative Technology Consultant, 3D Generalist & AI Specialist. 8 Jahre Erfahrung in 3D-Produktion, spezialisiert auf Unreal Engine 5, Blender, ZBrush und lokale KI-Agenten-Systeme. Tutor für Blender an der FH BFI Wien. Ausbildung: PixlVisn Media Arts Academy
+- **Daniel Abada** – Externer Berater, Marketing & Gamification
 - **Adrian Spielberger** – Externer Berater, 3D Artist & UI/UX Design, Organic Modeling, Texturing & LookDev
 - **GearWorks Production** – Externer Berater, Tool Development, Technische Infrastruktur, Blender Geometry Nodes
 
 ## Technologien
 
-Unreal Engine 5, Blender, ZBrush, Substance Painter, Marvelous Designer, Maya, Premiere Pro, Geometry Nodes, Cycles, KI-gestützte Workflows
+3D & Creative: Blender, Unreal Engine 5, ZBrush, Substance Painter, Marvelous Designer, Maya, ComfyUI, Photoshop
+KI & Automation: Lokale LLMs (Ollama, Llama, DeepSeek, Mistral), n8n, LangChain, RAG, Multi-Agent-Systeme, fal.ai
 
 ## Kontakt
 

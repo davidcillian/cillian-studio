@@ -11,9 +11,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Cillian Studio - 3D Visualisierung, AI & Training Wien | David Scherngell",
-  description: "Professionelle 3D-Visualisierung, KI-gestützte Workflows und spezialisiertes Training in Wien. Experte für Unreal Engine, Blender und modernste 3D-Technologien.",
-  keywords: "3D Visualisierung Wien, 3D creation, AI creation, gamification, training, Unreal Engine, Blender, 3D artist, Österreich, Wien, David Scherngell, Cillian Studio, Unreal Engine Spezialist",
+  title: "Cillian Studio - 3D-Visualisierung, KI-Agenten & Gamification Wien | David Scherngell",
+  description: "Kreativ- und Technologie-Studio in Wien. 3D-Visualisierung, lokale KI-Agenten (DSGVO-konform), Gamification und Training. Creative Technology Consultant David Scherngell – Blender, Unreal Engine 5, lokale LLMs.",
+  keywords: "3D Visualisierung Wien, KI-Agenten Wien, lokale KI DSGVO, Gamification, Creative Technology Consultant, Unreal Engine 5, Blender, David Scherngell, Cillian Studio, 3D Generalist, KI-Beratung Wien, n8n Automatisierung",
   authors: [{ name: "David Scherngell" }],
   creator: "David Scherngell",
   publisher: "Cillian Studio",
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_AT",
     url: "https://cillianstudio.com",
-    title: "Cillian Studio - 3D Visualisierung, AI & Training Wien",
-    description: "Professionelle 3D-Visualisierung, KI-gestützte Workflows und spezialisiertes Training in Wien. Experte für Unreal Engine, Blender und modernste 3D-Technologien.",
+    title: "Cillian Studio - 3D-Visualisierung, KI-Agenten & Gamification Wien",
+    description: "Kreativ- und Technologie-Studio in Wien. 3D-Visualisierung, lokale KI-Agenten (DSGVO-konform), Gamification und Training. Creative Technology Consultant David Scherngell.",
     siteName: "Cillian Studio",
     images: [
       {

@@ -20,7 +20,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                 <div className="w-full mb-16">
                     <div className="liquid-glass rounded-lg p-8">
                         <p className="text-[#aaa] text-lg leading-relaxed text-center">
-                            Wir sind Ihr Partner für professionelle 3D Creation, innovative AI-Lösungen und die Anwendung neuester Technologien. Von detaillierten Visualisierungen und prozeduralen Assets über KI-gestützte Workflows bis hin zu maßgeschneiderten Trainings – wir erwecken Ihre Visionen zum Leben. Unsere Leidenschaft ist es, durch die Kombination von Unreal Engine, Blender, künstlicher Intelligenz und modernster Technologie einzigartige digitale Erlebnisse zu schaffen.
+                            Cillian Studio verbindet 3D-Visualisierung, KI-Agenten-Entwicklung und Gamification zu einem einzigartigen Dienstleistungsangebot. Als Creative Technology Consultant berät und setzt David Scherngell Lösungen um, die traditionell getrennte Disziplinen in einem integrierten Ansatz vereinen — von fotorealistischen Renderings über lokale KI-Setups bis hin zu spielerischen Engagement-Systemen. Alles aus einer Hand, DSGVO-konform und ohne Cloud-Abhängigkeit.
                         </p>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                                 <div className="text-sm text-purple-400 mb-2 uppercase tracking-wider">Marketing & Gamification</div>
                                 <p className="leading-6">
                                     Marketing-Spezialist (Bachelor in Gaming Business) mit Expertise in Gamification, strategischer
-                                    Markenführung und Anwendung neuester AI-Technologien.
+                                    Markenführung und KI-gestütztem Marketing.
                                 </p>
                                 <div className="mt-4 flex gap-4 justify-center">
                                     <a
@@ -139,10 +139,9 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                             </div>
                             <div className="text-[#aaa] text-base mobile-about-text">
                                 <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">David Scherngell</h3>
-                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Generalist & AI Specialist</div>
+                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">Creative Technology Consultant</div>
                                 <p className="leading-6">
-                                    3D-Künstler aus Österreich mit Schwerpunkt auf Unreal Engine, Blender und Anwendung neuester AI-Technologien. Leidenschaftlicher
-                                    Mentor für angehende CG-Talente.
+                                    3D-Generalist und KI-Spezialist aus Österreich mit 8 Jahren Erfahrung. Spezialisiert auf Unreal Engine 5, Blender und lokale KI-Agenten-Systeme. Tutor für Blender an der FH BFI Wien.
                                 </p>
                                 <div className="mt-4 flex gap-4 justify-center">
                                     <a
