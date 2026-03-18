@@ -2,14 +2,11 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://davidcillian.com/sitemap.xml
+Sitemap: https://cillianstudio.com/sitemap.xml
+
+# LLM-Auffindbarkeit
+# https://llmstxt.org/
+LLMs-Txt: https://cillianstudio.com/llms.txt
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
-
-# Disallow admin or private areas (if any exist in future)
-# Disallow: /admin/
-# Disallow: /private/
-
-
-

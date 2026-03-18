@@ -278,26 +278,15 @@ export function Footer({ currentYear }: FooterProps) {
                             </div>
                         </section>
 
-                        {/* Cookies und Analytics */}
+                        {/* Cookies */}
                         <section>
-                            <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">5. Cookies und Web-Analyse</h3>
+                            <h3 className="text-lg font-medium mb-4 text-[#f2f2f2]">5. Cookies</h3>
                             <div className="text-[#aaa] leading-relaxed space-y-3">
                                 <p>
-                                    Diese Website verwendet Google Analytics, einen Webanalysedienst der Google LLC. Google Analytics verwendet Cookies,
-                                    um die Nutzung der Website zu analysieren.
+                                    Diese Website verwendet keine Analyse- oder Tracking-Cookies. Es werden keine Nutzungsdaten an Drittanbieter übermittelt.
                                 </p>
                                 <p>
-                                    <strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. a DSGVO (Einwilligung)
-                                </p>
-                                <p>
-                                    <strong>Zweck:</strong> Analyse der Website-Nutzung zur Verbesserung unserer Dienstleistungen
-                                </p>
-                                <p>
-                                    <strong>Speicherdauer:</strong> Cookies werden für maximal 24 Monate gespeichert
-                                </p>
-                                <p>
-                                    Sie können der Verwendung von Google Analytics widersprechen, indem Sie das Browser-Add-on zur Deaktivierung
-                                    von Google Analytics installieren oder die Cookie-Einstellungen in Ihrem Browser anpassen.
+                                    Es werden ausschließlich technisch notwendige Cookies verwendet, die für den Betrieb der Website erforderlich sind.
                                 </p>
                             </div>
                         </section>

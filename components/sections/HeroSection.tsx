@@ -10,8 +10,8 @@ export function HeroSection() {
                         {/* Placeholder für Video - Sie können hier Ihr Video einfügen */}
                         <div className="w-full h-full bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20 flex items-center justify-center">
                             <div className="text-center">
-                                <h3 className="text-2xl font-light text-[#f2f2f2] mb-4">Cillian Studio</h3>
-                                <p className="text-[#aaa] text-lg">Professional 3D Creation & Training</p>
+                                <h1 className="text-2xl font-light text-[#f2f2f2] mb-4">Cillian Studio – 3D Visualisierung & Unreal Engine Wien</h1>
+                                <p className="text-[#aaa] text-lg">Professional 3D Creation, AI & Training</p>
                                 {/* Video Placeholder - Ersetzen Sie dies mit Ihrem echten Video */}
                                 <div className="mt-8 w-16 h-16 mx-auto bg-white/10 rounded-full flex items-center justify-center">
                                     <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">

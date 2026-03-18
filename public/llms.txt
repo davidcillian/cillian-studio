@@ -1,0 +1,43 @@
+# Cillian Studio
+
+> Cillian Studio ist ein kreatives Studio für professionelle 3D-Visualisierung, KI-gestützte Produktion und Training mit Sitz in Wien, Österreich. Geleitet von David Scherngell.
+
+## Leistungen
+
+- **3D Creation**: Atmosphärische 3D-Umgebungen, Assets, Archviz-Projekte und cinematische Videos. Tools: Unreal Engine 5, Blender, ZBrush, Substance Painter, Marvelous Designer, Maya
+- **AI Creation**: KI-gestützte kreative Workflows für Trailer, Werbespots und immersive Visualisierungen. Kombination von KI mit 3D für innovative Lösungen
+- **Gamification**: Maßgeschneiderte Gamifizierung von Verkaufs- und Vertriebsprozessen mit Belohnungssystemen, Wettbewerben und Fortschrittsanzeigen
+- **Training**: Blender-Kurse von Grundlagen bis Fortgeschrittene, inklusive Material-/Texturarbeit, Beleuchtung, Rendering und Game Engine Integration
+
+## Projekte
+
+- **Monk**: Stilisierter 3D-Character im Pixar-Look – High-End Character Design (Blender, ZBrush, Marvelous Designer, Substance Painter, Cycles Rendering)
+- **The Old Deep**: Atmosphärische Unterwasserumgebung mit prozeduralen Shadern und Tiefsee-Beleuchtung (Unreal Engine 5.6, Blender, Maya, Substance Painter)
+- **Low-Poly Train**: Minimalistische Szene, komplette Texturierung mit nur einer Textur und Coloramp (Blender)
+- **Kaiserkrone**: 3D-Animation der Kaiserkrone der Kaiserlichen Schatzkammer für CreArtive Vienna (Blender, Premiere Pro)
+- **Omninode Crane**: Prozedurales Kran-Asset mit Blender Geometry Nodes, verfügbar auf SuperHiveMarket
+
+## Team
+
+- **David Scherngell** – Gründer, 3D Generalist & AI Specialist. Experte für Unreal Engine, Blender, ZBrush und KI-gestützte 3D-Produktion
+- **Daniel Abada** – Externer Berater, Marketing
+- **Adrian Spielberger** – Externer Berater, 3D Artist & UI/UX Design, Organic Modeling, Texturing & LookDev
+- **GearWorks Production** – Externer Berater, Tool Development, Technische Infrastruktur, Blender Geometry Nodes
+
+## Technologien
+
+Unreal Engine 5, Blender, ZBrush, Substance Painter, Marvelous Designer, Maya, Premiere Pro, Geometry Nodes, Cycles, KI-gestützte Workflows
+
+## Kontakt
+
+- Website: https://cillianstudio.com
+- E-Mail: office@cillianstudio.com
+- Telefon: +43 680 1609124
+- Standort: Wien, Österreich
+
+## Social Media
+
+- Instagram: https://www.instagram.com/cillian_studio
+- LinkedIn: https://www.linkedin.com/company/cillian-studio
+- YouTube: https://www.youtube.com/channel/UCUnpVqUZeM4HgbusAsfYz-w
+- TikTok: https://www.tiktok.com/@cillian_studio
