@@ -44,47 +44,47 @@ export const GallerySection = forwardRef<HTMLDivElement>((props, ref) => {
                         className="grid grid-cols-3 mobile-gallery-grid tablet-gallery-grid gap-5 my-15"
                     >
                         {/* Mobile: Ein Bild */}
-                        <div className="md:hidden overflow-hidden liquid-glass rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
+                        <div className="md:hidden overflow-hidden liquid-glass rounded-lg">
                             <div className="relative w-full h-48 mobile-gallery-image">
                                 <Image
                                     src={galleryImages[gallerySlide] || "/placeholder.svg"}
                                     alt={`3D creation gallery image ${gallerySlide + 1} - Professional 3D art, AI solutions, training portfolio Austria Vienna`}
                                     fill
-                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    className="object-cover"
                                 />
                             </div>
                         </div>
 
                         {/* Desktop: Drei Bilder */}
-                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
+                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg">
                             <div className="relative w-full h-64">
                                 <Image
                                     src={galleryImages[gallerySlide * 3] || "/placeholder.svg"}
                                     alt={`3D creation portfolio image ${gallerySlide * 3 + 1} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
                                     fill
-                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    className="object-cover"
                                 />
                             </div>
                         </div>
 
-                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
+                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg">
                             <div className="relative w-full h-64">
                                 <Image
                                     src={galleryImages[gallerySlide * 3 + 1] || "/placeholder.svg"}
                                     alt={`3D creation portfolio image ${gallerySlide * 3 + 2} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
                                     fill
-                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    className="object-cover"
                                 />
                             </div>
                         </div>
 
-                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg transition-all duration-300 hover:shadow-lg hover:scale-105 group">
+                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg">
                             <div className="relative w-full h-64">
                                 <Image
                                     src={galleryImages[gallerySlide * 3 + 2] || "/placeholder.svg"}
                                     alt={`3D creation portfolio image ${gallerySlide * 3 + 3} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
                                     fill
-                                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                                    className="object-cover"
                                 />
                             </div>
                         </div>

@@ -197,6 +197,7 @@ export function ServicesSection() {
                                                 }`}
                                         >
                                             {slide.endsWith('.mp4') ? (
+                                                index === currentSlide ? (
                                                 <video
                                                     className="w-full h-full object-cover min-h-full"
                                                     autoPlay
@@ -204,11 +205,10 @@ export function ServicesSection() {
                                                     loop
                                                     playsInline
                                                     preload="metadata"
-                                                    poster="/placeholder.svg"
                                                 >
                                                     <source src={slide} type="video/mp4" />
-                                                    Ihr Browser unterstützt das Video-Element nicht.
                                                 </video>
+                                                ) : null
                                             ) : (
                                                 <Image
                                                     src={slide || "/placeholder.svg"}

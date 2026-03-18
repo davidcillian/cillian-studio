@@ -139,9 +139,9 @@ export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isM
                             </div>
                             <div className="text-[#aaa] text-base mobile-about-text">
                                 <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">David Scherngell</h3>
-                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">Creative Technology Consultant</div>
+                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Generalist & Creative Technology Consultant</div>
                                 <p className="leading-6">
-                                    3D-Generalist und KI-Spezialist aus Österreich mit 8 Jahren Erfahrung. Spezialisiert auf Unreal Engine 5, Blender und lokale KI-Agenten-Systeme. Tutor für Blender an der FH BFI Wien.
+                                    Seit über 8 Jahren in der professionellen 3D-Produktion mit Blender und Unreal Engine 5. Entwickelt zusätzlich lokale KI-Agenten-Systeme für Unternehmen — DSGVO-konform und ohne Cloud-Abhängigkeit.
                                 </p>
                                 <div className="mt-4 flex gap-4 justify-center">
                                     <a
