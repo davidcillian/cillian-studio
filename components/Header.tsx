@@ -25,12 +25,13 @@ function scrollTo(href: string) {
 }
 
 export function Header() {
-  const [visible, setVisible] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 100)
+    const onScroll = () => setScrolled(window.scrollY > 100)
     window.addEventListener("scroll", onScroll, { passive: true })
+    onScroll()
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
@@ -48,60 +49,56 @@ export function Header() {
 
   return (
     <>
-      {/* Sticky header */}
-      <AnimatePresence>
-        {visible && (
-          <motion.header
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            exit={{ y: -100 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/5"
+      {/* Sticky header — always visible on mobile, after scroll on desktop */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/5 translate-y-0"
+            : "md:translate-y-0 md:bg-transparent bg-[#0a0a0a]/80 backdrop-blur-sm"
+        }`}
+      >
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between">
+          <a
+            href="#top"
+            onClick={(e) => handleNav(e, "#top")}
+            className="flex items-center gap-3"
           >
-            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <Image
+              src="/images/logo.png"
+              alt="Cillian Studio"
+              width={40}
+              height={40}
+              className="w-10 h-10"
+            />
+            <span className="text-lg font-bold tracking-wider text-white">CILLIAN STUDIO</span>
+          </a>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex gap-8">
+            {NAV_ITEMS.map((item) => (
               <a
-                href="#top"
-                onClick={(e) => handleNav(e, "#top")}
-                className="flex items-center gap-3"
+                key={item.href}
+                href={item.href}
+                onClick={(e) => handleNav(e, item.href)}
+                className="text-sm tracking-wider text-neutral-400 hover:text-white transition-colors"
               >
-                <Image
-                  src="/images/logo.png"
-                  alt="Cillian Studio"
-                  width={40}
-                  height={40}
-                  className="w-10 h-10"
-                />
-                <span className="hidden sm:inline text-lg font-bold tracking-wider text-white">CILLIAN STUDIO</span>
+                {item.label}
               </a>
+            ))}
+          </nav>
 
-              {/* Desktop nav */}
-              <nav className="hidden md:flex gap-8">
-                {NAV_ITEMS.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => handleNav(e, item.href)}
-                    className="text-sm tracking-wider text-neutral-400 hover:text-white transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-
-              {/* Hamburger */}
-              <button
-                onClick={() => setMenuOpen(!menuOpen)}
-                className="md:hidden flex flex-col gap-1.5 p-2"
-                aria-label="Menü"
-              >
-                <span className={`block w-6 h-px bg-white transition-transform origin-center ${menuOpen ? "rotate-45 translate-y-[3.5px]" : ""}`} />
-                <span className={`block w-6 h-px bg-white transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
-                <span className={`block w-6 h-px bg-white transition-transform origin-center ${menuOpen ? "-rotate-45 -translate-y-[3.5px]" : ""}`} />
-              </button>
-            </div>
-          </motion.header>
-        )}
-      </AnimatePresence>
+          {/* Hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            aria-label="Menü"
+          >
+            <span className={`block w-6 h-px bg-white transition-transform origin-center ${menuOpen ? "rotate-45 translate-y-[3.5px]" : ""}`} />
+            <span className={`block w-6 h-px bg-white transition-opacity ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block w-6 h-px bg-white transition-transform origin-center ${menuOpen ? "-rotate-45 -translate-y-[3.5px]" : ""}`} />
+          </button>
+        </div>
+      </header>
 
       {/* Mobile fullscreen overlay */}
       <AnimatePresence>
