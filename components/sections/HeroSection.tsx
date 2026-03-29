@@ -65,6 +65,9 @@ export function HeroSection() {
         }}
       />
 
+      {/* Subtle top fade for depth */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a] to-transparent z-[1]" />
+
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4">
         {/* Logo */}
@@ -117,7 +120,7 @@ export function HeroSection() {
 
         {/* Tagline */}
         <motion.p
-          className="mt-3 text-sm md:text-base tracking-wide text-neutral-600"
+          className="mt-3 text-sm md:text-base tracking-wide text-neutral-500"
           variants={fadeUp}
           custom={1.6}
           initial="hidden"
@@ -155,7 +158,7 @@ export function HeroSection() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.8, duration: 0.8 }}
+        transition={{ delay: 2.0, duration: 0.8 }}
         onClick={() => {
           const next = document.querySelector("section:nth-of-type(2)")
           next?.scrollIntoView({ behavior: "smooth" })

@@ -20,7 +20,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group bg-white/[0.03] border border-white/5 rounded-xl p-8 hover:border-blue-500/30 transition-all duration-300"
+      className="group bg-white/[0.03] border border-white/5 rounded-xl p-8 hover:border-white/10 hover:bg-white/[0.05] transition-all duration-300"
     >
       <div className="mb-5">
         <Icon className="w-10 h-10 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
@@ -58,7 +58,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center text-[#f2f2f2] font-bold tracking-tight mb-12 text-3xl md:text-4xl"
+          className="text-[#f2f2f2] font-bold tracking-tight mb-12 text-3xl md:text-4xl"
         >
           Was wir bieten
         </motion.h2>

@@ -24,7 +24,7 @@ export function ProjectsSection() {
                     Projekte
                 </motion.h2>
 
-                <div className="space-y-16">
+                <div className="space-y-10">
                     {visibleProjects.map((project, index) => {
                         const isReversed = index % 2 === 1
                         const firstImage = project.images?.[0]
@@ -36,7 +36,7 @@ export function ProjectsSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.6, delay: 0.1 }}
-                                className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden"
+                                className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
                             >
                                 <div className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
                                     {/* Image */}
@@ -62,7 +62,7 @@ export function ProjectsSection() {
                                             <span className="text-sm text-white/40">{project.completionDate}</span>
                                         </div>
 
-                                        <p className="text-white/60 leading-relaxed mb-6">
+                                        <p className="text-[#999] leading-relaxed mb-6">
                                             {project.description}
                                         </p>
 

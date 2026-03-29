@@ -74,7 +74,7 @@ export function GallerySection() {
                 </motion.h2>
 
                 {/* Bento / Masonry Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[180px] md:auto-rows-[200px] gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] md:auto-rows-[220px] gap-2">
                     {localImages.map((src, index) => {
                         const heightClass =
                             bentoHeights[index % bentoHeights.length]
@@ -86,7 +86,7 @@ export function GallerySection() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true, margin: "-30px" }}
                                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                                className={`${heightClass} relative rounded-xl overflow-hidden cursor-pointer group`}
+                                className={`${heightClass} relative rounded-lg overflow-hidden cursor-pointer group`}
                                 onClick={() => openLightbox(index)}
                             >
                                 <Image

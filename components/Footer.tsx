@@ -9,14 +9,14 @@ export function Footer() {
 
     return (
         <footer className="bg-[#050505] border-t border-white/5">
-            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-16">
+            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8 py-12">
                 {/* Social Media Icons */}
-                <div className="flex justify-center gap-5 mb-12">
+                <div className="flex justify-center gap-4 mb-10">
                     <a
                         href="https://www.youtube.com/channel/UCUnpVqUZeM4HgbusAsfYz-w/posts?pvf=CAI%253D"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-white/[0.05] flex items-center justify-center text-[#666] hover:text-white hover:bg-white/[0.1] transition-all"
+                        className="w-9 h-9 rounded-full bg-white/[0.05] flex items-center justify-center text-[#555] hover:text-white hover:bg-white/[0.1] transition-all duration-200"
                         title="YouTube"
                         aria-label="YouTube Kanal"
                     >
@@ -26,7 +26,7 @@ export function Footer() {
                         href="https://www.instagram.com/cillian_studio?igsh=aG1obXhzaHlsMnho&utm_source=qr"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-white/[0.05] flex items-center justify-center text-[#666] hover:text-white hover:bg-white/[0.1] transition-all"
+                        className="w-9 h-9 rounded-full bg-white/[0.05] flex items-center justify-center text-[#555] hover:text-white hover:bg-white/[0.1] transition-all duration-200"
                         title="Instagram"
                         aria-label="Instagram Profil"
                     >
@@ -36,7 +36,7 @@ export function Footer() {
                         href="https://www.linkedin.com/company/cillian-studio/about/?viewAsMember=true"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-white/[0.05] flex items-center justify-center text-[#666] hover:text-white hover:bg-white/[0.1] transition-all"
+                        className="w-9 h-9 rounded-full bg-white/[0.05] flex items-center justify-center text-[#555] hover:text-white hover:bg-white/[0.1] transition-all duration-200"
                         title="LinkedIn"
                         aria-label="LinkedIn Profil"
                     >
@@ -46,7 +46,7 @@ export function Footer() {
                         href="https://www.tiktok.com/@cillian_studio?_t=ZN-90Le13JCTzi&_r=1"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-white/[0.05] flex items-center justify-center text-[#666] hover:text-white hover:bg-white/[0.1] transition-all"
+                        className="w-9 h-9 rounded-full bg-white/[0.05] flex items-center justify-center text-[#555] hover:text-white hover:bg-white/[0.1] transition-all duration-200"
                         title="TikTok"
                         aria-label="TikTok Profil"
                     >
@@ -57,7 +57,7 @@ export function Footer() {
                 </div>
 
                 {/* Three Columns */}
-                <div className="grid md:grid-cols-3 gap-10 mb-12">
+                <div className="grid md:grid-cols-3 gap-8 mb-10">
                     {/* Studio */}
                     <div>
                         <h4 className="text-sm font-semibold uppercase tracking-wider text-[#f2f2f2] mb-4">Studio</h4>

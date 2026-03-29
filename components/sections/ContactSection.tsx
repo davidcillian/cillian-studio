@@ -14,14 +14,14 @@ export function ContactSection() {
     }
 
     return (
-        <section id="contact" className="py-24">
+        <section id="contact" className="py-24 mt-8">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="bg-white/[0.03] border border-white/5 rounded-xl p-10 md:p-14 text-center"
+                    className="bg-white/[0.03] border border-white/5 rounded-xl p-10 md:p-14 text-center hover:border-white/10 transition-colors duration-300"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
                         Bereit für Ihr Projekt?
