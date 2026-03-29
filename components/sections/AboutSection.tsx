@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import { Instagram, Globe, Linkedin } from "lucide-react"
-import { motion } from "framer-motion"
 
 const LinkedInIcon = () => <Linkedin size={18} />
 
@@ -33,7 +32,7 @@ const teamMembers: TeamMember[] = [
         role: "Gründer & Creative Technology Consultant",
         roleColor: "text-blue-400",
         description:
-            "Seit über 8 Jahren in der professionellen 3D-Produktion mit Blender und Unreal Engine 5. Entwickelt zusätzlich lokale KI-Agenten-Systeme für Unternehmen — DSGVO-konform und ohne Cloud-Abhängigkeit. Verbindet kreative und technische Disziplinen in einem integrierten Ansatz.",
+            "Seit über 8 Jahren in der professionellen 3D-Produktion mit Blender und Unreal Engine 5. Entwickelt zusätzlich lokale KI-Agenten-Systeme für Unternehmen — DSGVO-konform und ohne Cloud-Abhängigkeit.",
         image: "/images/david-scherngell.jpeg",
         socials: [
             {
@@ -136,87 +135,68 @@ const teamMembers: TeamMember[] = [
     },
 ]
 
+function TeamCard({ member }: { member: TeamMember }) {
+    return (
+        <div className="bg-white/[0.03] border border-white/5 rounded-xl p-8 hover:border-white/10 transition-colors duration-300 flex flex-col">
+            {/* Avatar + Name row */}
+            <div className="flex items-center gap-5 mb-5">
+                {member.image ? (
+                    <div className="w-20 h-20 rounded-full overflow-hidden flex-shrink-0">
+                        <Image
+                            src={member.image}
+                            alt={member.name}
+                            width={80}
+                            height={80}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                ) : (
+                    <div className="w-20 h-20 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl font-semibold text-white/40">{member.initials}</span>
+                    </div>
+                )}
+                <div>
+                    <h3 className="text-xl font-bold text-[#f2f2f2]">{member.name}</h3>
+                    <p className={`text-xs uppercase tracking-wider ${member.roleColor} mt-1`}>{member.role}</p>
+                </div>
+            </div>
+
+            {/* Description */}
+            <p className="text-sm text-[#888] leading-relaxed flex-1 mb-5">
+                {member.description}
+            </p>
+
+            {/* Socials */}
+            <div className="flex gap-4 items-center pt-4 border-t border-white/5">
+                {member.socials.map((social) => (
+                    <a
+                        key={social.href}
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`${social.colorClass || "opacity-60 hover:opacity-100"} transition-all duration-200`}
+                        aria-label={social.label}
+                    >
+                        {social.icon}
+                    </a>
+                ))}
+            </div>
+        </div>
+    )
+}
+
 export function AboutSection() {
     return (
         <section id="about" className="py-24">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-12"
-                >
+                <h2 className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-10">
                     Über uns
-                </motion.h2>
+                </h2>
 
-                <div className="space-y-8">
-                    {teamMembers.map((member, index) => {
-                        const isReversed = index % 2 === 1
-
-                        return (
-                            <motion.div
-                                key={member.name}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6, delay: 0.1 }}
-                                className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
-                            >
-                                <div className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
-                                    {/* Image */}
-                                    <div className="w-full lg:w-[380px] flex-shrink-0 flex items-center justify-center bg-white/[0.02] p-10 lg:p-12">
-                                        {member.image ? (
-                                            <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden">
-                                                <Image
-                                                    src={member.image}
-                                                    alt={member.name}
-                                                    width={224}
-                                                    height={224}
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
-                                        ) : (
-                                            <div className="w-48 h-48 lg:w-56 lg:h-56 rounded-full bg-white/10 flex items-center justify-center">
-                                                <span className="text-5xl font-semibold text-white/40">
-                                                    {member.initials}
-                                                </span>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className="flex-1 p-8 lg:p-10 flex flex-col justify-center">
-                                        <h3 className="text-2xl font-bold text-[#f2f2f2] mb-1">
-                                            {member.name}
-                                        </h3>
-                                        <p className={`text-sm uppercase tracking-wider ${member.roleColor} mb-5`}>
-                                            {member.role}
-                                        </p>
-                                        <p className="text-[#999] leading-relaxed mb-6">
-                                            {member.description}
-                                        </p>
-
-                                        {/* Socials */}
-                                        <div className="flex gap-4 items-center">
-                                            {member.socials.map((social) => (
-                                                <a
-                                                    key={social.href}
-                                                    href={social.href}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className={`${social.colorClass || "opacity-60 hover:opacity-100"} transition-all duration-200`}
-                                                    aria-label={social.label}
-                                                >
-                                                    {social.icon}
-                                                </a>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )
-                    })}
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+                    {teamMembers.map((member) => (
+                        <TeamCard key={member.name} member={member} />
+                    ))}
                 </div>
             </div>
         </section>

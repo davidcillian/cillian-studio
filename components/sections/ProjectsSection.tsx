@@ -2,46 +2,33 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 import { recentProjects } from "@/lib/data"
 
 export function ProjectsSection() {
     const [showAll, setShowAll] = useState(false)
-
     const visibleProjects = showAll ? recentProjects : recentProjects.slice(0, 3)
 
     return (
         <section id="projects" className="py-24">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-12"
-                >
+                <h2 className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-12">
                     Projekte
-                </motion.h2>
+                </h2>
 
-                <div className="space-y-10">
+                <div className="space-y-8">
                     {visibleProjects.map((project, index) => {
                         const isReversed = index % 2 === 1
                         const firstImage = project.images?.[0]
 
                         return (
-                            <motion.div
+                            <div
                                 key={project.id}
-                                initial={{ opacity: 0, y: 40 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6, delay: 0.1 }}
-                                className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
+                                className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 transition-colors duration-300"
                             >
                                 <div className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
-                                    {/* Image */}
                                     {firstImage && (
-                                        <div className="relative w-full lg:w-1/2 aspect-[16/10] lg:aspect-auto lg:min-h-[400px]">
+                                        <div className="relative w-full lg:w-1/2 aspect-[16/10] lg:aspect-auto lg:min-h-[380px]">
                                             <Image
                                                 src={firstImage}
                                                 alt={project.projectTitle}
@@ -53,39 +40,36 @@ export function ProjectsSection() {
                                         </div>
                                     )}
 
-                                    {/* Content */}
                                     <div className="flex-1 p-8 lg:p-10 flex flex-col justify-center">
                                         <div className="flex items-baseline gap-3 mb-4">
                                             <h3 className="text-2xl md:text-3xl font-bold text-[#f2f2f2]">
                                                 {project.projectTitle}
                                             </h3>
-                                            <span className="text-sm text-white/40">{project.completionDate}</span>
+                                            <span className="text-sm text-white/30">{project.completionDate}</span>
                                         </div>
 
-                                        <p className="text-[#999] leading-relaxed mb-6">
+                                        <p className="text-[#888] leading-relaxed mb-6">
                                             {project.description}
                                         </p>
 
-                                        {/* Tech Stack */}
                                         <div className="flex flex-wrap gap-2 mb-6">
                                             {project.technologies.map((tech) => (
                                                 <span
                                                     key={tech}
-                                                    className="bg-white/5 rounded-full px-3 py-1 text-xs text-white/70"
+                                                    className="bg-white/5 rounded-full px-3 py-1 text-xs text-white/60"
                                                 >
                                                     {tech}
                                                 </span>
                                             ))}
                                         </div>
 
-                                        {/* Team */}
                                         {project.artists && project.artists.length > 0 && (
                                             <div className="flex items-center gap-3 mb-6">
                                                 <div className="flex -space-x-2">
                                                     {project.artists.map((artist, i) => (
                                                         <div
                                                             key={i}
-                                                            className="w-8 h-8 rounded-full overflow-hidden border-2 border-[#0a0a0a] relative"
+                                                            className="w-7 h-7 rounded-full overflow-hidden border-2 border-[#0a0a0a] relative"
                                                         >
                                                             <Image
                                                                 src={artist.image}
@@ -102,7 +86,6 @@ export function ProjectsSection() {
                                             </div>
                                         )}
 
-                                        {/* Product Link */}
                                         {project.productLink && (
                                             <a
                                                 href={project.productLink}
@@ -116,26 +99,20 @@ export function ProjectsSection() {
                                         )}
                                     </div>
                                 </div>
-                            </motion.div>
+                            </div>
                         )
                     })}
                 </div>
 
-                {/* Show More / Less */}
                 {recentProjects.length > 3 && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        className="flex justify-center mt-12"
-                    >
+                    <div className="flex justify-center mt-10">
                         <button
                             onClick={() => setShowAll(!showAll)}
-                            className="bg-white/5 hover:bg-white/10 border border-white/10 text-[#ccc] hover:text-white px-8 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-[1.02]"
+                            className="bg-white/5 hover:bg-white/10 border border-white/10 text-[#ccc] hover:text-white px-8 py-3 rounded-lg text-sm font-medium transition-all duration-200"
                         >
                             {showAll ? "Weniger anzeigen" : "Mehr Projekte"}
                         </button>
-                    </motion.div>
+                    </div>
                 )}
             </div>
         </section>

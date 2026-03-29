@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { motion } from "framer-motion"
 import { Mail, Phone, Copy, Check } from "lucide-react"
 
 export function ContactSection() {
@@ -14,15 +13,9 @@ export function ContactSection() {
     }
 
     return (
-        <section id="contact" className="py-24 mt-8">
+        <section id="contact" className="py-24">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="bg-white/[0.03] border border-white/5 rounded-xl p-10 md:p-14 text-center hover:border-white/10 transition-colors duration-300"
-                >
+                <div className="bg-white/[0.03] border border-white/5 rounded-xl p-10 md:p-14 text-center hover:border-white/10 transition-colors duration-300">
                     <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
                         Bereit für Ihr Projekt?
                     </h2>
@@ -30,7 +23,6 @@ export function ContactSection() {
                         Lassen Sie uns gemeinsam Ihre Vision zum Leben erwecken.
                     </p>
 
-                    {/* Buttons */}
                     <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
                         <button
                             onClick={copyEmail}
@@ -54,8 +46,7 @@ export function ContactSection() {
                         </a>
                     </div>
 
-                    {/* Phone + response time */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-[#666] text-sm">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-[#555] text-sm">
                         <a href="tel:+436801609124" className="inline-flex items-center gap-2 hover:text-white transition-colors">
                             <Phone size={14} />
                             +43 680 1609124
@@ -63,7 +54,7 @@ export function ContactSection() {
                         <span className="hidden sm:inline text-white/10">|</span>
                         <span>Antwort innerhalb von 24 Stunden</span>
                     </div>
-                </motion.div>
+                </div>
             </div>
         </section>
     )
