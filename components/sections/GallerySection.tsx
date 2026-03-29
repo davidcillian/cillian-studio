@@ -48,11 +48,11 @@ export function GallerySection() {
     return (
         <section id="gallery" className="py-24">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-12">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-10 sm:mb-12">
                     Galerie
                 </h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[200px] md:auto-rows-[220px] gap-2">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[140px] sm:auto-rows-[180px] md:auto-rows-[220px] gap-2">
                     {localImages.map((src, index) => (
                         <div
                             key={`${src}-${index}`}

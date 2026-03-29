@@ -43,7 +43,7 @@ export function ServicesSection() {
   return (
     <section id="services" className="py-24">
       <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-        <h2 className="text-[#f2f2f2] font-bold tracking-tight mb-12 text-3xl md:text-4xl">
+        <h2 className="text-[#f2f2f2] font-bold tracking-tight mb-10 sm:mb-12 text-2xl sm:text-3xl md:text-4xl">
           Was wir bieten
         </h2>
 

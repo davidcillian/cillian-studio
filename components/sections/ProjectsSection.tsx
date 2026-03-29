@@ -12,7 +12,7 @@ export function ProjectsSection() {
     return (
         <section id="projects" className="py-24">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-12">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-10 sm:mb-12">
                     Projekte
                 </h2>
 
@@ -41,8 +41,8 @@ export function ProjectsSection() {
                                     )}
 
                                     <div className="flex-1 p-8 lg:p-10 flex flex-col justify-center">
-                                        <div className="flex items-baseline gap-3 mb-4">
-                                            <h3 className="text-2xl md:text-3xl font-bold text-[#f2f2f2]">
+                                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
+                                            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#f2f2f2]">
                                                 {project.projectTitle}
                                             </h3>
                                             <span className="text-sm text-white/30">{project.completionDate}</span>

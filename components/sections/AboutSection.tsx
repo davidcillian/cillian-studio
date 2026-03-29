@@ -135,7 +135,7 @@ export function AboutSection() {
     return (
         <section id="about" className="py-24">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-12">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-10 sm:mb-12">
                     Über uns
                 </h2>
 
@@ -150,7 +150,7 @@ export function AboutSection() {
                             >
                                 <div className={`flex flex-col ${imageLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
                                     {/* Image Side */}
-                                    <div className="relative w-full lg:w-[420px] flex-shrink-0 aspect-square lg:aspect-auto lg:min-h-[400px] bg-white/[0.02]">
+                                    <div className="relative w-full lg:w-[420px] flex-shrink-0 aspect-[4/3] sm:aspect-square lg:aspect-auto lg:min-h-[400px] bg-white/[0.02]">
                                         {member.image ? (
                                             <Image
                                                 src={member.image}
@@ -166,14 +166,14 @@ export function AboutSection() {
                                     </div>
 
                                     {/* Text Side */}
-                                    <div className="flex-1 p-8 lg:py-12 lg:px-16 flex flex-col justify-center items-center text-center">
-                                        <h3 className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-2">{member.name}</h3>
-                                        <p className={`text-sm md:text-base uppercase tracking-wider ${member.roleColor} mb-6`}>
+                                    <div className="flex-1 p-6 sm:p-8 lg:py-12 lg:px-16 flex flex-col justify-center items-center text-center">
+                                        <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#f2f2f2] mb-2">{member.name}</h3>
+                                        <p className={`text-xs sm:text-sm lg:text-base uppercase tracking-wider ${member.roleColor} mb-4 sm:mb-6`}>
                                             {member.role}
                                         </p>
-                                        <ul className="space-y-3 mb-8">
+                                        <ul className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                                             {member.description.split("\n").map((line, i) => (
-                                                <li key={i} className="flex items-start gap-2.5 text-[#aaa] text-lg">
+                                                <li key={i} className="flex items-start gap-2 text-[#aaa] text-sm sm:text-base lg:text-lg">
                                                     <span className="text-blue-400/60 mt-1.5 shrink-0 text-sm">&#9679;</span>
                                                     {line}
                                                 </li>

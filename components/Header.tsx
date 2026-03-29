@@ -71,7 +71,7 @@ export function Header() {
                   height={40}
                   className="w-10 h-10"
                 />
-                <span className="text-lg font-bold tracking-wider text-white">CILLIAN STUDIO</span>
+                <span className="hidden sm:inline text-lg font-bold tracking-wider text-white">CILLIAN STUDIO</span>
               </a>
 
               {/* Desktop nav */}

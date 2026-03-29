@@ -16,7 +16,7 @@ export function ContactSection() {
         <section id="contact" className="py-24">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
                 <div className="bg-white/[0.03] border border-white/5 rounded-xl p-10 md:p-14 text-center hover:border-white/10 transition-colors duration-300">
-                    <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-3">
                         Bereit für Ihr Projekt?
                     </h2>
                     <p className="text-[#777] text-base md:text-lg mb-10 max-w-xl mx-auto">
@@ -29,7 +29,7 @@ export function ContactSection() {
                             className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
                         >
                             {copied ? <Check size={20} /> : <Mail size={20} />}
-                            <span>{copied ? "Kopiert!" : "office@cillianstudio.com"}</span>
+                            <span className="text-sm sm:text-base">{copied ? "Kopiert!" : "office@cillianstudio.com"}</span>
                             {!copied && <Copy size={14} className="text-white/50" />}
                         </button>
 
