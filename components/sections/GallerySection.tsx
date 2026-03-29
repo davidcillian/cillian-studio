@@ -1,141 +1,182 @@
 "use client"
 
-import { useState, forwardRef } from "react"
+import { useState, useCallback } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import { galleryImages } from "@/lib/data"
 
-export const GallerySection = forwardRef<HTMLDivElement>((props, ref) => {
-    const [gallerySlide, setGallerySlide] = useState(0)
+// Filter out external URLs — only keep local /images/ paths
+const localImages = galleryImages.filter(
+    (src) => src.startsWith("/images/") || src.startsWith("/Videos/")
+)
 
-    const handleGalleryPrev = () => {
-        // Mobile: Einzelne Bilder, Desktop: 3er-Gruppen
-        const isMobile = window.innerWidth < 768
-        if (isMobile) {
-            setGallerySlide((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1))
-        } else {
-            setGallerySlide((prev) => (prev === 0 ? Math.floor(galleryImages.length / 3) - 1 : prev - 1))
-        }
-    }
+// Bento grid height classes for visual variety
+const bentoHeights = [
+    "row-span-2", // tall
+    "row-span-1", // normal
+    "row-span-1", // normal
+    "row-span-2", // tall
+    "row-span-1", // normal
+    "row-span-1", // normal
+    "row-span-2", // tall
+    "row-span-1", // normal
+]
 
-    const handleGalleryNext = () => {
-        // Mobile: Einzelne Bilder, Desktop: 3er-Gruppen
-        const isMobile = window.innerWidth < 768
-        if (isMobile) {
-            setGallerySlide((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1))
-        } else {
-            setGallerySlide((prev) => (prev === Math.floor(galleryImages.length / 3) - 1 ? 0 : prev + 1))
-        }
-    }
+export function GallerySection() {
+    const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
+
+    const openLightbox = useCallback((index: number) => {
+        setLightboxIndex(index)
+    }, [])
+
+    const closeLightbox = useCallback(() => {
+        setLightboxIndex(null)
+    }, [])
+
+    const goNext = useCallback(() => {
+        setLightboxIndex((prev) =>
+            prev !== null ? (prev + 1) % localImages.length : null
+        )
+    }, [])
+
+    const goPrev = useCallback(() => {
+        setLightboxIndex((prev) =>
+            prev !== null
+                ? (prev - 1 + localImages.length) % localImages.length
+                : null
+        )
+    }, [])
+
+    // Keyboard navigation
+    const handleKeyDown = useCallback(
+        (e: React.KeyboardEvent) => {
+            if (e.key === "Escape") closeLightbox()
+            if (e.key === "ArrowRight") goNext()
+            if (e.key === "ArrowLeft") goPrev()
+        },
+        [closeLightbox, goNext, goPrev]
+    )
+
+    if (localImages.length === 0) return null
 
     return (
-        <section id="gallery" className="py-24 mobile-gallery text-center">
-            <div className="max-w-6xl mx-auto px-5">
-                <div className="flex justify-center">
-                    <h2 className="text-center text-[#f2f2f2] font-light tracking-[0.1rem] mb-16 text-4xl mobile-section-heading section-heading-underline">
-                        Gallery
-                    </h2>
-                </div>
+        <section id="gallery" className="py-24">
+            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="text-4xl md:text-5xl font-bold text-[#f2f2f2] mb-16"
+                >
+                    Galerie
+                </motion.h2>
 
-                <div className="relative max-w-5xl mx-auto">
-                    {/* Slideshow Container */}
-                    <div
-                        ref={ref}
-                        className="grid grid-cols-3 mobile-gallery-grid tablet-gallery-grid gap-5 my-15"
-                    >
-                        {/* Mobile: Ein Bild */}
-                        <div className="md:hidden overflow-hidden liquid-glass rounded-lg">
-                            <div className="relative w-full h-48 mobile-gallery-image">
+                {/* Bento / Masonry Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[180px] md:auto-rows-[200px] gap-3">
+                    {localImages.map((src, index) => {
+                        const heightClass =
+                            bentoHeights[index % bentoHeights.length]
+
+                        return (
+                            <motion.div
+                                key={`${src}-${index}`}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true, margin: "-30px" }}
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                                className={`${heightClass} relative rounded-xl overflow-hidden cursor-pointer group`}
+                                onClick={() => openLightbox(index)}
+                            >
                                 <Image
-                                    src={galleryImages[gallerySlide] || "/placeholder.svg"}
-                                    alt={`3D creation gallery image ${gallerySlide + 1} - Professional 3D art, AI solutions, training portfolio Austria Vienna`}
+                                    src={src}
+                                    alt={`Galerie Bild ${index + 1}`}
                                     fill
-                                    className="object-cover"
+                                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    loading="lazy"
+                                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                 />
-                            </div>
-                        </div>
-
-                        {/* Desktop: Drei Bilder */}
-                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg">
-                            <div className="relative w-full h-64">
-                                <Image
-                                    src={galleryImages[gallerySlide * 3] || "/placeholder.svg"}
-                                    alt={`3D creation portfolio image ${gallerySlide * 3 + 1} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg">
-                            <div className="relative w-full h-64">
-                                <Image
-                                    src={galleryImages[gallerySlide * 3 + 1] || "/placeholder.svg"}
-                                    alt={`3D creation portfolio image ${gallerySlide * 3 + 2} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                        </div>
-
-                        <div className="hidden md:block overflow-hidden liquid-glass rounded-lg">
-                            <div className="relative w-full h-64">
-                                <Image
-                                    src={galleryImages[gallerySlide * 3 + 2] || "/placeholder.svg"}
-                                    alt={`3D creation portfolio image ${gallerySlide * 3 + 3} - Professional 3D art, Blender, Unreal Engine Austria Vienna`}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Navigation Arrows */}
-                    <button
-                        onClick={handleGalleryPrev}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 mobile-arrow mobile-touch-target bg-black/50 hover:bg-black/70 rounded-full transition-colors z-10"
-                        aria-label="Previous gallery images"
-                    >
-                        <ChevronLeft size={24} className="text-white" />
-                    </button>
-                    <button
-                        onClick={handleGalleryNext}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 mobile-arrow mobile-touch-target bg-black/50 hover:bg-black/70 rounded-full transition-colors z-10"
-                        aria-label="Next gallery images"
-                    >
-                        <ChevronRight size={24} className="text-white" />
-                    </button>
-
-                    {/* Slide Indicators */}
-                    <div className="flex justify-center gap-2 mt-6">
-                        {/* Mobile: Zeige alle Bilder einzeln */}
-                        <div className="md:hidden flex gap-1">
-                            {galleryImages.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setGallerySlide(index)}
-                                    className={`w-2 h-2 mobile-indicator rounded-full transition-all ${index === gallerySlide ? "bg-white w-4" : "bg-white/50"
-                                        }`}
-                                    aria-label={`Go to gallery image ${index + 1}`}
-                                />
-                            ))}
-                        </div>
-                        {/* Desktop: Zeige 3er-Gruppen */}
-                        <div className="hidden md:flex gap-2">
-                            {Array.from({ length: Math.floor(galleryImages.length / 3) }).map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => setGallerySlide(index)}
-                                    className={`w-3 h-3 rounded-full transition-all ${index === gallerySlide ? "bg-white w-6" : "bg-white/50"
-                                        }`}
-                                    aria-label={`Go to gallery slide ${index + 1}`}
-                                />
-                            ))}
-                        </div>
-                    </div>
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                            </motion.div>
+                        )
+                    })}
                 </div>
             </div>
+
+            {/* Lightbox */}
+            <AnimatePresence>
+                {lightboxIndex !== null && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+                        onClick={closeLightbox}
+                        onKeyDown={handleKeyDown}
+                        tabIndex={0}
+                        role="dialog"
+                        aria-label="Galerie Lightbox"
+                    >
+                        {/* Close */}
+                        <button
+                            onClick={closeLightbox}
+                            className="absolute top-6 right-6 p-2 text-white/70 hover:text-white transition-colors z-10"
+                            aria-label="Schliessen"
+                        >
+                            <X size={28} />
+                        </button>
+
+                        {/* Prev */}
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                goPrev()
+                            }}
+                            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 text-white/60 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition-colors z-10"
+                            aria-label="Vorheriges Bild"
+                        >
+                            <ChevronLeft size={24} />
+                        </button>
+
+                        {/* Next */}
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                goNext()
+                            }}
+                            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 text-white/60 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition-colors z-10"
+                            aria-label="Naechstes Bild"
+                        >
+                            <ChevronRight size={24} />
+                        </button>
+
+                        {/* Image */}
+                        <motion.div
+                            key={lightboxIndex}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            transition={{ duration: 0.2 }}
+                            className="relative w-[90vw] h-[80vh] max-w-5xl"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <Image
+                                src={localImages[lightboxIndex]}
+                                alt={`Galerie Bild ${lightboxIndex + 1}`}
+                                fill
+                                className="object-contain"
+                            />
+                        </motion.div>
+
+                        {/* Counter */}
+                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-sm">
+                            {lightboxIndex + 1} / {localImages.length}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     )
-})
-GallerySection.displayName = "GallerySection"
+}

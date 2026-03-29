@@ -1,280 +1,245 @@
-import { forwardRef } from "react"
-import Image from "next/image"
-import { Instagram, Globe } from "lucide-react"
+"use client"
 
-interface AboutSectionProps {
-    isMobile: boolean
+import Image from "next/image"
+import { Instagram, Globe, Linkedin } from "lucide-react"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
+
+const LinkedInIcon = () => <Linkedin size={20} />
+
+const YouTubeIcon = ({ src, alt }: { src: string; alt: string }) => (
+    <Image src={src} alt={alt} width={28} height={20} className="w-7 h-auto" />
+)
+
+interface SocialLink {
+    href: string
+    label: string
+    icon: React.ReactNode
+    colorClass?: string
 }
 
-export const AboutSection = forwardRef<HTMLDivElement, AboutSectionProps>(({ isMobile }, ref) => {
+interface TeamMember {
+    name: string
+    role: string
+    roleColor: string
+    description: string
+    image?: string
+    initials?: string
+    socials: SocialLink[]
+}
+
+const teamMembers: TeamMember[] = [
+    {
+        name: "David Scherngell",
+        role: "3D Generalist & Creative Technology Consultant",
+        roleColor: "text-blue-500",
+        description:
+            "Seit über 8 Jahren in der professionellen 3D-Produktion mit Blender und Unreal Engine 5. Entwickelt zusätzlich lokale KI-Agenten-Systeme für Unternehmen — DSGVO-konform und ohne Cloud-Abhängigkeit.",
+        image: "/images/david-scherngell.jpeg",
+        socials: [
+            {
+                href: "https://www.instagram.com/david_cillian?igsh=MW1iYjczY2d0Z2gzeA==",
+                label: "Follow @david_cillian on Instagram",
+                icon: <Instagram size={20} />,
+                colorClass: "text-pink-400 hover:text-pink-300",
+            },
+            {
+                href: "https://www.linkedin.com/in/david-scherngell-38a328346/",
+                label: "Connect with David Scherngell on LinkedIn",
+                icon: <LinkedInIcon />,
+            },
+            {
+                href: "https://www.artstation.com/davidcillian",
+                label: "View David Cillian's ArtStation portfolio",
+                icon: (
+                    <Image
+                        src="/images/Logos/artstation-logo.png"
+                        alt="ArtStation"
+                        width={24}
+                        height={24}
+                        className="w-6 h-6"
+                    />
+                ),
+            },
+        ],
+    },
+    {
+        name: "Daniel Abada",
+        role: "Marketing & Gamification (Externer Berater)",
+        roleColor: "text-purple-500",
+        description:
+            "Marketing-Spezialist (Bachelor in Gaming Business) mit Expertise in Gamification, strategischer Markenführung und KI-gestütztem Marketing.",
+        image: "/images/Daniel_Abada.jpeg",
+        socials: [
+            {
+                href: "https://danielabada.com",
+                label: "Visit Daniel Abada's website",
+                icon: <Globe size={20} />,
+                colorClass: "text-blue-400 hover:text-blue-300",
+            },
+            {
+                href: "https://www.linkedin.com/in/daniel-abada-1bb70b324/",
+                label: "Connect with Daniel Abada on LinkedIn",
+                icon: <LinkedInIcon />,
+            },
+        ],
+    },
+    {
+        name: "Adrian Spielberger",
+        role: "3D Artist & UI/UX (Externer Berater)",
+        roleColor: "text-purple-500",
+        description:
+            "3D-Artist aus Deutschland mit Fokus auf Organic Modeling, Texturing & LookDev.",
+        initials: "AS",
+        socials: [
+            {
+                href: "https://www.instagram.com/3d.aspect?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                label: "Follow @3d.aspect on Instagram",
+                icon: <Instagram size={20} />,
+                colorClass: "text-pink-400 hover:text-pink-300",
+            },
+            {
+                href: "https://www.linkedin.com/in/adrian-spielberger/",
+                label: "Connect with Adrian Spielberger on LinkedIn",
+                icon: <LinkedInIcon />,
+            },
+        ],
+    },
+    {
+        name: "GearWorks Production",
+        role: "Technical Specialist (Externer Berater)",
+        roleColor: "text-green-500",
+        description:
+            "Spezialist für Generatoren, Development und Coding mit umfangreicher Engine-Erfahrung. Technisches Rückgrat für komplexe Projekte.",
+        image: "/images/gearworks-icon.png?v=2",
+        socials: [
+            {
+                href: "https://www.youtube.com/@gearworks-gameproduction3745",
+                label: "Visit GearWorks Game Production YouTube channel",
+                icon: <YouTubeIcon src="/images/Logos/Youtube_Logo.png" alt="YouTube Game Production" />,
+            },
+            {
+                href: "https://www.youtube.com/@gearworks-entertainmentpro8605",
+                label: "Visit GearWorks Entertainment YouTube channel",
+                icon: <YouTubeIcon src="/images/Logos/youtube_lila.png" alt="YouTube Entertainment" />,
+            },
+            {
+                href: "https://www.youtube.com/@gearworks-musicproduction2737",
+                label: "Visit GearWorks Music Production YouTube channel",
+                icon: <YouTubeIcon src="/images/Logos/youtube_blau.png" alt="YouTube Music Production" />,
+            },
+            {
+                href: "https://www.youtube.com/@gearworks-softwareproducti3548",
+                label: "Visit GearWorks Software Production YouTube channel",
+                icon: <YouTubeIcon src="/images/Logos/youtube_gruen.png" alt="YouTube Software Production" />,
+            },
+        ],
+    },
+]
+
+function TeamCard({ member, index }: { member: TeamMember; index: number }) {
     return (
-        <section id="about" className="py-24 mobile-about text-center">
-            <div className="max-w-6xl mx-auto px-5">
-                <div className="flex justify-center">
-                    <h2 className="text-center text-[#f2f2f2] font-light tracking-[0.1rem] mb-16 text-4xl mobile-section-heading section-heading-underline">
-                        About Us
-                    </h2>
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+            className="bg-white/5 border border-white/5 rounded-xl p-8 hover:border-white/10 transition-colors duration-300"
+        >
+            <div className="flex flex-col items-center text-center">
+                {/* Avatar */}
+                <div className="w-36 h-36 rounded-full overflow-hidden mb-6 flex-shrink-0">
+                    {member.image ? (
+                        <Image
+                            src={member.image}
+                            alt={member.name}
+                            width={144}
+                            height={144}
+                            className="w-full h-full object-cover"
+                        />
+                    ) : (
+                        <div className="w-full h-full bg-white/10 flex items-center justify-center">
+                            <span className="text-2xl font-semibold text-white/50">
+                                {member.initials}
+                            </span>
+                        </div>
+                    )}
                 </div>
 
-                {/* About Us Description */}
-                <div className="w-full mb-16">
-                    <div className="liquid-glass rounded-lg p-8">
-                        <p className="text-[#aaa] text-lg leading-relaxed text-center">
-                            Cillian Studio verbindet 3D-Visualisierung, KI-Agenten-Entwicklung und Gamification zu einem einzigartigen Dienstleistungsangebot. Als Creative Technology Consultant berät und setzt David Scherngell Lösungen um, die traditionell getrennte Disziplinen in einem integrierten Ansatz vereinen — von fotorealistischen Renderings über lokale KI-Setups bis hin zu spielerischen Engagement-Systemen. Alles aus einer Hand, DSGVO-konform und ohne Cloud-Abhängigkeit.
-                        </p>
-                    </div>
-                </div>
+                {/* Name */}
+                <h3 className="text-xl font-semibold text-[#f2f2f2] mb-1">
+                    {member.name}
+                </h3>
 
-                <div
-                    ref={ref}
-                    className="relative flex flex-wrap gap-15 mobile-about-boxes tablet-about-boxes justify-center pt-5"
-                    style={{ minHeight: "500px" }}
+                {/* Role */}
+                <p className={`text-xs uppercase tracking-wider ${member.roleColor} mb-4`}>
+                    {member.role}
+                </p>
+
+                {/* Description */}
+                <p className="text-sm text-[#999] leading-relaxed mb-5">
+                    {member.description}
+                </p>
+
+                {/* Social Links */}
+                <div className="flex gap-4 items-center">
+                    {member.socials.map((social) => (
+                        <a
+                            key={social.href}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${social.colorClass || "opacity-70 hover:opacity-100"} transition-all duration-300`}
+                            aria-label={social.label}
+                        >
+                            {social.icon}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </motion.div>
+    )
+}
+
+export function AboutSection() {
+    const sectionRef = useRef<HTMLDivElement>(null)
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+
+    return (
+        <section id="about" className="py-24 bg-[#0a0a0a]">
+            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8" ref={sectionRef}>
+                {/* Heading */}
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5 }}
+                    className="text-4xl font-bold text-[#f2f2f2] text-center mb-6"
                 >
+                    Über uns
+                </motion.h2>
 
-                    {/* Adrian Spielberger - Links */}
-                    <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box liquid-glass rounded-lg p-8 relative z-10">
-                        <div className="flex flex-col items-center text-center mobile-about-content">
-                            <div className="w-[180px] h-[180px] mobile-about-avatar bg-[#aaa] rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                                {/* Platzhalter bis Foto kommt */}
-                                <div className="w-full h-full bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-                                    <span className="text-2xl text-white/60">AS</span>
-                                </div>
-                            </div>
-                            <div className="text-[#aaa] text-base mobile-about-text">
-                                <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Adrian Spielberger</h3>
-                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">Externer Berater · 3D Artist & UI/UX Design</div>
-                                <p className="leading-6">
-                                    3D-Artist aus Deutschland mit Fokus auf Organic Modeling, Texturing & LookDev.
-                                </p>
-                                <div className="mt-4 flex gap-4 justify-center">
-                                    <a
-                                        href="https://www.instagram.com/3d.aspect?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-pink-400 hover:text-pink-300 transition-colors duration-300"
-                                        aria-label="Follow @3d.aspect on Instagram"
-                                    >
-                                        <Instagram size={24} />
-                                    </a>
-                                    <a
-                                        href="https://www.linkedin.com/in/adrian-spielberger/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="Connect with Adrian Spielberger on LinkedIn"
-                                    >
-                                        <Image
-                                            src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
-                                            alt="LinkedIn"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {/* Description */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="bg-white/[0.03] border border-white/5 rounded-xl p-8 md:p-10 mb-12 text-center"
+                >
+                    <p className="text-[#bbb] text-lg md:text-xl leading-relaxed">
+                        Cillian Studio verbindet <span className="text-white font-medium">3D-Visualisierung</span>, <span className="text-white font-medium">KI-Agenten-Entwicklung</span> und <span className="text-white font-medium">Gamification</span> zu einem einzigartigen Dienstleistungsangebot.
+                    </p>
+                    <p className="text-[#777] text-base leading-relaxed mt-4">
+                        Als Creative Technology Consultant berät und setzt David Scherngell Lösungen um, die traditionell getrennte Disziplinen in einem integrierten Ansatz vereinen — von fotorealistischen Renderings über lokale KI-Setups bis hin zu spielerischen Engagement-Systemen. Alles aus einer Hand, DSGVO-konform und ohne Cloud-Abhängigkeit.
+                    </p>
+                </motion.div>
 
-                    {/* Daniel Abada */}
-                    <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box liquid-glass rounded-lg p-8 relative z-10">
-                        <div className="flex flex-col items-center text-center mobile-about-content">
-                            <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                                <Image
-                                    src="/images/Daniel_Abada.jpeg"
-                                    alt="Daniel Abada - Marketing Specialist, 3D Artist, Digital Marketing Expert Austria Vienna"
-                                    width={180}
-                                    height={180}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <div className="text-[#aaa] text-base mobile-about-text">
-                                <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">Daniel Abada</h3>
-                                <div className="text-sm text-purple-400 mb-2 uppercase tracking-wider">Externer Berater · Marketing & Gamification</div>
-                                <p className="leading-6">
-                                    Marketing-Spezialist (Bachelor in Gaming Business) mit Expertise in Gamification, strategischer
-                                    Markenführung und KI-gestütztem Marketing.
-                                </p>
-                                <div className="mt-4 flex gap-4 justify-center">
-                                    <a
-                                        href="https://danielabada.com"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                                        aria-label="Visit Daniel Abada's website"
-                                    >
-                                        <Globe size={24} />
-                                    </a>
-                                    <a
-                                        href="https://www.linkedin.com/in/daniel-abada-1bb70b324/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="Connect with Daniel Abada on LinkedIn"
-                                    >
-                                        <Image
-                                            src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
-                                            alt="LinkedIn"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* David Scherngell */}
-                    <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box liquid-glass rounded-lg p-8 relative z-10">
-                        <div className="flex flex-col items-center text-center mobile-about-content">
-                            <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                                <Image
-                                    src="/images/david-scherngell.jpeg"
-                                    alt="David Scherngell - 3D Artist, Unreal Engine Expert, Blender Specialist, 3D Creation Austria Vienna"
-                                    width={180}
-                                    height={180}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <div className="text-[#aaa] text-base mobile-about-text">
-                                <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">David Scherngell</h3>
-                                <div className="text-sm text-blue-400 mb-2 uppercase tracking-wider">3D Generalist & Creative Technology Consultant</div>
-                                <p className="leading-6">
-                                    Seit über 8 Jahren in der professionellen 3D-Produktion mit Blender und Unreal Engine 5. Entwickelt zusätzlich lokale KI-Agenten-Systeme für Unternehmen — DSGVO-konform und ohne Cloud-Abhängigkeit.
-                                </p>
-                                <div className="mt-4 flex gap-4 justify-center">
-                                    <a
-                                        href="https://www.instagram.com/david_cillian?igsh=MW1iYjczY2d0Z2gzeA=="
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-pink-400 hover:text-pink-300 transition-colors duration-300"
-                                        aria-label="Follow @david_cillian on Instagram"
-                                    >
-                                        <Instagram size={24} />
-                                    </a>
-                                    <a
-                                        href="https://www.linkedin.com/in/david-scherngell-38a328346/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="Connect with David Scherngell on LinkedIn"
-                                    >
-                                        <Image
-                                            src="https://yt3.googleusercontent.com/i6KNxiy3gME-BulL4WnuGkTGqHuSYF8jl1WRn0rXftcJdSYK7dHKcJ3gLAaPc-KfhmLSYPwf824=s900-c-k-c0x00ffffff-no-rj"
-                                            alt="LinkedIn"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                    <a
-                                        href="https://www.artstation.com/davidcillian"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="View David Cillian's ArtStation portfolio"
-                                    >
-                                        <Image
-                                            src="/images/Logos/artstation-logo.png"
-                                            alt="ArtStation"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Gearworks - Rechts */}
-                    <div className="flex-1 min-w-[280px] mobile-about-box tablet-about-box liquid-glass rounded-lg p-8 relative z-10">
-                        <div className="flex flex-col items-center text-center mobile-about-content">
-                            <div className="w-[180px] h-[180px] mobile-about-avatar rounded-full flex-shrink-0 mb-4 overflow-hidden">
-                                <Image
-                                    src="/images/gearworks-icon.png?v=2"
-                                    alt="GearWorks Production - Technical Specialist"
-                                    width={180}
-                                    height={180}
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <div className="text-[#aaa] text-base mobile-about-text">
-                                <h3 className="text-xl mobile-about-name mb-3 text-[#f2f2f2]">GearWorks Production</h3>
-                                <div className="text-sm text-green-400 mb-2 uppercase tracking-wider">Externer Berater · Technical Specialist</div>
-                                <p className="leading-6">
-                                    GearWorks Production - Spezialist für Generatoren, Development und Coding mit umfangreicher
-                                    Engine-Erfahrung. Technisches Rückgrat für komplexe Projekte.
-                                </p>
-                                <div className="mt-4 flex gap-4 justify-center">
-                                    <a
-                                        href="https://www.youtube.com/@gearworks-gameproduction3745"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="Visit GearWorks Game Production YouTube channel"
-                                    >
-                                        <Image
-                                            src="/images/Logos/Youtube_Logo.png"
-                                            alt="YouTube Game Production"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                    <a
-                                        href="https://www.youtube.com/@gearworks-entertainmentpro8605"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="Visit GearWorks Entertainment YouTube channel"
-                                    >
-                                        <Image
-                                            src="/images/Logos/youtube_lila.png"
-                                            alt="YouTube Entertainment"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                    <a
-                                        href="https://www.youtube.com/@gearworks-musicproduction2737"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="Visit GearWorks Music Production YouTube channel"
-                                    >
-                                        <Image
-                                            src="/images/Logos/youtube_blau.png"
-                                            alt="YouTube Music Production"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                    <a
-                                        href="https://www.youtube.com/@gearworks-softwareproducti3548"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="transition-opacity duration-300 hover:opacity-80"
-                                        aria-label="Visit GearWorks Software Production YouTube channel"
-                                    >
-                                        <Image
-                                            src="/images/Logos/youtube_gruen.png"
-                                            alt="YouTube Software Production"
-                                            width={24}
-                                            height={24}
-                                            className="w-6 h-6"
-                                        />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {/* Team Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {teamMembers.map((member, index) => (
+                        <TeamCard key={member.name} member={member} index={index} />
+                    ))}
                 </div>
             </div>
         </section>
     )
-})
-AboutSection.displayName = "AboutSection"
+}

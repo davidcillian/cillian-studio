@@ -1,8 +1,7 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
-import Preloader from "@/components/preloader"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,10 +9,19 @@ const inter = Inter({
   preload: true,
 })
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#0a0a0a",
+}
+
 export const metadata: Metadata = {
-  title: "Cillian Studio - 3D-Visualisierung, KI-Agenten & Gamification Wien | David Scherngell",
-  description: "Kreativ- und Technologie-Studio in Wien. 3D-Visualisierung, lokale KI-Agenten (DSGVO-konform), Gamification und Training. Creative Technology Consultant David Scherngell – Blender, Unreal Engine 5, lokale LLMs.",
-  keywords: "3D Visualisierung Wien, KI-Agenten Wien, lokale KI DSGVO, Gamification, Creative Technology Consultant, Unreal Engine 5, Blender, David Scherngell, Cillian Studio, 3D Generalist, KI-Beratung Wien, n8n Automatisierung",
+  title: "Cillian Studio — 3D, KI-Agenten & Gamification | Wien",
+  description:
+    "Kreativ- und Technologie-Studio in Wien. 3D-Visualisierung, KI-Agenten (DSGVO-konform), Gamification und Automatisierung. Blender, Unreal Engine 5, lokale LLMs.",
+  keywords:
+    "3D Visualisierung Wien, KI-Agenten Wien, lokale KI DSGVO, Gamification, Creative Technology, Unreal Engine 5, Blender, Cillian Studio, KI-Beratung Wien",
   authors: [{ name: "David Scherngell" }],
   creator: "David Scherngell",
   publisher: "Cillian Studio",
@@ -22,27 +30,25 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_AT",
     url: "https://cillianstudio.com",
-    title: "Cillian Studio - 3D-Visualisierung, KI-Agenten & Gamification Wien",
-    description: "Kreativ- und Technologie-Studio in Wien. 3D-Visualisierung, lokale KI-Agenten (DSGVO-konform), Gamification und Training. Creative Technology Consultant David Scherngell.",
+    title: "Cillian Studio — 3D, KI-Agenten & Gamification | Wien",
+    description:
+      "Kreativ- und Technologie-Studio in Wien. 3D-Visualisierung, KI-Agenten, Gamification und Automatisierung.",
     siteName: "Cillian Studio",
     images: [
       {
         url: "https://cillianstudio.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Cillian Studio - 3D Visualisierung & Creation Services Wien",
+        alt: "Cillian Studio — 3D, KI & Gamification aus Wien",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cillian Studio - 3D Visualisierung, AI & Training Wien",
-    description: "Professionelle 3D-Visualisierung, KI-gestützte Workflows und spezialisiertes Training in Wien.",
-    creator: "@david_cillian",
+    title: "Cillian Studio — 3D, KI-Agenten & Gamification | Wien",
+    description:
+      "3D-Visualisierung, KI-Agenten und Gamification aus Wien.",
   },
-  viewport: "width=device-width, initial-scale=1, maximum-scale=5",
-  themeColor: "#1d1d1d",
-  generator: 'Next.js',
   alternates: {
     canonical: "https://cillianstudio.com",
   },
@@ -55,16 +61,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de" className={inter.className}>
-      <head>
-        {/* Preload kritische Ressourcen */}
-        <link rel="preload" href="/images/3d-artwork-1.png" as="image" />
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      </head>
-      <body className="antialiased">
-        <Preloader />
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }
