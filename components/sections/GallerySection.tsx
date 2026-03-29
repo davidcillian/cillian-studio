@@ -68,7 +68,7 @@ export function GallerySection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-4xl md:text-5xl font-bold text-[#f2f2f2] mb-16"
+                    className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-12"
                 >
                     Galerie
                 </motion.h2>

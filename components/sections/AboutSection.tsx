@@ -213,7 +213,7 @@ export function AboutSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.5 }}
-                    className="text-4xl font-bold text-[#f2f2f2] text-center mb-6"
+                    className="text-3xl md:text-4xl font-bold text-[#f2f2f2] text-center mb-8"
                 >
                     Über uns
                 </motion.h2>

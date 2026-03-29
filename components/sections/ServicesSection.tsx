@@ -58,7 +58,7 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center text-[#f2f2f2] font-bold tracking-tight mb-16 text-4xl"
+          className="text-center text-[#f2f2f2] font-bold tracking-tight mb-12 text-3xl md:text-4xl"
         >
           Was wir bieten
         </motion.h2>

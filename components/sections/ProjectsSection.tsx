@@ -19,7 +19,7 @@ export function ProjectsSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="text-4xl md:text-5xl font-bold text-[#f2f2f2] mb-16"
+                    className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-12"
                 >
                     Projekte
                 </motion.h2>
@@ -131,7 +131,7 @@ export function ProjectsSection() {
                     >
                         <button
                             onClick={() => setShowAll(!showAll)}
-                            className="bg-white/5 hover:bg-white/10 border border-white/10 text-[#f2f2f2] px-8 py-3 rounded-lg text-sm font-medium transition-colors"
+                            className="bg-white/5 hover:bg-white/10 border border-white/10 text-[#ccc] hover:text-white px-8 py-3 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-[1.02]"
                         >
                             {showAll ? "Weniger anzeigen" : "Mehr Projekte"}
                         </button>

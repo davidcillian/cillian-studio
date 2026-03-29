@@ -136,15 +136,14 @@ export function HeroSection() {
         >
           <button
             onClick={() => scrollTo("projects")}
-            className="group relative px-8 py-3.5 bg-white text-[#0a0a0a] font-semibold text-sm tracking-wide uppercase overflow-hidden transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
+            className="px-8 py-3.5 bg-white text-[#0a0a0a] rounded-lg font-semibold text-sm tracking-wide transition-all duration-200 hover:bg-neutral-200 hover:scale-[1.02] active:scale-[0.98]"
           >
-            <span className="relative z-10">Projekte ansehen</span>
-            <span className="absolute inset-0 bg-neutral-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+            Projekte ansehen
           </button>
 
           <button
             onClick={() => scrollTo("contact")}
-            className="px-8 py-3.5 border border-neutral-700 text-neutral-300 font-medium text-sm tracking-wide uppercase transition-all duration-300 hover:border-neutral-400 hover:text-white hover:scale-[1.03] active:scale-[0.98]"
+            className="px-8 py-3.5 border border-white/15 text-neutral-300 rounded-lg font-medium text-sm tracking-wide transition-all duration-200 hover:border-white/30 hover:text-white hover:scale-[1.02] active:scale-[0.98]"
           >
             Kontakt
           </button>
