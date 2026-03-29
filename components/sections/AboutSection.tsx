@@ -31,8 +31,7 @@ const teamMembers: TeamMember[] = [
         name: "David Scherngell",
         role: "Gründer & Creative Technology Consultant",
         roleColor: "text-blue-400",
-        description:
-            "Seit über 8 Jahren in der professionellen 3D-Produktion mit Blender und Unreal Engine 5. Entwickelt zusätzlich lokale KI-Agenten-Systeme für Unternehmen — DSGVO-konform und ohne Cloud-Abhängigkeit. Verbindet kreative und technische Disziplinen in einem integrierten Ansatz.",
+        description: "8+ Jahre 3D-Produktion mit Blender & Unreal Engine 5\nLokale KI-Agenten für Unternehmen — DSGVO-konform\nVerbindet 3D, KI und Gamification in einem Ansatz",
         image: "/images/david-scherngell.jpeg",
         socials: [
             {
@@ -65,8 +64,7 @@ const teamMembers: TeamMember[] = [
         name: "Daniel Abada",
         role: "Marketing & Gamification · Externer Berater",
         roleColor: "text-purple-400",
-        description:
-            "Marketing-Spezialist mit Bachelor in Gaming Business. Bringt Expertise in Gamification, strategischer Markenführung und KI-gestütztem Marketing ins Team.",
+        description: "Bachelor in Gaming Business\nGamification, strategische Markenführung\nKI-gestütztes Marketing",
         image: "/images/Daniel_Abada.jpeg",
         socials: [
             {
@@ -86,8 +84,7 @@ const teamMembers: TeamMember[] = [
         name: "Adrian Spielberger",
         role: "3D Artist & UI/UX · Externer Berater",
         roleColor: "text-purple-400",
-        description:
-            "3D-Artist aus Deutschland mit Fokus auf Organic Modeling, Texturing und LookDev. Unterstützt das Studio bei anspruchsvollen visuellen Projekten.",
+        description: "3D-Artist aus Deutschland\nOrganic Modeling, Texturing & LookDev\nVisuell anspruchsvolle Projekte",
         initials: "AS",
         socials: [
             {
@@ -107,8 +104,7 @@ const teamMembers: TeamMember[] = [
         name: "GearWorks Production",
         role: "Technical Specialist · Externer Berater",
         roleColor: "text-green-400",
-        description:
-            "Spezialist für Generatoren, Development und Coding mit umfangreicher Engine-Erfahrung. Technisches Rückgrat für komplexe Projekte.",
+        description: "Generatoren, Development & Coding\nUmfangreiche Engine-Erfahrung\nTechnisches Rückgrat für komplexe Projekte",
         image: "/images/gearworks-icon.png?v=2",
         socials: [
             {
@@ -153,35 +149,37 @@ export function AboutSection() {
                                 className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 transition-colors duration-300"
                             >
                                 <div className={`flex flex-col ${imageLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
-                                    {/* Avatar Side */}
-                                    <div className="w-full lg:w-[320px] flex-shrink-0 flex items-center justify-center py-10 lg:py-0">
+                                    {/* Image Side */}
+                                    <div className="relative w-full lg:w-[420px] flex-shrink-0 aspect-square lg:aspect-auto lg:min-h-[400px] bg-white/[0.02]">
                                         {member.image ? (
-                                            <div className="w-40 h-40 rounded-full overflow-hidden ring-2 ring-white/5">
-                                                <Image
-                                                    src={member.image}
-                                                    alt={member.name}
-                                                    width={160}
-                                                    height={160}
-                                                    className="w-full h-full object-cover"
-                                                />
-                                            </div>
+                                            <Image
+                                                src={member.image}
+                                                alt={member.name}
+                                                fill
+                                                className="object-cover"
+                                            />
                                         ) : (
-                                            <div className="w-40 h-40 rounded-full bg-white/[0.06] ring-2 ring-white/5 flex items-center justify-center">
-                                                <span className="text-4xl font-bold text-white/30">{member.initials}</span>
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <span className="text-7xl font-bold text-white/15">{member.initials}</span>
                                             </div>
                                         )}
                                     </div>
 
                                     {/* Text Side */}
-                                    <div className="flex-1 p-8 lg:py-10 lg:px-10 flex flex-col justify-center">
-                                        <h3 className="text-2xl font-bold text-[#f2f2f2] mb-1">{member.name}</h3>
-                                        <p className={`text-sm uppercase tracking-wider ${member.roleColor} mb-4`}>
+                                    <div className="flex-1 p-8 lg:py-12 lg:px-16 flex flex-col justify-center items-center text-center">
+                                        <h3 className="text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-2">{member.name}</h3>
+                                        <p className={`text-sm md:text-base uppercase tracking-wider ${member.roleColor} mb-6`}>
                                             {member.role}
                                         </p>
-                                        <p className="text-[#888] leading-relaxed mb-6 max-w-xl">
-                                            {member.description}
-                                        </p>
-                                        <div className="flex gap-4 items-center">
+                                        <ul className="space-y-3 mb-8">
+                                            {member.description.split("\n").map((line, i) => (
+                                                <li key={i} className="flex items-start gap-2.5 text-[#aaa] text-lg">
+                                                    <span className="text-blue-400/60 mt-1.5 shrink-0 text-sm">&#9679;</span>
+                                                    {line}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <div className="flex gap-5 items-center mt-2">
                                             {member.socials.map((social) => (
                                                 <a
                                                     key={social.href}
