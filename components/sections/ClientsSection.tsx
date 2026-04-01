@@ -38,15 +38,17 @@ export function ClientsSection() {
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white/[0.03] border border-white/5 rounded-xl p-8 hover:border-white/10 hover:bg-white/[0.05] transition-all duration-300 flex flex-col items-center text-center"
+              className="group rounded-xl p-6 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <Image
-                src={client.logo}
-                alt={client.name}
-                width={280}
-                height={120}
-                className="object-contain h-24 w-auto mb-6"
-              />
+              <div className="bg-white rounded-lg p-6 w-full flex items-center justify-center mb-6">
+                <Image
+                  src={client.logo}
+                  alt={client.name}
+                  width={320}
+                  height={140}
+                  className="object-contain h-20 w-auto"
+                />
+              </div>
               <h3 className="text-lg font-semibold text-[#f2f2f2] mb-2 flex items-center gap-2">
                 {client.name}
                 <ExternalLink className="w-4 h-4 text-white/30 group-hover:text-blue-400 transition-colors duration-300" />
