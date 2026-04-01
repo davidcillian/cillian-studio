@@ -50,12 +50,12 @@ export const services: Service[] = [
     id: "training",
     title: "Training & Workshops",
     description:
-      "Praxisnahe Kurse zu 3D und KI — als VHS-Kurs, WKO-Workshop oder maßgeschneiderter Firmenworkshop.",
+      "Praxisnahe Kurse zu 3D und KI — als Volkshochschul-Kurs, Weiterbildungsseminar oder maßgeschneiderter Firmenworkshop.",
     icon: "GraduationCap",
     features: [
       "3D-Workshops (Blender, UE5)",
       "KI-Workshops (lokale AI, n8n)",
-      "Firmenworkshops (VHS Wien, WKO)",
+      "Maßgeschneiderte Firmenworkshops",
     ],
   },
 ]

@@ -115,7 +115,7 @@ export default function CillianStudio() {
                     itemOffered: {
                       "@type": "Service",
                       name: "Training & Consulting",
-                      description: "3D- und KI-Workshops an VHS Wien, WKO und als Firmenworkshops. Blender, Unreal Engine 5, lokale KI-Agenten, n8n-Automatisierung und Prompt Engineering.",
+                      description: "3D- und KI-Workshops als Volkshochschul-Kurse, Weiterbildungsseminare und maßgeschneiderte Firmenworkshops. Blender, Unreal Engine 5, lokale KI-Agenten, n8n-Automatisierung und Prompt Engineering.",
                     },
                   },
                 ],
@@ -162,7 +162,7 @@ export default function CillianStudio() {
                   name: "Bietet Cillian Studio Workshops an?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Ja — 3D-Workshops (Blender, UE5), KI-Workshops (lokale KI-Agenten, n8n, Prompt Engineering) und die einzigartige Kombination 3D + KI. Verfügbar über VHS Wien, WKO und als maßgeschneiderte Firmenworkshops.",
+                    text: "Ja — 3D-Workshops (Blender, UE5), KI-Workshops (lokale KI-Agenten, n8n, Prompt Engineering) und die einzigartige Kombination 3D + KI. Verfügbar als Volkshochschul-Kurse, Weiterbildungsseminare und maßgeschneiderte Firmenworkshops.",
                   },
                 },
               ],
