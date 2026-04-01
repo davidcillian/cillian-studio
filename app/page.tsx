@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/sections/HeroSection"
 import { AboutSection } from "@/components/sections/AboutSection"
 import { ServicesSection } from "@/components/sections/ServicesSection"
 import { ProjectsSection } from "@/components/sections/ProjectsSection"
+import { ClientsSection } from "@/components/sections/ClientsSection"
 import { GallerySection } from "@/components/sections/GallerySection"
 import { ContactSection } from "@/components/sections/ContactSection"
 import { Header } from "@/components/Header"
@@ -19,6 +20,7 @@ export default function CillianStudio() {
         <AboutSection />
         <ServicesSection />
         <ProjectsSection />
+        <ClientsSection />
         <GallerySection />
         <ContactSection />
       </main>
