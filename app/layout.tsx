@@ -17,6 +17,10 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   title: "Cillian Studio — 3D, KI-Agenten & Gamification | Wien",
   description:
     "Kreativ- und Technologie-Studio in Wien. 3D-Visualisierung, KI-Agenten (DSGVO-konform), Gamification und Automatisierung. Blender, Unreal Engine 5, lokale LLMs.",

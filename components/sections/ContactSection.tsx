@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Mail, Phone, Copy, Check, Send, Loader2 } from "lucide-react"
 
 type FormState = "idle" | "sending" | "success" | "error"
@@ -9,6 +9,12 @@ export function ContactSection() {
     const [copied, setCopied] = useState(false)
     const [formState, setFormState] = useState<FormState>("idle")
     const [errorMsg, setErrorMsg] = useState("")
+
+    // Spam protection
+    const [honeypot, setHoneypot] = useState("")
+    const loadTime = useRef(0)
+    useEffect(() => { loadTime.current = Date.now() }, [])
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -27,11 +33,15 @@ export function ContactSection() {
         setFormState("sending")
         setErrorMsg("")
 
+        // Spam checks
+        if (honeypot) return setFormState("idle") // Bot filled hidden field
+        if (Date.now() - loadTime.current < 3000) return setFormState("idle") // Too fast
+
         try {
             const res = await fetch("https://n8n.cillianstudio.com/webhook/contact-form", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({ ...formData, _t: Date.now() - loadTime.current }),
             })
 
             if (!res.ok) throw new Error("Senden fehlgeschlagen")
@@ -60,6 +70,18 @@ export function ContactSection() {
                         </p>
 
                         <form onSubmit={handleSubmit} className="space-y-5">
+                            {/* Honeypot — hidden from humans, bots fill it */}
+                            <div className="absolute -left-[9999px]" aria-hidden="true">
+                                <input
+                                    type="text"
+                                    name="website"
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                    value={honeypot}
+                                    onChange={(e) => setHoneypot(e.target.value)}
+                                />
+                            </div>
+
                             <div>
                                 <label htmlFor="name" className="block text-sm text-[#999] mb-1.5">
                                     Name *
