@@ -48,7 +48,6 @@ export function ContactSection() {
 
             setFormState("success")
             setFormData({ name: "", email: "", service: "", message: "" })
-            setTimeout(() => setFormState("idle"), 5000)
         } catch {
             setFormState("error")
             setErrorMsg("Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es per E-Mail.")
@@ -60,8 +59,28 @@ export function ContactSection() {
         <section id="contact" className="py-24">
             <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
                 <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                    {/* Left: Contact Form */}
+                    {/* Left: Contact Form or Success Message */}
                     <div className="bg-white/[0.03] border border-white/5 rounded-xl p-8 md:p-10 hover:border-white/10 transition-colors duration-300">
+                        {formState === "success" ? (
+                            <div className="flex flex-col items-center justify-center text-center py-12 space-y-4">
+                                <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-2">
+                                    <Check size={32} className="text-green-400" />
+                                </div>
+                                <h2 className="text-2xl font-bold tracking-tight">
+                                    Nachricht gesendet!
+                                </h2>
+                                <p className="text-[#999] text-sm max-w-sm">
+                                    Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+                                </p>
+                                <button
+                                    onClick={() => setFormState("idle")}
+                                    className="mt-4 text-sm text-[#666] hover:text-white underline underline-offset-2 transition-colors"
+                                >
+                                    Weitere Nachricht senden
+                                </button>
+                            </div>
+                        ) : (
+                        <>
                         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2">
                             Bereit für Ihr Projekt?
                         </h2>
@@ -186,6 +205,8 @@ export function ContactSection() {
                                 zu.
                             </p>
                         </form>
+                        </>
+                        )}
                     </div>
 
                     {/* Right: Direct Contact */}
