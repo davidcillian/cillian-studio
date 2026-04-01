@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { ExternalLink } from "lucide-react"
 
-const clients = [
+const clients: { name: string; logo: string; url: string; description: string; darkBg?: boolean }[] = [
   {
     name: "CreARTive Vienna",
     logo: "/images/clients/creartive-vienna.png",
@@ -15,6 +15,7 @@ const clients = [
     logo: "/images/clients/goodcare-it.png",
     url: "https://goodcare.at/",
     description: "Anbieter von Open-Source-Lösungen und Alternativen zu Microsoft-Produkten.",
+    darkBg: true,
   },
   {
     name: "CS Orthoseminars",
@@ -40,7 +41,7 @@ export function ClientsSection() {
               rel="noopener noreferrer"
               className="group rounded-xl p-6 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center"
             >
-              <div className="bg-white rounded-lg p-6 w-full flex items-center justify-center mb-6">
+              <div className={`${client.darkBg ? "bg-[#1a1a1a]" : "bg-white"} rounded-lg p-6 w-full flex items-center justify-center mb-6`}>
                 <Image
                   src={client.logo}
                   alt={client.name}
