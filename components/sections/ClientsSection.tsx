@@ -18,15 +18,14 @@ export function ClientsSection() {
           {clients.map((client) => (
             <div
               key={client.name}
-              className="grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
               title={client.name}
             >
               <Image
                 src={client.logo}
                 alt={client.name}
-                width={140}
-                height={60}
-                className="object-contain h-14 w-auto"
+                width={280}
+                height={120}
+                className="object-contain h-28 w-auto"
               />
             </div>
           ))}
