@@ -26,7 +26,7 @@ export const services: Service[] = [
     id: "ki-agenten",
     title: "KI-Agenten",
     description:
-      "Selbst-gehostete KI-Systeme für Unternehmen — DSGVO-konform, ohne Cloud-Abhängigkeit, mit intelligenter Automatisierung.",
+      "Maßgeschneiderte KI-Lösungen — entwickelt für Ihre Prozesse, nicht von der Stange. DSGVO-konform, selbst-gehostet, ohne Cloud-Abhängigkeit.",
     icon: "Brain",
     features: [
       "Lokale LLMs (DSGVO-konform)",
