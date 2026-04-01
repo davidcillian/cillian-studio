@@ -16,19 +16,22 @@ const clients = [
     url: "https://goodcare.at/",
     description: "Anbieter von Open-Source-Lösungen und Alternativen zu Microsoft-Produkten.",
   },
+  {
+    name: "CS Orthoseminars",
+    logo: "/images/clients/csorthoseminars.jpg",
+    url: "https://csorthoseminars.com/",
+    description: "Fortbildungsplattform für Kieferorthopädie — aus der Praxis für die Praxis.",
+  },
 ]
 
 export function ClientsSection() {
   return (
     <section className="py-20 px-6">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-[#f2f2f2] mb-4">
-          Unternehmen, die mir vertrauen
+        <h2 className="text-3xl font-bold text-center text-[#f2f2f2] mb-12">
+          Bisherige Kunden
         </h2>
-        <p className="text-center text-[#888] text-sm mb-12">
-          Ausgewählte Kunden aus bisherigen Projekten
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {clients.map((client) => (
             <a
               key={client.name}
