@@ -13,7 +13,7 @@ export function Footer() {
                 {/* Social Media Icons */}
                 <div className="flex justify-center gap-4 mb-10">
                     <a
-                        href="https://www.youtube.com/channel/UCUnpVqUZeM4HgbusAsfYz-w/posts?pvf=CAI%253D"
+                        href="https://www.youtube.com/channel/UCUnpVqUZeM4HgbusAsfYz-w"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-9 h-9 rounded-full bg-white/[0.05] flex items-center justify-center text-[#555] hover:text-white hover:bg-white/[0.1] transition-all duration-200"
@@ -23,7 +23,7 @@ export function Footer() {
                         <Youtube size={18} />
                     </a>
                     <a
-                        href="https://www.instagram.com/cillian_studio?igsh=aG1obXhzaHlsMnho&utm_source=qr"
+                        href="https://www.instagram.com/cillian_studio"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-9 h-9 rounded-full bg-white/[0.05] flex items-center justify-center text-[#555] hover:text-white hover:bg-white/[0.1] transition-all duration-200"
@@ -33,7 +33,7 @@ export function Footer() {
                         <Instagram size={18} />
                     </a>
                     <a
-                        href="https://www.linkedin.com/company/cillian-studio/about/?viewAsMember=true"
+                        href="https://www.linkedin.com/company/cillian-studio"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-9 h-9 rounded-full bg-white/[0.05] flex items-center justify-center text-[#555] hover:text-white hover:bg-white/[0.1] transition-all duration-200"
@@ -43,7 +43,7 @@ export function Footer() {
                         <Linkedin size={18} />
                     </a>
                     <a
-                        href="https://www.tiktok.com/@cillian_studio?_t=ZN-90Le13JCTzi&_r=1"
+                        href="https://www.tiktok.com/@cillian_studio"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-9 h-9 rounded-full bg-white/[0.05] flex items-center justify-center text-[#555] hover:text-white hover:bg-white/[0.1] transition-all duration-200"
