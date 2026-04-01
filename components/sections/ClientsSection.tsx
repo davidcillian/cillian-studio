@@ -29,6 +29,7 @@ const clients: { name: string; logo: string; url: string; description: string; c
     logo: "/images/clients/homunculi-production.png",
     url: "https://homunculi-production.com/",
     description: "Kreativagentur für 3D-Visualisierung, Webdesign und digitale Produktion.",
+    cardBg: "#f5f0eb",
   },
 ]
 
