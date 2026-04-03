@@ -9,8 +9,8 @@ const guide: Record<string, { text: string; alt: string }> = {
     alt: "Ihr koennt mich jederzeit anklicken, dann wiederhole ich was diese Sektion zeigt. Scrollt einfach weiter!",
   },
   about: {
-    text: "Das ist das Team hinter Cillian Studio! 8 Jahre 3D-Erfahrung mit Blender und Unreal Engine, plus KI-Expertise seit Tag eins. Die Kombination macht den Unterschied!",
-    alt: "Cillian Studio versteht beide Seiten — die kreative und die technische. 3D, KI-Systeme, Automatisierung — alles direkt, ohne Zwischenhaendler!",
+    text: "",
+    alt: "",
   },
   services: {
     text: "Vier Bereiche: 3D-Visualisierung fuer fotorealistische Renderings, KI-Agenten auf eurem eigenen Server, Gamification fuer Kundenbindung und Motivation, und Trainings und Workshops!",
@@ -295,7 +295,7 @@ export function StevensOrb() {
             if (!s.saidSecs.has(entry.target.id)) {
               s.saidSecs.add(entry.target.id)
               const g = guide[entry.target.id]
-              if (g) say(g.text, entry.target.id)
+              if (g && g.text) say(g.text, entry.target.id)
             }
           }
         })
@@ -345,7 +345,7 @@ export function StevensOrb() {
           const s = stateRef.current
           if (!s.lastSec) return
           const g = guide[s.lastSec]
-          if (g?.alt) say(g.alt, s.lastSec + "-alt")
+          if (g?.alt && g.alt) say(g.alt, s.lastSec + "-alt")
         }}
       >
         <canvas ref={canvasRef} />
