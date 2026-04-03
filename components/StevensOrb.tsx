@@ -3,27 +3,34 @@
 import { useEffect, useRef, useCallback, useState } from "react"
 
 // Section guide — Stevens explains each section with butler elegance
-const guide: Record<string, { text: string }> = {
+const guide: Record<string, { text: string; alt: string }> = {
   hero: {
     text: "Hey, willkommen bei Cillian Studio! Ich bin Stevens und zeig euch was David alles macht. 3D, KI und Gamification — alles aus einer Hand. Scrollt einfach durch, ich erklär euch jeden Bereich.",
+    alt: "Ihr koennt mich jederzeit anklicken, dann wiederhole ich was diese Sektion zeigt. Scrollt einfach weiter — ich flieg mit.",
   },
   about: {
     text: "Das ist David. 8 Jahre 3D-Erfahrung mit Blender, Unreal Engine und Substance Painter plus KI-Expertise seit der ersten Stunde. Die Kombination macht den Unterschied — er sieht Loesungen die reine 3D-Artists oder reine KI-Berater nicht sehen.",
+    alt: "Was David besonders macht: er versteht sowohl die kreative als auch die technische Seite. 3D-Visualisierung, KI-Pipelines, Automatisierung — alles aus einer Hand, ohne Zwischenhaendler.",
   },
   services: {
     text: "Die drei Bereiche: 3D-Visualisierung fuer fotorealistische Renderings und Game Assets. KI-Agenten die auf eurem eigenen Server laufen. Und Gamification die Kunden bindet und Teams motiviert. Spannend, oder?",
+    alt: "Kurz gesagt: David macht eure Produkte sichtbar in 3D, automatisiert eure Prozesse mit KI, und motiviert eure Kunden und Teams durch Spielmechaniken. Alles massgeschneidert.",
   },
   projects: {
     text: "Hier sind ein paar ausgewaehlte Projekte. ArchViz, Character Design, interaktive Echtzeit-Erlebnisse — klickt euch durch, es lohnt sich.",
+    alt: "Jedes Projekt zeigt eine andere Facette: von Immobilien-Renderings ueber Game Assets bis zu interaktiven Echtzeit-Anwendungen in Unreal Engine 5.",
   },
   clients: {
     text: "David arbeitet mit Unternehmen jeder Groesse zusammen. Vom Startup bis zum Mittelstaendler — egal ob ihr einen KI-Assistenten braucht oder eure 3D-Pipeline beschleunigen wollt.",
+    alt: "Ob kleines Team oder groesseres Unternehmen — David findet raus was den groessten Hebel hat und setzt genau da an. Kein Overhead, direkte Zusammenarbeit.",
   },
   gallery: {
     text: "Die Galerie zeigt die Bandbreite — 3D-Renderings, Character Art, Produkt-Viz. Alles aus Davids Pipeline, beschleunigt durch KI-Workflows.",
+    alt: "Alles was ihr hier seht, entsteht in Davids KI-gestuetzter Pipeline. Schneller, flexibler und skalierbarer als traditionelle 3D-Produktion.",
   },
   contact: {
     text: "Klingt interessant? Dann schreibt David einfach. Erstberatung ist kostenlos und unverbindlich — er findet raus was fuer euch am meisten bringt.",
+    alt: "Einfach anrufen oder mailen — David nimmt sich 30 Minuten Zeit und klaert mit euch, wo KI und 3D den groessten Impact haben. Ohne Verpflichtung.",
   },
 }
 
@@ -322,13 +329,20 @@ export function StevensOrb() {
       {/* Stevens Orb */}
       <div
         ref={orbRef}
-        className="fixed z-[900] pointer-events-none"
-        style={{ top: 0, left: 0, willChange: "transform", position: "absolute" }}
+        className="fixed z-[900]"
+        style={{ top: 0, left: 0, willChange: "transform", position: "absolute", cursor: "pointer" }}
+        onClick={() => {
+          const s = stateRef.current
+          if (!s.lastSec) return
+          const g = guide[s.lastSec]
+          if (g?.alt) say(g.alt)
+        }}
       >
         <canvas ref={canvasRef} />
         <div
           ref={speechRef}
           className="stevens-speech"
+          style={{ pointerEvents: "none" }}
         />
       </div>
 
