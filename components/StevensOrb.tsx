@@ -112,7 +112,7 @@ export function StevensOrb() {
       s.wpX = contentR + s.size * 0.6 + Math.random() * Math.max(0, gutterW - s.size)
       s.wpX = Math.max(contentR + 10, Math.min(s.wpX, curVw - s.size / 2 - 10))
       s.wpY = innerHeight * 0.15 + Math.random() * innerHeight * 0.65
-      s.wpI = 8000 + Math.random() * 7000
+      s.wpI = 12000 + Math.random() * 10000
       s.wpT = Date.now()
     }
     wp()
@@ -127,13 +127,13 @@ export function StevensOrb() {
       const tx = s.wpX, ty = s.lazyScroll + s.wpY
       const dx = tx - s.x, dy = ty - s.y, dist = Math.sqrt(dx * dx + dy * dy)
       if (dist > 1) {
-        const a = 0.00012
-        s.vx += (dx / dist) * a * Math.min(dist, 200)
-        s.vy += (dy / dist) * a * Math.min(dist, 200)
+        const a = 0.00006
+        s.vx += (dx / dist) * a * Math.min(dist, 150)
+        s.vy += (dy / dist) * a * Math.min(dist, 150)
       }
-      s.vx *= 0.975; s.vy *= 0.975
+      s.vx *= 0.97; s.vy *= 0.97
       const spd = Math.sqrt(s.vx * s.vx + s.vy * s.vy)
-      if (spd > 1.2) { s.vx = (s.vx / spd) * 1.2; s.vy = (s.vy / spd) * 1.2 }
+      if (spd > 0.7) { s.vx = (s.vx / spd) * 0.7; s.vy = (s.vy / spd) * 0.7 }
       s.x += s.vx; s.y += s.vy
       const p = s.size / 2 + 14, top = s.lazyScroll + p, bot = s.lazyScroll + vh - p
       if (s.x < p) s.vx += 0.06; if (s.x > vw - p) s.vx -= 0.06
@@ -383,7 +383,7 @@ export function StevensOrb() {
           color: rgba(255, 255, 255, 0.6);
           pointer-events: none;
           opacity: 0;
-          transition: opacity 0.35s;
+          transition: opacity 0.35s, left 0.6s ease, right 0.6s ease;
         }
         .stevens-speech.active {
           opacity: 1;
