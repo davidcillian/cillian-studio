@@ -24,13 +24,6 @@ const clients: { name: string; logo: string; url: string; description: string; c
     description: "Fortbildungsplattform für Kieferorthopädie — aus der Praxis für die Praxis.",
     cardBg: "#f7f7f7",
   },
-  {
-    name: "Homunculi Production",
-    logo: "/images/clients/homunculi-production.png",
-    url: "https://homunculi-production.com/",
-    description: "Kreativagentur für 3D-Visualisierung, Webdesign und digitale Produktion.",
-    cardBg: "#f5f0eb",
-  },
 ]
 
 export function ClientsSection() {

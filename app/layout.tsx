@@ -1,12 +1,19 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
+import { Inter, JetBrains_Mono } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   preload: true,
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-mono",
+  weight: ["400", "500"],
 })
 
 export const viewport: Viewport = {
@@ -64,7 +71,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="de" className={inter.className}>
+    <html lang="de" className={`${inter.className} ${jetbrainsMono.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   )
