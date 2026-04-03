@@ -89,7 +89,7 @@ export function HeroSection() {
 
         {/* Staggered letter reveal heading */}
         <motion.h1
-          className="flex justify-center gap-x-[0.15em] text-[clamp(1.6rem,5vw,4.5rem)] font-bold leading-[1.05] tracking-tight text-white whitespace-nowrap"
+          className="flex flex-nowrap justify-center gap-x-[0.08em] text-[clamp(2rem,6vw,4.5rem)] font-[900] leading-[1] tracking-[0.06em] text-white"
           variants={container}
           initial="hidden"
           animate="visible"
