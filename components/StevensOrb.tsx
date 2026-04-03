@@ -38,6 +38,7 @@ export function StevensOrb() {
     speaking: false, t: 0,
     timer: null as ReturnType<typeof setTimeout> | null,
     lastSec: "",
+    saidSecs: new Set<string>(),
     size: 110,
   })
   const [isMobile, setIsMobile] = useState(false)
@@ -274,8 +275,11 @@ export function StevensOrb() {
         entries.forEach((entry) => {
           if (entry.isIntersecting && entry.target.id !== s.lastSec) {
             s.lastSec = entry.target.id
-            const g = guide[entry.target.id]
-            if (g) say(g.text)
+            if (!s.saidSecs.has(entry.target.id)) {
+              s.saidSecs.add(entry.target.id)
+              const g = guide[entry.target.id]
+              if (g) say(g.text)
+            }
           }
         })
       },
@@ -288,8 +292,9 @@ export function StevensOrb() {
     if (heroEl && !heroEl.id) {
       const heroObs = new IntersectionObserver(
         (entries) => {
-          if (entries[0]?.isIntersecting && s.lastSec !== "hero") {
+          if (entries[0]?.isIntersecting && s.lastSec !== "hero" && !s.saidSecs.has("hero")) {
             s.lastSec = "hero"
+            s.saidSecs.add("hero")
             say(guide.hero.text)
           }
         },
