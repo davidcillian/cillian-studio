@@ -96,9 +96,18 @@ export function StevensOrb() {
     s.x = vw * 0.78
     s.y = scrollY + innerHeight * 0.35
 
-    // Waypoint
+    // Waypoint — stay in margins, never over content
     const wp = () => {
-      s.wpX = Math.min(vw * 0.6 + Math.random() * vw * 0.32, vw - s.size - 20)
+      const curVw = innerWidth
+      const contentL = (curVw - Math.min(1200, curVw * 0.9)) / 2
+      const contentR = curVw - contentL
+      // 70% right gutter, 30% left gutter
+      if (Math.random() < 0.7) {
+        s.wpX = contentR + 20 + Math.random() * (curVw - contentR - s.size - 40)
+      } else {
+        s.wpX = 20 + Math.random() * (contentL - s.size - 40)
+      }
+      s.wpX = Math.max(s.size / 2 + 10, Math.min(s.wpX, curVw - s.size / 2 - 10))
       s.wpY = innerHeight * 0.1 + Math.random() * innerHeight * 0.75
       s.wpI = 4000 + Math.random() * 5000
       s.wpT = Date.now()
@@ -126,7 +135,16 @@ export function StevensOrb() {
       const p = s.size / 2 + 14, top = s.lazyScroll + p, bot = s.lazyScroll + vh - p
       if (s.x < p) s.vx += 0.1; if (s.x > vw - p) s.vx -= 0.1
       if (s.y < top) s.vy += 0.1; if (s.y > bot) s.vy -= 0.1
+      // Nudge away from content zone
+      const cL = (vw - Math.min(1200, vw * 0.9)) / 2, cR = vw - cL
+      if (s.x > cL && s.x < cR) { s.x < vw / 2 ? s.vx -= 0.08 : s.vx += 0.08 }
       orb.style.transform = `translate3d(${s.x - s.size / 2}px,${s.y - s.size / 2}px,0)`
+      // Flip speech bubble side based on position
+      const speech = speechRef.current
+      if (speech) {
+        if (s.x > vw / 2) { speech.style.right = 'calc(100% + 16px)'; speech.style.left = 'auto' }
+        else { speech.style.left = 'calc(100% + 16px)'; speech.style.right = 'auto' }
+      }
     }
     moveTick()
 
