@@ -104,25 +104,20 @@ export function StevensOrb() {
     s.x = vw * 0.78
     s.y = scrollY + innerHeight * 0.35
 
-    // Waypoint — stay in margins, never over content
+    // Waypoint — ONLY right gutter, calm movement
     const wp = () => {
       const curVw = innerWidth
-      const contentL = (curVw - Math.min(1200, curVw * 0.9)) / 2
-      const contentR = curVw - contentL
-      // 70% right gutter, 30% left gutter
-      if (Math.random() < 0.7) {
-        s.wpX = contentR + 20 + Math.random() * (curVw - contentR - s.size - 40)
-      } else {
-        s.wpX = 20 + Math.random() * (contentL - s.size - 40)
-      }
-      s.wpX = Math.max(s.size / 2 + 10, Math.min(s.wpX, curVw - s.size / 2 - 10))
-      s.wpY = innerHeight * 0.1 + Math.random() * innerHeight * 0.75
-      s.wpI = 4000 + Math.random() * 5000
+      const contentR = (curVw + Math.min(1200, curVw * 0.9)) / 2
+      const gutterW = curVw - contentR - s.size
+      s.wpX = contentR + s.size * 0.6 + Math.random() * Math.max(0, gutterW - s.size)
+      s.wpX = Math.max(contentR + 10, Math.min(s.wpX, curVw - s.size / 2 - 10))
+      s.wpY = innerHeight * 0.15 + Math.random() * innerHeight * 0.65
+      s.wpI = 8000 + Math.random() * 7000
       s.wpT = Date.now()
     }
     wp()
 
-    // Movement
+    // Movement — slow, calm floating
     let moveRaf: number
     const moveTick = () => {
       moveRaf = requestAnimationFrame(moveTick)
@@ -132,26 +127,25 @@ export function StevensOrb() {
       const tx = s.wpX, ty = s.lazyScroll + s.wpY
       const dx = tx - s.x, dy = ty - s.y, dist = Math.sqrt(dx * dx + dy * dy)
       if (dist > 1) {
-        const a = 0.0003
-        s.vx += (dx / dist) * a * Math.min(dist, 350)
-        s.vy += (dy / dist) * a * Math.min(dist, 350)
+        const a = 0.00012
+        s.vx += (dx / dist) * a * Math.min(dist, 200)
+        s.vy += (dy / dist) * a * Math.min(dist, 200)
       }
-      s.vx *= 0.983; s.vy *= 0.983
+      s.vx *= 0.975; s.vy *= 0.975
       const spd = Math.sqrt(s.vx * s.vx + s.vy * s.vy)
-      if (spd > 2) { s.vx = (s.vx / spd) * 2; s.vy = (s.vy / spd) * 2 }
+      if (spd > 1.2) { s.vx = (s.vx / spd) * 1.2; s.vy = (s.vy / spd) * 1.2 }
       s.x += s.vx; s.y += s.vy
       const p = s.size / 2 + 14, top = s.lazyScroll + p, bot = s.lazyScroll + vh - p
-      if (s.x < p) s.vx += 0.1; if (s.x > vw - p) s.vx -= 0.1
-      if (s.y < top) s.vy += 0.1; if (s.y > bot) s.vy -= 0.1
-      // Nudge away from content zone
-      const cL = (vw - Math.min(1200, vw * 0.9)) / 2, cR = vw - cL
-      if (s.x > cL && s.x < cR) { s.x < vw / 2 ? s.vx -= 0.08 : s.vx += 0.08 }
+      if (s.x < p) s.vx += 0.06; if (s.x > vw - p) s.vx -= 0.06
+      if (s.y < top) s.vy += 0.06; if (s.y > bot) s.vy -= 0.06
+      // Hard boundary: never enter content zone
+      const cR = (vw + Math.min(1200, vw * 0.9)) / 2
+      if (s.x < cR) { s.vx += 0.2; if (s.x < cR - 20) s.x += (cR - s.x) * 0.05 }
       orb.style.transform = `translate3d(${s.x - s.size / 2}px,${s.y - s.size / 2}px,0)`
-      // Flip speech bubble side based on position
+      // Speech always to the left (towards content) since Stevens is on the right
       const speech = speechRef.current
       if (speech) {
-        if (s.x > vw / 2) { speech.style.right = 'calc(100% + 16px)'; speech.style.left = 'auto' }
-        else { speech.style.left = 'calc(100% + 16px)'; speech.style.right = 'auto' }
+        speech.style.right = 'calc(100% + 16px)'; speech.style.left = 'auto'
       }
     }
     moveTick()
