@@ -5,32 +5,32 @@ import { useEffect, useRef, useCallback, useState } from "react"
 // Section guide — Stevens explains each section with butler elegance
 const guide: Record<string, { text: string; alt: string }> = {
   hero: {
-    text: "Hey, willkommen bei Cillian Studio! Ich bin Stevens und zeig euch was David alles macht. 3D, KI und Gamification — alles aus einer Hand. Scrollt einfach durch, ich erklär euch jeden Bereich.",
-    alt: "Ihr koennt mich jederzeit anklicken, dann wiederhole ich was diese Sektion zeigt. Scrollt einfach weiter — ich flieg mit.",
+    text: "Hey, willkommen bei Cillian Studio! Ich bin Stevens und zeig euch was hier alles passiert. 3D, KI, Gamification und Training — alles aus einer Hand!",
+    alt: "Ihr koennt mich jederzeit anklicken, dann wiederhole ich was diese Sektion zeigt. Scrollt einfach weiter!",
   },
   about: {
-    text: "Das ist David. 8 Jahre 3D-Erfahrung mit Blender, Unreal Engine und Substance Painter plus KI-Expertise seit der ersten Stunde. Die Kombination macht den Unterschied — er sieht Loesungen die reine 3D-Artists oder reine KI-Berater nicht sehen.",
-    alt: "Was David besonders macht: er versteht sowohl die kreative als auch die technische Seite. 3D-Visualisierung, KI-Pipelines, Automatisierung — alles aus einer Hand, ohne Zwischenhaendler.",
+    text: "Das ist das Team hinter Cillian Studio! 8 Jahre 3D-Erfahrung mit Blender und Unreal Engine, plus KI-Expertise seit Tag eins. Die Kombination macht den Unterschied!",
+    alt: "Cillian Studio versteht beide Seiten — die kreative und die technische. 3D, KI-Systeme, Automatisierung — alles direkt, ohne Zwischenhaendler!",
   },
   services: {
-    text: "Die drei Bereiche: 3D-Visualisierung fuer fotorealistische Renderings und Game Assets. KI-Agenten die auf eurem eigenen Server laufen. Und Gamification die Kunden bindet und Teams motiviert. Spannend, oder?",
-    alt: "Kurz gesagt: David macht eure Produkte sichtbar in 3D, automatisiert eure Prozesse mit KI, und motiviert eure Kunden und Teams durch Spielmechaniken. Alles massgeschneidert.",
+    text: "Vier Bereiche: 3D-Visualisierung fuer fotorealistische Renderings, KI-Agenten auf eurem eigenen Server, Gamification fuer Kundenbindung und Motivation, und Trainings und Workshops!",
+    alt: "Produkte in 3D zeigen, Prozesse mit KI automatisieren, Teams durch Spielmechaniken motivieren, und Wissen in Workshops weitergeben. Alles massgeschneidert!",
   },
   projects: {
-    text: "Hier sind ein paar ausgewaehlte Projekte. ArchViz, Character Design, interaktive Echtzeit-Erlebnisse — klickt euch durch, es lohnt sich.",
-    alt: "Jedes Projekt zeigt eine andere Facette: von Immobilien-Renderings ueber Game Assets bis zu interaktiven Echtzeit-Anwendungen in Unreal Engine 5.",
+    text: "Hier sind ausgewaehlte Projekte! Architektur-Visualisierung, Character Design, Echtzeit-Erlebnisse. Klickt euch durch!",
+    alt: "Jedes Projekt zeigt was anderes! Von Immobilien-Renderings ueber Game Assets bis hin zu interaktiven Echtzeit-Anwendungen.",
   },
   clients: {
-    text: "David arbeitet mit Unternehmen jeder Groesse zusammen. Vom Startup bis zum Mittelstaendler — egal ob ihr einen KI-Assistenten braucht oder eure 3D-Pipeline beschleunigen wollt.",
-    alt: "Ob kleines Team oder groesseres Unternehmen — David findet raus was den groessten Hebel hat und setzt genau da an. Kein Overhead, direkte Zusammenarbeit.",
+    text: "Cillian Studio arbeitet mit Unternehmen jeder Groesse zusammen. Vom Startup bis zum Mittelstaendler!",
+    alt: "Ob kleines Team oder groesseres Unternehmen — Cillian Studio findet raus was den groessten Effekt hat!",
   },
   gallery: {
-    text: "Die Galerie zeigt die Bandbreite — 3D-Renderings, Character Art, Produkt-Viz. Alles aus Davids Pipeline, beschleunigt durch KI-Workflows.",
-    alt: "Alles was ihr hier seht, entsteht in Davids KI-gestuetzter Pipeline. Schneller, flexibler und skalierbarer als traditionelle 3D-Produktion.",
+    text: "Die Galerie zeigt die ganze Bandbreite! 3D-Renderings, Character Art, Produkt-Visualisierungen.",
+    alt: "Das alles entsteht in einer KI-gestuetzten Pipeline! Deutlich schneller und besser skalierbar als klassische 3D-Produktion.",
   },
   contact: {
-    text: "Klingt interessant? Dann schreibt David einfach. Erstberatung ist kostenlos und unverbindlich — er findet raus was fuer euch am meisten bringt.",
-    alt: "Einfach anrufen oder mailen — David nimmt sich 30 Minuten Zeit und klaert mit euch, wo KI und 3D den groessten Impact haben. Ohne Verpflichtung.",
+    text: "Klingt interessant? Dann schreibt einfach! Erstberatung kostenlos und unverbindlich.",
+    alt: "Einfach anrufen oder schreiben! In einer halben Stunde wird geklaert wo KI und 3D am meisten bringen. Ganz ohne Verpflichtung!",
   },
 }
 
@@ -300,7 +300,7 @@ export function StevensOrb() {
           }
         })
       },
-      { threshold: 0.3 }
+      { threshold: 0.55, rootMargin: "-10% 0px -10% 0px" }
     )
     sections.forEach((sec) => observer.observe(sec))
 
@@ -322,7 +322,7 @@ export function StevensOrb() {
 
     // Initial greeting
     setTimeout(() => {
-      say("Hey! Ich bin Stevens und zeig euch was Cillian Studio kann. Dreht gerne den Ton auf — unten links — oder lest einfach mit.", "hero")
+      say("Hey, willkommen bei Cillian Studio! Ich bin Stevens und zeig euch was hier alles passiert. Dreht den Ton auf oder lest einfach mit.", "hero")
     }, 2000)
 
     return () => {
