@@ -44,6 +44,7 @@ export function StevensOrb() {
     wpX: 0, wpY: 0, wpT: 0, wpI: 4000,
     speaking: false, t: 0,
     timer: null as ReturnType<typeof setTimeout> | null,
+    audio: null as HTMLAudioElement | null,
     lastSec: "",
     saidSecs: new Set<string>(),
     size: 110,
@@ -51,7 +52,7 @@ export function StevensOrb() {
   const [isMobile, setIsMobile] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(false)
 
-  const say = useCallback((text: string) => {
+  const say = useCallback((text: string, audioKey?: string) => {
     const s = stateRef.current
     const speech = speechRef.current
     if (!speech) return
@@ -59,10 +60,25 @@ export function StevensOrb() {
     // interrupt
     s.speaking = false
     if (s.timer) clearTimeout(s.timer)
+    if (s.audio) { s.audio.pause(); s.audio.currentTime = 0; s.audio = null }
 
     s.speaking = true
     speech.classList.add("active")
     speech.innerHTML = '<span class="stevens-cursor"></span>'
+
+    // Play audio if enabled
+    if (audioEnabled && audioKey) {
+      const a = new Audio(`/audio/${audioKey}.mp3`)
+      s.audio = a
+      a.play().catch(() => {})
+      a.onended = () => {
+        if (s.audio === a) {
+          s.speaking = false; s.audio = null
+          setTimeout(() => { if (!s.speaking) speech.classList.remove("active") }, 3000)
+        }
+      }
+    }
+
     let i = 0
     const type = () => {
       if (!s.speaking) return
@@ -72,14 +88,14 @@ export function StevensOrb() {
         s.timer = setTimeout(type, 18)
       } else {
         speech.innerHTML = text
-        s.speaking = false
-        s.timer = setTimeout(() => {
-          if (!s.speaking) speech.classList.remove("active")
-        }, 7000)
+        if (!audioEnabled || !audioKey) {
+          s.speaking = false
+          s.timer = setTimeout(() => { if (!s.speaking) speech.classList.remove("active") }, 7000)
+        }
       }
     }
     type()
-  }, [])
+  }, [audioEnabled])
 
   useEffect(() => {
     const vw = window.innerWidth
@@ -279,7 +295,7 @@ export function StevensOrb() {
             if (!s.saidSecs.has(entry.target.id)) {
               s.saidSecs.add(entry.target.id)
               const g = guide[entry.target.id]
-              if (g) say(g.text)
+              if (g) say(g.text, entry.target.id)
             }
           }
         })
@@ -296,7 +312,7 @@ export function StevensOrb() {
           if (entries[0]?.isIntersecting && s.lastSec !== "hero" && !s.saidSecs.has("hero")) {
             s.lastSec = "hero"
             s.saidSecs.add("hero")
-            say(guide.hero.text)
+            say(guide.hero.text, "hero")
           }
         },
         { threshold: 0.3 }
@@ -306,7 +322,7 @@ export function StevensOrb() {
 
     // Initial greeting
     setTimeout(() => {
-      say("Hey! Ich bin Stevens und zeig euch was Cillian Studio kann. Dreht gerne den Ton auf — unten links — oder lest einfach mit. Scrollt durch, ich erklaer alles.")
+      say("Hey! Ich bin Stevens und zeig euch was Cillian Studio kann. Dreht gerne den Ton auf — unten links — oder lest einfach mit.", "hero")
     }, 2000)
 
     return () => {
@@ -329,7 +345,7 @@ export function StevensOrb() {
           const s = stateRef.current
           if (!s.lastSec) return
           const g = guide[s.lastSec]
-          if (g?.alt) say(g.alt)
+          if (g?.alt) say(g.alt, s.lastSec + "-alt")
         }}
       >
         <canvas ref={canvasRef} />
