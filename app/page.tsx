@@ -9,6 +9,7 @@ import { GallerySection } from "@/components/sections/GallerySection"
 import { ContactSection } from "@/components/sections/ContactSection"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
+import { StevensOrb } from "@/components/StevensOrb"
 export default function CillianStudio() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#f2f2f2]">
@@ -25,6 +26,7 @@ export default function CillianStudio() {
       </main>
 
       <Footer />
+      <StevensOrb />
 
       {/* Structured Data for SEO & AI Discoverability */}
       <script
