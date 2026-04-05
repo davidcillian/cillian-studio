@@ -106,7 +106,7 @@ export function StevensOrb() {
     const orb = orbRef.current
     if (!canvas || !orb) return
 
-    s.size = Math.min(110, vw * 0.12)
+    s.size = Math.min(140, vw * 0.14)
     const d = Math.min(devicePixelRatio, 2)
     canvas.width = s.size * d
     canvas.height = s.size * d
@@ -186,9 +186,9 @@ export function StevensOrb() {
       ctx.clearRect(0, 0, s.size, s.size)
 
       // Glow
-      const g = ctx.createRadialGradient(cx, cy, r * 0.2, cx, cy, r * (1.2 + st.pd * 0.2))
-      g.addColorStop(0, `rgba(0,230,210,${0.025 + st.energy * 0.08})`)
-      g.addColorStop(0.5, `rgba(0,230,210,${0.01 + st.energy * 0.04})`)
+      const g = ctx.createRadialGradient(cx, cy, r * 0.2, cx, cy, r * (1.5 + st.pd * 0.3))
+      g.addColorStop(0, `rgba(0,230,210,${0.12 + st.energy * 0.15})`)
+      g.addColorStop(0.5, `rgba(0,230,210,${0.05 + st.energy * 0.08})`)
       g.addColorStop(1, "rgba(0,230,210,0)")
       ctx.fillStyle = g; ctx.fillRect(0, 0, s.size, s.size); ctx.lineCap = "round"
 
@@ -196,22 +196,22 @@ export function StevensOrb() {
 
       // Outer rings
       ctx.save(); ctx.translate(cx, cy); ctx.rotate(t * rs)
-      ctx.strokeStyle = `rgba(0,230,210,${0.08 + st.jawFast * 0.15})`; ctx.lineWidth = 0.7
+      ctx.strokeStyle = `rgba(0,230,210,${0.22 + st.jawFast * 0.2})`; ctx.lineWidth = 1
       ctx.setLineDash([5, 12]); ctx.beginPath(); ctx.arc(0, 0, r * 1.08, 0, Math.PI * 2); ctx.stroke()
       ctx.setLineDash([]); ctx.restore()
 
       ctx.save(); ctx.translate(cx, cy); ctx.rotate(-t * rs * 0.5)
-      ctx.strokeStyle = `rgba(0,230,210,${0.05 + st.jawFast * 0.08})`; ctx.lineWidth = 0.4
+      ctx.strokeStyle = `rgba(0,230,210,${0.12 + st.jawFast * 0.12})`; ctx.lineWidth = 0.6
       ctx.setLineDash([3, 18]); ctx.beginPath(); ctx.arc(0, 0, r * 1.14, 0, Math.PI * 2); ctx.stroke()
       ctx.setLineDash([]); ctx.restore()
 
       // Main ring
       const vib = sp ? Math.sin(t * 35) * mv * r * 0.012 : 0
-      ctx.strokeStyle = `rgba(0,230,210,${0.25 + br * 0.06 + st.jaw * 0.45})`; ctx.lineWidth = 1
+      ctx.strokeStyle = `rgba(0,230,210,${0.55 + br * 0.1 + st.jaw * 0.35})`; ctx.lineWidth = 1.5
       ctx.beginPath(); ctx.arc(cx, cy, r + vib, 0, Math.PI * 2); ctx.stroke()
 
       // Inner ring
-      ctx.strokeStyle = `rgba(0,230,210,${0.1 + st.jawFast * 0.2})`; ctx.lineWidth = 0.5
+      ctx.strokeStyle = `rgba(0,230,210,${0.2 + st.jawFast * 0.3})`; ctx.lineWidth = 0.8
       ctx.beginPath(); ctx.arc(cx, cy, r * 0.72, 0, Math.PI * 2); ctx.stroke()
 
       // Ticks
