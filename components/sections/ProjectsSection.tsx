@@ -2,119 +2,352 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { ExternalLink } from "lucide-react"
 import { recentProjects } from "@/lib/data"
 
+const S = {
+  section: {
+    padding: "96px max(32px, 4vw)",
+    borderTop: "1px solid var(--line)",
+    maxWidth: 1600,
+    margin: "0 auto",
+  } as React.CSSProperties,
+  kicker: {
+    fontFamily: "var(--mono)",
+    fontSize: 11,
+    letterSpacing: ".08em",
+    textTransform: "uppercase" as const,
+    color: "var(--ink-3)",
+    marginBottom: 14,
+  },
+  tate: {
+    writingMode: "vertical-rl" as const,
+    fontFamily: "var(--mono)",
+    fontSize: 10,
+    color: "var(--ink-3)",
+    letterSpacing: ".22em",
+    textTransform: "uppercase" as const,
+    lineHeight: 1,
+    paddingTop: 4,
+    userSelect: "none" as const,
+  },
+}
+
 export function ProjectsSection() {
-    const [showAll, setShowAll] = useState(false)
-    const visibleProjects = showAll ? recentProjects : recentProjects.slice(0, 3)
+  const [showAll, setShowAll] = useState(false)
+  const visible = showAll ? recentProjects : recentProjects.slice(0, 3)
 
-    return (
-        <section id="projects" className="py-24">
-            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#f2f2f2] mb-10 sm:mb-12">
-                    Projekte
-                </h2>
+  return (
+    <section id="projects" style={{ background: "var(--bg-2)" }}>
+      <div style={S.section} className="sec-inner">
+        {/* Section header */}
+        <div
+          className="sec-head"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 3fr",
+            gap: 48,
+            alignItems: "baseline",
+            marginBottom: 64,
+          }}
+        >
+          <div style={{ ...S.kicker, display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ display: "inline-block", width: 8, height: 8, background: "var(--signal)", transform: "rotate(45deg)", flexShrink: 0 }} />
+            § 03 — Arbeiten
+          </div>
+          <div>
+            <h2
+              style={{
+                fontFamily: "var(--sans)",
+                fontSize: "clamp(36px, 5vw, 56px)",
+                fontWeight: 500,
+                letterSpacing: "-.025em",
+                lineHeight: 1,
+                color: "var(--ink)",
+              }}
+            >
+              Ausgewählte{" "}
+              <span style={{ fontWeight: 300, color: "var(--ink-4)" }}>Projekte.</span>
+            </h2>
+          </div>
+        </div>
 
-                <div className="space-y-8">
-                    {visibleProjects.map((project, index) => {
-                        const isReversed = index % 2 === 1
-                        const firstImage = project.images?.[0]
+        {/* Projects list */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          {visible.map((project, i) => {
+            const imageLeft = i % 2 === 0
+            const firstImage = project.images?.[0]
 
-                        return (
-                            <div
-                                key={project.id}
-                                className="bg-white/[0.03] border border-white/5 rounded-xl overflow-hidden hover:border-white/10 transition-colors duration-300"
-                            >
-                                <div className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
-                                    {firstImage && (
-                                        <div className="relative w-full lg:w-1/2 aspect-[16/10] lg:aspect-auto lg:min-h-[380px]">
-                                            <Image
-                                                src={firstImage}
-                                                alt={project.projectTitle}
-                                                fill
-                                                className="object-cover"
-                                                loading="lazy"
-                                                sizes="(max-width: 768px) 100vw, 50vw"
-                                            />
-                                        </div>
-                                    )}
-
-                                    <div className="flex-1 p-8 lg:p-10 flex flex-col justify-center">
-                                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
-                                            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#f2f2f2]">
-                                                {project.projectTitle}
-                                            </h3>
-                                            <span className="text-sm text-white/30">{project.completionDate}</span>
-                                        </div>
-
-                                        <p className="text-[#888] leading-relaxed mb-6">
-                                            {project.description}
-                                        </p>
-
-                                        <div className="flex flex-wrap gap-2 mb-6">
-                                            {project.technologies.map((tech) => (
-                                                <span
-                                                    key={tech}
-                                                    className="bg-white/5 rounded-full px-3 py-1 text-xs text-white/60"
-                                                >
-                                                    {tech}
-                                                </span>
-                                            ))}
-                                        </div>
-
-                                        {project.artists && project.artists.length > 0 && (
-                                            <div className="flex items-center gap-3 mb-6">
-                                                <div className="flex -space-x-2">
-                                                    {project.artists.map((artist, i) => (
-                                                        <div
-                                                            key={i}
-                                                            className="w-7 h-7 rounded-full overflow-hidden border-2 border-[#0a0a0a] relative"
-                                                        >
-                                                            <Image
-                                                                src={artist.image}
-                                                                alt={artist.name}
-                                                                fill
-                                                                className="object-cover"
-                                                            />
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                <span className="text-xs text-white/40">
-                                                    {project.artists.map((a) => a.name).join(", ")}
-                                                </span>
-                                            </div>
-                                        )}
-
-                                        {project.productLink && (
-                                            <a
-                                                href={project.productLink}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-[#f2f2f2] px-5 py-2.5 rounded-lg text-sm font-medium transition-colors w-fit"
-                                            >
-                                                Zum Produkt
-                                                <ExternalLink size={14} />
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                    })}
+            return (
+              <div
+                key={project.id}
+                className="mob-stack"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "24px 1fr",
+                  gap: 32,
+                  borderTop: "1px solid var(--line)",
+                  paddingTop: 48,
+                  paddingBottom: 48,
+                }}
+              >
+                {/* Tate-Folio */}
+                <div style={S.tate} className="tate-hide">
+                  {String(i + 1).padStart(2, "0")} — {project.projectTitle.split(" ")[0]}
                 </div>
 
-                {recentProjects.length > 3 && (
-                    <div className="flex justify-center mt-10">
-                        <button
-                            onClick={() => setShowAll(!showAll)}
-                            className="bg-white/5 hover:bg-white/10 border border-white/10 text-[#ccc] hover:text-white px-8 py-3 rounded-lg text-sm font-medium transition-all duration-200"
-                        >
-                            {showAll ? "Weniger anzeigen" : "Mehr Projekte"}
-                        </button>
-                    </div>
-                )}
-            </div>
-        </section>
-    )
+                {/* Content */}
+                <div
+                  className="mob-stack"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: imageLeft ? "1.1fr 1fr" : "1fr 1.1fr",
+                    gap: "clamp(24px, 4vw, 64px)",
+                    alignItems: "center",
+                  }}
+                >
+                  {imageLeft ? (
+                    <>
+                      <ProjectImage src={firstImage} alt={project.projectTitle} />
+                      <ProjectMeta project={project} />
+                    </>
+                  ) : (
+                    <>
+                      <ProjectMeta project={project} />
+                      <ProjectImage src={firstImage} alt={project.projectTitle} className="mob-first" />
+                    </>
+                  )}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* Show more */}
+        {recentProjects.length > 3 && (
+          <div
+            style={{
+              borderTop: "1px solid var(--line)",
+              paddingTop: 32,
+              marginTop: 32,
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <button
+              onClick={() => setShowAll(!showAll)}
+              style={{
+                padding: "12px 40px",
+                background: "transparent",
+                color: "var(--ink-3)",
+                fontSize: 11,
+                fontFamily: "var(--mono)",
+                letterSpacing: ".08em",
+                textTransform: "uppercase",
+                border: "1px solid var(--line-2)",
+                cursor: "pointer",
+                transition: "border-color .2s, color .2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--ink-3)"
+                e.currentTarget.style.color = "var(--ink)"
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--line-2)"
+                e.currentTarget.style.color = "var(--ink-3)"
+              }}
+            >
+              {showAll ? "Weniger anzeigen" : "Alle Projekte"}
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+function ProjectImage({ src, alt, className }: { src?: string; alt: string; className?: string }) {
+  if (!src) return null
+  return (
+    <div
+      className={className}
+      style={{
+        position: "relative",
+        aspectRatio: "16/10",
+        background: "var(--bg-2)",
+        overflow: "hidden",
+      }}
+    >
+      <Image src={src} alt={alt} fill style={{ objectFit: "cover" }} sizes="(max-width: 768px) 100vw, 50vw" />
+    </div>
+  )
+}
+
+function ProjectMeta({ project }: { project: (typeof recentProjects)[0] }) {
+  return (
+    <div>
+      {/* Role / Type */}
+      <div
+        style={{
+          fontFamily: "var(--mono)",
+          fontSize: 11,
+          color: "var(--ink-3)",
+          letterSpacing: ".08em",
+          textTransform: "uppercase",
+          marginBottom: 12,
+        }}
+      >
+        {project.projectType}
+      </div>
+
+      {/* Title */}
+      <h3
+        style={{
+          fontSize: "clamp(24px, 3vw, 40px)",
+          fontWeight: 500,
+          letterSpacing: "-.025em",
+          color: "var(--ink)",
+          lineHeight: 1.05,
+          marginBottom: 16,
+        }}
+      >
+        {project.projectTitle}
+      </h3>
+
+      {/* Description */}
+      <p
+        style={{
+          color: "var(--ink-2)",
+          fontSize: 14,
+          lineHeight: 1.65,
+          marginBottom: 28,
+        }}
+      >
+        {project.description}
+      </p>
+
+      {/* Key / Value pairs */}
+      <dl style={{ margin: 0, padding: 0 }}>
+        {[
+          { label: "Jahr", value: project.completionDate },
+          { label: "Team", value: project.teamSize },
+          {
+            label: "Tools",
+            value: project.technologies.slice(0, 4).join(" · "),
+          },
+        ].map(({ label, value }) => (
+          <div
+            key={label}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "80px 1fr",
+              gap: 16,
+              padding: "10px 0",
+              borderTop: "1px solid var(--line)",
+            }}
+          >
+            <dt
+              style={{
+                fontFamily: "var(--mono)",
+                fontSize: 10,
+                color: "var(--ink-3)",
+                letterSpacing: ".08em",
+                textTransform: "uppercase",
+                alignSelf: "baseline",
+                paddingTop: 2,
+              }}
+            >
+              {label}
+            </dt>
+            <dd
+              style={{
+                fontSize: 13,
+                color: "var(--ink-2)",
+                margin: 0,
+              }}
+            >
+              {value}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      {/* Artists */}
+      {project.artists && project.artists.length > 0 && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            marginTop: 20,
+            paddingTop: 20,
+            borderTop: "1px solid var(--line)",
+          }}
+        >
+          <div style={{ display: "flex" }}>
+            {project.artists.map((artist, i) => (
+              <div
+                key={i}
+                style={{
+                  width: 28,
+                  height: 28,
+                  borderRadius: "50%",
+                  overflow: "hidden",
+                  border: "2px solid var(--bg)",
+                  position: "relative",
+                  marginLeft: i > 0 ? -8 : 0,
+                }}
+              >
+                <Image src={artist.image} alt={artist.name} fill style={{ objectFit: "cover" }} />
+              </div>
+            ))}
+          </div>
+          <span
+            style={{
+              fontFamily: "var(--mono)",
+              fontSize: 11,
+              color: "var(--ink-3)",
+              letterSpacing: ".04em",
+            }}
+          >
+            {project.artists.map((a) => a.name).join(" · ")}
+          </span>
+        </div>
+      )}
+
+      {/* Product link */}
+      {project.productLink && (
+        <a
+          href={project.productLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            marginTop: 20,
+            padding: "10px 20px",
+            background: "transparent",
+            color: "var(--ink-2)",
+            fontSize: 11,
+            fontFamily: "var(--mono)",
+            letterSpacing: ".08em",
+            textTransform: "uppercase",
+            border: "1px solid var(--line-2)",
+            textDecoration: "none",
+            transition: "border-color .2s, color .2s",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.borderColor = "var(--ink-3)"
+            e.currentTarget.style.color = "var(--ink)"
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.borderColor = "var(--line-2)"
+            e.currentTarget.style.color = "var(--ink-2)"
+          }}
+        >
+          Zum Produkt →
+        </a>
+      )}
+    </div>
+  )
 }

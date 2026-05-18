@@ -2,17 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== CSS Variables (Dark Theme Only) ===== */
+/* ===== Cillian Studio — Design Tokens (Sumi-Ink System) ===== */
 :root {
-  --bg: #0a0a0a;
-  --bg-elevated: #111111;
-  --text: #f2f2f2;
-  --text-muted: #999999;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --border: rgba(255, 255, 255, 0.05);
-  --border-hover: rgba(255, 255, 255, 0.1);
-  --radius: 0.5rem;
+  /* sumi-ink — warm, red-shifted black, never #000 */
+  --bg:         #1a1612;   /* Kurocha 黒茶 */
+  --bg-2:       #241f19;   /* Aikuro 藍黒 — erhöhte Fläche */
+  --bg-3:       #2e2822;   /* Binroji 檳榔子 — Cards */
+  --bg-deep:    #0f0c09;
+
+  /* washi-bone ink */
+  --ink:        #ece5d4;   /* Washi 和紙 — primäre Schrift */
+  --ink-2:      #a9a191;   /* Ash — sekundär */
+  --ink-3:      #6b6456;   /* Stone — gedämpft */
+  --ink-4:      #d4ccb8;
+
+  /* hairlines — warm Sumi-Braun aus dem Design-System */
+  --line:       #3a3026;   /* Hairline 黒茶-Linie — 1px Trenner */
+  --line-2:     #463a2c;   /* Hairline+ — betonte Trennung */
+  --line-l:     rgba(26, 22, 18, .10);   /* Light — für Paper/Briefpapier-Blocks */
+
+  /* Shu 朱 — kintsugi accent, max 5% */
+  --signal:     #c94a28;
+  --signal-dim: #a83c1f;
+
+  /* Matcha — sehr selten, organische Akzente */
+  --reserve-matcha: #6B8A55;
+
+  /* light mode — Briefpapier, E-Mail */
+  --paper:      #f0eee9;
+  --paper-2:    #e8e4d8;
+  --ink-light:  #1a1612;
+
+  /* fonts — Next.js injects --font-sans/mono/serif via variable: option */
+  --sans:  var(--font-sans, "Inter Tight", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif);
+  --mono:  var(--font-mono, "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace);
+  --serif: var(--font-serif, "Fraunces", "Times New Roman", serif);
+
+  /* shadcn compatibility */
+  --background: 26 22% 8%;
+  --foreground: 40 30% 87%;
+  --card: 26 22% 11%;
+  --card-foreground: 40 30% 87%;
+  --popover: 26 22% 11%;
+  --popover-foreground: 40 30% 87%;
+  --primary: 40 30% 87%;
+  --primary-foreground: 26 22% 8%;
+  --secondary: 26 20% 16%;
+  --secondary-foreground: 40 30% 87%;
+  --muted: 26 20% 16%;
+  --muted-foreground: 33 14% 56%;
+  --accent: 26 20% 16%;
+  --accent-foreground: 40 30% 87%;
+  --destructive: 14 65% 47%;
+  --destructive-foreground: 40 30% 87%;
+  --border: 236 229 212 / 0.12;
+  --input: 26 20% 16%;
+  --ring: 14 65% 47%;
+  --radius: 2px;
+  --sidebar-background: 26 22% 8%;
+  --sidebar-foreground: 40 30% 87%;
+  --sidebar-primary: 14 65% 47%;
+  --sidebar-primary-foreground: 40 30% 87%;
+  --sidebar-accent: 26 20% 16%;
+  --sidebar-accent-foreground: 40 30% 87%;
+  --sidebar-border: 236 229 212 / 0.12;
+  --sidebar-ring: 14 65% 47%;
 }
 
 /* ===== Smooth Scroll ===== */
@@ -26,135 +80,235 @@ section {
 }
 
 /* ===== Custom Scrollbar ===== */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* Firefox */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.15) var(--bg);
-}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--ink-3); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-2); }
+* { scrollbar-width: thin; scrollbar-color: var(--ink-3) var(--bg-deep); }
 
 /* ===== Base Typography ===== */
 @layer base {
-  body {
-    @apply bg-[#0a0a0a] text-[#f2f2f2];
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  html, body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+    line-height: 1.5;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight text-white;
+    font-family: var(--sans);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    color: var(--ink);
   }
 
-  h1 { @apply text-5xl md:text-6xl lg:text-7xl; }
-  h2 { @apply text-3xl md:text-4xl lg:text-5xl; }
-  h3 { @apply text-2xl md:text-3xl; }
-  h4 { @apply text-xl md:text-2xl; }
-
-  p {
-    @apply text-[#999] leading-relaxed;
-  }
-
-  a {
-    @apply transition-colors duration-200;
-  }
+  p { color: var(--ink-2); line-height: 1.6; }
+  a { color: inherit; transition: color 0.2s; }
 }
 
-/* ===== Selection Color ===== */
+/* ===== Selection ===== */
 ::selection {
-  background: rgba(59, 130, 246, 0.3);
-  color: #fff;
+  background: rgba(201, 74, 40, 0.25);
+  color: var(--ink);
 }
 
 /* ===== Focus Visible ===== */
 :focus-visible {
-  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline: 1px solid rgba(201, 74, 40, 0.6);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
-/* ===== Section Spacing ===== */
+/* ===== Editorial Design Primitives ===== */
 @layer components {
+
+  /* Mono label — 11px JetBrains Mono, uppercase, stone */
+  .mono-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* Kintsugi tick — 10×10 rotated Shu square */
+  .kintsugi-tick {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--signal);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .kintsugi-tick-sm {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--signal);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  /* Tate folio — vertical section number */
+  .tate-folio {
+    writing-mode: vertical-rl;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-3);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding-top: 4px;
+    user-select: none;
+  }
+
+  /* Engawa — right-side vertical hairline */
+  .engawa {
+    position: relative;
+  }
+  .engawa::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+
+  /* Section spacing */
   .section {
-    @apply py-20 md:py-28 lg:py-32 px-5 md:px-8;
+    @apply py-20 md:py-28 lg:py-32 px-4 md:px-6 lg:px-8;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .section-sm {
-    @apply py-12 md:py-16 lg:py-20 px-5 md:px-8;
+    @apply py-12 md:py-16 lg:py-20 px-4 md:px-6 lg:px-8;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Masthead — editorial section header */
+  .masthead-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* Signal hairline — Shu border-bottom */
+  .signal-hairline {
+    border-bottom: 2px solid var(--signal);
+  }
+
+  /* Card primitive */
+  .brand-card {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+
+  /* Hairline divider */
+  .hairline {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 0;
   }
 }
 
-/* ===== Utility Animations (Framer Motion Fallback) ===== */
+/* ===== Utility Animations ===== */
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+@keyframes letter-reveal {
+  from { opacity: 0; transform: translateY(24px) skewY(2deg); }
+  to { opacity: 1; transform: translateY(0) skewY(0deg); }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 6px var(--signal); }
+  50% { box-shadow: 0 0 14px var(--signal); }
 }
 
-.animate-slide-up {
-  animation: slide-up 0.6s ease-out forwards;
-}
+.animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
+.animate-slide-up { animation: slide-up 0.6s ease-out forwards; }
+.animate-letter-reveal { animation: letter-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
 
-.animate-scale-in {
-  animation: scale-in 0.5s ease-out forwards;
-}
-
-/* Staggered delays */
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
 
-/* ===== Hero Gradient Animation ===== */
-@keyframes meshMove {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(3%, -2%) scale(1.05); }
-  100% { transform: translate(-2%, 3%) scale(1); }
+/* ===== Utilities ===== */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-ink { color: var(--ink); }
+  .text-ink-2 { color: var(--ink-2); }
+  .text-ink-3 { color: var(--ink-3); }
+  .text-signal { color: var(--signal); }
+  .bg-brand { background: var(--bg); }
+  .bg-brand-2 { background: var(--bg-2); }
+  .bg-brand-3 { background: var(--bg-3); }
+  .border-line { border-color: var(--line); }
+  .border-line-2 { border-color: var(--line-2); }
 }
 
-/* ===== Utility Classes ===== */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* ===== Mobile responsive overrides ===== */
+@media (max-width: 768px) {
+  /* Section header: kicker + heading collapse to single column */
+  .sec-head {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-bottom: 40px !important;
+  }
+  /* Reduce section inner padding on mobile */
+  .sec-inner {
+    padding: 56px 20px !important;
+  }
+  /* Any multi-column content grid → single column */
+  .mob-stack {
+    grid-template-columns: 1fr !important;
+  }
+  /* Vertical tate-folio — useless on narrow screens */
+  .tate-hide {
+    display: none !important;
+  }
+  /* Force element to appear first in a grid/flex on mobile */
+  .mob-first {
+    order: -1 !important;
+  }
+  /* Hero bottom chapter strip: 4 → 2 columns */
+  .hero-chapters {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+  /* Services 2×2 grid → single column */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+  }
+  /* Hero section padding tighter on mobile */
+  .hero-section {
+    padding: 48px 20px 32px !important;
   }
 }

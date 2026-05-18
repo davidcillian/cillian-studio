@@ -6,25 +6,21 @@ import Image from "next/image"
 const container = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.3,
-    },
+    transition: { staggerChildren: 0.06, delayChildren: 0.5 },
   },
 }
 
-const letterVariant = {
-  hidden: { opacity: 0, y: 60, filter: "blur(8px)" },
+const charVariant = {
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
   },
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 16 },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
@@ -32,158 +28,240 @@ const fadeUp = {
   }),
 }
 
-const title = "CILLIAN STUDIO"
+const CHAPTERS = [
+  { no: "01", title: "Studio" },
+  { no: "02", title: "Disziplinen" },
+  { no: "03", title: "Arbeiten" },
+  { no: "06", title: "Kontakt" },
+]
+
+const TITLE_WORDS = ["CILLIAN STUDIO"]
 
 export function HeroSection() {
   const scrollTo = (id: string) => {
     const el = document.getElementById(id)
-    el?.scrollIntoView({ behavior: "smooth" })
+    if (el) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 80
+      window.scrollTo({ top: y, behavior: "smooth" })
+    }
   }
 
   return (
-    <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
-      {/* Animated gradient mesh background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div
-          className="absolute w-[120%] h-[120%] -top-[10%] -left-[10%] opacity-30"
-          style={{
-            background:
-              "radial-gradient(ellipse 50% 40% at 20% 50%, rgba(99,102,241,0.15) 0%, transparent 100%), " +
-              "radial-gradient(ellipse 40% 50% at 80% 30%, rgba(168,85,247,0.12) 0%, transparent 100%), " +
-              "radial-gradient(ellipse 45% 35% at 60% 80%, rgba(6,182,212,0.1) 0%, transparent 100%)",
-            animation: "meshMove 20s ease-in-out infinite alternate",
-          }}
-        />
-      </div>
-
-      {/* Grain overlay */}
+    <section
+      id="hero"
+      className="hero-section"
+      style={{
+        minHeight: "100vh",
+        background: "var(--bg)",
+        display: "grid",
+        gridTemplateRows: "1fr auto",
+        padding: "56px max(32px, 4vw) 48px",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* HERO CENTER — fox + headline + ctas stacked */}
       <div
-        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          textAlign: "center",
+          gap: 0,
+          padding: "clamp(32px, 6vh, 80px) 0 clamp(24px, 4vh, 48px)",
+          position: "relative",
+          zIndex: 1,
         }}
-      />
-
-      {/* Subtle top fade for depth */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0a0a] to-transparent z-[1]" />
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4">
-        {/* Logo */}
+      >
+        {/* Fox — prominent feature element */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8"
+          custom={0.1}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          style={{
+            width: "clamp(120px, 18vw, 240px)",
+            marginBottom: "clamp(24px, 3vw, 40px)",
+            opacity: 0.22,
+          }}
         >
           <Image
-            src="/images/logo.png"
+            src="/brand/assets/cillian-fox-light.png"
             alt="Cillian Studio"
-            width={120}
-            height={120}
-            className="w-44 md:w-56 h-44 md:h-56"
-            priority
+            width={240}
+            height={240}
+            style={{ width: "100%", height: "auto", display: "block" }}
           />
         </motion.div>
 
-        {/* Staggered letter reveal heading */}
+        {/* H1 */}
         <motion.h1
-          className="flex flex-nowrap justify-center gap-x-[0.08em] text-[clamp(2rem,6vw,4.5rem)] font-[900] leading-[1] tracking-[0.06em] text-white"
           variants={container}
           initial="hidden"
           animate="visible"
-          aria-label={title}
+          aria-label={TITLE_WORDS.join(" ")}
+          style={{
+            fontFamily: "var(--sans)",
+            fontWeight: 500,
+            fontSize: "clamp(40px, 6vw, 96px)",
+            lineHeight: 0.88,
+            letterSpacing: "0.04em",
+            textTransform: "uppercase",
+            color: "var(--ink)",
+          }}
         >
-          {title.split("").map((char, i) => (
-            <motion.span
-              key={i}
-              variants={letterVariant}
-              className={char === " " ? "w-[0.35em]" : "inline-block"}
-              aria-hidden="true"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
+          {TITLE_WORDS.map((word, wi) => (
+            <span key={wi} style={{ display: "block" }}>
+              {word.split("").map((char, ci) => (
+                <motion.span
+                  key={`${wi}-${ci}`}
+                  variants={charVariant}
+                  style={{ display: "inline-block", whiteSpace: "pre" }}
+                  aria-hidden
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
           ))}
         </motion.h1>
 
-        {/* Subtitle */}
-        <motion.p
-          className="mt-6 text-[clamp(1rem,2.5vw,1.35rem)] font-light tracking-widest text-neutral-400"
+        {/* Discipline tags */}
+        <motion.div
+          custom={1.3}
           variants={fadeUp}
-          custom={1.2}
           initial="hidden"
           animate="visible"
+          style={{
+            display: "flex",
+            gap: 12,
+            alignItems: "center",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            marginTop: "clamp(20px, 3vw, 36px)",
+            fontFamily: "var(--mono)",
+            fontSize: 11,
+            letterSpacing: ".1em",
+            textTransform: "uppercase",
+            color: "var(--ink-3)",
+          }}
         >
-          3D-Visualisierung&ensp;·&ensp;KI-Agenten&ensp;·&ensp;Gamification
-        </motion.p>
+          <span>3D-Visualisierung</span>
+          <span style={{ color: "var(--ink-3)", fontSize: 8 }}>·</span>
+          <span>KI-Agenten</span>
+          <span style={{ color: "var(--ink-3)", fontSize: 8 }}>·</span>
+          <span>Gamification</span>
+        </motion.div>
 
         {/* Tagline */}
         <motion.p
-          className="mt-3 text-sm md:text-base tracking-wide text-neutral-500"
+          custom={1.45}
           variants={fadeUp}
-          custom={1.6}
           initial="hidden"
           animate="visible"
+          style={{
+            color: "var(--ink-3)",
+            fontSize: "clamp(13px, 1.2vw, 15px)",
+            lineHeight: 1.55,
+            marginTop: 14,
+            letterSpacing: ".01em",
+          }}
         >
-          Creative Technology Consulting aus Wien
+          Creative Technology aus Wien.
         </motion.p>
 
         {/* CTAs */}
         <motion.div
-          className="mt-10 flex flex-col sm:flex-row gap-4"
+          custom={1.6}
           variants={fadeUp}
-          custom={2.0}
           initial="hidden"
           animate="visible"
+          style={{ display: "flex", gap: 16, marginTop: "clamp(28px, 3vw, 44px)", flexWrap: "wrap", justifyContent: "center" }}
         >
           <button
             onClick={() => scrollTo("projects")}
-            className="px-8 py-3.5 bg-white text-[#0a0a0a] rounded-lg font-semibold text-sm tracking-wide transition-all duration-200 hover:bg-neutral-200 hover:scale-[1.02] active:scale-[0.98]"
+            style={{
+              padding: "13px 32px",
+              background: "var(--ink)",
+              color: "var(--bg)",
+              fontSize: 11,
+              fontFamily: "var(--mono)",
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              border: "none",
+              borderBottom: "2px solid var(--signal-dim)",
+              cursor: "pointer",
+              transition: "opacity .2s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = ".8")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
           >
             Projekte ansehen
           </button>
-
           <button
             onClick={() => scrollTo("contact")}
-            className="px-8 py-3.5 border border-white/15 text-neutral-300 rounded-lg font-medium text-sm tracking-wide transition-all duration-200 hover:border-white/30 hover:text-white hover:scale-[1.02] active:scale-[0.98]"
+            style={{
+              padding: "13px 32px",
+              background: "transparent",
+              color: "var(--ink-2)",
+              fontSize: 11,
+              fontFamily: "var(--mono)",
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              border: "1px solid var(--line-2)",
+              cursor: "pointer",
+              transition: "border-color .2s, color .2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = "var(--ink-3)"
+              e.currentTarget.style.color = "var(--ink)"
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = "var(--line-2)"
+              e.currentTarget.style.color = "var(--ink-2)"
+            }}
           >
             Kontakt
           </button>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* BOTTOM STRIP — chapter tags */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-pointer"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2.0, duration: 0.8 }}
-        onClick={() => {
-          const next = document.querySelector("section:nth-of-type(2)")
-          next?.scrollIntoView({ behavior: "smooth" })
+        custom={1.9}
+        variants={fadeUp}
+        initial="hidden"
+        animate="visible"
+        className="hero-chapters"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "clamp(16px, 3vw, 32px)",
+          alignItems: "end",
+          paddingTop: "clamp(20px, 3vh, 32px)",
+          borderTop: "1px solid var(--line)",
+          position: "relative",
+          zIndex: 1,
         }}
       >
-        <span className="text-[11px] uppercase tracking-[0.25em] text-neutral-600">
-          Scroll
-        </span>
-        <motion.svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="text-neutral-600"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <path d="M6 9l6 6 6-6" />
-        </motion.svg>
+        {CHAPTERS.map((ch) => (
+          <div key={ch.no}>
+            <div
+              style={{
+                fontFamily: "var(--mono)",
+                fontSize: 10,
+                color: "var(--ink-3)",
+                textTransform: "uppercase",
+                letterSpacing: ".08em",
+              }}
+            >
+              {ch.no}
+            </div>
+            <div style={{ marginTop: 4, fontSize: 13, color: "var(--ink-2)" }}>{ch.title}</div>
+          </div>
+        ))}
       </motion.div>
-
     </section>
   )
 }

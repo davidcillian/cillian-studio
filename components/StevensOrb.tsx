@@ -51,51 +51,64 @@ export function StevensOrb() {
   })
   const [isMobile, setIsMobile] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(false)
+  const audioEnabledRef = useRef(false)
 
   const say = useCallback((text: string, audioKey?: string) => {
     const s = stateRef.current
     const speech = speechRef.current
-    if (!speech) return
+    if (!speech || !text) return
 
-    // interrupt
+    // interrupt any current speech
     s.speaking = false
-    if (s.timer) clearTimeout(s.timer)
+    if (s.timer) { clearTimeout(s.timer); s.timer = null }
     if (s.audio) { s.audio.pause(); s.audio.currentTime = 0; s.audio = null }
 
     s.speaking = true
     speech.classList.add("active")
+
+    // Pre-size: render full text invisibly to lock in height before typewriter
+    speech.style.visibility = "hidden"
+    speech.textContent = text
+    const lockedH = speech.offsetHeight
+    speech.style.minHeight = lockedH + "px"
+    speech.style.visibility = ""
     speech.innerHTML = '<span class="stevens-cursor"></span>'
 
-    // Play audio if enabled
-    if (audioEnabled && audioKey) {
+    // Audio
+    if (audioEnabledRef.current && audioKey) {
       const a = new Audio(`/audio/${audioKey}.mp3`)
       s.audio = a
       a.play().catch(() => {})
       a.onended = () => {
         if (s.audio === a) {
           s.speaking = false; s.audio = null
-          setTimeout(() => { if (!s.speaking) speech.classList.remove("active") }, 3000)
+          s.timer = setTimeout(() => {
+            if (!s.speaking) { speech.classList.remove("active"); speech.style.minHeight = "" }
+          }, 3000)
         }
       }
     }
 
+    // Typewriter — simple substring, no reflow since minHeight is locked
     let i = 0
     const type = () => {
       if (!s.speaking) return
       if (i < text.length) {
         speech.innerHTML = text.substring(0, i + 1) + '<span class="stevens-cursor"></span>'
         i++
-        s.timer = setTimeout(type, 18)
+        s.timer = setTimeout(type, 20)
       } else {
         speech.innerHTML = text
-        if (!audioEnabled || !audioKey) {
+        if (!audioEnabledRef.current || !audioKey) {
           s.speaking = false
-          s.timer = setTimeout(() => { if (!s.speaking) speech.classList.remove("active") }, 7000)
+          s.timer = setTimeout(() => {
+            if (!s.speaking) { speech.classList.remove("active"); speech.style.minHeight = "" }
+          }, 6000)
         }
       }
     }
     type()
-  }, [audioEnabled])
+  }, []) // stable — no deps, reads audioEnabledRef instead
 
   useEffect(() => {
     const vw = window.innerWidth
@@ -117,16 +130,18 @@ export function StevensOrb() {
     ctx.setTransform(d, 0, 0, d, 0, 0)
 
     s.lazyScroll = scrollY
-    s.x = vw * 0.78
+    s.x = vw - s.size / 2 - 20
     s.y = scrollY + innerHeight * 0.35
 
-    // Waypoint — ONLY right gutter, calm movement
+    // Waypoint — right side of screen, always within valid range
     const wp = () => {
       const curVw = innerWidth
       const contentR = (curVw + Math.min(1200, curVw * 0.9)) / 2
-      const gutterW = curVw - contentR - s.size
-      s.wpX = contentR + s.size * 0.6 + Math.random() * Math.max(0, gutterW - s.size)
-      s.wpX = Math.max(contentR + 90, Math.min(s.wpX, curVw - s.size / 2 - 10))
+      // min: just past content edge or 80% of screen, whichever is further right
+      const minX = Math.max(contentR + s.size * 0.3, curVw * 0.8)
+      const maxX = curVw - s.size / 2 - 8
+      // clamp so wpX is always on-screen (minX may exceed maxX on narrow viewports)
+      s.wpX = Math.min(minX + Math.random() * Math.max(0, maxX - minX), maxX)
       s.wpY = innerHeight * 0.15 + Math.random() * innerHeight * 0.65
       s.wpI = 5000 + Math.random() * 5000
       s.wpT = Date.now()
@@ -154,14 +169,15 @@ export function StevensOrb() {
       const p = s.size / 2 + 14, top = s.lazyScroll + p, bot = s.lazyScroll + vh - p
       if (s.x < p) s.vx += 0.1; if (s.x > vw - p) s.vx -= 0.1
       if (s.y < top) s.vy += 0.1; if (s.y > bot) s.vy -= 0.1
-      // Hard boundary: never enter content zone
-      const cR = (vw + Math.min(1200, vw * 0.9)) / 2 + 60
-      if (s.x < cR) { s.vx += 0.4; if (s.x < cR - 20) s.x += (cR - s.x) * 0.08 }
-      orb.style.transform = `translate3d(${s.x - s.size / 2}px,${s.y - s.size / 2}px,0)`
-      // Speech always to the left (towards content) since Stevens is on the right
+      // Soft boundary: velocity-only push away from content (no direct snap → no jitter)
+      const contentR = (vw + Math.min(1200, vw * 0.9)) / 2
+      if (s.x < contentR) s.vx += 0.3
+      orb.style.transform = `translate3d(${Math.round(s.x - s.size / 2)}px,${Math.round(s.y - s.size / 2)}px,0)`
+      // Speech bubble follows Stevens per-frame (separate GPU layer — no canvas conflict)
       const speech = speechRef.current
       if (speech) {
-        speech.style.right = 'calc(100% + 16px)'; speech.style.left = 'auto'
+        const bw = 240
+        speech.style.transform = `translate3d(${Math.round(s.x - s.size / 2 - bw - 14)}px,${Math.round(s.y - 40)}px,0)`
       }
     }
     moveTick()
@@ -173,12 +189,12 @@ export function StevensOrb() {
       drawRaf = requestAnimationFrame(draw)
       s.t += 0.016; const t = s.t
       if (s.speaking) {
-        const sim = 0.3 + Math.sin(t * 8) * 0.15 + Math.sin(t * 13.7) * 0.1 + Math.sin(t * 21) * 0.05
-        st.jawFast += (sim - st.jawFast) * 0.45; st.jaw += (sim - st.jaw) * 0.12
-        st.energy += (sim - st.energy) * 0.25; if (sim > st.peak) st.peak = sim
-        st.peak *= 0.95; st.pd = st.peak
+        const sim = 0.18 + Math.sin(t * 3.5) * 0.07 + Math.sin(t * 6.2) * 0.04 + Math.sin(t * 9.8) * 0.02
+        st.jawFast += (sim - st.jawFast) * 0.2; st.jaw += (sim - st.jaw) * 0.08
+        st.energy += (sim - st.energy) * 0.12; if (sim > st.peak) st.peak = sim
+        st.peak *= 0.97; st.pd = st.peak
       } else {
-        st.jawFast *= 0.85; st.jaw *= 0.92; st.energy *= 0.9; st.peak *= 0.95; st.pd *= 0.96
+        st.jawFast *= 0.88; st.jaw *= 0.94; st.energy *= 0.93; st.peak *= 0.97; st.pd *= 0.98
       }
       const mv = Math.abs(st.jawFast - st.jaw), sp = st.jaw > 0.03
       const br = Math.sin(t * 0.8) * 0.5 + 0.5, cx = s.size / 2, cy = s.size / 2, r = s.size * 0.32
@@ -187,31 +203,31 @@ export function StevensOrb() {
 
       // Glow
       const g = ctx.createRadialGradient(cx, cy, r * 0.2, cx, cy, r * (1.5 + st.pd * 0.3))
-      g.addColorStop(0, `rgba(0,230,210,${0.12 + st.energy * 0.15})`)
-      g.addColorStop(0.5, `rgba(0,230,210,${0.05 + st.energy * 0.08})`)
-      g.addColorStop(1, "rgba(0,230,210,0)")
+      g.addColorStop(0, `rgba(201,74,40,${0.12 + st.energy * 0.15})`)
+      g.addColorStop(0.5, `rgba(201,74,40,${0.05 + st.energy * 0.08})`)
+      g.addColorStop(1, "rgba(201,74,40,0)")
       ctx.fillStyle = g; ctx.fillRect(0, 0, s.size, s.size); ctx.lineCap = "round"
 
       const rs = 0.08 + st.energy * 0.35
 
       // Outer rings
       ctx.save(); ctx.translate(cx, cy); ctx.rotate(t * rs)
-      ctx.strokeStyle = `rgba(0,230,210,${0.22 + st.jawFast * 0.2})`; ctx.lineWidth = 1
+      ctx.strokeStyle = `rgba(201,74,40,${0.22 + st.jawFast * 0.2})`; ctx.lineWidth = 1
       ctx.setLineDash([5, 12]); ctx.beginPath(); ctx.arc(0, 0, r * 1.08, 0, Math.PI * 2); ctx.stroke()
       ctx.setLineDash([]); ctx.restore()
 
       ctx.save(); ctx.translate(cx, cy); ctx.rotate(-t * rs * 0.5)
-      ctx.strokeStyle = `rgba(0,230,210,${0.12 + st.jawFast * 0.12})`; ctx.lineWidth = 0.6
+      ctx.strokeStyle = `rgba(201,74,40,${0.12 + st.jawFast * 0.12})`; ctx.lineWidth = 0.6
       ctx.setLineDash([3, 18]); ctx.beginPath(); ctx.arc(0, 0, r * 1.14, 0, Math.PI * 2); ctx.stroke()
       ctx.setLineDash([]); ctx.restore()
 
       // Main ring
       const vib = sp ? Math.sin(t * 35) * mv * r * 0.012 : 0
-      ctx.strokeStyle = `rgba(0,230,210,${0.55 + br * 0.1 + st.jaw * 0.35})`; ctx.lineWidth = 1.5
+      ctx.strokeStyle = `rgba(201,74,40,${0.55 + br * 0.1 + st.jaw * 0.35})`; ctx.lineWidth = 1.5
       ctx.beginPath(); ctx.arc(cx, cy, r + vib, 0, Math.PI * 2); ctx.stroke()
 
       // Inner ring
-      ctx.strokeStyle = `rgba(0,230,210,${0.2 + st.jawFast * 0.3})`; ctx.lineWidth = 0.8
+      ctx.strokeStyle = `rgba(201,74,40,${0.2 + st.jawFast * 0.3})`; ctx.lineWidth = 0.8
       ctx.beginPath(); ctx.arc(cx, cy, r * 0.72, 0, Math.PI * 2); ctx.stroke()
 
       // Ticks
@@ -220,7 +236,7 @@ export function StevensOrb() {
         const tp = sp ? Math.sin(a * 3 + t * 6) * st.jawFast : 0
         const tl = iM ? r * 0.08 + tp * r * 0.04 : iMd ? r * 0.04 : r * 0.02
         const al = sp ? (iM ? 0.2 + st.jawFast * 0.4 + tp * 0.2 : iMd ? 0.06 + st.jawFast * 0.1 : 0.03 + st.jawFast * 0.06) : (iM ? 0.12 + br * 0.03 : iMd ? 0.04 : 0.02)
-        ctx.strokeStyle = `rgba(0,230,210,${Math.max(0, al)})`; ctx.lineWidth = iM ? 1 : 0.4
+        ctx.strokeStyle = `rgba(201,74,40,${Math.max(0, al)})`; ctx.lineWidth = iM ? 1 : 0.4
         ctx.beginPath()
         ctx.moveTo(cx + Math.cos(a) * (r - tl), cy + Math.sin(a) * (r - tl))
         ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r)
@@ -229,7 +245,7 @@ export function StevensOrb() {
 
       // Waveform when speaking
       if (sp) {
-        ctx.strokeStyle = `rgba(0,230,210,${0.35 + st.jawFast * 0.55})`; ctx.lineWidth = 1.3
+        ctx.strokeStyle = `rgba(201,74,40,${0.35 + st.jawFast * 0.55})`; ctx.lineWidth = 1.3
         ctx.beginPath()
         for (let i = 0; i <= 128; i++) {
           const a = (i / 128) * Math.PI * 2
@@ -240,7 +256,7 @@ export function StevensOrb() {
         }
         ctx.closePath(); ctx.stroke()
 
-        ctx.fillStyle = `rgba(0,230,210,${0.25 + st.jawFast * 0.35})`
+        ctx.fillStyle = `rgba(201,74,40,${0.25 + st.jawFast * 0.35})`
         for (let i = 0; i < 16; i++) {
           const a = (i / 16) * Math.PI * 2 + t * 0.3
           const sc = Math.sin(a * 7 + t * 11) * st.jawFast * r * 0.07
@@ -249,38 +265,38 @@ export function StevensOrb() {
         }
       } else {
         const ir = r * 0.48 + Math.sin(t * 0.8) * r * 0.008
-        ctx.strokeStyle = `rgba(0,230,210,${0.08 + br * 0.04})`; ctx.lineWidth = 0.6
+        ctx.strokeStyle = `rgba(201,74,40,${0.08 + br * 0.04})`; ctx.lineWidth = 0.6
         ctx.beginPath(); ctx.arc(cx, cy, ir, 0, Math.PI * 2); ctx.stroke()
       }
 
       // Core
-      const cr = sp ? 2 + st.jawFast * 6 + mv * 3 : 2 + br * 0.5
+      const cr = sp ? 2 + st.jawFast * 3 + mv * 1.2 : 2 + br * 0.5
       let cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, cr * 4)
-      cg.addColorStop(0, `rgba(0,230,210,${0.06 + st.energy * 0.12})`); cg.addColorStop(1, "rgba(0,230,210,0)")
+      cg.addColorStop(0, `rgba(201,74,40,${0.06 + st.energy * 0.12})`); cg.addColorStop(1, "rgba(201,74,40,0)")
       ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(cx, cy, cr * 4, 0, Math.PI * 2); ctx.fill()
 
       cg = ctx.createRadialGradient(cx, cy, 0, cx, cy, cr * 2)
-      cg.addColorStop(0, `rgba(0,230,210,${0.4 + st.jawFast * 0.4})`); cg.addColorStop(0.4, `rgba(0,230,210,${0.1 + st.jawFast * 0.15})`); cg.addColorStop(1, "rgba(0,230,210,0)")
+      cg.addColorStop(0, `rgba(201,74,40,${0.4 + st.jawFast * 0.4})`); cg.addColorStop(0.4, `rgba(201,74,40,${0.1 + st.jawFast * 0.15})`); cg.addColorStop(1, "rgba(201,74,40,0)")
       ctx.fillStyle = cg; ctx.beginPath(); ctx.arc(cx, cy, cr * 2, 0, Math.PI * 2); ctx.fill()
 
-      ctx.fillStyle = `rgba(0,255,240,${0.6 + st.jawFast * 0.3})`
+      ctx.fillStyle = `rgba(220,100,60,${0.6 + st.jawFast * 0.3})`
       ctx.beginPath(); ctx.arc(cx, cy, cr, 0, Math.PI * 2); ctx.fill()
 
       // Corner brackets
       const bL = r * 0.14, bO = r * 1.18
-      ctx.strokeStyle = `rgba(0,230,210,${0.1 + st.pd * 0.15})`; ctx.lineWidth = 0.6
+      ctx.strokeStyle = `rgba(201,74,40,${0.1 + st.pd * 0.15})`; ctx.lineWidth = 0.6
       const corners: [number, number, number, number][] = [[cx - bO, cy - bO, 1, 1], [cx + bO, cy - bO, -1, 1], [cx - bO, cy + bO, 1, -1], [cx + bO, cy + bO, -1, -1]]
       corners.forEach(([x, y, ddx, ddy]) => {
         ctx.beginPath(); ctx.moveTo(x, y + ddy * -bL); ctx.lineTo(x, y); ctx.lineTo(x + ddx * bL, y); ctx.stroke()
       })
 
       // Labels
-      ctx.fillStyle = `rgba(0,230,210,${0.12 + st.energy * 0.08})`
+      ctx.fillStyle = `rgba(201,74,40,${0.12 + st.energy * 0.08})`
       ctx.font = `${Math.max(6, r * 0.055)}px var(--font-mono),monospace`
       ctx.textAlign = "center"
       ctx.fillText("S T E V E N S", cx, cy + r * 1.35)
       ctx.font = `${Math.max(5, r * 0.04)}px var(--font-mono),monospace`
-      ctx.fillStyle = `rgba(0,230,210,${0.06 + st.energy * 0.04})`
+      ctx.fillStyle = `rgba(201,74,40,${0.06 + st.energy * 0.04})`
       ctx.fillText(sp ? "ACTIVE" : "STANDBY", cx, cy + r * 1.44)
     }
     draw()
@@ -304,26 +320,7 @@ export function StevensOrb() {
     )
     sections.forEach((sec) => observer.observe(sec))
 
-    // Also observe hero (no id, first section)
-    const heroEl = document.querySelector("section")
-    if (heroEl && !heroEl.id) {
-      const heroObs = new IntersectionObserver(
-        (entries) => {
-          if (entries[0]?.isIntersecting && s.lastSec !== "hero" && !s.saidSecs.has("hero")) {
-            s.lastSec = "hero"
-            s.saidSecs.add("hero")
-            say(guide.hero.text, "hero")
-          }
-        },
-        { threshold: 0.3 }
-      )
-      heroObs.observe(heroEl)
-    }
-
-    // Initial greeting
-    setTimeout(() => {
-      say("Hey, willkommen bei Cillian Studio! Ich bin Stevens und zeig euch was hier alles passiert. Dreht den Ton auf oder lest einfach mit.", "hero")
-    }, 2000)
+    // Hero has id="hero" so it's already covered by the main observer above
 
     return () => {
       cancelAnimationFrame(moveRaf)
@@ -339,8 +336,7 @@ export function StevensOrb() {
       {/* Stevens Orb */}
       <div
         ref={orbRef}
-        className="fixed z-[900]"
-        style={{ top: 0, left: 0, willChange: "transform", position: "absolute", cursor: "pointer" }}
+        style={{ position: "fixed", top: 0, left: 0, willChange: "transform", zIndex: 900, cursor: "pointer" }}
         onClick={() => {
           const s = stateRef.current
           if (!s.lastSec) return
@@ -349,19 +345,15 @@ export function StevensOrb() {
         }}
       >
         <canvas ref={canvasRef} />
-        <div
-          ref={speechRef}
-          className="stevens-speech"
-          style={{ pointerEvents: "none" }}
-        />
       </div>
+      <div ref={speechRef} className="stevens-speech" />
 
       {/* Audio Toggle */}
       <button
-        onClick={() => setAudioEnabled(!audioEnabled)}
+        onClick={() => { audioEnabledRef.current = !audioEnabledRef.current; setAudioEnabled(a => !a) }}
         className={`fixed bottom-6 left-6 z-[999] w-10 h-10 flex items-center justify-center rounded-full border backdrop-blur-lg transition-all ${
           audioEnabled
-            ? "border-[rgba(0,230,210,0.3)] text-[#00e6d2]"
+            ? "border-[rgba(201,74,40,0.3)] text-[#c94a28]"
             : "border-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.25)]"
         }`}
         style={{ background: "rgba(10,10,10,0.9)" }}
@@ -383,23 +375,25 @@ export function StevensOrb() {
 
       <style jsx global>{`
         .stevens-speech {
-          position: absolute;
-          top: 50%;
-          right: calc(100% + 16px);
-          transform: translateY(-50%);
+          position: fixed;
+          top: 0;
+          left: 0;
+          will-change: transform;
           width: 240px;
-          max-width: 45vw;
-          background: rgba(10, 10, 14, 0.94);
-          backdrop-filter: blur(16px);
-          border: 1px solid rgba(0, 230, 210, 0.08);
-          border-radius: 12px;
-          padding: 12px 16px;
-          font-size: 11.5px;
-          line-height: 1.6;
-          color: rgba(255, 255, 255, 0.6);
+          background: rgba(26, 22, 18, 0.96);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(201, 74, 40, 0.2);
+          border-radius: 4px;
+          padding: 14px 16px;
+          font-size: 12px;
+          font-family: var(--font-mono), ui-monospace, monospace;
+          line-height: 1.65;
+          color: rgba(236, 229, 212, 0.78);
           pointer-events: none;
           opacity: 0;
-          transition: opacity 0.35s, left 0.6s ease, right 0.6s ease;
+          transition: opacity 0.35s;
+          word-break: break-word;
+          overflow-wrap: break-word;
         }
         .stevens-speech.active {
           opacity: 1;
@@ -408,9 +402,9 @@ export function StevensOrb() {
           display: inline-block;
           width: 1px;
           height: 11px;
-          background: rgba(0, 230, 210, 0.5);
+          background: rgba(201, 74, 40, 0.7);
           margin-left: 1px;
-          animation: stevens-blink 1s step-end infinite;
+          animation: stevens-blink 0.9s step-end infinite;
           vertical-align: text-bottom;
         }
         @keyframes stevens-blink {

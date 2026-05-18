@@ -1,63 +1,176 @@
 "use client"
 
 import Image from "next/image"
-import { ExternalLink } from "lucide-react"
 
-const clients: { name: string; logo: string; url: string; description: string; cardBg?: string }[] = [
+const clients = [
   {
     name: "CreARTive Vienna",
     logo: "/images/clients/creartive-vienna.png",
     url: "https://www.creartive-vienna.com/",
     description: "Digitaler Innovationshub für kreative Kunst- und Kulturprojekte in Wien.",
+    logoBg: "#f7f7f7",
   },
   {
     name: "Goodcare IT Services",
     logo: "/images/clients/goodcare-it.png",
     url: "https://goodcare.at/",
     description: "Anbieter von Open-Source-Lösungen und Alternativen zu Microsoft-Produkten.",
-    cardBg: "#1a1a1a",
+    logoBg: "#1a1a1a",
   },
   {
     name: "CS Orthoseminars",
     logo: "/images/clients/csorthoseminars.jpg",
     url: "https://csorthoseminars.com/",
     description: "Fortbildungsplattform für Kieferorthopädie — aus der Praxis für die Praxis.",
-    cardBg: "#f7f7f7",
+    logoBg: "#f7f7f7",
   },
 ]
 
+const S = {
+  section: {
+    padding: "96px max(32px, 4vw)",
+    borderTop: "1px solid var(--line)",
+    maxWidth: 1600,
+    margin: "0 auto",
+  } as React.CSSProperties,
+  kicker: {
+    fontFamily: "var(--mono)",
+    fontSize: 11,
+    letterSpacing: ".08em",
+    textTransform: "uppercase" as const,
+    color: "var(--ink-3)",
+    marginBottom: 14,
+  },
+}
+
 export function ClientsSection() {
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-[#f2f2f2] mb-12">
-          Bisherige Kunden
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
+    <section id="clients" style={{ background: "var(--bg)" }}>
+      <div style={S.section} className="sec-inner">
+        {/* Section header */}
+        <div
+          className="sec-head"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 3fr",
+            gap: 48,
+            alignItems: "baseline",
+            marginBottom: 64,
+          }}
+        >
+          <div style={{ ...S.kicker, display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ display: "inline-block", width: 8, height: 8, background: "var(--signal)", transform: "rotate(45deg)", flexShrink: 0 }} />
+            § 04 — Vertrauen
+          </div>
+          <div>
+            <h2
+              style={{
+                fontFamily: "var(--sans)",
+                fontSize: "clamp(36px, 5vw, 56px)",
+                fontWeight: 500,
+                letterSpacing: "-.025em",
+                lineHeight: 1,
+                color: "var(--ink)",
+              }}
+            >
+              Bisherige{" "}
+              <span style={{ fontWeight: 300, color: "var(--ink-4)" }}>Kunden.</span>
+            </h2>
+          </div>
+        </div>
+
+        {/* Clients — card grid */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "clamp(16px, 2vw, 24px)",
+          }}
+        >
           {clients.map((client) => (
             <a
               key={client.name}
               href={client.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group rounded-xl p-6 hover:scale-105 transition-all duration-300 flex flex-col items-center text-center"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                textDecoration: "none",
+                background: "var(--bg-2)",
+                border: "1px solid var(--line)",
+                overflow: "hidden",
+                transition: "border-color .2s",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--line-2)")}
+              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--line)")}
             >
-              <div className="rounded-lg p-6 w-full flex items-center justify-center mb-6" style={{ backgroundColor: client.cardBg || "#ffffff" }}>
+              {/* Logo area */}
+              <div
+                style={{
+                  height: 140,
+                  background: client.logoBg,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "24px 32px",
+                  flexShrink: 0,
+                }}
+              >
                 <Image
                   src={client.logo}
                   alt={client.name}
-                  width={320}
-                  height={140}
-                  className="object-contain h-20 w-auto"
+                  width={240}
+                  height={80}
+                  style={{ objectFit: "contain", maxHeight: 64, width: "auto" }}
                 />
               </div>
-              <h3 className="text-lg font-semibold text-[#f2f2f2] mb-2 flex items-center gap-2">
-                {client.name}
-                <ExternalLink className="w-4 h-4 text-white/30 group-hover:text-blue-400 transition-colors duration-300" />
-              </h3>
-              <p className="text-[#888] text-sm leading-relaxed">
-                {client.description}
-              </p>
+
+              {/* Text */}
+              <div
+                style={{
+                  padding: "24px",
+                  borderTop: "1px solid var(--line)",
+                  flexGrow: 1,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "var(--sans)",
+                    fontSize: "clamp(16px, 1.5vw, 19px)",
+                    fontWeight: 500,
+                    color: "var(--ink)",
+                    letterSpacing: "-.018em",
+                  }}
+                >
+                  {client.name}
+                </div>
+                <div
+                  style={{
+                    fontSize: 13,
+                    color: "var(--ink-3)",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {client.description}
+                </div>
+                <div
+                  style={{
+                    marginTop: "auto",
+                    paddingTop: 16,
+                    fontFamily: "var(--mono)",
+                    fontSize: 10,
+                    letterSpacing: ".08em",
+                    textTransform: "uppercase",
+                    color: "var(--ink-3)",
+                  }}
+                >
+                  Website →
+                </div>
+              </div>
             </a>
           ))}
         </div>
